@@ -21,7 +21,7 @@ const themeInitScript = `
 
 export const metadata: Metadata = {
   title: {
-    default: `${meta.name} — Portfolio`,
+    default: `${meta.name} — Aerospace Engineer, AI Builder & Researcher`,
     template: `%s | ${meta.name}`,
   },
   description: meta.description,

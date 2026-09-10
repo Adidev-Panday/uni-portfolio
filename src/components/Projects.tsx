@@ -1,7 +1,7 @@
 'use client'
 // Projects section — responsive card grid with hover lift animation.
 import { motion } from 'motion/react'
-import { Github, ExternalLink } from 'lucide-react'
+import { Github, ExternalLink, BookOpen, Lock } from 'lucide-react'
 import { projects } from '@/data/content'
 import ScrollReveal from './ScrollReveal'
 import SectionHeader from './SectionHeader'
@@ -63,29 +63,68 @@ export default function Projects() {
                         <ExternalLink size={16} />
                       </a>
                     )}
+                    {project.storyLink && (
+                      <a
+                        href={project.storyLink.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-zinc-400 hover:text-indigo-500 transition-colors"
+                        aria-label={project.storyLink.label}
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <BookOpen size={16} />
+                      </a>
+                    )}
                   </div>
                 </div>
 
                 {/* Project name */}
-                <h3 className="font-semibold text-[15px] mb-2 group-hover:text-indigo-500 transition-colors duration-200">
+                <h3 className="font-semibold text-[15px] mb-0.5 group-hover:text-indigo-500 transition-colors duration-200">
                   {project.name}
                 </h3>
 
-                {/* Description — flex-1 pushes tags to bottom */}
+                {/* Role label */}
+                <p className="text-xs text-indigo-500/80 font-mono mb-3">{project.role}</p>
+
+                {/* Description — flex-1 pushes footer to bottom */}
                 <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed flex-1 mb-5">
                   {project.description}
                 </p>
 
-                {/* Tech tag badges */}
-                <div className="flex flex-wrap gap-1.5">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-[11px] px-2 py-0.5 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 font-mono"
+                {/* Footer: tech tags + optional status badge */}
+                <div className="space-y-3">
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[11px] px-2 py-0.5 rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 font-mono"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Story link as inline text (in addition to icon) */}
+                  {project.storyLink && (
+                    <a
+                      href={project.storyLink.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-xs text-indigo-500 hover:text-indigo-400 transition-colors"
+                      onClick={(e) => e.stopPropagation()}
                     >
-                      {tag}
+                      {project.storyLink.label}
+                      <ExternalLink size={10} />
+                    </a>
+                  )}
+
+                  {/* Status badge for in-progress / private projects */}
+                  {project.statusBadge && (
+                    <span className="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 font-mono">
+                      <Lock size={9} />
+                      {project.statusBadge}
                     </span>
-                  ))}
+                  )}
                 </div>
               </motion.article>
             </ScrollReveal>

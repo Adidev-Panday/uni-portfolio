@@ -27,14 +27,15 @@ export default function HonorsAwards() {
                 </div>
 
                 <div>
-                  <h3 className="font-semibold text-sm mb-0.5 group-hover:text-indigo-500 transition-colors duration-200">
+                  <h3 className="font-semibold text-sm mb-1 group-hover:text-indigo-500 transition-colors duration-200">
                     {honor.award}
                   </h3>
                   <p className="text-xs text-zinc-500 mb-2 font-mono">
                     {honor.issuer}
-                    <span className="mx-1.5 text-zinc-300 dark:text-zinc-700">·</span>
-                    {honor.date}
                   </p>
+                  <span className="inline-block text-[10px] px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-500 dark:text-indigo-400 font-mono mb-2">
+                    {honor.level}
+                  </span>
                   <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
                     {honor.description}
                   </p>

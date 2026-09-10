@@ -43,7 +43,7 @@ export default function Research() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 text-xs font-medium text-indigo-500 hover:text-indigo-400 transition-colors shrink-0"
                   >
-                    View paper
+                    {paper.linkLabel}
                     <ExternalLink size={12} />
                   </a>
                 </div>
@@ -54,11 +54,16 @@ export default function Research() {
                 </h3>
 
                 {/* Journal + year */}
-                <p className="text-sm text-zinc-500 mb-4">
+                <p className="text-sm text-zinc-500 mb-1">
                   {paper.journal}
                   <span className="mx-1.5 text-zinc-300 dark:text-zinc-700">·</span>
                   {paper.year}
                 </p>
+
+                {/* Optional page note */}
+                {paper.pageNote && (
+                  <p className="text-xs text-zinc-400 mb-4 font-mono">{paper.pageNote}</p>
+                )}
 
                 {/* Abstract */}
                 <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">

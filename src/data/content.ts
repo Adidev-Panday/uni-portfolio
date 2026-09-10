@@ -11,13 +11,11 @@
 // ------------------------------------------------------------
 export const meta = {
   name: 'Adidev Panday',
-  tagline: 'Building things that matter.',
-  // Description shown in Google snippets and OG previews
+  tagline: 'Aspiring aerospace engineer. AI builder. Researcher.',
   description:
-    'Student, researcher, and builder. Passionate about AI, software engineering, and creating meaningful impact.',
-  // Replace with your real email
-  email: 'adidev@example.com',
-  // Replace with your deployed Vercel URL
+    'Adidev Panday — aspiring aerospace engineer, AI builder, and researcher. IB student at Woodstock School, India. Building at the intersection of physics, design, and code.',
+  email: 'panday.adidev@gmail.com',
+  // Update this once you have a custom domain or final Vercel URL
   siteUrl: 'https://adidev-portfolio.vercel.app',
   // Place og-image.png in the /public folder (1200×630px recommended)
   ogImage: '/og-image.png',
@@ -40,12 +38,11 @@ export const navLinks = [
 // HERO — First section, above the fold
 // ------------------------------------------------------------
 export const hero = {
-  greeting: 'Hi, I\'m',
+  greeting: "Hi, I'm",
   name: 'Adidev Panday',
-  tagline: 'Building at the intersection of AI and real-world impact.',
-  // 2-3 sentence intro — keep it punchy
+  tagline: 'Aspiring aerospace engineer. AI builder. Researcher.',
   intro:
-    'I\'m a student, researcher, and builder passionate about artificial intelligence, software engineering, and creating tools that make a difference. Currently studying at [University Name] and working on [Current Focus Area].',
+    "I'm a Woodstock School student from Ludhiana, India, headed for aerospace engineering: the place where physics, design, and code meet. I build AI-driven apps, publish research, and spend my spare hours on F1 aerodynamics, the violin, and football. This is everything I've made and earned, in one place.",
   ctas: [
     { label: 'View Projects', href: '#projects', primary: true },
     { label: 'Read Research', href: '#research', primary: false },
@@ -56,10 +53,11 @@ export const hero = {
 // ABOUT — Life overview paragraph(s)
 // ------------------------------------------------------------
 export const about = {
-  // Add or remove paragraphs freely — each string becomes its own <p> tag
+  // Each string renders as its own <p> tag. Add or remove freely.
   paragraphs: [
-    'PLACEHOLDER: Write a compelling life-overview paragraph here. Describe your background, what drives you, and your journey so far. This might cover where you grew up, what first sparked your interest in technology and research, and how those experiences shaped your path.',
-    'PLACEHOLDER: Continue with your academic journey, key experiences, or formative moments. What are you studying? What do you care deeply about? What are you working toward over the next few years?',
+    'I grew up in Ludhiana, Punjab, and study at Woodstock School, taking HL Physics, Math AA, and Computer Science in the IB Diploma. My focus is aerospace engineering, where rigorous physics meets real design.',
+    'Outside class, I build things. I\'ve shipped AI-powered web apps, developed a React Native app to tackle teen drunk-driving in my hometown, and published research on the risks of digital trading. I co-founded my school\'s AI Club, lead the yearbook as Editor in Chief, and play first chair violin in the Advanced Orchestra. I\'ve competed in varsity football and basketball, interned in product development and CAD, and served on the Academic Honesty Council.',
+    'I\'m drawn to problems that reward both rigor and creativity — from modeling 4th-down football decisions with game theory to studying how a paper plane\'s wing generates lift.',
   ],
 }
 
@@ -70,7 +68,9 @@ export type ResearchPaper = {
   title: string
   journal: string
   year: string
-  link: string // Full URL to the paper
+  link: string      // Full URL to the paper / issue PDF
+  linkLabel: string // Text shown on the link button
+  pageNote?: string // Optional note about page number within the issue
   abstract: string
   status: 'published' | 'preprint' | 'in review'
 }
@@ -78,15 +78,18 @@ export type ResearchPaper = {
 export const research: ResearchPaper[] = [
   {
     title:
-      'PLACEHOLDER: Your Research Paper Title Goes Here — A Study of Something Fascinating',
-    journal: 'Journal of Placeholder Studies',
-    year: '2024',
-    link: '#', // Replace with DOI or paper URL
+      'The Rise of Digital Trading: Accessibility Versus Risk of Financial Ruin',
+    journal:
+      'International Journal of High School Research (IJHSR), Vol. 8, Issue 12',
+    year: '2026',
+    link: 'https://terra-docs.s3.us-east-2.amazonaws.com/IJHSR/Articles/volume8-issue12/IJHSR_2026_812.pdf',
+    linkLabel: 'Read paper (p. 89)',
+    pageNote: 'Paper begins on page 89 of the issue.',
     abstract:
-      'PLACEHOLDER: Replace this with your paper\'s abstract. Summarize the research question, methodology, and key findings in 2–4 sentences. What problem did you address? What approach did you take? What did you discover or contribute?',
+      'A data-driven analysis across financial trading platforms examining the tension between user accessibility and the risk of financial ruin for everyday investors, and what that trade-off means for retail participation in modern markets.',
     status: 'published',
   },
-  // To add more papers, copy the object above and paste it here.
+  // Add more papers here — copy the object above and fill in your details.
 ]
 
 // ------------------------------------------------------------
@@ -95,50 +98,61 @@ export const research: ResearchPaper[] = [
 export type Project = {
   name: string
   description: string
-  tags: string[] // Tech/language tags displayed as badges
-  github?: string // GitHub repo URL (optional)
-  demo?: string // Live demo URL (optional)
+  role: string        // Your role on the project
+  tags: string[]      // Tech tags shown as badges
+  demo?: string       // Live demo URL
+  github?: string     // GitHub repo URL (optional)
+  // For projects with a story/blog post instead of a live demo
+  storyLink?: { label: string; href: string }
+  // Optional status badge, e.g. "Private / in progress"
+  statusBadge?: string
 }
 
 export const projects: Project[] = [
   {
-    name: 'WoodLink',
-    description:
-      'PLACEHOLDER: A brief, compelling description of WoodLink. What does it do, what problem does it solve, and what was your role? Aim for 1–2 punchy sentences.',
-    tags: ['React', 'Node.js', 'PostgreSQL', 'AWS'],
-    github: 'https://github.com/Adidev-Panday/WoodLink',
-    demo: '#',
-  },
-  {
-    name: 'NYTPuzzleSolver',
-    description:
-      'PLACEHOLDER: Describe NYTPuzzleSolver. Which NYT puzzle does it crack (Connections, Wordle, Spelling Bee…)? What algorithms or techniques are under the hood?',
-    tags: ['Python', 'NLP', 'Algorithms'],
-    github: 'https://github.com/Adidev-Panday/NYTPuzzleSolver',
-  },
-  {
     name: 'GrowwBot',
     description:
-      'PLACEHOLDER: Describe GrowwBot — what it does, what platform it targets, and the core functionality or intelligence behind it.',
-    tags: ['Python', 'Machine Learning', 'Finance', 'API'],
-    github: 'https://github.com/Adidev-Panday/GrowwBot',
+      'An AI-powered personal finance advisor that gives users tailored, conversational guidance on budgeting, investing, and financial planning.',
+    role: 'Developer',
+    tags: ['Web App', 'AI / LLM'],
+    demo: 'https://growwbot.netlify.app/',
   },
   {
     name: 'Balancify',
     description:
-      'PLACEHOLDER: Describe Balancify — what problem does it solve for users? What\'s the core value proposition and key features?',
-    tags: ['React Native', 'TypeScript', 'Firebase'],
-    github: 'https://github.com/Adidev-Panday/Balancify',
-    demo: '#',
+      'An AI timetable and schedule maker that builds balanced, personalized study and activity plans — designed for students juggling academics and extracurriculars.',
+    role: 'Developer',
+    tags: ['Web App', 'AI / LLM'],
+    demo: 'https://wsbalancify.netlify.app/#schedule-maker',
+  },
+  {
+    name: 'NYT Puzzle Solver',
+    description:
+      'A tool that solves and surfaces daily answers for New York Times puzzles, built for the daily players who need a nudge (or a full solution).',
+    role: 'Developer',
+    tags: ['Web App'],
+    demo: 'https://nytpuzzleanswers.netlify.app/',
   },
   {
     name: 'DriveSafe',
     description:
-      'PLACEHOLDER: Describe DriveSafe — what safety problem does it address? What computer vision or ML techniques power it?',
-    tags: ['Python', 'Computer Vision', 'OpenCV', 'ML'],
-    github: 'https://github.com/Adidev-Panday/DriveSafe',
+      'A mobile app built to reduce teen drunk-driving in my hometown, featuring role-based flows, OTP authentication, real-time ride dispatch, and UPI payments. Currently being scaled for publishing.',
+    role: 'Founder & Developer',
+    tags: ['React Native', 'Firebase'],
+    storyLink: {
+      label: 'Read the story',
+      href: 'https://adidev.medium.com/drivesafe-an-attempt-to-reduce-teen-drunk-driving-c1f10162a53f',
+    },
   },
-  // Add more projects here
+  {
+    name: 'WoodLink',
+    description:
+      'An alumni networking platform for Woodstock School, reconnecting graduates with current students through a full-stack web app. Currently runs locally.',
+    role: 'Founder & Developer',
+    tags: ['Full-Stack', 'Web App'],
+    github: 'https://github.com/Adidev-Panday/WoodLink',
+    statusBadge: 'Private / in progress',
+  },
 ]
 
 // ------------------------------------------------------------
@@ -147,86 +161,88 @@ export const projects: Project[] = [
 export type Extracurricular = {
   role: string
   organization: string
-  startDate: string // e.g. "Sep 2023"
-  endDate: string // e.g. "Present"
+  grades: string // e.g. "Grades 9–12"
   description: string
 }
 
 export const extracurriculars: Extracurricular[] = [
   {
-    role: 'PLACEHOLDER Role / Position Title',
-    organization: 'PLACEHOLDER Organization Name',
-    startDate: 'Sep 2023',
-    endDate: 'Present',
+    role: '1st Chair Violinist',
+    organization: 'Advanced Orchestra, Woodstock School',
+    grades: 'Grades 9–12',
     description:
-      'PLACEHOLDER: Describe your responsibilities, key achievements, and impact. What did you build, lead, or contribute? 1–3 sentences.',
+      'Rose from 3rd chair junior to 1st chair advanced over 5 years, performing ABRSM Level 5–7 repertoire across 7 school concerts.',
   },
   {
-    role: 'PLACEHOLDER Role',
-    organization: 'PLACEHOLDER Club / Society',
-    startDate: 'Jan 2023',
-    endDate: 'Aug 2023',
+    role: 'Co-Founder & Leader',
+    organization: 'AI Club, Woodstock School',
+    grades: 'Grades 10–12',
     description:
-      'PLACEHOLDER: Describe what you contributed to this organization and what you learned or built.',
+      'Co-founded and lead a club of 10+ students exploring Claude Code, Codex, Gemini, Lovable, and prompt engineering in weekly hands-on sessions.',
   },
   {
-    role: 'PLACEHOLDER Role',
-    organization: 'PLACEHOLDER Organization',
-    startDate: 'Sep 2022',
-    endDate: 'Dec 2022',
+    role: 'Editor in Chief',
+    organization: 'School Yearbook, Woodstock School',
+    grades: 'Grades 10–12',
     description:
-      'PLACEHOLDER: Brief description of this extracurricular and your contributions.',
+      'Lead full yearbook production: designed 50+ pages, oversaw layout and editing, and shot content for school social media.',
   },
   {
-    role: 'PLACEHOLDER Role',
-    organization: 'PLACEHOLDER Organization',
-    startDate: 'Jun 2022',
-    endDate: 'Aug 2022',
-    description: 'PLACEHOLDER: Brief description of this role.',
+    role: 'Goalkeeper & Defender',
+    organization: 'Varsity Football, Woodstock School',
+    grades: 'Grades 9–11',
+    description:
+      'Competed in 7+ tournaments and 25+ matches over 5 years, contributing to 18+ team wins across regional competitions.',
   },
   {
-    role: 'PLACEHOLDER Role',
-    organization: 'PLACEHOLDER Organization',
-    startDate: 'Jan 2022',
-    endDate: 'May 2022',
-    description: 'PLACEHOLDER: Brief description.',
+    role: 'Shooting Guard',
+    organization: 'Varsity Basketball, Woodstock School',
+    grades: 'Grades 9–11',
+    description:
+      'Competed in 4+ tournaments and 20+ matches, contributing to 11+ wins and a 1st-place finish at the THS Regional Tournament.',
   },
   {
-    role: 'PLACEHOLDER Role',
-    organization: 'PLACEHOLDER Organization',
-    startDate: 'Sep 2021',
-    endDate: 'Dec 2021',
-    description: 'PLACEHOLDER: Brief description.',
+    role: 'Engineering Intern',
+    organization: 'KGOC and BAUM, India',
+    grades: 'Grade 11',
+    description:
+      'Completed two engineering internships: product development at KGOC (concept to finished product) and CAD fundamentals plus industrial product design at BAUM.',
   },
   {
-    role: 'PLACEHOLDER Role',
-    organization: 'PLACEHOLDER Organization',
-    startDate: 'Jun 2021',
-    endDate: 'Aug 2021',
-    description: 'PLACEHOLDER: Brief description.',
+    role: 'Senior Intern',
+    organization: 'Woodstock School',
+    grades: 'Grades 10–12',
+    description:
+      'Held two senior roles: Estates Head Intern managing campus logistics, and Alumni Senior Intern strengthening alumni relations.',
   },
   {
-    role: 'PLACEHOLDER Role',
-    organization: 'PLACEHOLDER Organization',
-    startDate: 'Sep 2020',
-    endDate: 'May 2021',
-    description: 'PLACEHOLDER: Brief description.',
+    role: 'Certified Hiker',
+    organization: 'Outdoor Education — Woodstock School & Negi Wilderness Camp',
+    grades: 'Grades 9–12',
+    description:
+      'Certified in Leave No Trace hiking, Wilderness First Aid, adult and child CPR, and Epi-Pen administration through multi-day expeditions.',
   },
   {
-    role: 'PLACEHOLDER Role',
-    organization: 'PLACEHOLDER Organization',
-    startDate: 'Jun 2020',
-    endDate: 'Aug 2020',
-    description: 'PLACEHOLDER: Brief description.',
+    role: 'Organizer',
+    organization: 'Service Learning Day 2024, Woodstock School',
+    grades: 'Grade 10',
+    description:
+      'Coordinated 210 students in 20 groups for inclusive activities and mural painting with underprivileged children.',
   },
   {
-    role: 'PLACEHOLDER Role',
-    organization: 'PLACEHOLDER Organization',
-    startDate: 'Sep 2019',
-    endDate: 'May 2020',
-    description: 'PLACEHOLDER: Brief description.',
+    role: 'Researcher & Author',
+    organization: 'STEM Research, Woodstock School',
+    grades: 'Grades 11–12',
+    description:
+      'Wrote a 4,000-word Extended Essay modeling 4th-down decisions via Nash Equilibrium, plus a Physics IA on paper-plane wing aerodynamics.',
   },
-  // Add more entries here — the accordion handles any number
+  {
+    role: 'Academic Integrity & Service Leader',
+    organization: 'Academic Honesty Council (AHC) & NHS, Woodstock School',
+    grades: 'Grades 10–12',
+    description:
+      'Led 30+ academic integrity hearings, delivered an INIA webinar to 80+ students, and organized 20+ NHS service events.',
+  },
 ]
 
 // ------------------------------------------------------------
@@ -235,44 +251,66 @@ export const extracurriculars: Extracurricular[] = [
 export type Honor = {
   award: string
   issuer: string
-  date: string // e.g. "2024" or "May 2024"
+  level: string // e.g. "International", "School", "School, Regional, National"
   description: string
 }
 
 export const honors: Honor[] = [
   {
-    award: 'PLACEHOLDER Award Name',
-    issuer: 'PLACEHOLDER Issuing Organization',
-    date: '2024',
+    award: 'Highest Overall IBDP Score, DP1',
+    issuer: 'Woodstock School',
+    level: 'School',
     description:
-      'PLACEHOLDER: Brief description of the award, what it recognizes, and why you received it.',
+      'Ranked 1st in a cohort of 85 students for highest overall IB Diploma score in DP1.',
   },
   {
-    award: 'PLACEHOLDER Scholarship / Fellowship Name',
-    issuer: 'PLACEHOLDER Institution',
-    date: '2023',
+    award: 'Published Research Author',
+    issuer: 'International Journal of High School Research (IJHSR)',
+    level: 'International',
     description:
-      'PLACEHOLDER: Description of this scholarship, the selection criteria, and its significance.',
+      'Published "The Rise of Digital Trading: Accessibility Versus Risk of Financial Ruin" in the IJHSR.',
   },
   {
-    award: 'PLACEHOLDER Honor / Recognition',
-    issuer: 'PLACEHOLDER Organization',
-    date: '2023',
-    description: 'PLACEHOLDER: Description of this honor.',
+    award: 'Student Ambassador',
+    issuer: 'European Network for Academic Integrity (ENAI)',
+    level: 'International',
+    description:
+      'Selected as 1 of only 2 high schoolers in a PhD-level cohort of academic integrity ambassadors.',
   },
   {
-    award: 'PLACEHOLDER Award',
-    issuer: 'PLACEHOLDER Issuer',
-    date: '2022',
-    description: 'PLACEHOLDER: Description.',
+    award: 'Academic Honesty Council Member',
+    issuer: 'Woodstock School',
+    level: 'School · Regional · National',
+    description:
+      'Selected to uphold and adjudicate academic integrity across the school, with reach at regional and national level.',
   },
   {
-    award: 'PLACEHOLDER Award',
-    issuer: 'PLACEHOLDER Issuer',
-    date: '2022',
-    description: 'PLACEHOLDER: Description.',
+    award: 'National Honor Society Member',
+    issuer: 'NHS',
+    level: 'School',
+    description:
+      'Inducted for excellence in scholarship, service, leadership, and character.',
   },
-  // Add more honors here
+  {
+    award: 'School-Wide Language Ambassador — Spanish',
+    issuer: 'Woodstock School',
+    level: 'School · Regional',
+    description:
+      'Selected as 1 of 250 students to represent the Spanish language across the school community.',
+  },
+  {
+    award: 'Honor Roll',
+    issuer: 'Woodstock School',
+    level: 'School',
+    description:
+      '1 of 15 students recognized on the academic honor roll.',
+  },
+  {
+    award: '2nd Place, E-Assessment',
+    issuer: 'Woodstock School',
+    level: 'School',
+    description: 'Placed 2nd in school-wide E-Assessment.',
+  },
 ]
 
 // ------------------------------------------------------------
@@ -296,19 +334,19 @@ export const profileLinks: ProfileLink[] = [
   {
     label: 'LinkedIn',
     handle: 'Adidev Panday',
-    href: 'https://linkedin.com/in/adidev-panday', // Replace with real URL
+    href: 'https://www.linkedin.com/in/adidevpanday/',
     gradient: 'from-blue-700 to-blue-900',
   },
   {
     label: 'Medium',
-    handle: '@adidev-panday',
-    href: 'https://medium.com/@adidev-panday', // Replace with real URL
+    handle: 'adidev.medium.com',
+    href: 'https://adidev.medium.com/',
     gradient: 'from-emerald-700 to-emerald-900',
   },
   {
     label: 'ENAI',
-    handle: 'Emerging AI Network',
-    href: '#', // Replace with real ENAI membership URL
+    handle: 'Student Ambassador',
+    href: 'https://www.academicintegrity.eu/wp/student-ambassadors/',
     gradient: 'from-violet-700 to-violet-900',
   },
 ]
@@ -317,12 +355,12 @@ export const profileLinks: ProfileLink[] = [
 // CONTACT
 // ------------------------------------------------------------
 export const contact = {
-  email: 'adidev@example.com', // Replace with your real email
+  email: 'panday.adidev@gmail.com',
   tagline:
     'Have an idea, an opportunity, or just want to say hi? My inbox is open.',
   social: [
     { label: 'GitHub', href: 'https://github.com/Adidev-Panday' },
-    { label: 'LinkedIn', href: 'https://linkedin.com/in/adidev-panday' },
-    { label: 'Medium', href: 'https://medium.com/@adidev-panday' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/adidevpanday/' },
+    { label: 'Medium', href: 'https://adidev.medium.com/' },
   ],
 }

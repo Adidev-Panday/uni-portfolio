@@ -49,10 +49,10 @@ export default function Extracurriculars() {
                     </div>
 
                     <div className="flex items-center gap-4 shrink-0">
-                      {/* Date range — hidden on very small screens */}
+                      {/* Grade range — hidden on very small screens */}
                       <span className="hidden sm:flex items-center gap-1.5 text-xs text-zinc-400 font-mono">
                         <Calendar size={11} />
-                        {item.startDate} – {item.endDate}
+                        {item.grades}
                       </span>
 
                       {/* Chevron — rotates when open */}
@@ -79,10 +79,10 @@ export default function Extracurriculars() {
                         className="overflow-hidden"
                       >
                         <div className="px-5 pb-5 pt-2 border-t border-zinc-100 dark:border-zinc-800">
-                          {/* Date on mobile */}
+                          {/* Grade range on mobile */}
                           <p className="sm:hidden flex items-center gap-1.5 text-xs text-zinc-400 font-mono mb-3">
                             <Calendar size={11} />
-                            {item.startDate} – {item.endDate}
+                            {item.grades}
                           </p>
                           <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
                             {item.description}
