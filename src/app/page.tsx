@@ -31,8 +31,7 @@ export default function Home() {
 
       <footer className="border-t border-zinc-200 dark:border-zinc-800 py-8 text-center text-xs text-zinc-400 space-y-1">
         <p>
-          {meta.name} · Built with Next.js &amp; Tailwind CSS ·{' '}
-          {new Date().getFullYear()}
+          {meta.name} · {new Date().getFullYear()}
         </p>
         <p>Disclaimer: Built Using Claude Code [Next.js &amp; Tailwind CSS]</p>
       </footer>

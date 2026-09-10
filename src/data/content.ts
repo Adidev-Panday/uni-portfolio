@@ -335,12 +335,6 @@ export type ProfileLink = {
 
 export const profileLinks: ProfileLink[] = [
   {
-    label: 'GitHub',
-    handle: '@Adidev-Panday',
-    href: 'https://github.com/Adidev-Panday',
-    gradient: 'from-zinc-700 to-zinc-900',
-  },
-  {
     label: 'LinkedIn',
     handle: 'Adidev Panday',
     href: 'https://www.linkedin.com/in/adidevpanday/',
@@ -351,6 +345,12 @@ export const profileLinks: ProfileLink[] = [
     handle: 'adidev.medium.com',
     href: 'https://adidev.medium.com/',
     gradient: 'from-emerald-700 to-emerald-900',
+  },
+  {
+    label: 'GitHub',
+    handle: '@Adidev-Panday',
+    href: 'https://github.com/Adidev-Panday',
+    gradient: 'from-zinc-700 to-zinc-900',
   },
   {
     label: 'ENAI',
@@ -371,5 +371,6 @@ export const contact = {
     { label: 'GitHub', href: 'https://github.com/Adidev-Panday' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/adidevpanday/' },
     { label: 'Medium', href: 'https://adidev.medium.com/' },
+    { label: 'Instagram', href: 'https://www.instagram.com/adidevpanday/' },
   ],
 }
