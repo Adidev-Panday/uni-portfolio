@@ -2,20 +2,44 @@
   "meta": {
     "name": "Adidev Panday",
     "tagline": "Aspiring aerospace engineer. AI builder. Researcher.",
-    "description": "Adidev Panday -- aspiring aerospace engineer, AI builder, and researcher. IB student at Woodstock School, India. Building at the intersection of physics, design, and code.",
+    "description": "Adidev Panday -- Aspiring Rocket Scientist, AI builder, & Researcher. IB student at Woodstock School, India. Building at the intersection of physics, design, and code.",
     "email": "panday.adidev@gmail.com",
     "siteUrl": "https://adidev-portfolio.vercel.app",
     "ogImage": "/og-image.png"
   },
   "navLinks": [
-    { "href": "#about", "label": "About" },
-    { "href": "#research", "label": "Research" },
-    { "href": "#projects", "label": "Projects" },
-    { "href": "#extracurriculars", "label": "Extracurriculars" },
-    { "href": "#honors", "label": "Honors" },
-    { "href": "#links", "label": "Links" },
-    { "href": "#cv", "label": "CV" },
-    { "href": "#contact", "label": "Contact" }
+    {
+      "href": "#about",
+      "label": "About"
+    },
+    {
+      "href": "#research",
+      "label": "Research"
+    },
+    {
+      "href": "#projects",
+      "label": "Projects"
+    },
+    {
+      "href": "#extracurriculars",
+      "label": "Extracurriculars"
+    },
+    {
+      "href": "#honors",
+      "label": "Honors"
+    },
+    {
+      "href": "#links",
+      "label": "Links"
+    },
+    {
+      "href": "#cv",
+      "label": "CV"
+    },
+    {
+      "href": "#contact",
+      "label": "Contact"
+    }
   ],
   "hero": {
     "greeting": "Hi, I'm",
@@ -23,8 +47,16 @@
     "tagline": "Aspiring aerospace engineer. AI builder. Researcher.",
     "intro": "I'm a Woodstock School student from Ludhiana, India, headed for aerospace engineering: the place where physics, design, and code meet. I build AI-driven apps, publish research, and spend my spare hours on F1 aerodynamics, the violin, and football. This is everything I've made and earned, in one place.",
     "ctas": [
-      { "label": "View Projects", "href": "#projects", "primary": true },
-      { "label": "Read Research", "href": "#research", "primary": false }
+      {
+        "label": "View Projects",
+        "href": "#projects",
+        "primary": true
+      },
+      {
+        "label": "Read Research",
+        "href": "#research",
+        "primary": false
+      }
     ]
   },
   "about": {
@@ -51,7 +83,10 @@
       "name": "DriveSafe",
       "description": "A mobile app built to reduce teen drunk-driving in my hometown, featuring role-based flows, OTP authentication, real-time ride dispatch, and UPI payments. Currently being scaled for publishing.",
       "role": "Founder & Developer",
-      "tags": ["React Native", "Firebase"],
+      "tags": [
+        "React Native",
+        "Firebase"
+      ],
       "demo": "",
       "github": "",
       "storyLink": {
@@ -65,10 +100,15 @@
       "name": "NYT Puzzle Solver",
       "description": "A tool that solves and surfaces daily answers for New York Times puzzles, built for the daily players who need a nudge (or a full solution).",
       "role": "Developer",
-      "tags": ["Web App"],
+      "tags": [
+        "Web App"
+      ],
       "demo": "https://nytpuzzleanswers.netlify.app/",
       "github": "",
-      "storyLink": { "label": "", "href": "" },
+      "storyLink": {
+        "label": "",
+        "href": ""
+      },
       "statusBadge": "",
       "statusNote": ""
     },
@@ -76,10 +116,16 @@
       "name": "GrowwBot",
       "description": "An AI-powered personal finance advisor that gives users tailored, conversational guidance on budgeting, investing, and financial planning.",
       "role": "Developer",
-      "tags": ["Web App", "AI / LLM"],
+      "tags": [
+        "Web App",
+        "AI / LLM"
+      ],
       "demo": "https://growwbot.netlify.app/",
       "github": "",
-      "storyLink": { "label": "", "href": "" },
+      "storyLink": {
+        "label": "",
+        "href": ""
+      },
       "statusBadge": "",
       "statusNote": "Note: temporarily non-functional, as the AI API keys have expired and run out of credit."
     },
@@ -87,10 +133,16 @@
       "name": "Balancify",
       "description": "An AI timetable and schedule maker that builds balanced, personalized study and activity plans, designed for students juggling academics and extracurriculars.",
       "role": "Developer",
-      "tags": ["Web App", "AI / LLM"],
+      "tags": [
+        "Web App",
+        "AI / LLM"
+      ],
       "demo": "https://wsbalancify.netlify.app/#schedule-maker",
       "github": "",
-      "storyLink": { "label": "", "href": "" },
+      "storyLink": {
+        "label": "",
+        "href": ""
+      },
       "statusBadge": "",
       "statusNote": "Note: temporarily non-functional, as the AI API keys have expired and run out of credit."
     },
@@ -98,10 +150,16 @@
       "name": "WoodLink",
       "description": "An alumni networking platform for Woodstock School, reconnecting graduates with current students through a full-stack web app. Currently runs locally.",
       "role": "Founder & Developer",
-      "tags": ["Full-Stack", "Web App"],
+      "tags": [
+        "Full-Stack",
+        "Web App"
+      ],
       "demo": "",
       "github": "https://github.com/Adidev-Panday/WoodLink",
-      "storyLink": { "label": "", "href": "" },
+      "storyLink": {
+        "label": "",
+        "href": ""
+      },
       "statusBadge": "Private / in progress",
       "statusNote": ""
     }
@@ -254,10 +312,22 @@
     "email": "panday.adidev@gmail.com",
     "tagline": "Have an idea, an opportunity, or just want to say hi? My inbox is open.",
     "social": [
-      { "label": "GitHub", "href": "https://github.com/Adidev-Panday" },
-      { "label": "LinkedIn", "href": "https://www.linkedin.com/in/adidevpanday/" },
-      { "label": "Medium", "href": "https://adidev.medium.com/" },
-      { "label": "Instagram", "href": "https://www.instagram.com/adidevpanday/" }
+      {
+        "label": "GitHub",
+        "href": "https://github.com/Adidev-Panday"
+      },
+      {
+        "label": "LinkedIn",
+        "href": "https://www.linkedin.com/in/adidevpanday/"
+      },
+      {
+        "label": "Medium",
+        "href": "https://adidev.medium.com/"
+      },
+      {
+        "label": "Instagram",
+        "href": "https://www.instagram.com/adidevpanday/"
+      }
     ]
   }
 }
