@@ -1,6 +1,8 @@
 'use client'
-// Hero section — full-viewport first impression.
-// Animated entrance, gradient name, CTA buttons, scroll indicator.
+// Hero section: full-viewport first impression.
+// Background: /public/background.jpg at low opacity behind a dark overlay.
+// Profile: /public/profile.jpg as a small circular avatar above the greeting.
+import Image from 'next/image'
 import { motion } from 'motion/react'
 import { ArrowDown } from 'lucide-react'
 import { hero } from '@/data/content'
@@ -18,7 +20,25 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex flex-col justify-center overflow-hidden"
     >
-      {/* Soft ambient gradient blobs in background */}
+      {/* Layer 1 (-z-20): background photo + semi-transparent overlay
+          The overlay is tuned so roughly 15-20% of the image is visible.
+          Adjust the opacity values here to taste. */}
+      <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
+        <Image
+          src="/background.jpg"
+          alt=""
+          fill
+          priority
+          className="object-cover object-center"
+        />
+        {/* Light mode: white at 83% opacity keeps image faintly visible.
+            Dark mode: near-black at 81% opacity for the same effect. */}
+        <div className="absolute inset-0 bg-white/[0.83] dark:bg-[#09090b]/[0.81]" />
+        {/* Bottom-up gradient adds extra contrast where the text lives */}
+        <div className="absolute inset-0 bg-gradient-to-t from-white/50 via-transparent to-transparent dark:from-[#09090b]/50 dark:via-transparent dark:to-transparent" />
+      </div>
+
+      {/* Layer 2 (-z-10): soft ambient blobs (very subtle on top of photo overlay) */}
       <motion.div
         className="pointer-events-none absolute inset-0 -z-10"
         initial={{ opacity: 0 }}
@@ -26,18 +46,38 @@ export default function Hero() {
         transition={{ duration: 1.5 }}
       >
         <motion.div
-          className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-indigo-500/8 dark:bg-indigo-500/6 rounded-full blur-3xl"
-          animate={{ scale: [1, 1.08, 1], opacity: [0.6, 1, 0.6] }}
+          className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-indigo-500/6 rounded-full blur-3xl"
+          animate={{ scale: [1, 1.08, 1], opacity: [0.5, 0.8, 0.5] }}
           transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
-          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-violet-500/8 dark:bg-violet-500/6 rounded-full blur-3xl"
-          animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.9, 0.5] }}
+          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-violet-500/6 rounded-full blur-3xl"
+          animate={{ scale: [1, 1.1, 1], opacity: [0.4, 0.7, 0.4] }}
           transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 3 }}
         />
       </motion.div>
 
+      {/* Content */}
       <div className="section-container py-32">
+        {/* Circular profile avatar */}
+        <motion.div
+          className="mb-8"
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
+        >
+          <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-indigo-500/30 shadow-xl shadow-indigo-500/10">
+            <Image
+              src="/profile.jpg"
+              alt="Adidev Panday"
+              width={80}
+              height={80}
+              priority
+              className="object-cover w-full h-full"
+            />
+          </div>
+        </motion.div>
+
         {/* Greeting */}
         <motion.span
           className="inline-block text-indigo-500 font-mono text-sm tracking-widest mb-5"
@@ -46,7 +86,7 @@ export default function Hero() {
           {hero.greeting}
         </motion.span>
 
-        {/* Name — large gradient heading */}
+        {/* Name -- large gradient heading */}
         <motion.h1
           className="text-5xl sm:text-7xl lg:text-[90px] font-bold tracking-tighter leading-[1.02] mb-6"
           {...fadeUp(0.15)}
@@ -88,7 +128,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Animated scroll indicator at bottom */}
+      {/* Animated scroll indicator */}
       <motion.div
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-zinc-400"
         initial={{ opacity: 0 }}

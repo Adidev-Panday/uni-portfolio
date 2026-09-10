@@ -1,7 +1,7 @@
 'use client'
-// Projects section — responsive card grid with hover lift animation.
+// Projects section: responsive card grid with hover lift animation.
 import { motion } from 'motion/react'
-import { Github, ExternalLink, BookOpen, Lock } from 'lucide-react'
+import { Github, ExternalLink, BookOpen, Lock, Info } from 'lucide-react'
 import { projects } from '@/data/content'
 import ScrollReveal from './ScrollReveal'
 import SectionHeader from './SectionHeader'
@@ -18,7 +18,7 @@ export default function Projects() {
           />
         </ScrollReveal>
 
-        {/* 1-col mobile → 2-col tablet → 3-col desktop */}
+        {/* 1-col mobile, 2-col tablet, 3-col desktop */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {projects.map((project, i) => (
             <ScrollReveal key={project.name} delay={0.07 * i}>
@@ -30,7 +30,7 @@ export default function Projects() {
                 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 25 }}
               >
-                {/* Card top row: icon + links */}
+                {/* Card top row: initial icon + link icons */}
                 <div className="flex items-center justify-between mb-5">
                   <div className="w-9 h-9 rounded-lg bg-indigo-500/10 flex items-center justify-center">
                     <span className="text-indigo-500 font-bold text-sm">
@@ -86,12 +86,12 @@ export default function Projects() {
                 {/* Role label */}
                 <p className="text-xs text-indigo-500/80 font-mono mb-3">{project.role}</p>
 
-                {/* Description — flex-1 pushes footer to bottom */}
+                {/* Description (flex-1 keeps the footer pinned to bottom) */}
                 <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed flex-1 mb-5">
                   {project.description}
                 </p>
 
-                {/* Footer: tech tags + optional status badge */}
+                {/* Footer: tags, story link, status badge, and status note */}
                 <div className="space-y-3">
                   <div className="flex flex-wrap gap-1.5">
                     {project.tags.map((tag) => (
@@ -104,7 +104,7 @@ export default function Projects() {
                     ))}
                   </div>
 
-                  {/* Story link as inline text (in addition to icon) */}
+                  {/* Story link as inline text */}
                   {project.storyLink && (
                     <a
                       href={project.storyLink.href}
@@ -118,12 +118,20 @@ export default function Projects() {
                     </a>
                   )}
 
-                  {/* Status badge for in-progress / private projects */}
+                  {/* "Private / in progress" badge */}
                   {project.statusBadge && (
                     <span className="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 font-mono">
                       <Lock size={9} />
                       {project.statusBadge}
                     </span>
+                  )}
+
+                  {/* Informational note (e.g. API keys expired) */}
+                  {project.statusNote && (
+                    <p className="flex items-start gap-1.5 text-[11px] text-zinc-400 dark:text-zinc-500 leading-snug">
+                      <Info size={11} className="mt-0.5 shrink-0 text-amber-400" />
+                      {project.statusNote}
+                    </p>
                   )}
                 </div>
               </motion.article>

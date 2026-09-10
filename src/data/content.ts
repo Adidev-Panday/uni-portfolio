@@ -7,22 +7,22 @@
 // ============================================================
 
 // ------------------------------------------------------------
-// META — Site-wide info, SEO, Open Graph
+// META -- Site-wide info, SEO, Open Graph
 // ------------------------------------------------------------
 export const meta = {
   name: 'Adidev Panday',
   tagline: 'Aspiring aerospace engineer. AI builder. Researcher.',
   description:
-    'Adidev Panday — aspiring aerospace engineer, AI builder, and researcher. IB student at Woodstock School, India. Building at the intersection of physics, design, and code.',
+    'Adidev Panday -- aspiring aerospace engineer, AI builder, and researcher. IB student at Woodstock School, India. Building at the intersection of physics, design, and code.',
   email: 'panday.adidev@gmail.com',
   // Update this once you have a custom domain or final Vercel URL
   siteUrl: 'https://adidev-portfolio.vercel.app',
-  // Place og-image.png in the /public folder (1200×630px recommended)
+  // Place og-image.png in the /public folder (1200x630px recommended)
   ogImage: '/og-image.png',
 }
 
 // ------------------------------------------------------------
-// NAV LINKS — Displayed in the sticky navbar
+// NAV LINKS -- Displayed in the sticky navbar
 // ------------------------------------------------------------
 export const navLinks = [
   { href: '#about', label: 'About' },
@@ -31,11 +31,12 @@ export const navLinks = [
   { href: '#extracurriculars', label: 'Extracurriculars' },
   { href: '#honors', label: 'Honors' },
   { href: '#links', label: 'Links' },
+  { href: '#cv', label: 'CV' },
   { href: '#contact', label: 'Contact' },
 ]
 
 // ------------------------------------------------------------
-// HERO — First section, above the fold
+// HERO -- First section, above the fold
 // ------------------------------------------------------------
 export const hero = {
   greeting: "Hi, I'm",
@@ -50,19 +51,19 @@ export const hero = {
 }
 
 // ------------------------------------------------------------
-// ABOUT — Life overview paragraph(s)
+// ABOUT -- Life overview paragraph(s)
 // ------------------------------------------------------------
 export const about = {
-  // Each string renders as its own <p> tag. Add or remove freely.
+  // Each string renders as its own paragraph. Add or remove freely.
   paragraphs: [
     'I grew up in Ludhiana, Punjab, and study at Woodstock School, taking HL Physics, Math AA, and Computer Science in the IB Diploma. My focus is aerospace engineering, where rigorous physics meets real design.',
-    'Outside class, I build things. I\'ve shipped AI-powered web apps, developed a React Native app to tackle teen drunk-driving in my hometown, and published research on the risks of digital trading. I co-founded my school\'s AI Club, lead the yearbook as Editor in Chief, and play first chair violin in the Advanced Orchestra. I\'ve competed in varsity football and basketball, interned in product development and CAD, and served on the Academic Honesty Council.',
-    'I\'m drawn to problems that reward both rigor and creativity — from modeling 4th-down football decisions with game theory to studying how a paper plane\'s wing generates lift.',
+    "Outside class, I build things. I've shipped AI-powered web apps, developed a React Native app to tackle teen drunk-driving in my hometown, and published research on the risks of digital trading. I co-founded my school's AI Club, lead the yearbook as Editor in Chief, and play first chair violin in the Advanced Orchestra. I've competed in varsity football and basketball, interned in product development and CAD, and served on the Academic Honesty Council.",
+    "I'm drawn to problems that reward both rigor and creativity: from modeling 4th-down football decisions with game theory to studying how a paper plane's wing generates lift.",
   ],
 }
 
 // ------------------------------------------------------------
-// RESEARCH — Published papers and pre-prints
+// RESEARCH -- Published papers and pre-prints
 // ------------------------------------------------------------
 export type ResearchPaper = {
   title: string
@@ -89,11 +90,11 @@ export const research: ResearchPaper[] = [
       'A data-driven analysis across financial trading platforms examining the tension between user accessibility and the risk of financial ruin for everyday investors, and what that trade-off means for retail participation in modern markets.',
     status: 'published',
   },
-  // Add more papers here — copy the object above and fill in your details.
+  // Add more papers here by copying the object above.
 ]
 
 // ------------------------------------------------------------
-// PROJECTS — Card grid
+// PROJECTS -- Card grid
 // ------------------------------------------------------------
 export type Project = {
   name: string
@@ -106,33 +107,12 @@ export type Project = {
   storyLink?: { label: string; href: string }
   // Optional status badge, e.g. "Private / in progress"
   statusBadge?: string
+  // Optional note shown below the tags (e.g. API key expiry warning)
+  statusNote?: string
 }
 
+// Project order: DriveSafe, NYT Puzzle Solver, GrowwBot, Balancify, WoodLink
 export const projects: Project[] = [
-  {
-    name: 'GrowwBot',
-    description:
-      'An AI-powered personal finance advisor that gives users tailored, conversational guidance on budgeting, investing, and financial planning.',
-    role: 'Developer',
-    tags: ['Web App', 'AI / LLM'],
-    demo: 'https://growwbot.netlify.app/',
-  },
-  {
-    name: 'Balancify',
-    description:
-      'An AI timetable and schedule maker that builds balanced, personalized study and activity plans — designed for students juggling academics and extracurriculars.',
-    role: 'Developer',
-    tags: ['Web App', 'AI / LLM'],
-    demo: 'https://wsbalancify.netlify.app/#schedule-maker',
-  },
-  {
-    name: 'NYT Puzzle Solver',
-    description:
-      'A tool that solves and surfaces daily answers for New York Times puzzles, built for the daily players who need a nudge (or a full solution).',
-    role: 'Developer',
-    tags: ['Web App'],
-    demo: 'https://nytpuzzleanswers.netlify.app/',
-  },
   {
     name: 'DriveSafe',
     description:
@@ -143,6 +123,34 @@ export const projects: Project[] = [
       label: 'Read the story',
       href: 'https://adidev.medium.com/drivesafe-an-attempt-to-reduce-teen-drunk-driving-c1f10162a53f',
     },
+  },
+  {
+    name: 'NYT Puzzle Solver',
+    description:
+      'A tool that solves and surfaces daily answers for New York Times puzzles, built for the daily players who need a nudge (or a full solution).',
+    role: 'Developer',
+    tags: ['Web App'],
+    demo: 'https://nytpuzzleanswers.netlify.app/',
+  },
+  {
+    name: 'GrowwBot',
+    description:
+      'An AI-powered personal finance advisor that gives users tailored, conversational guidance on budgeting, investing, and financial planning.',
+    role: 'Developer',
+    tags: ['Web App', 'AI / LLM'],
+    demo: 'https://growwbot.netlify.app/',
+    statusNote:
+      'Note: temporarily non-functional, as the AI API keys have expired and run out of credit.',
+  },
+  {
+    name: 'Balancify',
+    description:
+      'An AI timetable and schedule maker that builds balanced, personalized study and activity plans, designed for students juggling academics and extracurriculars.',
+    role: 'Developer',
+    tags: ['Web App', 'AI / LLM'],
+    demo: 'https://wsbalancify.netlify.app/#schedule-maker',
+    statusNote:
+      'Note: temporarily non-functional, as the AI API keys have expired and run out of credit.',
   },
   {
     name: 'WoodLink',
@@ -156,12 +164,12 @@ export const projects: Project[] = [
 ]
 
 // ------------------------------------------------------------
-// EXTRACURRICULARS — Expandable accordion list
+// EXTRACURRICULARS -- Expandable accordion list
 // ------------------------------------------------------------
 export type Extracurricular = {
   role: string
   organization: string
-  grades: string // e.g. "Grades 9–12"
+  grades: string // e.g. "Grades 9-12"
   description: string
 }
 
@@ -169,35 +177,35 @@ export const extracurriculars: Extracurricular[] = [
   {
     role: '1st Chair Violinist',
     organization: 'Advanced Orchestra, Woodstock School',
-    grades: 'Grades 9–12',
+    grades: 'Grades 9-12',
     description:
-      'Rose from 3rd chair junior to 1st chair advanced over 5 years, performing ABRSM Level 5–7 repertoire across 7 school concerts.',
+      'Rose from 3rd chair junior to 1st chair advanced over 5 years, performing ABRSM Level 5-7 repertoire across 7 school concerts.',
   },
   {
     role: 'Co-Founder & Leader',
     organization: 'AI Club, Woodstock School',
-    grades: 'Grades 10–12',
+    grades: 'Grades 10-12',
     description:
       'Co-founded and lead a club of 10+ students exploring Claude Code, Codex, Gemini, Lovable, and prompt engineering in weekly hands-on sessions.',
   },
   {
     role: 'Editor in Chief',
     organization: 'School Yearbook, Woodstock School',
-    grades: 'Grades 10–12',
+    grades: 'Grades 10-12',
     description:
       'Lead full yearbook production: designed 50+ pages, oversaw layout and editing, and shot content for school social media.',
   },
   {
     role: 'Goalkeeper & Defender',
     organization: 'Varsity Football, Woodstock School',
-    grades: 'Grades 9–11',
+    grades: 'Grades 9-11',
     description:
       'Competed in 7+ tournaments and 25+ matches over 5 years, contributing to 18+ team wins across regional competitions.',
   },
   {
     role: 'Shooting Guard',
     organization: 'Varsity Basketball, Woodstock School',
-    grades: 'Grades 9–11',
+    grades: 'Grades 9-11',
     description:
       'Competed in 4+ tournaments and 20+ matches, contributing to 11+ wins and a 1st-place finish at the THS Regional Tournament.',
   },
@@ -211,14 +219,14 @@ export const extracurriculars: Extracurricular[] = [
   {
     role: 'Senior Intern',
     organization: 'Woodstock School',
-    grades: 'Grades 10–12',
+    grades: 'Grades 10-12',
     description:
       'Held two senior roles: Estates Head Intern managing campus logistics, and Alumni Senior Intern strengthening alumni relations.',
   },
   {
     role: 'Certified Hiker',
-    organization: 'Outdoor Education — Woodstock School & Negi Wilderness Camp',
-    grades: 'Grades 9–12',
+    organization: 'Outdoor Education, Woodstock School and Negi Wilderness Camp',
+    grades: 'Grades 9-12',
     description:
       'Certified in Leave No Trace hiking, Wilderness First Aid, adult and child CPR, and Epi-Pen administration through multi-day expeditions.',
   },
@@ -232,14 +240,14 @@ export const extracurriculars: Extracurricular[] = [
   {
     role: 'Researcher & Author',
     organization: 'STEM Research, Woodstock School',
-    grades: 'Grades 11–12',
+    grades: 'Grades 11-12',
     description:
       'Wrote a 4,000-word Extended Essay modeling 4th-down decisions via Nash Equilibrium, plus a Physics IA on paper-plane wing aerodynamics.',
   },
   {
     role: 'Academic Integrity & Service Leader',
-    organization: 'Academic Honesty Council (AHC) & NHS, Woodstock School',
-    grades: 'Grades 10–12',
+    organization: 'Academic Honesty Council (AHC) and NHS, Woodstock School',
+    grades: 'Grades 10-12',
     description:
       'Led 30+ academic integrity hearings, delivered an INIA webinar to 80+ students, and organized 20+ NHS service events.',
   },
@@ -261,60 +269,61 @@ export const honors: Honor[] = [
     issuer: 'Woodstock School',
     level: 'School',
     description:
-      'Ranked 1st in a cohort of 85 students for highest overall IB Diploma score in DP1.',
+      'Earned the highest overall IB Diploma Programme score across my entire DP1 cohort of 85 students, placing first among a class of high achievers. This result reflected consistent performance across HL Physics, Math AA, and Computer Science alongside my SL subjects, and it set the academic foundation I carried into DP2 and my university applications.',
   },
   {
     award: 'Published Research Author',
     issuer: 'International Journal of High School Research (IJHSR)',
     level: 'International',
     description:
-      'Published "The Rise of Digital Trading: Accessibility Versus Risk of Financial Ruin" in the IJHSR.',
+      "Authored and published a full research paper, 'The Rise of Digital Trading: Accessibility Versus Risk of Financial Ruin,' in the International Journal of High School Research, an internationally recognized peer-reviewed journal. The work analyzed real data across trading platforms to weigh how greater accessibility for everyday investors coincides with a heightened risk of serious financial loss.",
   },
   {
     award: 'Student Ambassador',
     issuer: 'European Network for Academic Integrity (ENAI)',
     level: 'International',
     description:
-      'Selected as 1 of only 2 high schoolers in a PhD-level cohort of academic integrity ambassadors.',
+      'Selected as a Student Ambassador for the European Network for Academic Integrity, one of only two high school students placed within a cohort otherwise composed of PhD researchers and university academics. In this international role I represent academic integrity values, contribute to network initiatives, and help translate rigorous integrity standards into practices my peers can actually use.',
   },
   {
     award: 'Academic Honesty Council Member',
     issuer: 'Woodstock School',
-    level: 'School · Regional · National',
+    level: 'School, Regional, National',
     description:
-      'Selected to uphold and adjudicate academic integrity across the school, with reach at regional and national level.',
+      "Served on my school's Academic Honesty Council, the student body responsible for upholding and adjudicating academic integrity across school, regional, and national levels. I helped conduct more than 30 hearings, delivered an INIA webinar to over 80 students, and worked to make integrity feel like a shared standard rather than a rulebook imposed from above.",
   },
   {
     award: 'National Honor Society Member',
     issuer: 'NHS',
     level: 'School',
     description:
-      'Inducted for excellence in scholarship, service, leadership, and character.',
+      'Inducted into the National Honor Society in recognition of sustained excellence across its four pillars: scholarship, service, leadership, and character. Membership is selective and requires maintaining high academic standing while actively contributing to the community. As a member I organized more than 20 service events, turning the honor into ongoing action rather than a one-time title.',
   },
   {
-    award: 'School-Wide Language Ambassador — Spanish',
+    award: 'School-Wide Language Ambassador (Spanish)',
     issuer: 'Woodstock School',
-    level: 'School · Regional',
+    level: 'School, Regional',
     description:
-      'Selected as 1 of 250 students to represent the Spanish language across the school community.',
+      'Chosen as the school-wide Language Ambassador for Spanish, a distinction awarded to just one student out of roughly 250. In this role I represented the Spanish language and its culture across the school and regional community, supported fellow students in their language learning, and helped promote engagement with Spanish beyond the classroom.',
   },
   {
     award: 'Honor Roll',
     issuer: 'Woodstock School',
     level: 'School',
     description:
-      '1 of 15 students recognized on the academic honor roll.',
+      'Named to the Honor Roll as one of only 15 students recognized for outstanding academic achievement across the school. This selective distinction reflected sustained high performance throughout the year rather than a single strong result, and it placed me among a small group consistently maintaining excellence across a demanding IB Diploma course load.',
   },
   {
     award: '2nd Place, E-Assessment',
     issuer: 'Woodstock School',
     level: 'School',
-    description: 'Placed 2nd in school-wide E-Assessment.',
+    description:
+      'Placed second in the school-wide E-Assessment, a competitive evaluation measuring academic and analytical ability across participants. Finishing near the very top of the field demonstrated both my depth of subject knowledge and my ability to perform under timed, exam-style conditions, complementing the longer-form research and coursework that make up the rest of my academic record.',
   },
 ]
 
 // ------------------------------------------------------------
-// PROFILE LINKS — Prominent link cards (GitHub, LinkedIn, etc.)
+// PROFILE LINKS -- Prominent link cards (GitHub, LinkedIn, etc.)
 // ------------------------------------------------------------
 export type ProfileLink = {
   label: string

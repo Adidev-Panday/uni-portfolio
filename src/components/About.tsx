@@ -1,5 +1,6 @@
 'use client'
-// About section — photo placeholder + bio paragraphs.
+// About section: profile photo + bio paragraphs.
+import Image from 'next/image'
 import { about } from '@/data/content'
 import ScrollReveal from './ScrollReveal'
 import SectionHeader from './SectionHeader'
@@ -13,16 +14,17 @@ export default function About() {
         </ScrollReveal>
 
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-start">
-          {/* Avatar / photo placeholder */}
+          {/* Profile photo */}
           <ScrollReveal delay={0.1}>
-            <div className="aspect-square max-w-xs rounded-2xl bg-gradient-to-br from-indigo-500/15 to-violet-500/15 dark:from-indigo-500/10 dark:to-violet-500/10 border border-zinc-200 dark:border-zinc-800 flex items-center justify-center select-none">
-              {/* Replace this div with an <Image> component once you have a photo:
-                  import Image from 'next/image'
-                  <Image src="/photo.jpg" alt="Adidev Panday" fill className="rounded-2xl object-cover" />
-              */}
-              <span className="text-7xl font-bold gradient-text" aria-label="Adidev Panday initials">
-                AP
-              </span>
+            <div className="aspect-square max-w-xs rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-lg">
+              {/* To swap the photo: replace /profile.jpg with your new filename in /public */}
+              <Image
+                src="/profile.jpg"
+                alt="Adidev Panday"
+                width={400}
+                height={400}
+                className="object-cover w-full h-full"
+              />
             </div>
           </ScrollReveal>
 
