@@ -1,7 +1,6 @@
 'use client'
 // Hero section: full-viewport first impression.
 // Background: /public/background.jpg at low opacity behind a dark overlay.
-// Profile: /public/profile.jpg as a small circular avatar above the greeting.
 import Image from 'next/image'
 import { motion } from 'motion/react'
 import { ArrowDown } from 'lucide-react'
@@ -59,25 +58,6 @@ export default function Hero() {
 
       {/* Content */}
       <div className="section-container py-32">
-        {/* Circular profile avatar */}
-        <motion.div
-          className="mb-8"
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
-        >
-          <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-indigo-500/30 shadow-xl shadow-indigo-500/10">
-            <Image
-              src="/profile.jpg"
-              alt="Adidev Panday"
-              width={80}
-              height={80}
-              priority
-              className="object-cover w-full h-full"
-            />
-          </div>
-        </motion.div>
-
         {/* Greeting */}
         <motion.span
           className="inline-block text-indigo-500 font-mono text-sm tracking-widest mb-5"
