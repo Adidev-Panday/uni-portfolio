@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Light/dark body defaults */
+  body {
+    @apply bg-white text-zinc-900 dark:bg-[#09090b] dark:text-zinc-50;
+    @apply transition-colors duration-300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Selection highlight */
+  ::selection {
+    @apply bg-indigo-500/20 text-indigo-900 dark:text-indigo-100;
+  }
+
+  /* Thin scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-zinc-300 dark:bg-zinc-700 rounded-full;
+  }
+}
+
+@layer utilities {
+  /* Reusable indigo→violet gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-indigo-400 via-violet-400 to-indigo-500 bg-clip-text text-transparent;
+  }
+
+  /* Section container reuse */
+  .section-container {
+    @apply max-w-6xl mx-auto px-6;
+  }
+}

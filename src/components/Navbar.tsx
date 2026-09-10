@@ -1,0 +1,135 @@
+'use client'
+// Sticky top navbar.
+// - Transparent when at top, frosted-glass blur when scrolled.
+// - Highlights the active section using IntersectionObserver.
+// - Collapses to a hamburger menu on mobile.
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'motion/react'
+import { Menu, X } from 'lucide-react'
+import { navLinks, meta } from '@/data/content'
+import ThemeToggle from './ThemeToggle'
+
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
+  const [mobileOpen, setMobileOpen] = useState(false)
+
+  // Show background/blur once page is scrolled past 24px
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  // Track which section is currently in view
+  useEffect(() => {
+    const sections = document.querySelectorAll('section[id]')
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id)
+        })
+      },
+      // Start counting as active when 30% of the section is visible,
+      // offset by 80px (navbar height) from the top.
+      { threshold: 0.3, rootMargin: '-80px 0px -50% 0px' },
+    )
+    sections.forEach((s) => observer.observe(s))
+    return () => observer.disconnect()
+  }, [])
+
+  const closeMobile = () => setMobileOpen(false)
+
+  return (
+    <header
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+        scrolled
+          ? 'bg-white/80 dark:bg-[#09090b]/80 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800 shadow-sm'
+          : 'bg-transparent'
+      }`}
+    >
+      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        {/* Brand / logo — scrolls to top */}
+        <a
+          href="#hero"
+          className="text-sm font-semibold tracking-tight hover:text-indigo-500 transition-colors"
+        >
+          {meta.name.split(' ')[0]}
+          <span className="text-indigo-500">.</span>
+        </a>
+
+        {/* Desktop navigation links */}
+        <ul className="hidden md:flex items-center gap-1" role="list">
+          {navLinks.map(({ href, label }) => {
+            const id = href.replace('#', '')
+            const isActive = activeSection === id
+            return (
+              <li key={href}>
+                <a
+                  href={href}
+                  className={`relative px-3 py-1.5 text-sm rounded-md transition-colors duration-200 ${
+                    isActive
+                      ? 'text-indigo-500 dark:text-indigo-400'
+                      : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
+                  }`}
+                >
+                  {/* Shared animated highlight background */}
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-pill"
+                      className="absolute inset-0 bg-indigo-50 dark:bg-indigo-500/10 rounded-md"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">{label}</span>
+                </a>
+              </li>
+            )
+          })}
+        </ul>
+
+        {/* Right controls */}
+        <div className="flex items-center gap-1">
+          <ThemeToggle />
+
+          {/* Mobile hamburger */}
+          <button
+            className="md:hidden p-2 rounded-lg text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+            onClick={() => setMobileOpen((o) => !o)}
+            aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
+          >
+            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile dropdown menu */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2, ease: 'easeInOut' }}
+            className="md:hidden overflow-hidden bg-white dark:bg-[#09090b] border-b border-zinc-200 dark:border-zinc-800"
+          >
+            <ul className="px-6 py-4 flex flex-col gap-1">
+              {navLinks.map(({ href, label }) => (
+                <li key={href}>
+                  <a
+                    href={href}
+                    onClick={closeMobile}
+                    className="block py-2.5 text-sm text-zinc-600 dark:text-zinc-400 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors"
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  )
+}
