@@ -20,7 +20,7 @@ export default function HonorsAwards() {
         <div className="grid sm:grid-cols-2 gap-4">
           {honors.map((honor, i) => (
             <ScrollReveal key={i} delay={0.08 * i}>
-              <div className="group flex items-start gap-4 p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 hover:border-accent/40 transition-all duration-300 hover:shadow-lg hover:shadow-accent/5 h-full">
+              <div className="school-card group flex items-start gap-4 p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 hover:border-accent/40 transition-all duration-300 hover:shadow-lg hover:shadow-accent/5 h-full">
                 {/* Trophy icon */}
                 <div className="mt-0.5 w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center shrink-0">
                   <Trophy size={14} className="text-amber-500" />

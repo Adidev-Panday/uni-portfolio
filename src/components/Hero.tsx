@@ -28,7 +28,7 @@ export default function Hero() {
           priority
           className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-white/[0.83] dark:bg-[#09090b]/[0.81]" />
+        <div className="hero-base-overlay absolute inset-0 bg-white/[0.83] dark:bg-[#09090b]/[0.81]" />
         <div className="absolute inset-0 bg-gradient-to-t from-white/50 via-transparent to-transparent dark:from-[#09090b]/50 dark:via-transparent dark:to-transparent" />
       </div>
 

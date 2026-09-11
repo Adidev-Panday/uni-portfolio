@@ -27,7 +27,7 @@ export default function Research() {
         <div className="space-y-6">
           {research.map((paper, i) => (
             <ScrollReveal key={i} delay={0.1 * (i + 1)}>
-              <div className="group p-6 sm:p-8 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 hover:border-accent/40 transition-all duration-300 hover:shadow-xl hover:shadow-accent/5">
+              <div className="school-card group p-6 sm:p-8 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 hover:border-accent/40 transition-all duration-300 hover:shadow-xl hover:shadow-accent/5">
                 {/* Header row: status badge + paper link */}
                 <div className="flex items-start justify-between gap-4 mb-5">
                   <span

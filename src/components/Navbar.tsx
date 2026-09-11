@@ -40,6 +40,7 @@ export default function Navbar() {
 
   return (
     <header
+      data-scrolled={scrolled}
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         scrolled
           ? 'bg-white/80 dark:bg-[#09090b]/80 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800 shadow-sm'

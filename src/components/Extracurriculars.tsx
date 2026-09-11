@@ -31,7 +31,7 @@ export default function Extracurriculars() {
             return (
               <ScrollReveal key={i} delay={0.04 * i}>
                 <div
-                  className={`rounded-xl border transition-colors duration-300 ${
+                  className={`school-card rounded-xl border transition-colors duration-300 ${
                     isOpen
                       ? 'border-accent/40'
                       : 'border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700'
