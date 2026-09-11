@@ -9,6 +9,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { X } from 'lucide-react'
 import { SCHOOLS, type SchoolId } from '@/data/schools'
 import { fireConfetti } from '@/lib/confetti'
+import { fireLightsOn } from '@/lib/lightsOn'
 
 const SESSION_KEY = 'admissions-choice'
 
@@ -83,6 +84,8 @@ export default function AdmissionsModal() {
     setStep('idle')
     // A brief orange-and-black flourish as the Princeton theme applies
     if (id === 'princeton') fireConfetti()
+    // A literal "lights coming on" nod to Berkeley's "Fiat Lux" motto
+    if (id === 'uc-berkeley') fireLightsOn()
   }
 
   const reset = () => {

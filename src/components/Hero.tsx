@@ -7,6 +7,10 @@ import { ArrowDown } from 'lucide-react'
 import { hero } from '@/data/content'
 import { useSchoolTheme } from '@/hooks/useSchoolTheme'
 import { PrincetonClassTag } from './PrincetonEasterEggs'
+import { HarvardClassTag } from './HarvardEasterEggs'
+import { BerkeleyClassTag } from './BerkeleyEasterEggs'
+
+const BESPOKE_SCHOOLS = ['princeton', 'harvard', 'uc-berkeley']
 
 // Reusable entrance animation config
 const fadeUp = (delay: number) => ({
@@ -65,10 +69,12 @@ export default function Hero() {
           {hero.greeting}
         </motion.span>
 
-        {/* Class tag, Princeton theme only */}
-        {schoolId === 'princeton' && (
+        {/* Class tag, bespoke theme schools only */}
+        {schoolId && BESPOKE_SCHOOLS.includes(schoolId) && (
           <motion.div className="mb-5" {...fadeUp(0.1)}>
-            <PrincetonClassTag />
+            {schoolId === 'princeton' && <PrincetonClassTag />}
+            {schoolId === 'harvard' && <HarvardClassTag />}
+            {schoolId === 'uc-berkeley' && <BerkeleyClassTag />}
           </motion.div>
         )}
 

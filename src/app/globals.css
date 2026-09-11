@@ -369,6 +369,231 @@
 }
 
 /* ============================================================
+   HARVARD BESPOKE THEME
+   Premium treatment: near-black with Harvard crimson accents,
+   old-world serif headings, crimson glows, animated nav underline.
+   ============================================================ */
+
+/* 0. Serif display face for section headings only. */
+[data-school="harvard"] h1,
+[data-school="harvard"] h2 {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+/* 1. Hero: ambient crimson glow behind the text block */
+.dark[data-school="harvard"] #hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 55% 50% at 22% 48%,
+    rgb(165 28 48 / 0.10) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* 2. Section header wrapper: subtle crimson radial glow */
+.dark[data-school="harvard"] .section-header {
+  position: relative;
+}
+.dark[data-school="harvard"] .section-header::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -30px;
+  width: 300px;
+  height: 120px;
+  background: radial-gradient(ellipse, rgb(165 28 48 / 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 3. Mono accent text (section numbers): crimson text glow */
+.dark[data-school="harvard"] .font-mono.text-accent {
+  text-shadow: 0 0 16px rgb(224 66 87 / 0.45);
+}
+
+/* 4. Accent gradient bar: crimson glow */
+.dark[data-school="harvard"] .accent-gradient-bar {
+  height: 2px;
+  box-shadow: 0 0 10px rgb(165 28 48 / 0.65);
+}
+
+/* 5. Cards: crimson left-border accent + intensified glow on hover */
+.dark[data-school="harvard"] .school-card {
+  border-left-width: 2px;
+  border-left-color: rgb(165 28 48 / 0.50);
+}
+.dark[data-school="harvard"] .school-card:hover {
+  box-shadow:
+    0 0 40px -8px rgb(165 28 48 / 0.25),
+    inset 0 0 0 1px rgb(165 28 48 / 0.08);
+  border-color: rgb(165 28 48 / 0.30);
+  border-left-color: rgb(165 28 48 / 0.70);
+}
+
+/* 6. Primary button hover: crimson glow */
+.dark[data-school="harvard"] .bg-accent-fill:hover {
+  box-shadow: 0 0 24px rgb(165 28 48 / 0.55), 0 4px 14px rgb(165 28 48 / 0.35);
+}
+
+/* 7. Nav links: animated crimson underline */
+.dark[data-school="harvard"] header nav a {
+  position: relative;
+}
+.dark[data-school="harvard"] header nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: rgb(224 66 87);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: width 0.2s ease;
+}
+.dark[data-school="harvard"] header nav a:hover::after {
+  width: calc(100% - 16px);
+}
+.dark[data-school="harvard"] header nav a.text-accent::after {
+  width: calc(100% - 16px);
+}
+
+/* 8. About profile photo: crimson ambient glow */
+.dark[data-school="harvard"] #about .rounded-2xl.overflow-hidden.border {
+  box-shadow: 0 0 48px -12px rgb(165 28 48 / 0.30);
+}
+
+/* 9. Footer: an old-world double rule, like the edge of a book cover */
+.dark[data-school="harvard"] footer {
+  border-top-style: double;
+  border-top-width: 3px;
+  border-top-color: rgb(165 28 48 / 0.4);
+}
+
+/* 10. Research card header row divider: crimson tinted border */
+.dark[data-school="harvard"] #research .border-zinc-200,
+.dark[data-school="harvard"] #research .dark\:border-zinc-800 {
+  border-color: rgb(165 28 48 / 0.15);
+}
+
+/* ============================================================
+   BERKELEY BESPOKE THEME
+   Premium treatment: deep Berkeley blue with generous California
+   gold glows, serif headings, animated gold nav underline. Leans
+   into "Fiat Lux" (Let There Be Light): warmer, more luminous
+   than the other bespoke themes.
+   ============================================================ */
+
+/* 0. Serif display face for section headings only. */
+[data-school="uc-berkeley"] h1,
+[data-school="uc-berkeley"] h2 {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+/* 1. Hero: warm gold glow behind the text block, a touch stronger
+   than the other bespoke themes for the luminous feel */
+.dark[data-school="uc-berkeley"] #hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 60% 55% at 22% 48%,
+    rgb(253 181 21 / 0.14) 0%,
+    transparent 68%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* 2. Section header wrapper: gold radial glow */
+.dark[data-school="uc-berkeley"] .section-header {
+  position: relative;
+}
+.dark[data-school="uc-berkeley"] .section-header::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -30px;
+  width: 300px;
+  height: 120px;
+  background: radial-gradient(ellipse, rgb(253 181 21 / 0.12) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 3. Mono accent text (section numbers): gold text glow */
+.dark[data-school="uc-berkeley"] .font-mono.text-accent {
+  text-shadow: 0 0 18px rgb(253 181 21 / 0.5);
+}
+
+/* 4. Accent gradient bar: gold glow */
+.dark[data-school="uc-berkeley"] .accent-gradient-bar {
+  height: 2px;
+  box-shadow: 0 0 12px rgb(253 181 21 / 0.7);
+}
+
+/* 5. Cards: gold left-border accent + intensified glow on hover */
+.dark[data-school="uc-berkeley"] .school-card {
+  border-left-width: 2px;
+  border-left-color: rgb(253 181 21 / 0.50);
+}
+.dark[data-school="uc-berkeley"] .school-card:hover {
+  box-shadow:
+    0 0 44px -6px rgb(253 181 21 / 0.30),
+    inset 0 0 0 1px rgb(253 181 21 / 0.10);
+  border-color: rgb(253 181 21 / 0.35);
+  border-left-color: rgb(253 181 21 / 0.75);
+}
+
+/* 6. Primary button hover: gold glow */
+.dark[data-school="uc-berkeley"] .bg-accent-fill:hover {
+  box-shadow: 0 0 26px rgb(253 181 21 / 0.6), 0 4px 14px rgb(253 181 21 / 0.35);
+}
+
+/* 7. Nav links: animated gold underline */
+.dark[data-school="uc-berkeley"] header nav a {
+  position: relative;
+}
+.dark[data-school="uc-berkeley"] header nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: rgb(253 181 21);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: width 0.2s ease;
+}
+.dark[data-school="uc-berkeley"] header nav a:hover::after {
+  width: calc(100% - 16px);
+}
+.dark[data-school="uc-berkeley"] header nav a.text-accent::after {
+  width: calc(100% - 16px);
+}
+
+/* 8. About profile photo: gold ambient glow */
+.dark[data-school="uc-berkeley"] #about .rounded-2xl.overflow-hidden.border {
+  box-shadow: 0 0 52px -10px rgb(253 181 21 / 0.35);
+}
+
+/* 9. Footer: soft gold glow at the top, like a light source */
+.dark[data-school="uc-berkeley"] footer {
+  background-image: radial-gradient(ellipse 60% 100% at 50% 0%, rgb(253 181 21 / 0.06) 0%, transparent 70%);
+}
+
+/* 10. Research card header row divider: gold tinted border */
+.dark[data-school="uc-berkeley"] #research .border-zinc-200,
+.dark[data-school="uc-berkeley"] #research .dark\:border-zinc-800 {
+  border-color: rgb(253 181 21 / 0.18);
+}
+
+/* ============================================================
    FULL-SITE DARK-MODE OVERRIDES WHEN SCHOOL THEME IS ACTIVE
    body / section surfaces / nav / cards / footer / scrollbar
    all shift to the school's base palette.

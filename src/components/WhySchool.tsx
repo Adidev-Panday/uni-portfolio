@@ -6,6 +6,8 @@ import { useSchoolTheme } from '@/hooks/useSchoolTheme'
 import { whySchool } from '@/data/content'
 import ScrollReveal from './ScrollReveal'
 import { PrincetonTigerButton, PrincetonMottoLine } from './PrincetonEasterEggs'
+import { VeritasShield, HarvardMottoLine } from './HarvardEasterEggs'
+import { OskiBearButton, BerkeleyTimeTip, FortyBall, FiatLuxBlock } from './BerkeleyEasterEggs'
 
 export default function WhySchool() {
   const { school } = useSchoolTheme()
@@ -37,6 +39,14 @@ export default function WhySchool() {
                     Why {school.name}?
                   </h2>
                   {school.id === 'princeton' && <PrincetonTigerButton />}
+                  {school.id === 'harvard' && <VeritasShield />}
+                  {school.id === 'uc-berkeley' && (
+                    <>
+                      <OskiBearButton />
+                      <BerkeleyTimeTip />
+                      <FortyBall />
+                    </>
+                  )}
                   <div className="h-px w-16 mt-1 accent-gradient-bar" />
                 </div>
               </ScrollReveal>
@@ -52,6 +62,8 @@ export default function WhySchool() {
                     </p>
                   ))}
                   {school.id === 'princeton' && <PrincetonMottoLine />}
+                  {school.id === 'harvard' && <HarvardMottoLine />}
+                  {school.id === 'uc-berkeley' && <FiatLuxBlock />}
                 </div>
               </ScrollReveal>
             </div>
