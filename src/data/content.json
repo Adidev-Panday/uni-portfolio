@@ -329,5 +329,32 @@
         "href": "https://www.instagram.com/adidevpanday/"
       }
     ]
+  },
+  "whySchool": {
+    "defaultTemplate": "I have long been drawn to {school} for the way it sits at the intersection of rigorous engineering and genuine intellectual ambition. Your programs in aerospace and technology match exactly where I want to push my work in AI, physics, and research. I am confident I can both learn from and contribute meaningfully to the {school} community.",
+    "schools": {
+      "bocconi": "",
+      "georgia-tech": "",
+      "harvard": "",
+      "hku-berkeley": "",
+      "nus": "",
+      "princeton": "",
+      "purdue": "",
+      "tu-delft": "",
+      "tum": "",
+      "uc-berkeley": "",
+      "uc-davis": "",
+      "uc-irvine": "",
+      "uc-san-diego": "",
+      "ucla": "",
+      "bath": "",
+      "bristol": "",
+      "uiuc": "",
+      "manchester": "",
+      "melbourne": "",
+      "michigan": "",
+      "sheffield": "",
+      "southampton": ""
+    }
   }
 }

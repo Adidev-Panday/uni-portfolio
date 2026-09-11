@@ -265,11 +265,6 @@
   border-color: rgb(var(--accent-rgb) / 0.15);
 }
 
-/* Hero dark overlay — tint photo with school base colour */
-.dark[data-school] .hero-base-overlay {
-  background-color: color-mix(in srgb, var(--body-bg-dark, #09090b) 81%, transparent);
-}
-
 /* Footer border + subtle bg lift */
 .dark[data-school] footer {
   background-color: color-mix(in srgb, var(--body-bg-dark, #09090b) 93%, white);

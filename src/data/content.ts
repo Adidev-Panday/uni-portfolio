@@ -62,3 +62,7 @@ export const extracurriculars = data.extracurriculars as Extracurricular[]
 export const honors      = data.honors as Honor[]
 export const profileLinks = data.profileLinks as ProfileLink[]
 export const contact     = data.contact
+export const whySchool   = data.whySchool as {
+  defaultTemplate: string
+  schools: Record<string, string>
+}

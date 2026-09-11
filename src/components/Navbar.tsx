@@ -8,11 +8,13 @@ import { motion, AnimatePresence } from 'motion/react'
 import { Menu, X } from 'lucide-react'
 import { navLinks, meta } from '@/data/content'
 import ThemeToggle from './ThemeToggle'
+import { useSchoolTheme } from '@/hooks/useSchoolTheme'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('')
   const [mobileOpen, setMobileOpen] = useState(false)
+  const { school } = useSchoolTheme()
 
   // Show background/blur once page is scrolled past 24px
   useEffect(() => {
@@ -59,6 +61,38 @@ export default function Navbar() {
 
         {/* Desktop navigation links */}
         <ul className="hidden md:flex items-center gap-1" role="list">
+          {/* "Why [School]?" link -- injected first when a school is active */}
+          <AnimatePresence>
+            {school && (
+              <motion.li
+                key="why-school-nav"
+                initial={{ opacity: 0, width: 0 }}
+                animate={{ opacity: 1, width: 'auto' }}
+                exit={{ opacity: 0, width: 0 }}
+                transition={{ duration: 0.25, ease: 'easeInOut' }}
+                className="overflow-hidden"
+              >
+                <a
+                  href="#why-school"
+                  className={`relative px-3 py-1.5 text-sm rounded-md transition-colors duration-200 whitespace-nowrap ${
+                    activeSection === 'why-school'
+                      ? 'text-accent'
+                      : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
+                  }`}
+                >
+                  {activeSection === 'why-school' && (
+                    <motion.span
+                      layoutId="nav-pill"
+                      className="absolute inset-0 bg-accent/5 dark:bg-accent/10 rounded-md"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">Why {school.shortName}?</span>
+                </a>
+              </motion.li>
+            )}
+          </AnimatePresence>
+
           {navLinks.map(({ href, label }) => {
             const id = href.replace('#', '')
             const isActive = activeSection === id
@@ -114,6 +148,17 @@ export default function Navbar() {
             className="md:hidden overflow-hidden bg-white dark:bg-[#09090b] border-b border-zinc-200 dark:border-zinc-800"
           >
             <ul className="px-6 py-4 flex flex-col gap-1">
+              {school && (
+                <li>
+                  <a
+                    href="#why-school"
+                    onClick={closeMobile}
+                    className="block py-2.5 text-sm font-medium text-accent hover:text-accent/80 transition-colors"
+                  >
+                    Why {school.shortName}?
+                  </a>
+                </li>
+              )}
               {navLinks.map(({ href, label }) => (
                 <li key={href}>
                   <a
