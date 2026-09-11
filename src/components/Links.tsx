@@ -26,7 +26,7 @@ export default function Links() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group relative flex flex-col justify-between p-6 rounded-2xl bg-gradient-to-br ${link.gradient} min-h-[148px] overflow-hidden`}
+                className={`links-card group relative flex flex-col justify-between p-6 rounded-2xl bg-gradient-to-br ${link.gradient} min-h-[148px] overflow-hidden`}
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 22 }}

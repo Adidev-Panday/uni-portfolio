@@ -25,16 +25,16 @@ export default function Contact() {
           <ScrollReveal delay={0.2}>
             <a
               href={`mailto:${contact.email}`}
-              className="group inline-flex items-center gap-3 text-xl sm:text-2xl font-semibold hover:text-indigo-500 transition-colors duration-200 mb-12"
+              className="group inline-flex items-center gap-3 text-xl sm:text-2xl font-semibold hover:text-accent transition-colors duration-200 mb-12"
             >
               <Mail
                 size={26}
-                className="text-indigo-500 group-hover:scale-110 transition-transform duration-200"
+                className="text-accent group-hover:scale-110 transition-transform duration-200"
               />
               {contact.email}
               <ArrowUpRight
                 size={20}
-                className="text-zinc-400 group-hover:text-indigo-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-200"
+                className="text-zinc-400 group-hover:text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-200"
               />
             </a>
           </ScrollReveal>
@@ -48,7 +48,7 @@ export default function Contact() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-1.5 text-sm text-zinc-500 hover:text-indigo-500 transition-colors duration-200"
+                  className="group inline-flex items-center gap-1.5 text-sm text-zinc-500 hover:text-accent transition-colors duration-200"
                 >
                   {s.label}
                   <ArrowUpRight

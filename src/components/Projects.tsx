@@ -23,17 +23,17 @@ export default function Projects() {
           {projects.map((project, i) => (
             <ScrollReveal key={project.name} delay={0.07 * i}>
               <motion.article
-                className="group flex flex-col h-full p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 hover:border-indigo-500/40 dark:hover:border-indigo-500/40 transition-colors duration-300 cursor-default"
+                className="group flex flex-col h-full p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 hover:border-accent/40 transition-colors duration-300 cursor-default"
                 whileHover={{
                   y: -5,
-                  boxShadow: '0 24px 48px -8px rgba(99,102,241,0.10)',
+                  boxShadow: '0 24px 48px -8px rgb(var(--accent-rgb) / 0.10)',
                 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 25 }}
               >
                 {/* Card top row: initial icon + link icons */}
                 <div className="flex items-center justify-between mb-5">
-                  <div className="w-9 h-9 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-                    <span className="text-indigo-500 font-bold text-sm">
+                  <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center">
+                    <span className="text-accent font-bold text-sm">
                       {project.name[0]}
                     </span>
                   </div>
@@ -56,7 +56,7 @@ export default function Projects() {
                         href={project.demo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-zinc-400 hover:text-indigo-500 transition-colors"
+                        className="text-zinc-400 hover:text-accent transition-colors"
                         aria-label={`${project.name} live demo`}
                         onClick={(e) => e.stopPropagation()}
                       >
@@ -68,7 +68,7 @@ export default function Projects() {
                         href={project.storyLink.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-zinc-400 hover:text-indigo-500 transition-colors"
+                        className="text-zinc-400 hover:text-accent transition-colors"
                         aria-label={project.storyLink.label}
                         onClick={(e) => e.stopPropagation()}
                       >
@@ -79,12 +79,12 @@ export default function Projects() {
                 </div>
 
                 {/* Project name */}
-                <h3 className="font-semibold text-[15px] mb-0.5 group-hover:text-indigo-500 transition-colors duration-200">
+                <h3 className="font-semibold text-[15px] mb-0.5 group-hover:text-accent transition-colors duration-200">
                   {project.name}
                 </h3>
 
                 {/* Role label */}
-                <p className="text-xs text-indigo-500/80 font-mono mb-3">{project.role}</p>
+                <p className="text-xs text-accent/80 font-mono mb-3">{project.role}</p>
 
                 {/* Description (flex-1 keeps the footer pinned to bottom) */}
                 <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed flex-1 mb-5">
@@ -110,7 +110,7 @@ export default function Projects() {
                       href={project.storyLink.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs text-indigo-500 hover:text-indigo-400 transition-colors"
+                      className="inline-flex items-center gap-1 text-xs text-accent hover:text-accent/80 transition-colors"
                       onClick={(e) => e.stopPropagation()}
                     >
                       {project.storyLink.label}

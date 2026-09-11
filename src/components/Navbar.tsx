@@ -30,8 +30,6 @@ export default function Navbar() {
           if (entry.isIntersecting) setActiveSection(entry.target.id)
         })
       },
-      // Start counting as active when 30% of the section is visible,
-      // offset by 80px (navbar height) from the top.
       { threshold: 0.3, rootMargin: '-80px 0px -50% 0px' },
     )
     sections.forEach((s) => observer.observe(s))
@@ -49,13 +47,13 @@ export default function Navbar() {
       }`}
     >
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Brand / logo — scrolls to top */}
+        {/* Brand / logo */}
         <a
           href="#hero"
-          className="text-sm font-semibold tracking-tight hover:text-indigo-500 transition-colors"
+          className="text-sm font-semibold tracking-tight hover:text-accent transition-colors"
         >
           {meta.name.split(' ')[0]}
-          <span className="text-indigo-500">.</span>
+          <span className="text-accent">.</span>
         </a>
 
         {/* Desktop navigation links */}
@@ -69,15 +67,15 @@ export default function Navbar() {
                   href={href}
                   className={`relative px-3 py-1.5 text-sm rounded-md transition-colors duration-200 ${
                     isActive
-                      ? 'text-indigo-500 dark:text-indigo-400'
+                      ? 'text-accent'
                       : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
                   }`}
                 >
-                  {/* Shared animated highlight background */}
+                  {/* Animated highlight pill */}
                   {isActive && (
                     <motion.span
                       layoutId="nav-pill"
-                      className="absolute inset-0 bg-indigo-50 dark:bg-indigo-500/10 rounded-md"
+                      className="absolute inset-0 bg-accent/5 dark:bg-accent/10 rounded-md"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -120,7 +118,7 @@ export default function Navbar() {
                   <a
                     href={href}
                     onClick={closeMobile}
-                    className="block py-2.5 text-sm text-zinc-600 dark:text-zinc-400 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors"
+                    className="block py-2.5 text-sm text-zinc-600 dark:text-zinc-400 hover:text-accent transition-colors"
                   >
                     {label}
                   </a>

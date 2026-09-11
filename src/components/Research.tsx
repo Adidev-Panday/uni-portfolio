@@ -27,7 +27,7 @@ export default function Research() {
         <div className="space-y-6">
           {research.map((paper, i) => (
             <ScrollReveal key={i} delay={0.1 * (i + 1)}>
-              <div className="group p-6 sm:p-8 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 hover:border-indigo-500/40 dark:hover:border-indigo-500/40 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/5">
+              <div className="group p-6 sm:p-8 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 hover:border-accent/40 transition-all duration-300 hover:shadow-xl hover:shadow-accent/5">
                 {/* Header row: status badge + paper link */}
                 <div className="flex items-start justify-between gap-4 mb-5">
                   <span
@@ -41,7 +41,7 @@ export default function Research() {
                     href={paper.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-medium text-indigo-500 hover:text-indigo-400 transition-colors shrink-0"
+                    className="inline-flex items-center gap-1.5 text-xs font-medium text-accent hover:text-accent/80 transition-colors shrink-0"
                   >
                     {paper.linkLabel}
                     <ExternalLink size={12} />
@@ -49,7 +49,7 @@ export default function Research() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-lg sm:text-xl font-semibold mb-1.5 group-hover:text-indigo-500 transition-colors duration-200">
+                <h3 className="text-lg sm:text-xl font-semibold mb-1.5 group-hover:text-accent transition-colors duration-200">
                   {paper.title}
                 </h3>
 

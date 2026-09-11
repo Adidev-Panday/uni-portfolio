@@ -33,7 +33,7 @@ export default function Extracurriculars() {
                 <div
                   className={`rounded-xl border transition-colors duration-300 ${
                     isOpen
-                      ? 'border-indigo-500/40 dark:border-indigo-500/30'
+                      ? 'border-accent/40'
                       : 'border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700'
                   }`}
                 >
@@ -62,7 +62,7 @@ export default function Extracurriculars() {
                       >
                         <ChevronDown
                           size={16}
-                          className={isOpen ? 'text-indigo-500' : 'text-zinc-400'}
+                          className={isOpen ? 'text-accent' : 'text-zinc-400'}
                         />
                       </motion.div>
                     </div>

@@ -2,13 +2,170 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   CSS CUSTOM PROPERTIES
+   Default values reproduce the original indigo/violet palette
+   exactly. School themes override these on :root via the
+   data-school attribute set by AdmissionsModal.
+   ============================================================ */
+
+:root {
+  /* --accent-rgb: space-separated RGB channels for Tailwind opacity modifiers */
+  --accent-rgb: 99 102 241;           /* indigo-500 */
+  --accent-secondary-rgb: 139 92 246; /* violet-500 */
+  /* --accent-fill: solid fill for buttons (always dark enough for white text) */
+  --accent-fill: #6366f1;
+  /* --accent: derived full color value, used in inline styles */
+  --accent: rgb(var(--accent-rgb));
+}
+
+/* ============================================================
+   SCHOOL THEME OVERRIDES
+   Light mode: use the darker primary so text is readable on white.
+   Dark mode:  use the brighter accent so text reads on near-black.
+   --accent-fill stays constant per school (always button-safe).
+   ============================================================ */
+
+/* 1. Bocconi */
+[data-school="bocconi"] {
+  --accent-rgb: 0 46 93;
+  --accent-secondary-rgb: 108 172 228;
+  --accent-fill: #002E5D;
+}
+.dark[data-school="bocconi"] {
+  --accent-rgb: 108 172 228;
+}
+
+/* 2. Georgia Tech */
+[data-school="georgia-tech"] {
+  --accent-rgb: 0 48 87;
+  --accent-secondary-rgb: 179 163 105;
+  --accent-fill: #003057;
+}
+.dark[data-school="georgia-tech"] {
+  --accent-rgb: 179 163 105;
+}
+
+/* 3. Harvard */
+[data-school="harvard"] {
+  --accent-rgb: 165 28 48;
+  --accent-secondary-rgb: 165 28 48;
+  --accent-fill: #A51C30;
+}
+.dark[data-school="harvard"] {
+  --accent-rgb: 207 32 64;
+}
+
+/* 4. HKU-Berkeley */
+[data-school="hku-berkeley"] {
+  --accent-rgb: 0 50 98;
+  --accent-secondary-rgb: 253 181 21;
+  --accent-fill: #003262;
+}
+.dark[data-school="hku-berkeley"] {
+  --accent-rgb: 253 181 21;
+}
+
+/* 5. NUS */
+[data-school="nus"] {
+  --accent-rgb: 0 61 124;
+  --accent-secondary-rgb: 239 124 0;
+  --accent-fill: #003D7C;
+}
+.dark[data-school="nus"] {
+  --accent-rgb: 239 124 0;
+}
+
+/* 6. Princeton */
+[data-school="princeton"] {
+  --accent-rgb: 231 117 0;
+  --accent-secondary-rgb: 231 117 0;
+  --accent-fill: #E77500;
+}
+
+/* 7. Purdue */
+[data-school="purdue"] {
+  --accent-rgb: 11 11 11;
+  --accent-secondary-rgb: 206 184 136;
+  --accent-fill: #0B0B0B;
+}
+.dark[data-school="purdue"] {
+  --accent-rgb: 206 184 136;
+}
+
+/* 8. TU Delft */
+[data-school="tu-delft"] {
+  --accent-rgb: 12 35 64;
+  --accent-secondary-rgb: 0 166 214;
+  --accent-fill: #0C2340;
+}
+.dark[data-school="tu-delft"] {
+  --accent-rgb: 0 166 214;
+}
+
+/* 9. TUM */
+[data-school="tum"] {
+  --accent-rgb: 0 101 189;
+  --accent-secondary-rgb: 0 101 189;
+  --accent-fill: #0065BD;
+}
+
+/* 10. UCAS */
+[data-school="ucas"] {
+  --accent-rgb: 200 16 46;
+  --accent-secondary-rgb: 200 16 46;
+  --accent-fill: #001E62;
+}
+
+/* 11. UIUC */
+[data-school="uiuc"] {
+  --accent-rgb: 19 41 75;
+  --accent-secondary-rgb: 255 95 5;
+  --accent-fill: #13294B;
+}
+.dark[data-school="uiuc"] {
+  --accent-rgb: 255 95 5;
+}
+
+/* 12. University of California */
+[data-school="uc"] {
+  --accent-rgb: 0 50 98;
+  --accent-secondary-rgb: 255 181 17;
+  --accent-fill: #003262;
+}
+.dark[data-school="uc"] {
+  --accent-rgb: 255 181 17;
+}
+
+/* 13. University of Melbourne */
+[data-school="melbourne"] {
+  --accent-rgb: 134 38 51;
+  --accent-secondary-rgb: 134 38 51;
+  --accent-fill: #000F46;
+}
+.dark[data-school="melbourne"] {
+  --accent-rgb: 189 60 80;
+}
+
+/* 14. University of Michigan */
+[data-school="michigan"] {
+  --accent-rgb: 0 39 76;
+  --accent-secondary-rgb: 255 203 5;
+  --accent-fill: #00274C;
+}
+.dark[data-school="michigan"] {
+  --accent-rgb: 255 203 5;
+}
+
+/* ============================================================
+   BASE LAYER
+   ============================================================ */
+
 @layer base {
-  /* Smooth scrolling for anchor links */
   html {
     scroll-behavior: smooth;
   }
 
-  /* Light/dark body defaults */
   body {
     @apply bg-white text-zinc-900 dark:bg-[#09090b] dark:text-zinc-50;
     @apply transition-colors duration-300;
@@ -16,12 +173,10 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Selection highlight */
   ::selection {
-    @apply bg-indigo-500/20 text-indigo-900 dark:text-indigo-100;
+    background-color: rgb(var(--accent-rgb) / 0.2);
   }
 
-  /* Thin scrollbar */
   ::-webkit-scrollbar {
     width: 5px;
   }
@@ -33,14 +188,50 @@
   }
 }
 
+/* ============================================================
+   UTILITY LAYER
+   ============================================================ */
+
 @layer utilities {
-  /* Reusable indigo→violet gradient text */
+  /* Hero name gradient — adapts to school theme via CSS variables */
   .gradient-text {
-    @apply bg-gradient-to-r from-indigo-400 via-violet-400 to-indigo-500 bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      to right,
+      rgb(var(--accent-rgb) / 0.85),
+      rgb(var(--accent-secondary-rgb)),
+      rgb(var(--accent-rgb))
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
   }
 
-  /* Section container reuse */
+  /* Section header accent underline — adapts to school theme */
+  .accent-gradient-bar {
+    background-image: linear-gradient(
+      to right,
+      rgb(var(--accent-rgb)),
+      rgb(var(--accent-secondary-rgb))
+    );
+  }
+
   .section-container {
     @apply max-w-6xl mx-auto px-6;
   }
+}
+
+/* ============================================================
+   SCHOOL THEME: LINKS CARD OVERRIDE
+   When a school theme is active the Links section cards shift
+   to use school brand gradient colours instead of their
+   per-platform defaults.
+   ============================================================ */
+
+[data-school] .links-card {
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(var(--accent-secondary-rgb)),
+    rgb(var(--accent-rgb))
+  );
 }

@@ -15,8 +15,12 @@ const config: Config = {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
       },
       colors: {
-        // Primary accent — indigo. Change here to retheme the whole site.
-        accent: '#6366f1',
+        // All accent colors are driven by CSS custom properties in globals.css.
+        // Setting --accent-rgb / --accent-fill on :root rethemes the entire site.
+        accent: 'rgb(var(--accent-rgb) / <alpha-value>)',
+        'accent-secondary': 'rgb(var(--accent-secondary-rgb) / <alpha-value>)',
+        // accent-fill has no opacity modifier support — used only for solid fills
+        'accent-fill': 'var(--accent-fill)',
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease forwards',

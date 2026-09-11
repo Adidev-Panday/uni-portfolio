@@ -9,7 +9,7 @@ interface SectionHeaderProps {
 export default function SectionHeader({ number, title, subtitle }: SectionHeaderProps) {
   return (
     <div className="mb-12">
-      <span className="text-indigo-500 font-mono text-xs tracking-widest uppercase">
+      <span className="text-accent font-mono text-xs tracking-widest uppercase">
         {number}
       </span>
       <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mt-2">
@@ -20,8 +20,8 @@ export default function SectionHeader({ number, title, subtitle }: SectionHeader
           {subtitle}
         </p>
       )}
-      {/* Gradient accent underline */}
-      <div className="h-px w-16 bg-gradient-to-r from-indigo-500 to-violet-500 mt-4" />
+      {/* Gradient accent underline — colours driven by CSS custom properties */}
+      <div className="h-px w-16 mt-4 accent-gradient-bar" />
     </div>
   )
 }

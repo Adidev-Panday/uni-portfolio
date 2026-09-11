@@ -10,11 +10,13 @@ import HonorsAwards from '@/components/HonorsAwards'
 import Links from '@/components/Links'
 import CV from '@/components/CV'
 import Contact from '@/components/Contact'
+import AdmissionsModal from '@/components/AdmissionsModal'
 import { meta } from '@/data/content'
 
 export default function Home() {
   return (
     <>
+      <AdmissionsModal />
       <Navbar />
 
       <main>
