@@ -10,7 +10,7 @@ export default function Contact() {
     <section id="contact" className="py-24 bg-zinc-50 dark:bg-zinc-900/30">
       <div className="section-container">
         <ScrollReveal>
-          <SectionHeader number="08." title="Get In Touch" />
+          <SectionHeader number="09." title="Get In Touch" />
         </ScrollReveal>
 
         <div className="max-w-2xl">

@@ -415,6 +415,52 @@
 }
 
 /* ============================================================
+   FULL-SITE LIGHT-MODE OVERRIDES WHEN SCHOOL THEME IS ACTIVE
+   Mirrors the dark-mode block above, but light: near-white
+   backgrounds carrying a faint tint of the school's own colour,
+   with body text staying dark (unchanged) for AA-safe contrast.
+   Headings, buttons, links and borders already read --accent-rgb
+   and --accent-fill directly (not gated to dark), so they pick up
+   the school's colours in light mode automatically.
+   ============================================================ */
+
+/* Body background: a very light tint of the school's primary colour */
+[data-school]:not(.dark) body {
+  background-color: color-mix(in srgb, var(--accent-fill) 4%, white);
+}
+
+/* Alternating section surfaces: a touch more tint than the body */
+[data-school]:not(.dark) #about,
+[data-school]:not(.dark) #projects,
+[data-school]:not(.dark) #honors,
+[data-school]:not(.dark) #contact {
+  background-color: color-mix(in srgb, var(--accent-fill) 7%, white);
+}
+
+/* Scrolled nav: tinted frosted glass instead of plain white */
+[data-school]:not(.dark) header[data-scrolled="true"] {
+  background-color: color-mix(in srgb, var(--accent-fill) 6%, white);
+  border-bottom-color: rgb(var(--accent-rgb) / 0.25);
+}
+
+/* Card surfaces: faint tint plus school-coloured border, body text stays dark */
+[data-school]:not(.dark) .school-card {
+  background-color: color-mix(in srgb, var(--accent-fill) 3%, white);
+  border-color: rgb(var(--accent-rgb) / 0.2);
+}
+
+/* Footer */
+[data-school]:not(.dark) footer {
+  background-color: color-mix(in srgb, var(--accent-fill) 8%, white);
+  border-top-color: rgb(var(--accent-rgb) / 0.25);
+}
+
+/* Scrollbar thumb in school colours */
+[data-school]:not(.dark) ::-webkit-scrollbar-thumb {
+  background-color: rgb(var(--accent-rgb) / 0.45);
+}
+
+/* ============================================================
    BASE LAYER
    ============================================================ */
 

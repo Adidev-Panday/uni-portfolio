@@ -19,7 +19,7 @@ export default function Extracurriculars() {
       <div className="section-container">
         <ScrollReveal>
           <SectionHeader
-            number="04."
+            number="05."
             title="Extracurriculars"
             subtitle="Clubs, societies, leadership roles, and activities beyond the classroom."
           />

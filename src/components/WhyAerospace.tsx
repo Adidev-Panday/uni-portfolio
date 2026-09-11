@@ -13,7 +13,7 @@ export default function WhyAerospace() {
     <section id="why-aerospace" className="py-24">
       <div className="section-container">
         <ScrollReveal>
-          <SectionHeader title={heading} subtitle={subtitle} />
+          <SectionHeader number="02." title={heading} subtitle={subtitle} />
         </ScrollReveal>
 
         {/* Photo gallery: featured first image + 4 square thumbnails */}

@@ -28,8 +28,8 @@ export default function Home() {
         <WhySchool />
         <About />
         <WhyAerospace />
-        <Research />
         <Projects />
+        <Research />
         <Extracurriculars />
         <HonorsAwards />
         <Links />

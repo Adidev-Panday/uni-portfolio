@@ -4,6 +4,7 @@
 // Saves via /api/save (server route). No secrets are ever in this file.
 
 import { useState, useCallback } from 'react'
+import { LogOut } from 'lucide-react'
 
 // --------------------------------------------------------------------------
 // Types (mirrors content.json shape)
@@ -157,6 +158,16 @@ export default function AdminPage() {
     }
   }, [content, password, sha])
 
+  // -- Exit: end the admin session and return to the normal site -----------
+  const exit = useCallback(() => {
+    setAuthed(false)
+    setContent(null)
+    setPassword('')
+    setSha('')
+    setStatus('idle')
+    window.location.href = '/'
+  }, [])
+
   // -- Typed update helpers -------------------------------------------------
   type DeepSet<T> = (fn: (draft: T) => void) => void
 
@@ -230,6 +241,14 @@ export default function AdminPage() {
               className="px-5 py-2.5 rounded-xl bg-indigo-500 hover:bg-indigo-600 disabled:opacity-50 text-white font-semibold text-sm transition-colors"
             >
               {status === 'saving' ? 'Saving...' : 'Save'}
+            </button>
+            <button
+              onClick={exit}
+              className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 hover:border-red-400 hover:text-red-500 dark:hover:text-red-400 font-semibold text-sm transition-colors"
+              aria-label="Exit admin session"
+            >
+              <LogOut size={15} />
+              Exit
             </button>
           </div>
         </div>

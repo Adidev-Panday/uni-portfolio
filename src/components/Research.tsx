@@ -18,7 +18,7 @@ export default function Research() {
       <div className="section-container">
         <ScrollReveal>
           <SectionHeader
-            number="02."
+            number="04."
             title="Research"
             subtitle="Published work and ongoing investigations."
           />

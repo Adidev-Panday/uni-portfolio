@@ -40,6 +40,16 @@ export default function Navbar() {
 
   const closeMobile = () => setMobileOpen(false)
 
+  // Double-click the logo to reset the whole admissions experience: clear
+  // the stored choice/school, drop the active theme, and reload so the
+  // first-visit popup shows again. A single click keeps the normal
+  // href="#hero" scroll-to-top behavior.
+  const resetExperience = () => {
+    try { sessionStorage.clear() } catch { /* storage unavailable */ }
+    document.documentElement.removeAttribute('data-school')
+    window.location.href = '/'
+  }
+
   return (
     <header
       data-scrolled={scrolled}
@@ -53,6 +63,8 @@ export default function Navbar() {
         {/* Brand / logo */}
         <a
           href="#hero"
+          onDoubleClick={(e) => { e.preventDefault(); resetExperience() }}
+          title="Double-click to reset"
           className="text-sm font-semibold tracking-tight hover:text-accent transition-colors"
         >
           {meta.name.split(' ')[0]}

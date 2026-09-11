@@ -11,7 +11,7 @@ export default function HonorsAwards() {
       <div className="section-container">
         <ScrollReveal>
           <SectionHeader
-            number="05."
+            number="06."
             title="Honors & Awards"
             subtitle="Recognition and achievements."
           />

@@ -12,7 +12,7 @@ export default function Links() {
       <div className="section-container">
         <ScrollReveal>
           <SectionHeader
-            number="06."
+            number="07."
             title="Find Me Online"
             subtitle="Where I write, build, and connect."
           />
