@@ -36,6 +36,11 @@ type ContentJson = {
   honors: { award: string; issuer: string; level: string; description: string }[]
   profileLinks: { label: string; handle: string; href: string; gradient: string }[]
   contact: { email: string; tagline: string; social: Social[] }
+  whyAerospace: {
+    heading: string; subtitle: string; paragraphs: string[]
+    photos: { src: string; alt: string }[]
+  }
+  whySchool: { defaultTemplate: string; schools: Record<string, string> }
 }
 
 // --------------------------------------------------------------------------
@@ -453,6 +458,42 @@ export default function AdminPage() {
           >
             + Add link
           </button>
+        </Card>
+
+        {/* WHY AEROSPACE */}
+        <Card title="Why Aerospace">
+          <Field lbl="Heading"><Input value={c.whyAerospace.heading} onChange={v => update('whyAerospace', d => { d.heading = v })} /></Field>
+          <Field lbl="Subtitle"><Input value={c.whyAerospace.subtitle} onChange={v => update('whyAerospace', d => { d.subtitle = v })} /></Field>
+          {c.whyAerospace.paragraphs.map((para, i) => (
+            <div key={i} className="space-y-1">
+              {label(`Paragraph ${i + 1}${i === c.whyAerospace.paragraphs.length - 1 ? ' (closing note)' : ''}`)}
+              <Textarea rows={i === c.whyAerospace.paragraphs.length - 1 ? 2 : 4} value={para} onChange={v => update('whyAerospace', d => { d.paragraphs[i] = v })} />
+              <div className="flex justify-end">
+                <button
+                  onClick={() => update('whyAerospace', d => { d.paragraphs.splice(i, 1) })}
+                  className="text-xs text-red-500 hover:text-red-400"
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
+          ))}
+          <button
+            onClick={() => update('whyAerospace', d => { d.paragraphs.push('') })}
+            className="text-xs text-indigo-500 hover:text-indigo-400"
+          >
+            + Add paragraph
+          </button>
+        </Card>
+
+        {/* WHY SCHOOL (default template) */}
+        <Card title="Why [School] -- Default Template">
+          <p className="text-xs text-zinc-400">
+            Used when no school-specific override exists. Use {'{school}'} as a placeholder for the school name.
+          </p>
+          <Field lbl="Default template">
+            <Textarea rows={4} value={c.whySchool.defaultTemplate} onChange={v => update('whySchool', d => { d.defaultTemplate = v })} />
+          </Field>
         </Card>
 
         {/* CONTACT */}

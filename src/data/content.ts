@@ -66,3 +66,12 @@ export const whySchool   = data.whySchool as {
   defaultTemplate: string
   schools: Record<string, string>
 }
+
+export type WhyAerospacePhoto = { src: string; alt: string }
+
+export const whyAerospace = data.whyAerospace as {
+  heading: string
+  subtitle: string
+  paragraphs: string[]
+  photos: WhyAerospacePhoto[]
+}

@@ -12,6 +12,7 @@ import CV from '@/components/CV'
 import Contact from '@/components/Contact'
 import AdmissionsModal from '@/components/AdmissionsModal'
 import WhySchool from '@/components/WhySchool'
+import WhyAerospace from '@/components/WhyAerospace'
 import { meta } from '@/data/content'
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
         <Hero />
         <WhySchool />
         <About />
+        <WhyAerospace />
         <Research />
         <Projects />
         <Extracurriculars />

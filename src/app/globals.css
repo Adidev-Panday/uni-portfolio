@@ -231,6 +231,113 @@
 .dark[data-school="southampton"] { --accent-rgb: 79 176 198; }
 
 /* ============================================================
+   PRINCETON BESPOKE THEME
+   Premium treatment: near-black with Princeton orange accents,
+   radial glows, bold card borders, nav underline, tiger stripes.
+   ============================================================ */
+
+/* 1. Hero: ambient orange glow behind the text block (between blobs and content) */
+.dark[data-school="princeton"] #hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 55% 50% at 22% 48%,
+    rgb(231 117 0 / 0.10) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* 2. Section header wrapper: subtle orange radial glow behind number + heading */
+.dark[data-school="princeton"] .section-header {
+  position: relative;
+}
+.dark[data-school="princeton"] .section-header::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -30px;
+  width: 300px;
+  height: 120px;
+  background: radial-gradient(ellipse, rgb(231 117 0 / 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 3. Mono accent text (section numbers): orange text glow */
+.dark[data-school="princeton"] .font-mono.text-accent {
+  text-shadow: 0 0 16px rgb(255 143 28 / 0.45);
+}
+
+/* 4. Accent gradient bar: Princeton orange glow, slightly thicker */
+.dark[data-school="princeton"] .accent-gradient-bar {
+  height: 2px;
+  box-shadow: 0 0 10px rgb(231 117 0 / 0.65);
+}
+
+/* 5. Cards: bold orange left-border accent + intensified orange glow on hover */
+.dark[data-school="princeton"] .school-card {
+  border-left-width: 2px;
+  border-left-color: rgb(231 117 0 / 0.50);
+}
+.dark[data-school="princeton"] .school-card:hover {
+  box-shadow:
+    0 0 40px -8px rgb(231 117 0 / 0.25),
+    inset 0 0 0 1px rgb(231 117 0 / 0.08);
+  border-color: rgb(231 117 0 / 0.30);
+  border-left-color: rgb(231 117 0 / 0.70);
+}
+
+/* 6. Primary button (bg-accent-fill): orange glow on hover */
+.dark[data-school="princeton"] .bg-accent-fill:hover {
+  box-shadow: 0 0 24px rgb(231 117 0 / 0.55), 0 4px 14px rgb(231 117 0 / 0.35);
+}
+
+/* 7. Nav links: animated orange underline sweep on hover */
+.dark[data-school="princeton"] header nav a {
+  position: relative;
+}
+.dark[data-school="princeton"] header nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: rgb(255 143 28);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: width 0.2s ease;
+}
+.dark[data-school="princeton"] header nav a:hover::after {
+  width: calc(100% - 16px);
+}
+
+/* 8. About profile photo: orange ambient glow */
+.dark[data-school="princeton"] #about .rounded-2xl.overflow-hidden.border {
+  box-shadow: 0 0 48px -12px rgb(231 117 0 / 0.30);
+}
+
+/* 9. Footer: faint tiger-stripe diagonal motif */
+.dark[data-school="princeton"] footer {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent 0px,
+    transparent 18px,
+    rgb(231 117 0 / 0.035) 18px,
+    rgb(231 117 0 / 0.035) 20px
+  );
+}
+
+/* 10. Research card header row divider: orange tinted border */
+.dark[data-school="princeton"] #research .border-zinc-200,
+.dark[data-school="princeton"] #research .dark\:border-zinc-800 {
+  border-color: rgb(231 117 0 / 0.15);
+}
+
+/* ============================================================
    FULL-SITE DARK-MODE OVERRIDES WHEN SCHOOL THEME IS ACTIVE
    body / section surfaces / nav / cards / footer / scrollbar
    all shift to the school's base palette.

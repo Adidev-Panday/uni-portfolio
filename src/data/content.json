@@ -13,6 +13,10 @@
       "label": "About"
     },
     {
+      "href": "#why-aerospace",
+      "label": "Why Aerospace"
+    },
+    {
       "href": "#research",
       "label": "Research"
     },
@@ -55,6 +59,11 @@
       {
         "label": "Read Research",
         "href": "#research",
+        "primary": false
+      },
+      {
+        "label": "Why Aerospace",
+        "href": "#why-aerospace",
         "primary": false
       }
     ]
@@ -328,6 +337,22 @@
         "label": "Instagram",
         "href": "https://www.instagram.com/adidevpanday/"
       }
+    ]
+  },
+  "whyAerospace": {
+    "heading": "Why Aerospace?",
+    "subtitle": "The honest answer.",
+    "paragraphs": [
+      "Honestly, it started with Formula 1. I grew up obsessed with the cars, the way they move, and the fact that shaving milliseconds comes down to how air flows over a machine. Those childhood photos are not staged, that is just what I was into: toy F1 cars, building anything I could get my hands on, and later standing in front of the real thing.",
+      "That obsession with F1 aerodynamics grew into a bigger fascination with how things move through air and space. But if I am being specific, propulsion is the main reason I love aerospace. The engineering of thrust, how you turn stored energy into controlled, enormous force, is the part that genuinely excites me most. Aerodynamics pulled me in, propulsion is what makes me want to build a career here.",
+      "(This is the short, casual version. The full story is coming soon.)"
+    ],
+    "photos": [
+      { "src": "/aero-ferrari.jpg", "alt": "With a Ferrari F1 car" },
+      { "src": "/aero-toycar.jpg",  "alt": "In a toy F1 car as a toddler" },
+      { "src": "/aero-lego.jpg",    "alt": "Building as a kid" },
+      { "src": "/aero-toybike.jpg", "alt": "Holding a model vehicle" },
+      { "src": "/aero-robotics.jpg","alt": "Winning a robotics award, 2016" }
     ]
   },
   "whySchool": {
