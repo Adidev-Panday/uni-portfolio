@@ -5,6 +5,8 @@ import Image from 'next/image'
 import { motion } from 'motion/react'
 import { ArrowDown } from 'lucide-react'
 import { hero } from '@/data/content'
+import { useSchoolTheme } from '@/hooks/useSchoolTheme'
+import { PrincetonClassTag } from './PrincetonEasterEggs'
 
 // Reusable entrance animation config
 const fadeUp = (delay: number) => ({
@@ -14,6 +16,8 @@ const fadeUp = (delay: number) => ({
 })
 
 export default function Hero() {
+  const { schoolId } = useSchoolTheme()
+
   return (
     <section
       id="hero"
@@ -60,6 +64,13 @@ export default function Hero() {
         >
           {hero.greeting}
         </motion.span>
+
+        {/* Class tag, Princeton theme only */}
+        {schoolId === 'princeton' && (
+          <motion.div className="mb-5" {...fadeUp(0.1)}>
+            <PrincetonClassTag />
+          </motion.div>
+        )}
 
         {/* Name — large gradient heading, colours driven by CSS custom properties */}
         <motion.h1

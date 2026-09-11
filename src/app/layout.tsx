@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import { meta } from '@/data/content'
 
@@ -7,6 +7,16 @@ import { meta } from '@/data/content'
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+  display: 'swap',
+})
+
+// Serif display face reserved for the Princeton bespoke theme's headings.
+// The font file is only fetched by the browser when data-school="princeton"
+// actually applies it, so other themes pay no cost.
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['600', '700', '800'],
+  variable: '--font-playfair',
   display: 'swap',
 })
 
@@ -56,7 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     // suppressHydrationWarning: the 'dark' class is applied client-side before
     // hydration, so React will see a mismatch — suppress that one warning.
-    <html lang="en" suppressHydrationWarning className={inter.variable}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${playfair.variable}`}>
       <head>
         {/* Inline theme script runs synchronously before any CSS/JS */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />

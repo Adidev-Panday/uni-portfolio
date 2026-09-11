@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'motion/react'
 import { useSchoolTheme } from '@/hooks/useSchoolTheme'
 import { whySchool } from '@/data/content'
 import ScrollReveal from './ScrollReveal'
+import { PrincetonTigerButton, PrincetonMottoLine } from './PrincetonEasterEggs'
 
 export default function WhySchool() {
   const { school } = useSchoolTheme()
@@ -35,6 +36,7 @@ export default function WhySchool() {
                   <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter mt-2 mb-3 gradient-text inline-block">
                     Why {school.name}?
                   </h2>
+                  {school.id === 'princeton' && <PrincetonTigerButton />}
                   <div className="h-px w-16 mt-1 accent-gradient-bar" />
                 </div>
               </ScrollReveal>
@@ -44,6 +46,7 @@ export default function WhySchool() {
                   <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-300 leading-relaxed">
                     {text}
                   </p>
+                  {school.id === 'princeton' && <PrincetonMottoLine />}
                 </div>
               </ScrollReveal>
             </div>

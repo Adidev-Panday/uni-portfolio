@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { X } from 'lucide-react'
 import { SCHOOLS, type SchoolId } from '@/data/schools'
+import { fireConfetti } from '@/lib/confetti'
 
 const SESSION_KEY = 'admissions-choice'
 
@@ -80,6 +81,8 @@ export default function AdmissionsModal() {
     setActiveSchool(id)
     try { sessionStorage.setItem(SESSION_KEY, id) } catch { /* ignore */ }
     setStep('idle')
+    // A brief orange-and-black flourish as the Princeton theme applies
+    if (id === 'princeton') fireConfetti()
   }
 
   const reset = () => {

@@ -236,6 +236,14 @@
    radial glows, bold card borders, nav underline, tiger stripes.
    ============================================================ */
 
+/* 0. Serif display face for section headings only -- evokes Princeton's
+   traditional identity while body copy stays in the sans font. Applies in
+   both light and dark mode since it's typography, not a colour choice. */
+[data-school="princeton"] h1,
+[data-school="princeton"] h2 {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
 /* 1. Hero: ambient orange glow behind the text block (between blobs and content) */
 .dark[data-school="princeton"] #hero::after {
   content: '';
@@ -314,6 +322,10 @@
 .dark[data-school="princeton"] header nav a:hover::after {
   width: calc(100% - 16px);
 }
+/* Active section link keeps the underline extended, not just on hover */
+.dark[data-school="princeton"] header nav a.text-accent::after {
+  width: calc(100% - 16px);
+}
 
 /* 8. About profile photo: orange ambient glow */
 .dark[data-school="princeton"] #about .rounded-2xl.overflow-hidden.border {
@@ -328,6 +340,25 @@
     transparent 18px,
     rgb(231 117 0 / 0.035) 18px,
     rgb(231 117 0 / 0.035) 20px
+  );
+}
+
+/* 9b. Same tiger-stripe motif, fainter still, as a texture on section
+   dividers so it reads as a running thread through the page, not just
+   the footer. Layered on top of the shared body-bg background-color. */
+.dark[data-school="princeton"] #about,
+.dark[data-school="princeton"] #research,
+.dark[data-school="princeton"] #projects,
+.dark[data-school="princeton"] #extracurriculars,
+.dark[data-school="princeton"] #honors,
+.dark[data-school="princeton"] #links,
+.dark[data-school="princeton"] #contact {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent 0px,
+    transparent 18px,
+    rgb(231 117 0 / 0.02) 18px,
+    rgb(231 117 0 / 0.02) 20px
   );
 }
 

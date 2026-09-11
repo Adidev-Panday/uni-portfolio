@@ -13,12 +13,14 @@ import Contact from '@/components/Contact'
 import AdmissionsModal from '@/components/AdmissionsModal'
 import WhySchool from '@/components/WhySchool'
 import WhyAerospace from '@/components/WhyAerospace'
+import PrincetonCheerOverlay from '@/components/PrincetonEasterEggs'
 import { meta } from '@/data/content'
 
 export default function Home() {
   return (
     <>
       <AdmissionsModal />
+      <PrincetonCheerOverlay />
       <Navbar />
 
       <main>
