@@ -75,7 +75,9 @@ export default function WhyAerospace() {
         {/* Copy paragraphs */}
         <div className="max-w-2xl space-y-5">
           {paragraphs.map((paragraph, i) => {
-            const isNote = i === paragraphs.length - 1
+            // A paragraph wrapped in parentheses is a small aside/closing
+            // note, not a paragraph purely by virtue of coming last.
+            const isNote = paragraph.trim().startsWith('(') && paragraph.trim().endsWith(')')
             return (
               <ScrollReveal key={i} delay={0.06 * i}>
                 <p

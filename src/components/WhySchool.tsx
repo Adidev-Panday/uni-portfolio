@@ -42,10 +42,15 @@ export default function WhySchool() {
               </ScrollReveal>
 
               <ScrollReveal delay={0.1}>
-                <div className="max-w-2xl">
-                  <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-300 leading-relaxed">
-                    {text}
-                  </p>
+                <div className="max-w-2xl space-y-4">
+                  {text.split('\n\n').map((paragraph, i) => (
+                    <p
+                      key={i}
+                      className="text-base sm:text-lg text-zinc-600 dark:text-zinc-300 leading-relaxed"
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
                   {school.id === 'princeton' && <PrincetonMottoLine />}
                 </div>
               </ScrollReveal>
