@@ -322,20 +322,12 @@
     "tagline": "Have an idea, an opportunity, or just want to say hi? My inbox is open.",
     "social": [
       {
-        "label": "GitHub",
-        "href": "https://github.com/Adidev-Panday"
-      },
-      {
-        "label": "LinkedIn",
-        "href": "https://www.linkedin.com/in/adidevpanday/"
-      },
-      {
-        "label": "Medium",
-        "href": "https://adidev.medium.com/"
-      },
-      {
         "label": "Instagram",
         "href": "https://www.instagram.com/adidevpanday/"
+      },
+      {
+        "label": "Linkedin",
+        "href": "https://www.linkedin.com/in/adidevpanday/"
       }
     ]
   },
