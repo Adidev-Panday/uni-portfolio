@@ -171,6 +171,22 @@
       },
       "statusBadge": "Private / in progress",
       "statusNote": ""
+    },
+    {
+      "name": "Navier-Stokes Sim",
+      "description": "Based on the recent buzz around OpenAI potentially solving the Navier-Stokes millennial problem, I decided to create a 2D airflow simulation using assistance from Claude Code to help high school physics students grasp the concept of the Navier-Stokes equations and thier importance. ",
+      "role": "Developer",
+      "tags": [
+        "Simulation"
+      ],
+      "demo": "https://airflowns.netlify.app/",
+      "github": "https://github.com/Adidev-Panday/airflowlab-navier-stokes",
+      "storyLink": {
+        "label": "",
+        "href": ""
+      },
+      "statusBadge": "",
+      "statusNote": ""
     }
   ],
   "extracurriculars": [
