@@ -81,10 +81,10 @@
       "journal": "International Journal of High School Research (IJHSR), Vol. 8, Issue 12",
       "year": "2026",
       "link": "https://terra-docs.s3.us-east-2.amazonaws.com/IJHSR/Articles/volume8-issue12/IJHSR_2026_812.pdf",
-      "linkLabel": "Read paper (p. 89)",
+      "linkLabel": "Read Paper (p. 89)",
       "pageNote": "Paper begins on page 89 of the issue.",
       "abstract": "Commission-free apps put the stock market in every teenager's pocket, and the same tap that opens a trade opens a trapdoor. This paper examines the double-edged nature of digital trading platforms, weighing the access they hand ordinary investors against the risk of financial ruin that access invites. Drawing on data across major platforms, it follows three threads, accessibility, behavioral effects, and financial competence, and asks what frictionless trading really costs the people it claims to set free.",
-      "status": "published"
+      "status": "Published"
     }
   ],
   "projects": [
@@ -197,64 +197,70 @@
       "description": "Five years ago I picked up a violin with zero musical background and sat 3rd chair as a junior. I now lead the Advanced Orchestra as 1st chair, performing ABRSM Level 5 to 7 repertoire across 7 school concerts. Violin is the one thing in my life that refused to be rushed; you cannot cram a clean vibrato the night before a concert. It taught me the patience that everything else I build now quietly depends on."
     },
     {
-      "role": "Co-Founder & Leader",
-      "organization": "AI Club, Woodstock School",
+      "role": "AI Club,",
+      "organization": "Co-Founder & Leader, Woodstock School",
       "grades": "Grades 10-12",
       "description": "I co-founded Woodstock's AI Club because I was tired of watching classmates fear the tools I was already building with. Every week I lead more than 10 students through hands-on sessions on Claude Code, Codex, Gemini, Lovable, and real prompt engineering, the kind of work where you break something, read the error, and fix it yourself. The goal was never to teach AI as magic. It was to make a room of people who treat it as an instrument, not an oracle."
     },
     {
-      "role": "Editor in Chief",
+      "role": "Editor in Chief ",
       "organization": "School Yearbook, Woodstock School",
       "grades": "Grades 10-12",
       "description": "As Editor in Chief I run the full production of our school yearbook: I have designed over 50 pages, overseen layout and editing across a team, and photographed content for the school's social media. A yearbook is a strange deadline, one book, one shot, no reprints, and hundreds of people expecting to find themselves in it done right. Leading it taught me that design is really decision-making under constraint, and that someone has to own the last call."
     },
     {
-      "role": "Goalkeeper & Defender",
-      "organization": "Varsity Football, Woodstock School",
-      "grades": "Grades 9-11",
-      "description": "Over five years of varsity football I played goalkeeper and defender across more than 7 tournaments and 25 matches, contributing to over 18 team wins in regional competition. Both positions share one job: you are the last line, and your best games are the ones nobody notices because nothing got past you. That is a strange pride to learn young, being measured by the disasters you quietly prevent rather than the goals you loudly score."
+      "role": "Varsity Footballer",
+      "organization": "Goalkeeper & Defender, Woodstock School",
+      "grades": "Grades 8-11",
+      "description": "Over four years of varsity football I played goalkeeper and defender across more than 7 tournaments and 25 matches, contributing to over 18 team wins in regional competition. Both positions share one job: you are the last line, and your best games are the ones nobody notices because nothing got past you. That is a strange pride to learn young, being measured by the disasters you quietly prevent rather than the goals you loudly score."
     },
     {
-      "role": "Shooting Guard",
-      "organization": "Varsity Basketball, Woodstock School",
+      "role": "Varsity Basketballer",
+      "organization": "Shooting Guard, Woodstock School",
       "grades": "Grades 9-11",
       "description": "As a varsity shooting guard I competed in more than 4 tournaments and 20 matches, helped the team to over 11 wins, and finished 1st at the THS Regional Tournament. Where football taught me to prevent, basketball taught me to take the shot; a shooting guard who hesitates is useless. Playing both trained two instincts most people only pick one of: the patience to defend, and the nerve to pull the trigger when the moment is mine."
     },
     {
       "role": "Engineering Intern",
-      "organization": "KGOC and BAUM, India",
+      "organization": "KGOC & BAUM, India",
       "grades": "Grade 11",
       "description": "I completed two hands-on engineering internships in India. At KGOC I worked through product development end to end, watching an idea move from concept to a finished, manufacturable object. At BAUM I learned CAD fundamentals and industrial design inside a real engineering environment, turning sketches into precise models. Classrooms teach you the equations; a shop floor teaches you the tolerances, the trade-offs, and the fact that a design is not real until someone can actually build it."
     },
     {
-      "role": "Senior Intern",
-      "organization": "Woodstock School",
+      "role": "School Based Internships",
+      "organization": "Estates Head Intern & Alumni Senior Intern, Woodstock School",
       "grades": "Grades 10-12",
       "description": "I held two senior intern roles at Woodstock at once. As Estates Head Intern I managed campus logistics and the unglamorous machinery that keeps a boarding school running. As Alumni Senior Intern I rebuilt bridges between graduates and current students, reconnecting people to a place they had left. One role was about maintaining a system, the other about maintaining a community. Both taught me that institutions run on the quiet work nobody applauds."
     },
     {
-      "role": "Certified Hiker",
-      "organization": "Outdoor Education, Woodstock School and Negi Wilderness Camp",
+      "role": "Outdoor Education ",
+      "organization": "Camping & Hiking, Woodstock School & Negi Wilderness Camp",
       "grades": "Grades 9-12",
       "description": "Through multi-day expeditions with Woodstock and Negi Wilderness Camp I earned certifications in Leave No Trace hiking, Wilderness First Aid, adult and child CPR, and Epi-Pen administration. The Himalayas do not care about your GPA. They teach a blunter syllabus: carry your own weight, leave nothing behind, and know exactly what to do in the ten minutes before help can arrive. Those are the skills I hope I never need and am very glad to have."
     },
     {
-      "role": "Organizer",
+      "role": "Community Service Organizer",
       "organization": "Service Learning Day 2024, Woodstock School",
       "grades": "Grade 10",
       "description": "In Grade 10 I organized Service Learning Day 2024, coordinating 210 students across 20 groups for a day of inclusive activities and mural painting with underprivileged children. Logistics at that scale is its own quiet engineering: 210 people only move smoothly when someone has thought through the parts they never see. What stayed with me was not the murals we finished but how quickly the barrier between our students and the children dissolved once they were painting the same wall."
     },
     {
-      "role": "Researcher & Author",
+      "role": "Researcher & Author (STEM)",
       "organization": "STEM Research, Woodstock School",
       "grades": "Grades 11-12",
       "description": "My independent STEM research runs on two tracks. My Math AA HL Extended Essay, 'To Punt Or To Play,' models 4th-down decisions in American football using a mixed-strategy Nash Equilibrium and win probability. My Physics HL IA investigates how a paper plane's wing surface area affects its flight time, my first real handshake with aerodynamics. One project is game theory, the other is fluid mechanics, and both come from the same instinct: take something I love watching, and ask exactly why it behaves the way it does."
     },
     {
-      "role": "Academic Integrity & Service Leader",
-      "organization": "Academic Honesty Council (AHC) and NHS, Woodstock School",
+      "role": "Academic Honesty Council (AHC) (WS)",
+      "organization": "AHC, Woodstock School",
       "grades": "Grades 10-12",
-      "description": "Beyond the titles, the Academic Honesty Council and National Honor Society are where I do the actual work of leadership. On the AHC I have sat through more than 30 hearings and delivered an INIA webinar to over 80 students; through NHS I have organized more than 20 service events. The common thread is unglamorous responsibility: showing up for the parts of a school that only work when someone chooses to care about fairness and service when nobody is checking."
+      "description": ""
+    },
+    {
+      "role": "National Honor Society (NHS) (WS)",
+      "organization": "NHS, Woodstock School",
+      "grades": "Grades 11-12",
+      "description": ""
     }
   ],
   "honors": [
