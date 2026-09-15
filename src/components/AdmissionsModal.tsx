@@ -152,6 +152,9 @@ export default function AdmissionsModal() {
                   >
                     Are you an admissions officer?
                   </h2>
+                  <p className="text-xs text-zinc-400 dark:text-zinc-500">
+                    Trust me, click Yes if you are an AO.
+                  </p>
                 </div>
 
                 <div className="flex gap-3">
