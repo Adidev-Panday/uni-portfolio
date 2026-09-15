@@ -49,7 +49,7 @@
     "greeting": "Hey, I'm",
     "name": "Adidev Panday",
     "tagline": "Aspiring Aerospace Engineer",
-    "intro": "I'm a Woodstock School student from Ludhiana, India, headed for aerospace engineering: the place where physics, design, and code meet. I build AI-driven apps, publish research, and spend my spare hours on F1 aerodynamics, the violin, and football. This is everything I've made and earned, in one place.",
+    "intro": "I'm a Woodstock School student from Ludhiana, India, headed for aerospace engineering. I build AI-driven apps, publish research, and spend my spare hours watching my interesting Youtube feed, F1, playing the violin, and playing sports. Below, you will find everything that I'm proud of. ",
     "ctas": [
       {
         "label": "View Projects",
@@ -70,9 +70,9 @@
   },
   "about": {
     "paragraphs": [
-      "I grew up in Ludhiana, Punjab, and study at Woodstock School, taking HL Physics, Math AA, and Computer Science in the IB Diploma. My focus is aerospace engineering, where rigorous physics meets real design.",
-      "Outside class, I build things. I've shipped AI-powered web apps, developed a React Native app to tackle teen drunk-driving in my hometown, and published research on the risks of digital trading. I co-founded my school's AI Club, lead the yearbook as Editor in Chief, and play first chair violin in the Advanced Orchestra. I've competed in varsity football and basketball, interned in product development and CAD, and served on the Academic Honesty Council.",
-      "I'm drawn to problems that reward both rigor and creativity: from modeling 4th-down football decisions with game theory to studying how a paper plane's wing generates lift."
+      "I grew up in Ludhiana, Punjab, and study at Woodstock School, taking HL Physics, Math AA, and Computer Science in the IB Diploma. My focus is aerospace engineering where I hope to learn about aerodynamics & propulsion. ",
+      "Outside class, I love building things. I've shipped many AI-powered web apps, developed a React Native app to tackle teen drunk-driving in my hometown, and published research on the risks of digital trading. I co-founded my school's AI Club, lead the yearbook as Editor in Chief, and used to play first chair violin in the Advanced Orchestra. I've competed in varsity football and basketball, interned in product development and CAD, and served on the Academic Honesty Council (AHC) & NHS. ",
+      "Personally I feel drawn to problems that reward not just rigor but also creativity: from modeling 4th-down football decisions with game theory for my Extended Essay to studying how a paper plane's wing generates lift for my IA. "
     ]
   },
   "research": [
@@ -83,14 +83,14 @@
       "link": "https://terra-docs.s3.us-east-2.amazonaws.com/IJHSR/Articles/volume8-issue12/IJHSR_2026_812.pdf",
       "linkLabel": "Read Paper (p. 89)",
       "pageNote": "Paper begins on page 89 of the issue.",
-      "abstract": "Commission-free apps put the stock market in every teenager's pocket, and the same tap that opens a trade opens a trapdoor. This paper examines the double-edged nature of digital trading platforms, weighing the access they hand ordinary investors against the risk of financial ruin that access invites. Drawing on data across major platforms, it follows three threads, accessibility, behavioral effects, and financial competence, and asks what frictionless trading really costs the people it claims to set free.",
+      "abstract": "Digital trading platforms like Robinhood, Groww, and Zerodha have made market access a few clicks away for anyone, educated or not. This paper examines that double-edged shift, covering gamification, finfluencers, and the real cost of frictionless trading. Digitization is useful, but for financially illiterate users, it is a trapdoor.",
       "status": "Published"
     }
   ],
   "projects": [
     {
       "name": "DriveSafe",
-      "description": "A mobile app built to reduce teen drunk-driving in my hometown, featuring role-based flows, OTP authentication, real-time ride dispatch, and UPI payments. Currently being scaled for publishing.",
+      "description": "A mobile app built to reduce teen drunk-driving in my hometown, featuring role-based flows, OTP authentication, real-time ride dispatch tracking, and UPI payments. Currently unpublished due to complications; read about it in my medium article. ",
       "role": "Founder & Developer",
       "tags": [
         "React Native",
@@ -107,7 +107,7 @@
     },
     {
       "name": "NYT Puzzle Solver",
-      "description": "A tool that solves and surfaces daily answers for New York Times puzzles, built for the daily players who need a nudge (or a full solution).",
+      "description": "A tool that solves and updates daily answers for New York Times puzzles (Wordle, Connections, Spelling Bee), built for the daily players who need a nudge, or a full solution to save their streak. ",
       "role": "Developer",
       "tags": [
         "Web App"
@@ -123,7 +123,7 @@
     },
     {
       "name": "GrowwBot",
-      "description": "An AI-powered personal finance advisor that gives users tailored, conversational guidance on budgeting, investing, and financial planning.",
+      "description": "An AI-powered personal finance advisor that gives users tailored, conversational guidance on budgeting, investing, and financial planning. NOT LEGAL FINANCIAL ADVICE lol. ",
       "role": "Developer",
       "tags": [
         "Web App",
@@ -140,7 +140,7 @@
     },
     {
       "name": "Balancify",
-      "description": "An AI timetable and schedule maker that builds balanced, personalized study and activity plans, designed for students juggling academics and extracurriculars.",
+      "description": "An AI timetable and schedule maker that builds balanced, personalized study and activity plans, designed for students trying to manage both academics and extracurriculars.",
       "role": "Developer",
       "tags": [
         "Web App",
@@ -157,7 +157,7 @@
     },
     {
       "name": "WoodLink",
-      "description": "An alumni networking platform for Woodstock School, reconnecting graduates with current students through a full-stack web app. Currently runs locally.",
+      "description": "I noticed a lack of alumni-student connections in my school so I built an alumni networking platform for Woodstock School (my school) students and alumni. It attempts to reconnect graduates with current students through a full-stack web app. Currently runs locally (It is my CS IA, will publish after final IBDP submission).",
       "role": "Founder & Developer",
       "tags": [
         "Full-Stack",
@@ -174,7 +174,7 @@
     },
     {
       "name": "Navier-Stokes Sim",
-      "description": "Based on the recent buzz around OpenAI potentially solving the Navier-Stokes millennial problem, I decided to create a 2D airflow simulation using assistance from Claude Code to help high school physics students grasp the concept of the Navier-Stokes equations and thier importance. ",
+      "description": "Based on the recent buzz around OpenAI potentially solving the Navier-Stokes millennial problem, I decided to create a 2D airflow simulation using assistance from Claude Code to help high school physics students grasp the concept of the Navier-Stokes equations and their importance. ",
       "role": "Developer",
       "tags": [
         "Simulation"
@@ -194,73 +194,73 @@
       "role": "1st Chair Violinist",
       "organization": "Advanced Orchestra, Woodstock School",
       "grades": "Grades 9-12",
-      "description": "Five years ago I picked up a violin with zero musical background and sat 3rd chair as a junior. I now lead the Advanced Orchestra as 1st chair, performing ABRSM Level 5 to 7 repertoire across 7 school concerts. Violin is the one thing in my life that refused to be rushed; you cannot cram a clean vibrato the night before a concert. It taught me the patience that everything else I build now quietly depends on."
+      "description": "Descriptions to be added"
     },
     {
       "role": "AI Club,",
       "organization": "Co-Founder & Leader, Woodstock School",
       "grades": "Grades 10-12",
-      "description": "I co-founded Woodstock's AI Club because I was tired of watching classmates fear the tools I was already building with. Every week I lead more than 10 students through hands-on sessions on Claude Code, Codex, Gemini, Lovable, and real prompt engineering, the kind of work where you break something, read the error, and fix it yourself. The goal was never to teach AI as magic. It was to make a room of people who treat it as an instrument, not an oracle."
+      "description": "Descriptions in progress...I have too much work right now. "
     },
     {
       "role": "Editor in Chief ",
       "organization": "School Yearbook, Woodstock School",
       "grades": "Grades 10-12",
-      "description": "As Editor in Chief I run the full production of our school yearbook: I have designed over 50 pages, overseen layout and editing across a team, and photographed content for the school's social media. A yearbook is a strange deadline, one book, one shot, no reprints, and hundreds of people expecting to find themselves in it done right. Leading it taught me that design is really decision-making under constraint, and that someone has to own the last call."
+      "description": "Descriptions in progress...I have too much work right now. "
     },
     {
       "role": "Varsity Footballer",
       "organization": "Goalkeeper & Defender, Woodstock School",
       "grades": "Grades 8-11",
-      "description": "Over four years of varsity football I played goalkeeper and defender across more than 7 tournaments and 25 matches, contributing to over 18 team wins in regional competition. Both positions share one job: you are the last line, and your best games are the ones nobody notices because nothing got past you. That is a strange pride to learn young, being measured by the disasters you quietly prevent rather than the goals you loudly score."
+      "description": "Descriptions in progress...I have too much work right now. "
     },
     {
       "role": "Varsity Basketballer",
       "organization": "Shooting Guard, Woodstock School",
       "grades": "Grades 9-11",
-      "description": "As a varsity shooting guard I competed in more than 4 tournaments and 20 matches, helped the team to over 11 wins, and finished 1st at the THS Regional Tournament. Where football taught me to prevent, basketball taught me to take the shot; a shooting guard who hesitates is useless. Playing both trained two instincts most people only pick one of: the patience to defend, and the nerve to pull the trigger when the moment is mine."
+      "description": "Descriptions in progress...I have too much work right now. "
     },
     {
       "role": "Engineering Intern",
       "organization": "KGOC & BAUM, India",
       "grades": "Grade 11",
-      "description": "I completed two hands-on engineering internships in India. At KGOC I worked through product development end to end, watching an idea move from concept to a finished, manufacturable object. At BAUM I learned CAD fundamentals and industrial design inside a real engineering environment, turning sketches into precise models. Classrooms teach you the equations; a shop floor teaches you the tolerances, the trade-offs, and the fact that a design is not real until someone can actually build it."
+      "description": "Descriptions in progress...I have too much work right now. "
     },
     {
       "role": "School Based Internships",
       "organization": "Estates Head Intern & Alumni Senior Intern, Woodstock School",
       "grades": "Grades 10-12",
-      "description": "I held two senior intern roles at Woodstock at once. As Estates Head Intern I managed campus logistics and the unglamorous machinery that keeps a boarding school running. As Alumni Senior Intern I rebuilt bridges between graduates and current students, reconnecting people to a place they had left. One role was about maintaining a system, the other about maintaining a community. Both taught me that institutions run on the quiet work nobody applauds."
+      "description": "Descriptions in progress...I have too much work right now. "
     },
     {
       "role": "Outdoor Education ",
       "organization": "Camping & Hiking, Woodstock School & Negi Wilderness Camp",
       "grades": "Grades 9-12",
-      "description": "Through multi-day expeditions with Woodstock and Negi Wilderness Camp I earned certifications in Leave No Trace hiking, Wilderness First Aid, adult and child CPR, and Epi-Pen administration. The Himalayas do not care about your GPA. They teach a blunter syllabus: carry your own weight, leave nothing behind, and know exactly what to do in the ten minutes before help can arrive. Those are the skills I hope I never need and am very glad to have."
+      "description": "Descriptions in progress...I have too much work right now. "
     },
     {
       "role": "Community Service Organizer",
       "organization": "Service Learning Day 2024, Woodstock School",
       "grades": "Grade 10",
-      "description": "In Grade 10 I organized Service Learning Day 2024, coordinating 210 students across 20 groups for a day of inclusive activities and mural painting with underprivileged children. Logistics at that scale is its own quiet engineering: 210 people only move smoothly when someone has thought through the parts they never see. What stayed with me was not the murals we finished but how quickly the barrier between our students and the children dissolved once they were painting the same wall."
+      "description": "Descriptions in progress...I have too much work right now. "
     },
     {
       "role": "Researcher & Author (STEM)",
       "organization": "STEM Research, Woodstock School",
       "grades": "Grades 11-12",
-      "description": "My independent STEM research runs on two tracks. My Math AA HL Extended Essay, 'To Punt Or To Play,' models 4th-down decisions in American football using a mixed-strategy Nash Equilibrium and win probability. My Physics HL IA investigates how a paper plane's wing surface area affects its flight time, my first real handshake with aerodynamics. One project is game theory, the other is fluid mechanics, and both come from the same instinct: take something I love watching, and ask exactly why it behaves the way it does."
+      "description": "Descriptions in progress...I have too much work right now. "
     },
     {
       "role": "Academic Honesty Council (AHC) (WS)",
       "organization": "AHC, Woodstock School",
       "grades": "Grades 10-12",
-      "description": ""
+      "description": "Descriptions in progress...I have too much work right now. "
     },
     {
       "role": "National Honor Society (NHS) (WS)",
       "organization": "NHS, Woodstock School",
       "grades": "Grades 11-12",
-      "description": ""
+      "description": "Descriptions in progress...I have too much work right now. "
     }
   ],
   "honors": [
@@ -274,13 +274,13 @@
       "award": "Published Research Author",
       "issuer": "International Journal of High School Research (IJHSR)",
       "level": "International",
-      "description": "At sixteen I published a full research paper, 'The Rise of Digital Trading: Accessibility Versus Risk of Financial Ruin,' in the International Journal of High School Research, an internationally peer-reviewed journal. It was not a class assignment; I chose the question, gathered the data across trading platforms, and argued it through to the end. Seeing my name in print taught me that research is less about being certain and more about being precise."
+      "description": "At sixteen I published a full research paper, 'The Rise of Digital Trading: Accessibility Versus Risk of Financial Ruin,' in the International Journal of High School Research, an internationally peer-reviewed journal. I chose the question, gathered the data across trading platforms, and argued it through to the end. "
     },
     {
       "award": "Student Ambassador",
       "issuer": "European Network for Academic Integrity (ENAI)",
       "level": "International",
-      "description": "I am one of only two high schoolers ever selected as a Student Ambassador for the European Network for Academic Integrity, placed in a cohort otherwise made of PhD, Master's, and university candidates. I advise on integrity, referencing, and research ethics at an international level. Being the youngest voice in a room of doctoral researchers taught me to earn a seat by contributing, not by waiting to be old enough for it."
+      "description": "I am one of only two high schoolers selected as a Student Ambassador for the European Network for Academic Integrity, placed in a cohort otherwise made of PhD, Master's, and university candidates. I advise on integrity, referencing, and research ethics at an international level. Being the youngest voice in a room of doctoral researchers taught me to earn a seat by contributing, not by waiting to be old enough for it."
     },
     {
       "award": "Academic Honesty Council Member",
@@ -304,13 +304,13 @@
       "award": "Honor Roll",
       "issuer": "Woodstock School",
       "level": "School",
-      "description": "I was named to the Honor Roll as one of 15 students recognized for academic achievement across the school. It is not a single strong result; it is a full year of not letting the average slip while the IB load only climbs. Consistency is quieter than a prize, and harder to hold. That is exactly why this one means what it does to me."
+      "description": "I was named to the Honor Roll as one of 15 students recognized for academic achievement across the school. "
     },
     {
       "award": "2nd Place, E-Assessment",
       "issuer": "Woodstock School",
       "level": "School",
-      "description": "I placed second school-wide in the E-Assessment, a timed evaluation of academic and analytical ability. Finishing near the very top under exam conditions proved something my coursework alone cannot: that I can think fast and accurately when the clock is the loudest thing in the room. Depth and speed are different skills. This is the one that says I have both."
+      "description": "I placed second school-wide in the E-Assessment, a timed evaluation of academic and analytical ability. Finishing near the very top under exam conditions proved something my coursework alone cannot: that I can think fast and accurately when the clock is the loudest thing in the room. "
     }
   ],
   "profileLinks": [
@@ -341,7 +341,7 @@
   ],
   "contact": {
     "email": "panday.adidev@gmail.com",
-    "tagline": "Have an idea, an opportunity, or just want to say hi? My inbox is open.",
+    "tagline": "Want to talk, share ideas, or discuss any projects? Feel free to reach out!",
     "social": [
       {
         "label": "Instagram",
@@ -355,10 +355,10 @@
   },
   "whyAerospace": {
     "heading": "Why Aerospace?",
-    "subtitle": "The honest answer.",
+    "subtitle": "My Childhood Love",
     "paragraphs": [
       "I was three years old in a red toy Formula 1 car before I knew what a car really was, and I have been chasing the same feeling ever since. F1 taught me my first physics: that races are won and lost in how air bends around a machine, that a wing is just an upside-down promise, that milliseconds hide inside millimeters. That obsession with aerodynamics grew up alongside me, from taping wings onto paper planes to a Physics HL investigation on wing surface area and a Math HL derivation of the lift equation.",
-      "But aerodynamics only pulled me to the door. Propulsion is the reason I walked through it. The part that genuinely keeps me up is thrust: how you take stored energy and turn it into controlled, enormous force, how a column of plasma or a breath of burning air can move a body through a sky or past an atmosphere. Aerodynamics is how a machine survives the air. Propulsion is how it refuses to be held by it. That refusal is the engineering I want to spend my life on."
+      "But aerodynamics is not the full story. Propulsion is what actually attracted me to it, ironic right? The part that genuinely keeps me up is thrust: how you take stored energy and turn it into controlled, enormous force, how a column of plasma or a breath of burning air can move a body through a sky or past an atmosphere. I think Aerodynamics is how a machine survives the harsh air but Propulsion is how it refuses to be stopped by it. That is why I love aerospace. "
     ],
     "photos": [
       {
