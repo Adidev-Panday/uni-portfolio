@@ -77,7 +77,19 @@
       "pageNote": "Paper begins on page 94 of the issue.",
       "abstract": "Digital trading platforms like Robinhood, Groww, and Zerodha have made market access a few clicks away for anyone, educated or not. This paper examines that double-edged shift, covering gamification, finfluencers, and the real cost of frictionless trading. Digitization is useful, but for financially illiterate users, it is a trapdoor.",
       "status": "Published",
-      "modalBlurb": "You will be redirected to the IJHSR issue PDF. My paper starts on page 94."
+      "modalBlurb": "You will be redirected to the IJHSR issue PDF. My paper starts on page 94.",
+      "modalTitle": "Open the research paper?"
+    },
+    {
+      "title": "What It Would Actually Take to Drive an F1 Car on a Ceiling",
+      "journal": "Independent Research",
+      "year": "July 2026",
+      "link": "https://f1onceiling.netlify.app/",
+      "linkLabel": "View Interactive Paper",
+      "abstract": "Four documentaries claim an F1 car could drive upside down in a tunnel. None say how fast. This paper builds a ground-effect model of a 2022 to 2025 car and shows the honest answer is not a speed but a window, from 208 km/h where the car can finally hold its own motion, up to 327 km/h where its floor gets dragged into the ceiling.",
+      "status": "Interactive",
+      "modalBlurb": "You will be redirected to f1onceiling.netlify.app, an interactive version of the paper.",
+      "modalTitle": "Open the F1 on a Ceiling paper?"
     }
   ],
   "projects": [

@@ -87,7 +87,7 @@ export default function Hero() {
 
         {/* Name: large gradient heading, colours driven by CSS custom properties */}
         <motion.h1
-          className="text-5xl sm:text-7xl lg:text-[90px] font-bold tracking-tighter leading-[1.02] mb-6 [text-shadow:0_2px_8px_rgba(0,0,0,0.5)] dark:[text-shadow:none]"
+          className="text-5xl sm:text-7xl lg:text-[90px] font-bold tracking-tighter leading-[1.02] mb-6 [text-shadow:0_2px_6px_rgba(0,0,0,0.3)] dark:[text-shadow:none]"
           {...fadeUp(0.15)}
         >
           <span className="gradient-text">{hero.name}</span>
@@ -120,7 +120,7 @@ export default function Hero() {
               className={
                 primary
                   ? 'inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium bg-accent-fill text-white shadow-lg shadow-accent/20 hover:opacity-90 transition-colors duration-200'
-                  : 'inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium border border-zinc-300 dark:border-zinc-700 bg-white/90 dark:bg-transparent text-zinc-800 dark:text-zinc-300 hover:border-accent hover:text-accent transition-colors duration-200'
+                  : 'inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium bg-transparent border border-zinc-900 dark:border-zinc-700 text-zinc-900 dark:text-zinc-300 [text-shadow:0_1px_4px_rgba(0,0,0,0.4)] dark:[text-shadow:none] hover:bg-black/5 dark:hover:bg-transparent hover:border-accent hover:text-accent transition-colors duration-200'
               }
             >
               {label}

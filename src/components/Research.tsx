@@ -17,6 +17,7 @@ const statusStyles: Record<string, string> = {
   published: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400',
   preprint: 'bg-amber-500/10 text-amber-600 dark:text-amber-400',
   'in review': 'bg-blue-500/10 text-blue-600 dark:text-blue-400',
+  interactive: 'bg-violet-500/10 text-violet-600 dark:text-violet-400',
 }
 
 // Shared modal card animation (matches the project cards)
@@ -69,7 +70,7 @@ export default function Research() {
           />
         </ScrollReveal>
 
-        <div className="space-y-6">
+        <div className="grid md:grid-cols-2 gap-6">
           {research.map((paper, i) => (
             <ScrollReveal key={i} delay={0.1 * (i + 1)}>
               <motion.article
@@ -92,7 +93,7 @@ export default function Research() {
                 {/* Header row: status badge + decorative redirect indicator */}
                 <div className="flex items-start justify-between gap-4 mb-5">
                   <span
-                    className={`inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full ${statusStyles[paper.status] ?? statusStyles.published}`}
+                    className={`inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full ${statusStyles[paper.status.toLowerCase()] ?? statusStyles.published}`}
                   >
                     <BookOpen size={11} />
                     {paper.status.charAt(0).toUpperCase() + paper.status.slice(1)}
@@ -185,7 +186,7 @@ export default function Research() {
                     id="research-modal-title"
                     className="text-xl font-bold tracking-tight leading-snug"
                   >
-                    Open the research paper?
+                    {activePaper.modalTitle}
                   </h2>
                   <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed whitespace-pre-line">
                     {activePaper.modalBlurb}
