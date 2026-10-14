@@ -26,7 +26,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden [text-shadow:0_2px_12px_rgba(255,255,255,0.85)] dark:[text-shadow:none]"
     >
       {/* Layer 1 (-z-20): background photo + semi-transparent overlay */}
       <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
@@ -37,8 +37,8 @@ export default function Hero() {
           priority
           className="object-cover object-center"
         />
-        <div className="hero-base-overlay absolute inset-0 bg-white/[0.83] dark:bg-[#09090b]/[0.81]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-white/50 via-transparent to-transparent dark:from-[#09090b]/50 dark:via-transparent dark:to-transparent" />
+        <div className="hero-base-overlay absolute inset-0 bg-white/[0.25] dark:bg-[#09090b]/[0.81]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white/15 via-transparent to-transparent dark:from-[#09090b]/50 dark:via-transparent dark:to-transparent" />
       </div>
 
       {/* Layer 2 (-z-10): soft ambient blobs, colour driven by CSS custom properties */}

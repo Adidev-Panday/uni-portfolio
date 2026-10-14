@@ -4,10 +4,8 @@
 //
 // Centerpiece: "Fiat Lux", featured prominently in the Why Berkeley
 // section, with a lights-coming-on flourish when Berkeley is selected
-// (see AdmissionsModal). The Oski yell is a second, playful reveal:
-//   1. Clicking the bear glyph next to the "Why Berkeley" heading.
-//   2. Typing "oski" or "go bears" anywhere on the page.
-// Both call triggerOskiYell(), which this file's overlay listens for.
+// (see AdmissionsModal). The Oski yell is a second, playful reveal,
+// triggered by typing "oski" or "go bears" anywhere on the page.
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { Clock } from 'lucide-react'
@@ -29,7 +27,6 @@ export function triggerOskiYell() {
 
 const BERKELEY_TIME_TIP = 'Set to Berkeley Time. Everything here starts ten minutes late.'
 const BALL_TIP = 'Rub the 4.0 Ball for luck. Berkeley students swear by it.'
-const BEAR_TIP = 'Oski wow wow! Click for the Berkeley yell.'
 
 // Small tooltip wrapper shared by the three inline Berkeley affordances.
 function TipWrapper({
@@ -51,23 +48,6 @@ function TipWrapper({
         {tip}
       </span>
     </span>
-  )
-}
-
-// Small golden bear glyph next to "Why Berkeley" -- click plays the Oski yell.
-export function OskiBearButton() {
-  return (
-    <TipWrapper tip={BEAR_TIP}>
-      <button
-        type="button"
-        onClick={triggerOskiYell}
-        title={BEAR_TIP}
-        aria-label="Play the Oski yell"
-        className="text-xl leading-none align-middle rounded-full transition-transform duration-150 hover:scale-110 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FDB515]"
-      >
-        🐻
-      </button>
-    </TipWrapper>
   )
 }
 
@@ -128,7 +108,7 @@ export function FiatLuxBlock() {
 export function BerkeleyClassTag() {
   return (
     <span className="inline-flex items-center gap-1.5 rounded-full border border-[#FDB515]/40 bg-[#FDB515]/10 px-3 py-1 text-[11px] font-medium tracking-wide text-[#FDB515]">
-      🐻 Hopeful Golden Bear, Class of 2030
+      Hopeful Golden Bear, Class of 2030
     </span>
   )
 }

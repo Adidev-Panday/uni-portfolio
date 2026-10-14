@@ -93,14 +93,14 @@
       "github": "",
       "storyLink": {
         "label": "Read the story",
-        "href": "https://adidev.medium.com/drivesafe-an-attempt-to-reduce-teen-drunk-driving-c1f10162a53f"
+        "href": "https://adidevpanday.medium.com/"
       },
       "statusBadge": "",
       "statusNote": "",
       "modalBlurb": "DriveSafe doesn't have a live demo (the app is being scaled for publishing), but here is the Medium article I wrote about it.",
       "modalLink": {
         "label": "Read the story",
-        "href": "https://adidev.medium.com/drivesafe-an-attempt-to-reduce-teen-drunk-driving-c1f10162a53f"
+        "href": "https://adidevpanday.medium.com/"
       }
     },
     {
@@ -241,8 +241,8 @@
     },
     {
       "label": "Medium",
-      "handle": "adidev.medium.com",
-      "href": "https://adidev.medium.com/",
+      "handle": "adidevpanday.medium.com",
+      "href": "https://adidevpanday.medium.com/",
       "gradient": "from-emerald-700 to-emerald-900"
     },
     {

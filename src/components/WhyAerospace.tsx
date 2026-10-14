@@ -29,10 +29,6 @@ export default function WhyAerospace() {
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
                 sizes="(min-width: 768px) 66vw, 100vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/5 to-transparent pointer-events-none" />
-              <p className="absolute bottom-2.5 left-3 text-[11px] text-white/80 font-mono leading-tight">
-                {photos[0].alt}
-              </p>
             </div>
 
             {/* Photo 2: Toy car -- fills col 3 on desktop, starts new row on mobile */}
@@ -44,10 +40,6 @@ export default function WhyAerospace() {
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
                 sizes="(min-width: 768px) 33vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/5 to-transparent pointer-events-none" />
-              <p className="absolute bottom-2.5 left-2.5 text-[11px] text-white/80 font-mono leading-tight">
-                {photos[1].alt}
-              </p>
             </div>
 
             {/* Photos 3-5: square thumbnails across the second row */}
@@ -63,10 +55,6 @@ export default function WhyAerospace() {
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                   sizes="(min-width: 768px) 33vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/5 to-transparent pointer-events-none" />
-                <p className="absolute bottom-2.5 left-2.5 text-[11px] text-white/80 font-mono leading-tight">
-                  {photo.alt}
-                </p>
               </div>
             ))}
           </div>
