@@ -700,6 +700,18 @@
     -webkit-tap-highlight-color: transparent;
   }
 
+  /* Ease every dark/light toggle and school-theme switch instead of an
+     instant snap (§14, craft): both flip CSS custom properties that feed
+     background-color/border-color/color all over the page. Elements that
+     already declare their own transition-colors utility (hover states,
+     etc.) keep that faster, more specific timing; this is only the
+     fallback for everything else. */
+  *, *::before, *::after {
+    transition-property: background-color, border-color, color, fill, stroke, text-decoration-color;
+    transition-timing-function: ease;
+    transition-duration: 300ms;
+  }
+
   /* Light-mode body (default) */
   body {
     background-color: #ffffff;
