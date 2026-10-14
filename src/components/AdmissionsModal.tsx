@@ -137,13 +137,15 @@ export default function AdmissionsModal() {
           >
             <div className="relative w-full max-w-sm rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-2xl p-8 pointer-events-auto">
               {/* Close */}
-              <button
+              <motion.button
                 onClick={dismiss}
+                whileTap={pressTap}
+                transition={pressTransition}
                 className="absolute top-4 right-4 p-1.5 rounded-lg text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
                 aria-label="Dismiss"
               >
                 <X size={15} />
-              </button>
+              </motion.button>
 
               <div className="text-center space-y-6 pt-1">
                 <div className="space-y-2">

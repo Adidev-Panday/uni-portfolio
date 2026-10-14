@@ -694,6 +694,12 @@
     font-optical-sizing: auto;
   }
 
+  /* Kill the gray/blue tap-highlight flash on mobile Safari/Chrome; real
+     press feedback is handled per-element by Motion's whileTap (§6). */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   /* Light-mode body (default) */
   body {
     background-color: #ffffff;

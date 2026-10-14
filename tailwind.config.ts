@@ -3,6 +3,12 @@ import type { Config } from 'tailwindcss'
 const config: Config = {
   // Enable class-based dark mode (toggled by adding/removing the 'dark' class on <html>)
   darkMode: 'class',
+  future: {
+    // Scope every hover: / group-hover: variant to devices that actually
+    // support hover (@media (hover: hover) and (pointer: fine)), so a tap
+    // on touch can't leave a link stuck in its hover state (§6).
+    hoverOnlyWhenSupported: true,
+  },
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
