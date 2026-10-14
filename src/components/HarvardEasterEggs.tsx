@@ -88,7 +88,7 @@ export function HarvardMottoLine() {
 // Subtle class-year tag for the hero section.
 export function HarvardClassTag() {
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-[#A51C30]/30 bg-[#A51C30]/10 px-3 py-1 text-[11px] font-medium tracking-wide text-[#E04257]">
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-[11px] font-medium tracking-wide text-accent">
       Hopeful Crimson, Class of 2030
     </span>
   )

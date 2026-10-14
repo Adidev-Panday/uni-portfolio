@@ -26,9 +26,13 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden [text-shadow:0_2px_12px_rgba(255,255,255,0.85)] dark:[text-shadow:none]"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
     >
-      {/* Layer 1 (-z-20): background photo + semi-transparent overlay */}
+      {/* Layer 1 (-z-20): background photo.
+          Dark mode keeps the original full-hero tint (already reads well).
+          Light mode has no full-hero wash at all: the photo stays fully
+          visible, and legibility instead comes from the frosted panel
+          behind the text column below. */}
       <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
         <Image
           src="/background.jpg"
@@ -37,8 +41,10 @@ export default function Hero() {
           priority
           className="object-cover object-center"
         />
-        <div className="hero-base-overlay absolute inset-0 bg-white/[0.25] dark:bg-[#09090b]/[0.81]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-white/15 via-transparent to-transparent dark:from-[#09090b]/50 dark:via-transparent dark:to-transparent" />
+
+        {/* Dark mode: unchanged flat tint + top-fade gradient */}
+        <div className="hidden dark:block absolute inset-0 bg-[#09090b]/[0.81]" />
+        <div className="hidden dark:block absolute inset-0 bg-gradient-to-t from-[#09090b]/50 via-transparent to-transparent" />
       </div>
 
       {/* Layer 2 (-z-10): soft ambient blobs, colour driven by CSS custom properties */}
@@ -61,71 +67,84 @@ export default function Hero() {
       </motion.div>
 
       {/* Content */}
-      <div className="section-container py-32">
-        {/* Greeting */}
-        <motion.span
-          className="inline-block text-accent font-mono text-sm tracking-widest mb-5"
-          {...fadeUp(0.05)}
-        >
-          {hero.greeting}
-        </motion.span>
+      <div className="section-container py-32 relative">
+        {/* Light-mode-only frosted panel behind the text column. Sized via
+            negative inset off this same (relative) container, so it always
+            matches the text's own box with no manual coordinate guessing,
+            then padded outward a little for breathing room. Dark mode
+            already reads correctly from the full-hero tint above, so this
+            is hidden there. */}
+        <div className="dark:hidden absolute inset-x-0 -top-8 -bottom-8 max-w-3xl bg-white/75 backdrop-blur-2xl rounded-[2rem] shadow-xl shadow-black/5" />
 
-        {/* Class tag, bespoke theme schools only */}
-        {schoolId && BESPOKE_SCHOOLS.includes(schoolId) && (
-          <motion.div className="mb-5" {...fadeUp(0.1)}>
-            {schoolId === 'princeton' && <PrincetonClassTag />}
-            {schoolId === 'harvard' && <HarvardClassTag />}
-            {schoolId === 'uc-berkeley' && <BerkeleyClassTag />}
+        {/* Text content: `relative` so it stacks above the panel (an
+            absolutely-positioned sibling would otherwise paint on top of
+            static content regardless of DOM order). */}
+        <div className="relative">
+          {/* Greeting */}
+          <motion.span
+            className="inline-block text-accent font-mono text-sm tracking-widest mb-5"
+            {...fadeUp(0.05)}
+          >
+            {hero.greeting}
+          </motion.span>
+
+          {/* Class tag, bespoke theme schools only */}
+          {schoolId && BESPOKE_SCHOOLS.includes(schoolId) && (
+            <motion.div className="mb-5" {...fadeUp(0.1)}>
+              {schoolId === 'princeton' && <PrincetonClassTag />}
+              {schoolId === 'harvard' && <HarvardClassTag />}
+              {schoolId === 'uc-berkeley' && <BerkeleyClassTag />}
+            </motion.div>
+          )}
+
+          {/* Name: large gradient heading, colours driven by CSS custom properties */}
+          <motion.h1
+            className="text-5xl sm:text-7xl lg:text-[90px] font-bold tracking-tighter leading-[1.02] mb-6"
+            {...fadeUp(0.15)}
+          >
+            <span className="gradient-text">{hero.name}</span>
+          </motion.h1>
+
+          {/* Tagline */}
+          <motion.p
+            className="text-lg sm:text-xl text-zinc-900 dark:text-zinc-300 max-w-2xl mb-4 leading-relaxed font-medium"
+            {...fadeUp(0.25)}
+          >
+            {hero.tagline}
+          </motion.p>
+
+          {/* Intro blurb */}
+          <motion.p
+            className="text-base text-zinc-800 dark:text-zinc-400 max-w-xl mb-10 leading-relaxed"
+            {...fadeUp(0.35)}
+          >
+            {hero.intro}
+          </motion.p>
+
+          {/* CTA buttons */}
+          <motion.div className="flex flex-wrap gap-4" {...fadeUp(0.45)}>
+            {hero.ctas.map(({ label, href, primary }) => (
+              <motion.a
+                key={label}
+                href={href}
+                whileTap={pressTap}
+                transition={pressTransition}
+                className={
+                  primary
+                    ? 'inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium bg-accent-fill text-white shadow-lg shadow-accent/20 hover:opacity-90 transition-colors duration-200'
+                    : 'inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium border border-zinc-300 dark:border-zinc-700 bg-white/90 dark:bg-transparent text-zinc-800 dark:text-zinc-300 hover:border-accent hover:text-accent transition-colors duration-200'
+                }
+              >
+                {label}
+              </motion.a>
+            ))}
           </motion.div>
-        )}
-
-        {/* Name: large gradient heading, colours driven by CSS custom properties */}
-        <motion.h1
-          className="text-5xl sm:text-7xl lg:text-[90px] font-bold tracking-tighter leading-[1.02] mb-6"
-          {...fadeUp(0.15)}
-        >
-          <span className="gradient-text">{hero.name}</span>
-        </motion.h1>
-
-        {/* Tagline */}
-        <motion.p
-          className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-300 max-w-2xl mb-4 leading-relaxed font-medium"
-          {...fadeUp(0.25)}
-        >
-          {hero.tagline}
-        </motion.p>
-
-        {/* Intro blurb */}
-        <motion.p
-          className="text-base text-zinc-500 dark:text-zinc-400 max-w-xl mb-10 leading-relaxed"
-          {...fadeUp(0.35)}
-        >
-          {hero.intro}
-        </motion.p>
-
-        {/* CTA buttons */}
-        <motion.div className="flex flex-wrap gap-4" {...fadeUp(0.45)}>
-          {hero.ctas.map(({ label, href, primary }) => (
-            <motion.a
-              key={label}
-              href={href}
-              whileTap={pressTap}
-              transition={pressTransition}
-              className={
-                primary
-                  ? 'inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium bg-accent-fill text-white shadow-lg shadow-accent/20 hover:opacity-90 transition-colors duration-200'
-                  : 'inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:border-accent hover:text-accent transition-colors duration-200'
-              }
-            >
-              {label}
-            </motion.a>
-          ))}
-        </motion.div>
+        </div>
       </div>
 
       {/* Animated scroll indicator */}
       <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-zinc-400"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-zinc-600 dark:text-zinc-400"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.6 }}

@@ -59,7 +59,7 @@ export function BerkeleyTimeTip() {
         type="button"
         title={BERKELEY_TIME_TIP}
         aria-label="Berkeley Time"
-        className="align-middle text-[#FDB515]/80 rounded-full transition-colors duration-150 hover:text-[#FDB515] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FDB515]"
+        className="align-middle text-accent/80 rounded-full transition-colors duration-150 hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FDB515]"
       >
         <Clock size={16} />
       </button>
@@ -92,7 +92,7 @@ export function FiatLuxBlock() {
         style={{ background: 'radial-gradient(ellipse, rgb(253 181 21 / 0.22) 0%, transparent 70%)' }}
       />
       <p
-        className="relative text-3xl sm:text-4xl font-bold tracking-tight text-[#FDB515]"
+        className="relative text-3xl sm:text-4xl font-bold tracking-tight text-accent"
         style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
       >
         Fiat Lux
@@ -107,7 +107,7 @@ export function FiatLuxBlock() {
 // Subtle class-year tag for the hero section.
 export function BerkeleyClassTag() {
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-[#FDB515]/40 bg-[#FDB515]/10 px-3 py-1 text-[11px] font-medium tracking-wide text-[#FDB515]">
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-[11px] font-medium tracking-wide text-accent">
       Hopeful Golden Bear, Class of 2030
     </span>
   )

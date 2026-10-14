@@ -16,7 +16,7 @@ import SectionHeader from './SectionHeader'
 
 export default function CV() {
   return (
-    <section id="cv" className="py-24 min-h-[60vh] flex flex-col justify-center">
+    <section id="cv" className="py-24 min-h-[60vh]">
       <div className="section-container">
         <ScrollReveal>
           <SectionHeader

@@ -18,7 +18,7 @@ export default function SectionHeader({ number, title, subtitle }: SectionHeader
         {title}
       </h2>
       {subtitle && (
-        <p className="text-zinc-500 dark:text-zinc-400 text-sm mt-2">
+        <p className="text-zinc-600 dark:text-zinc-400 text-sm mt-2">
           {subtitle}
         </p>
       )}

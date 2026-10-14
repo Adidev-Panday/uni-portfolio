@@ -78,7 +78,7 @@ export default function Projects() {
                     openFromCard(project, e.currentTarget.getBoundingClientRect())
                   }
                 }}
-                className="school-card group flex flex-col h-full p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 hover:border-accent/40 transition-colors duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
+                className="school-card group flex flex-col h-full p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white shadow-sm dark:bg-zinc-900/60 dark:shadow-none hover:border-accent/40 transition-colors duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
                 whileHover={{
                   y: -5,
                   boxShadow: '0 24px 48px -8px rgb(var(--accent-rgb) / 0.10)',

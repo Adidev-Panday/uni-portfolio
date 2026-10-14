@@ -75,7 +75,7 @@ export function PrincetonMottoLine() {
 // Subtle class-year tag for the hero section.
 export function PrincetonClassTag() {
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-[#E77500]/30 bg-[#E77500]/10 px-3 py-1 text-[11px] font-medium tracking-wide text-[#FF8F1C]">
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-[11px] font-medium tracking-wide text-accent">
       Hopeful Tiger, Class of 2030
     </span>
   )
