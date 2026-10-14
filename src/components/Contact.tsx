@@ -1,5 +1,5 @@
 'use client'
-// Contact section — email CTA + social links.
+// Contact section: email CTA plus social links.
 import { Mail, ArrowUpRight } from 'lucide-react'
 import { contact } from '@/data/content'
 import ScrollReveal from './ScrollReveal'
@@ -21,7 +21,7 @@ export default function Contact() {
             </p>
           </ScrollReveal>
 
-          {/* Email button — the main CTA */}
+          {/* Email button: the main CTA */}
           <ScrollReveal delay={0.2}>
             <a
               href={`mailto:${contact.email}`}

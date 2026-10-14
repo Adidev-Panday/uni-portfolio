@@ -34,7 +34,7 @@
 
 /* 1. Bocconi  base:#001A33  primary:#002E5D  accent:#4B9CD3 */
 [data-school="bocconi"] {
-  --accent-rgb: 0 46 93;          /* primary navy — light-mode text */
+  --accent-rgb: 0 46 93;          /* primary navy, light-mode text */
   --accent-secondary-rgb: 75 156 211;
   --accent-fill: #002E5D;
   --body-bg-dark: #001A33;
@@ -61,7 +61,7 @@
 
 /* 4. HKU-Berkeley  base:#04211D  primary:#007A6C  accent:#E3B23C */
 [data-school="hku-berkeley"] {
-  --accent-rgb: 0 122 108;         /* HKU green — readable on white 5.2:1 */
+  --accent-rgb: 0 122 108;         /* HKU green, readable on white 5.2:1 */
   --accent-secondary-rgb: 227 178 60;
   --accent-fill: #007A6C;
   --body-bg-dark: #04211D;
@@ -79,7 +79,7 @@
 
 /* 6. Princeton  base:#0A0A0A  primary:#E77500  accent:#FF8F1C */
 [data-school="princeton"] {
-  --accent-rgb: 231 117 0;         /* orange — passes large-text AA on white */
+  --accent-rgb: 231 117 0;         /* orange, passes large-text AA on white */
   --accent-secondary-rgb: 255 143 28;
   --accent-fill: #E77500;
   --body-bg-dark: #0A0A0A;
@@ -97,7 +97,7 @@
 
 /* 8. TU Delft  base:#0A1F3A  primary:#00A6D6  accent:#4DBFE3 */
 [data-school="tu-delft"] {
-  --accent-rgb: 0 166 214;         /* cyan — passes large-text AA on white */
+  --accent-rgb: 0 166 214;         /* cyan, passes large-text AA on white */
   --accent-secondary-rgb: 77 191 227;
   --accent-fill: #0C2340;          /* dark navy for button fills */
   --body-bg-dark: #0A1F3A;
@@ -151,7 +151,7 @@
 
 /* 14. UCLA  base:#003B5C  primary:#2774AE  accent:#FFD100 */
 [data-school="ucla"] {
-  --accent-rgb: 39 116 174;        /* UCLA blue — 4.6:1 on white, passes AA */
+  --accent-rgb: 39 116 174;        /* UCLA blue, 4.6:1 on white, passes AA */
   --accent-secondary-rgb: 255 209 0;
   --accent-fill: #2774AE;
   --body-bg-dark: #003B5C;
@@ -187,7 +187,7 @@
 
 /* 18. University of Manchester  base:#1A0033  primary:#660099  accent:#FFCC33 */
 [data-school="manchester"] {
-  --accent-rgb: 102 0 153;         /* Manchester purple — 9.8:1 on white */
+  --accent-rgb: 102 0 153;         /* Manchester purple, 9.8:1 on white */
   --accent-secondary-rgb: 255 204 51;
   --accent-fill: #660099;
   --body-bg-dark: #1A0033;
@@ -604,20 +604,20 @@
   background-color: var(--body-bg-dark, #09090b);
 }
 
-/* Alternating section surfaces — slightly lighter than body */
+/* Alternating section surfaces: slightly lighter than body */
 .dark[data-school] #about,
 .dark[data-school] #projects,
 .dark[data-school] #contact {
   background-color: color-mix(in srgb, var(--body-bg-dark, #09090b) 90%, white);
 }
 
-/* Scrolled nav frosted glass — school-coloured tint */
+/* Scrolled nav frosted glass: school-coloured tint */
 .dark[data-school] header[data-scrolled="true"] {
   background-color: color-mix(in srgb, var(--body-bg-dark, #09090b) 85%, transparent);
   border-bottom-color: rgb(var(--accent-rgb) / 0.2);
 }
 
-/* Card surfaces — one step lighter than section surface */
+/* Card surfaces: one step lighter than section surface */
 .dark[data-school] .school-card {
   /* Fallback if color-mix is unsupported */
   background-color: rgb(40 60 90 / 0.7);
@@ -720,7 +720,7 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Dark-mode body — uses CSS variable so school themes can override */
+  /* Dark-mode body: uses CSS variable so school themes can override */
   .dark body {
     background-color: var(--body-bg-dark, #09090b);
     @apply text-zinc-50;
@@ -756,7 +756,7 @@ body.modal-open main {
    ============================================================ */
 
 @layer utilities {
-  /* Hero name gradient — accent-rgb + secondary create a two-tone sweep */
+  /* Hero name gradient: accent-rgb plus secondary create a two-tone sweep */
   .gradient-text {
     background-image: linear-gradient(
       to right,

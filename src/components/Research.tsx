@@ -1,5 +1,5 @@
 'use client'
-// Research section — displays published papers as rich cards.
+// Research section: displays published papers as rich cards.
 import { research } from '@/data/content'
 import ScrollReveal from './ScrollReveal'
 import SectionHeader from './SectionHeader'

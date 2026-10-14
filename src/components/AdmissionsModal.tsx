@@ -51,7 +51,7 @@ export default function AdmissionsModal() {
         setActiveSchool(stored as SchoolId)
       }
     } catch {
-      // sessionStorage unavailable — degrade gracefully
+      // sessionStorage unavailable, degrade gracefully
     }
   }, [])
 
@@ -124,7 +124,7 @@ export default function AdmissionsModal() {
         )}
       </AnimatePresence>
 
-      {/* Step 1 — Are you an admissions officer? */}
+      {/* Step 1: Are you an admissions officer? */}
       <AnimatePresence>
         {step === 'question' && (
           <motion.div
@@ -188,7 +188,7 @@ export default function AdmissionsModal() {
         )}
       </AnimatePresence>
 
-      {/* Step 2 — School picker */}
+      {/* Step 2: School picker */}
       <AnimatePresence>
         {step === 'picker' && (
           <motion.div

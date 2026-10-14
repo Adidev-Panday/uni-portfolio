@@ -1,5 +1,5 @@
 'use client'
-// Links / Profiles section — prominent gradient link cards.
+// Links / Profiles section: prominent gradient link cards.
 import { motion } from 'motion/react'
 import { ArrowUpRight } from 'lucide-react'
 import { profileLinks } from '@/data/content'

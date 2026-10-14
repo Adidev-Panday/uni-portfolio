@@ -41,7 +41,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-white/50 via-transparent to-transparent dark:from-[#09090b]/50 dark:via-transparent dark:to-transparent" />
       </div>
 
-      {/* Layer 2 (-z-10): soft ambient blobs — colour driven by CSS custom properties */}
+      {/* Layer 2 (-z-10): soft ambient blobs, colour driven by CSS custom properties */}
       <motion.div
         className="pointer-events-none absolute inset-0 -z-10"
         initial={{ opacity: 0 }}
@@ -79,7 +79,7 @@ export default function Hero() {
           </motion.div>
         )}
 
-        {/* Name — large gradient heading, colours driven by CSS custom properties */}
+        {/* Name: large gradient heading, colours driven by CSS custom properties */}
         <motion.h1
           className="text-5xl sm:text-7xl lg:text-[90px] font-bold tracking-tighter leading-[1.02] mb-6"
           {...fadeUp(0.15)}

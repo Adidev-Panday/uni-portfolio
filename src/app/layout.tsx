@@ -4,7 +4,7 @@ import { MotionConfig } from 'motion/react'
 import './globals.css'
 import { meta } from '@/data/content'
 
-// Load Inter via next/font — zero layout shift, self-hosted by Vercel
+// Load Inter via next/font (zero layout shift, self-hosted by Vercel)
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   description: meta.description,
   metadataBase: new URL(meta.siteUrl),
   openGraph: {
-    title: `${meta.name} — Portfolio`,
+    title: `${meta.name} Portfolio`,
     description: meta.description,
     url: meta.siteUrl,
     siteName: meta.name,
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${meta.name} — Portfolio`,
+    title: `${meta.name} Portfolio`,
     description: meta.description,
     images: [meta.ogImage],
   },
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     // suppressHydrationWarning: the 'dark' class is applied client-side before
-    // hydration, so React will see a mismatch — suppress that one warning.
+    // hydration, so React will see a mismatch; suppress that one warning.
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${playfair.variable}`}>
       <head>
         {/* Inline theme script runs synchronously before any CSS/JS */}

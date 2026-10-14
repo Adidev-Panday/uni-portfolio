@@ -1,7 +1,7 @@
-// Shared section header — number label, title, optional subtitle, accent bar.
+// Shared section header: number label, title, optional subtitle, accent bar.
 // Used at the top of every section for visual consistency.
 interface SectionHeaderProps {
-  number?: string  // e.g. "01." — omit to hide the number label
+  number?: string  // e.g. "01." (omit to hide the number label)
   title: string
   subtitle?: string
 }
@@ -22,7 +22,7 @@ export default function SectionHeader({ number, title, subtitle }: SectionHeader
           {subtitle}
         </p>
       )}
-      {/* Gradient accent underline — colours driven by CSS custom properties */}
+      {/* Gradient accent underline: colours driven by CSS custom properties */}
       <div className="h-px w-16 mt-4 accent-gradient-bar" />
     </div>
   )

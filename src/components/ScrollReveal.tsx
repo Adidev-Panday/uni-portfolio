@@ -19,7 +19,7 @@ export default function ScrollReveal({
   direction = 'up',
 }: ScrollRevealProps) {
   const ref = useRef(null)
-  // once: true — animation only plays the first time the element enters view
+  // once: true, animation only plays the first time the element enters view
   const isInView = useInView(ref, { once: true, margin: '-80px' })
 
   const initial = {
@@ -41,7 +41,7 @@ export default function ScrollReveal({
       transition={{
         duration: 0.65,
         delay,
-        ease: [0.21, 0.47, 0.32, 0.98], // custom ease — feels natural
+        ease: [0.21, 0.47, 0.32, 0.98], // custom ease, feels natural
       }}
     >
       {children}
