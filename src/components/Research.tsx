@@ -17,7 +17,7 @@ const statusStyles: Record<string, string> = {
   published: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400',
   preprint: 'bg-amber-500/10 text-amber-600 dark:text-amber-400',
   'in review': 'bg-blue-500/10 text-blue-600 dark:text-blue-400',
-  independent: 'bg-violet-500/10 text-violet-600 dark:text-violet-400',
+  unpublished: 'bg-violet-500/10 text-violet-600 dark:text-violet-400',
 }
 
 // Shared modal card animation (matches the project cards)
@@ -93,10 +93,10 @@ export default function Research() {
                 {/* Header row: status badge + decorative redirect indicator */}
                 <div className="flex items-start justify-between gap-4 mb-5">
                   <span
-                    className={`inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full ${statusStyles[paper.status.toLowerCase()] ?? statusStyles.published}`}
+                    className={`inline-flex items-center gap-1.5 text-[11px] font-medium px-2.5 py-1 rounded-full whitespace-nowrap ${statusStyles[paper.status.toLowerCase()] ?? statusStyles.published}`}
                   >
                     <BookOpen size={11} />
-                    {paper.status.charAt(0).toUpperCase() + paper.status.slice(1)}
+                    {paper.statusLabel}
                   </span>
 
                   {/* Decorative redirect indicator; clicks fall through to the card */}

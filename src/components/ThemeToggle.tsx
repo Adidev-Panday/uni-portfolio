@@ -7,7 +7,13 @@ import { Moon, Sun } from 'lucide-react'
 import { motion } from 'motion/react'
 import { springUI } from '@/lib/motion'
 
-export default function ThemeToggle() {
+interface ThemeToggleProps {
+  // Light mode only: true while the nav sits over the still-visible
+  // hero photo, so the icon goes white to stay legible there.
+  overHero?: boolean
+}
+
+export default function ThemeToggle({ overHero = false }: ThemeToggleProps) {
   const [isDark, setIsDark] = useState(true)
   const [mounted, setMounted] = useState(false)
 
@@ -33,7 +39,11 @@ export default function ThemeToggle() {
   return (
     <motion.button
       onClick={toggle}
-      className="p-2 rounded-lg text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+      className={`p-2 rounded-lg transition-[color,text-shadow] duration-200 ${
+        overHero
+          ? 'text-white hover:text-white/80 hover:bg-white/10 dark:text-zinc-500 dark:hover:text-zinc-100 dark:hover:bg-zinc-800 [filter:drop-shadow(0_1px_3px_rgba(0,0,0,0.4))] dark:[filter:none]'
+          : 'text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800'
+      }`}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       whileTap={{ scale: 0.9 }}
     >

@@ -17,6 +17,27 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const { school, schoolId } = useSchoolTheme()
 
+  // Hero has no nav link of its own, but it IS one of the sections the
+  // scrollspy below tracks, so this is just "is the hero still the
+  // current section". Light mode only: while true, nav text goes white
+  // to read against the photo; once the user scrolls past the hero it
+  // drops back to the normal dark nav text. Dark mode never uses this.
+  const overHero = activeSection === 'hero'
+
+  // Shared class builder for the desktop nav links, so the "why school"
+  // link and the mapped navLinks stay in sync instead of duplicating
+  // the same four-way (active/inactive x overHero/not) logic twice.
+  const navLinkClass = (isActive: boolean) => {
+    if (isActive) {
+      return overHero
+        ? 'text-white dark:text-accent [text-shadow:0_2px_6px_rgba(0,0,0,0.4)] dark:[text-shadow:none]'
+        : 'text-accent [text-shadow:none]'
+    }
+    return overHero
+      ? 'text-white hover:text-white/80 dark:text-zinc-400 dark:hover:text-zinc-100 [text-shadow:0_2px_6px_rgba(0,0,0,0.4)] dark:[text-shadow:none]'
+      : 'text-zinc-700 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 [text-shadow:none]'
+  }
+
   // Show background/blur once page is scrolled past 24px
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -115,7 +136,11 @@ export default function Navbar() {
           href="#hero"
           onDoubleClick={(e) => { e.preventDefault(); resetExperience() }}
           title="Double-click to reset"
-          className="text-sm font-semibold tracking-tight hover:text-accent transition-colors [text-shadow:0_1px_3px_rgba(255,255,255,0.8)] dark:[text-shadow:none]"
+          className={`text-sm font-semibold tracking-tight transition-[color,text-shadow] duration-200 hover:text-accent dark:text-zinc-50 ${
+            overHero
+              ? 'text-white [text-shadow:0_2px_6px_rgba(0,0,0,0.4)] dark:[text-shadow:none]'
+              : 'text-zinc-900 [text-shadow:none]'
+          }`}
         >
           {meta.name.split(' ')[0]}
           <span className="text-accent">.</span>
@@ -136,11 +161,7 @@ export default function Navbar() {
               >
                 <a
                   href="#why-school"
-                  className={`relative px-3 py-1.5 text-sm rounded-md transition-colors duration-200 whitespace-nowrap [text-shadow:0_1px_3px_rgba(255,255,255,0.8)] dark:[text-shadow:none] ${
-                    activeSection === 'why-school'
-                      ? 'text-accent'
-                      : 'text-zinc-700 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
-                  }`}
+                  className={`relative px-3 py-1.5 text-sm rounded-md transition-[color,text-shadow] duration-200 whitespace-nowrap ${navLinkClass(activeSection === 'why-school')}`}
                 >
                   {activeSection === 'why-school' && (
                     <motion.span
@@ -162,11 +183,7 @@ export default function Navbar() {
               <li key={href}>
                 <a
                   href={href}
-                  className={`relative px-3 py-1.5 text-sm rounded-md transition-colors duration-200 [text-shadow:0_1px_3px_rgba(255,255,255,0.8)] dark:[text-shadow:none] ${
-                    isActive
-                      ? 'text-accent'
-                      : 'text-zinc-700 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
-                  }`}
+                  className={`relative px-3 py-1.5 text-sm rounded-md transition-[color,text-shadow] duration-200 ${navLinkClass(isActive)}`}
                 >
                   {/* Animated highlight pill */}
                   {isActive && (
@@ -185,11 +202,15 @@ export default function Navbar() {
 
         {/* Right controls */}
         <div className="flex items-center gap-1">
-          <ThemeToggle />
+          <ThemeToggle overHero={overHero} />
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2 rounded-lg text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+            className={`md:hidden p-2 rounded-lg transition-[color,text-shadow] duration-200 ${
+              overHero
+                ? 'text-white hover:text-white/80 hover:bg-white/10 dark:text-zinc-500 dark:hover:text-zinc-100 dark:hover:bg-zinc-800 [filter:drop-shadow(0_1px_3px_rgba(0,0,0,0.4))] dark:[filter:none]'
+                : 'text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800'
+            }`}
             onClick={() => setMobileOpen((o) => !o)}
             aria-label="Toggle menu"
             aria-expanded={mobileOpen}
