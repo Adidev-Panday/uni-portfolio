@@ -95,7 +95,57 @@
         "href": "https://adidev.medium.com/drivesafe-an-attempt-to-reduce-teen-drunk-driving-c1f10162a53f"
       },
       "statusBadge": "",
-      "statusNote": ""
+      "statusNote": "",
+      "modalBlurb": "DriveSafe doesn't have a live demo (the app is being scaled for publishing), but here is the Medium article I wrote about it.",
+      "modalLink": {
+        "label": "Read the story",
+        "href": "https://adidev.medium.com/drivesafe-an-attempt-to-reduce-teen-drunk-driving-c1f10162a53f"
+      }
+    },
+    {
+      "name": "AirflowNS",
+      "description": "An interactive Navier-Stokes fluid-flow simulator that lets you draw flows and watch the equations resolve in real time, built as a teaching tool for physics and math classrooms.",
+      "role": "Developer",
+      "tags": [
+        "Web App",
+        "Computational Fluid Dynamics",
+        "Navier-Stokes Equations"
+      ],
+      "demo": "https://airflowns.netlify.app/",
+      "github": "https://github.com/Adidev-Panday/airflowlab-navier-stokes",
+      "storyLink": {
+        "label": "",
+        "href": ""
+      },
+      "statusBadge": "",
+      "statusNote": "",
+      "modalBlurb": "You will be redirected to airflowns.netlify.app, where you can draw flows and watch the Navier-Stokes solver run in real time.",
+      "modalLink": {
+        "label": "Open site",
+        "href": "https://airflowns.netlify.app/"
+      }
+    },
+    {
+      "name": "StarsInMaine",
+      "description": "A web app that recreates the night sky described in Alan Lightman's \"Searching for Stars on an Island in Maine,\" built as part of my work with him.",
+      "role": "Developer",
+      "tags": [
+        "Web App",
+        "Astronomy Data Visualization"
+      ],
+      "demo": "https://starsinmaine.vercel.app/",
+      "github": "",
+      "storyLink": {
+        "label": "",
+        "href": ""
+      },
+      "statusBadge": "",
+      "statusNote": "",
+      "modalBlurb": "You will be redirected to starsinmaine.vercel.app, the night-sky recreation I built for Alan Lightman.",
+      "modalLink": {
+        "label": "Open site",
+        "href": "https://starsinmaine.vercel.app/"
+      }
     },
     {
       "name": "NYT Puzzle Solver",
@@ -111,7 +161,12 @@
         "href": ""
       },
       "statusBadge": "",
-      "statusNote": ""
+      "statusNote": "",
+      "modalBlurb": "You will be redirected to nytpuzzleanswers.netlify.app, which solves and provides answers for New York Times puzzles.",
+      "modalLink": {
+        "label": "Open site",
+        "href": "https://nytpuzzleanswers.netlify.app/"
+      }
     },
     {
       "name": "GrowwBot",
@@ -128,7 +183,8 @@
         "href": ""
       },
       "statusBadge": "",
-      "statusNote": "Note: temporarily non-functional, as the AI API keys have expired and run out of credit."
+      "statusNote": "Note: temporarily non-functional, as the AI API keys have expired and run out of credit.",
+      "modalBlurb": "The live demo is temporarily down because the AI API keys have expired and run out of credit. The project itself still works, just not the hosted version."
     },
     {
       "name": "Balancify",
@@ -145,7 +201,8 @@
         "href": ""
       },
       "statusBadge": "",
-      "statusNote": "Note: temporarily non-functional, as the AI API keys have expired and run out of credit."
+      "statusNote": "Note: temporarily non-functional, as the AI API keys have expired and run out of credit.",
+      "modalBlurb": "Same situation as GrowwBot. The hosted demo is down because the AI API keys expired, but the project itself is intact."
     },
     {
       "name": "WoodLink",
@@ -162,23 +219,8 @@
         "href": ""
       },
       "statusBadge": "Private / in progress",
-      "statusNote": ""
-    },
-    {
-      "name": "Navier-Stokes Sim",
-      "description": "Based on the recent buzz around OpenAI potentially solving the Navier-Stokes millennial problem, I decided to create a 2D airflow simulation using assistance from Claude Code to help high school physics students grasp the concept of the Navier-Stokes equations and their importance. ",
-      "role": "Developer",
-      "tags": [
-        "Simulation"
-      ],
-      "demo": "https://airflowns.netlify.app/",
-      "github": "https://github.com/Adidev-Panday/airflowlab-navier-stokes",
-      "storyLink": {
-        "label": "",
-        "href": ""
-      },
-      "statusBadge": "",
-      "statusNote": ""
+      "statusNote": "",
+      "modalBlurb": "WoodLink currently runs locally only. It is still in development as my CS HL IA and does not have a public hosted version yet."
     }
   ],
   "profileLinks": [

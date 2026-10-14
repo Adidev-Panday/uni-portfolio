@@ -1,12 +1,43 @@
 'use client'
 // Projects section: responsive card grid with hover lift animation.
-import { motion } from 'motion/react'
-import { Github, ExternalLink, BookOpen, Lock, Info } from 'lucide-react'
-import { projects } from '@/data/content'
+// Clicking anywhere on a card opens a confirmation modal before navigating.
+import { useEffect, useRef, useState } from 'react'
+import { motion, AnimatePresence } from 'motion/react'
+import { Github, ExternalLink, Lock, Info, X } from 'lucide-react'
+import { projects, type Project } from '@/data/content'
 import ScrollReveal from './ScrollReveal'
 import SectionHeader from './SectionHeader'
 
+// Shared modal card animation (matches the admissions-officer popup)
+const cardAnim = {
+  initial:    { opacity: 0, scale: 0.93, y: 8 },
+  animate:    { opacity: 1, scale: 1,    y: 0 },
+  exit:       { opacity: 0, scale: 0.93, y: 8 },
+  transition: { duration: 0.22, ease: [0.21, 0.47, 0.32, 0.98] as const },
+}
+
 export default function Projects() {
+  const [activeProject, setActiveProject] = useState<Project | null>(null)
+  const anchorBtnRef = useRef<HTMLAnchorElement>(null)
+  const gotItBtnRef  = useRef<HTMLButtonElement>(null)
+
+  const close = () => setActiveProject(null)
+
+  // ESC key dismisses the open modal
+  useEffect(() => {
+    if (!activeProject) return
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') close() }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [activeProject])
+
+  // Autofocus the primary action when the modal opens
+  useEffect(() => {
+    if (!activeProject) return
+    if (activeProject.modalLink) anchorBtnRef.current?.focus()
+    else gotItBtnRef.current?.focus()
+  }, [activeProject])
+
   return (
     <section id="projects" className="py-24 bg-zinc-50 dark:bg-zinc-900/30">
       <div className="section-container">
@@ -23,14 +54,23 @@ export default function Projects() {
           {projects.map((project, i) => (
             <ScrollReveal key={project.name} delay={0.07 * i}>
               <motion.article
-                className="school-card group flex flex-col h-full p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 hover:border-accent/40 transition-colors duration-300 cursor-default"
+                role="button"
+                tabIndex={0}
+                onClick={() => setActiveProject(project)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    setActiveProject(project)
+                  }
+                }}
+                className="school-card group flex flex-col h-full p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 hover:border-accent/40 transition-colors duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
                 whileHover={{
                   y: -5,
                   boxShadow: '0 24px 48px -8px rgb(var(--accent-rgb) / 0.10)',
                 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 25 }}
               >
-                {/* Card top row: initial icon + link icons */}
+                {/* Card top row: initial icon + secondary link icons */}
                 <div className="flex items-center justify-between mb-5">
                   <div className="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center">
                     <span className="text-accent font-bold text-sm">
@@ -51,29 +91,13 @@ export default function Projects() {
                         <Github size={16} />
                       </a>
                     )}
-                    {project.demo && (
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-zinc-400 hover:text-accent transition-colors"
-                        aria-label={`${project.name} live demo`}
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <ExternalLink size={16} />
-                      </a>
-                    )}
-                    {project.storyLink && (
-                      <a
-                        href={project.storyLink.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-zinc-400 hover:text-accent transition-colors"
-                        aria-label={project.storyLink.label}
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <BookOpen size={16} />
-                      </a>
+                    {/* Decorative redirect indicator; clicks fall through to the card */}
+                    {project.modalLink && (
+                      <ExternalLink
+                        size={16}
+                        className="text-zinc-400 group-hover:text-accent transition-colors"
+                        aria-hidden="true"
+                      />
                     )}
                   </div>
                 </div>
@@ -91,7 +115,7 @@ export default function Projects() {
                   {project.description}
                 </p>
 
-                {/* Footer: tags, story link, status badge, and status note */}
+                {/* Footer: tags, status badge, and status note */}
                 <div className="space-y-3">
                   <div className="flex flex-wrap gap-1.5">
                     {project.tags.map((tag) => (
@@ -103,20 +127,6 @@ export default function Projects() {
                       </span>
                     ))}
                   </div>
-
-                  {/* Story link as inline text */}
-                  {project.storyLink && (
-                    <a
-                      href={project.storyLink.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs text-accent hover:text-accent/80 transition-colors"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      {project.storyLink.label}
-                      <ExternalLink size={10} />
-                    </a>
-                  )}
 
                   {/* "Private / in progress" badge */}
                   {project.statusBadge && (
@@ -139,6 +149,92 @@ export default function Projects() {
           ))}
         </div>
       </div>
+
+      {/* Confirmation modal: backdrop */}
+      <AnimatePresence>
+        {activeProject && (
+          <motion.div
+            key="project-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[200] bg-black/55 backdrop-blur-[2px]"
+            onClick={close}
+            aria-hidden="true"
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Confirmation modal: card */}
+      <AnimatePresence>
+        {activeProject && (
+          <motion.div
+            key="project-modal"
+            {...cardAnim}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="project-modal-title"
+            className="fixed inset-0 z-[201] flex items-center justify-center p-4 pointer-events-none"
+          >
+            <div className="relative w-full max-w-sm rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-2xl p-8 pointer-events-auto">
+              {/* Close */}
+              <button
+                onClick={close}
+                className="absolute top-4 right-4 p-1.5 rounded-lg text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+                aria-label="Dismiss"
+              >
+                <X size={15} />
+              </button>
+
+              <div className="text-center space-y-6 pt-1">
+                <div className="space-y-2">
+                  <h2
+                    id="project-modal-title"
+                    className="text-xl font-bold tracking-tight leading-snug"
+                  >
+                    {activeProject.modalLink
+                      ? `Open ${activeProject.name}?`
+                      : `${activeProject.name} isn't live right now`}
+                  </h2>
+                  <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                    {activeProject.modalBlurb}
+                  </p>
+                </div>
+
+                {activeProject.modalLink ? (
+                  <div className="flex gap-3">
+                    <a
+                      ref={anchorBtnRef}
+                      href={activeProject.modalLink.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={close}
+                      className="flex-1 px-5 py-2.5 rounded-full text-sm font-semibold bg-accent-fill text-white hover:opacity-90 active:scale-95 transition-all duration-150"
+                    >
+                      {activeProject.modalLink.label}
+                    </a>
+                    <button
+                      onClick={close}
+                      className="flex-1 px-5 py-2.5 rounded-full text-sm font-semibold border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:border-accent hover:text-accent active:scale-95 transition-all duration-150"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    ref={gotItBtnRef}
+                    onClick={close}
+                    className="w-full px-5 py-2.5 rounded-full text-sm font-semibold bg-accent-fill text-white hover:opacity-90 active:scale-95 transition-all duration-150"
+                  >
+                    Got it
+                  </button>
+                )}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }

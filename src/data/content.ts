@@ -27,6 +27,8 @@ export type Project = {
   storyLink?: { label: string; href: string }
   statusBadge?: string
   statusNote?: string
+  modalBlurb: string
+  modalLink?: { label: string; href: string }
 }
 
 export type ProfileLink = {
