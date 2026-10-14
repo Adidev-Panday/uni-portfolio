@@ -8,6 +8,7 @@ import { ExternalLink, BookOpen, X } from 'lucide-react'
 import { research, type ResearchPaper } from '@/data/content'
 import { modalCardAnim, pressTap, pressTransition, springUI } from '@/lib/motion'
 import { pushModalOpen, popModalOpen } from '@/lib/modalDepth'
+import ModalPortal from './ModalPortal'
 import ScrollReveal from './ScrollReveal'
 import SectionHeader from './SectionHeader'
 
@@ -57,6 +58,7 @@ export default function Research() {
   }, [activePaper])
 
   return (
+    <>
     <section id="research" className="py-24">
       <div className="section-container">
         <ScrollReveal>
@@ -130,7 +132,13 @@ export default function Research() {
           ))}
         </div>
       </div>
+    </section>
 
+    {/* Backdrop and modal portal straight to <body>: <main> gets pushed
+        back (transform/filter) while a modal is open, which would
+        otherwise become the containing block for these fixed-position
+        elements and pin them to <main>'s box instead of the viewport. */}
+    <ModalPortal>
       {/* Confirmation modal: backdrop */}
       <AnimatePresence>
         {activePaper && (
@@ -211,6 +219,7 @@ export default function Research() {
           </motion.div>
         )}
       </AnimatePresence>
-    </section>
+    </ModalPortal>
+    </>
   )
 }

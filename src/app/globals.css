@@ -741,8 +741,15 @@
    MODAL DEPTH: dim + push back (§12)
    A modal task pairs its scrim with the background receding slightly,
    instead of just dimming flat. Toggled by body.modal-open, set by
-   AdmissionsModal and the Projects confirmation modal while open.
+   AdmissionsModal and the Projects/Research confirmation modals while
+   open. The modal/scrim themselves are portaled to <body> (see
+   ModalPortal.tsx) so this transform/filter on <main>, which would
+   otherwise become the containing block for their position: fixed,
+   never affects where they render.
    ============================================================ */
+body.modal-open {
+  overflow: hidden;
+}
 main {
   transition: transform 300ms ease, filter 300ms ease;
 }

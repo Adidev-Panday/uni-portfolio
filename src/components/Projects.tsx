@@ -7,6 +7,7 @@ import { Github, ExternalLink, Lock, Info, X } from 'lucide-react'
 import { projects, type Project } from '@/data/content'
 import { modalCardAnim, pressTap, pressTransition, springUI } from '@/lib/motion'
 import { pushModalOpen, popModalOpen } from '@/lib/modalDepth'
+import ModalPortal from './ModalPortal'
 import ScrollReveal from './ScrollReveal'
 import SectionHeader from './SectionHeader'
 
@@ -52,6 +53,7 @@ export default function Projects() {
   }, [activeProject])
 
   return (
+    <>
     <section id="projects" className="py-24 bg-zinc-50 dark:bg-zinc-900/30">
       <div className="section-container">
         <ScrollReveal>
@@ -162,7 +164,13 @@ export default function Projects() {
           ))}
         </div>
       </div>
+    </section>
 
+    {/* Backdrop and modal portal straight to <body>: <main> gets pushed
+        back (transform/filter) while a modal is open, which would
+        otherwise become the containing block for these fixed-position
+        elements and pin them to <main>'s box instead of the viewport. */}
+    <ModalPortal>
       {/* Confirmation modal: backdrop */}
       <AnimatePresence>
         {activeProject && (
@@ -257,6 +265,7 @@ export default function Projects() {
           </motion.div>
         )}
       </AnimatePresence>
-    </section>
+    </ModalPortal>
+    </>
   )
 }

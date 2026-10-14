@@ -15,7 +15,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('')
   const [mobileOpen, setMobileOpen] = useState(false)
-  const { school } = useSchoolTheme()
+  const { school, schoolId } = useSchoolTheme()
 
   // Show background/blur once page is scrolled past 24px
   useEffect(() => {
@@ -24,20 +24,47 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Track which section is currently in view
+  // Track which section is currently in view.
+  // Re-runs whenever the school changes, since the "why-school" section
+  // mounts/unmounts from the DOM as it's selected/reset, and it needs to
+  // be registered with the observer too.
   useEffect(() => {
-    const sections = document.querySelectorAll('section[id]')
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveSection(entry.target.id)
-        })
-      },
-      { threshold: 0.3, rootMargin: '-80px 0px -50% 0px' },
-    )
+    const sections = Array.from(document.querySelectorAll<HTMLElement>('section[id]'))
+    if (sections.length === 0) return
+
+    // How far from the top of the viewport a section's top edge has to
+    // cross before it counts as "current" -- roughly the nav bar height
+    // plus a little breathing room, so the section the user is actually
+    // reading (not the one about to scroll into place) gets highlighted.
+    const ACTIVATION_OFFSET = 120
+
+    // Among all sections, the active one is the lowest one whose top has
+    // already crossed the activation line (i.e. the section we've
+    // scrolled into), not just "any section that's partially visible" --
+    // that's what let a short section get skipped or the next section
+    // light up early.
+    const updateActive = () => {
+      let current = sections[0].id
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= ACTIVATION_OFFSET) {
+          current = section.id
+        }
+      }
+      setActiveSection(current)
+    }
+
+    const observer = new IntersectionObserver(updateActive, {
+      threshold: [0, 0.1, 0.25, 0.5, 0.75, 1],
+      rootMargin: '-100px 0px -60% 0px',
+    })
     sections.forEach((s) => observer.observe(s))
+
+    // Run once immediately (e.g. a refresh landing mid-page) instead of
+    // waiting for the first intersection change.
+    updateActive()
+
     return () => observer.disconnect()
-  }, [])
+  }, [schoolId])
 
   const closeMobile = () => setMobileOpen(false)
 
