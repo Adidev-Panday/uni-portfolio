@@ -11,6 +11,7 @@ import { SCHOOLS, type SchoolId } from '@/data/schools'
 import { fireConfetti } from '@/lib/confetti'
 import { fireLightsOn } from '@/lib/lightsOn'
 import { modalCardAnim, pressTap, pressTransition } from '@/lib/motion'
+import { pushModalOpen, popModalOpen } from '@/lib/modalDepth'
 
 const SESSION_KEY = 'admissions-choice'
 
@@ -66,6 +67,13 @@ export default function AdmissionsModal() {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') dismiss() }
     document.addEventListener('keydown', onKey)
     return () => document.removeEventListener('keydown', onKey)
+  }, [step])
+
+  // Push the page content back slightly while a modal is open (§12)
+  useEffect(() => {
+    if (step === 'idle') return
+    pushModalOpen()
+    return () => popModalOpen()
   }, [step])
 
   const dismiss = () => {

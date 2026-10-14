@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'motion/react'
 import { Github, ExternalLink, Lock, Info, X } from 'lucide-react'
 import { projects, type Project } from '@/data/content'
 import { modalCardAnim, pressTap, pressTransition, springUI } from '@/lib/motion'
+import { pushModalOpen, popModalOpen } from '@/lib/modalDepth'
 import ScrollReveal from './ScrollReveal'
 import SectionHeader from './SectionHeader'
 
@@ -41,6 +42,13 @@ export default function Projects() {
     if (!activeProject) return
     if (activeProject.modalLink) anchorBtnRef.current?.focus()
     else gotItBtnRef.current?.focus()
+  }, [activeProject])
+
+  // Push the page content back slightly while the modal is open (§12)
+  useEffect(() => {
+    if (!activeProject) return
+    pushModalOpen()
+    return () => popModalOpen()
   }, [activeProject])
 
   return (

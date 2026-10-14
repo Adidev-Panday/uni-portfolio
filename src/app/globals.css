@@ -720,6 +720,20 @@
 }
 
 /* ============================================================
+   MODAL DEPTH: dim + push back (§12)
+   A modal task pairs its scrim with the background receding slightly,
+   instead of just dimming flat. Toggled by body.modal-open, set by
+   AdmissionsModal and the Projects confirmation modal while open.
+   ============================================================ */
+main {
+  transition: transform 300ms ease, filter 300ms ease;
+}
+body.modal-open main {
+  transform: scale(0.98);
+  filter: saturate(0.92);
+}
+
+/* ============================================================
    UTILITY LAYER
    ============================================================ */
 
