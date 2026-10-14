@@ -172,7 +172,7 @@ export default function Projects() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[200] bg-black/55 backdrop-blur-[2px]"
+            className="modal-scrim fixed inset-0 z-[200] bg-black/55 backdrop-blur-[2px]"
             onClick={close}
             aria-hidden="true"
           />

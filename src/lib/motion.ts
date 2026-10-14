@@ -17,5 +17,8 @@ export const modalCardAnim = {
 }
 
 // Press feedback: fires on pointer-down via Motion's whileTap, settles fast.
-export const pressTap = { scale: 0.97 }
+// Pairs scale with a small opacity dip: MotionConfig's reducedMotion="user"
+// (layout.tsx) strips transforms like scale under prefers-reduced-motion,
+// so the opacity change carries the feedback on its own in that case (§14).
+export const pressTap = { scale: 0.97, opacity: 0.85 }
 export const pressTransition = { type: 'spring', bounce: 0, duration: 0.15 } as const

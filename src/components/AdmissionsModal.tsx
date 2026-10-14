@@ -117,7 +117,7 @@ export default function AdmissionsModal() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[200] bg-black/55 backdrop-blur-[2px]"
+            className="modal-scrim fixed inset-0 z-[200] bg-black/55 backdrop-blur-[2px]"
             onClick={dismiss}
             aria-hidden="true"
           />
@@ -258,7 +258,7 @@ export default function AdmissionsModal() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="fixed top-[72px] right-4 z-[100] flex items-center gap-2 px-3 py-1.5 rounded-full text-xs bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm border border-zinc-200 dark:border-zinc-700 shadow-sm"
+            className="frosted-chip fixed top-[72px] right-4 z-[100] flex items-center gap-2 px-3 py-1.5 rounded-full text-xs bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm border border-zinc-200 dark:border-zinc-700 shadow-sm"
           >
             <span className="text-zinc-500 dark:text-zinc-400">
               Viewing in{' '}

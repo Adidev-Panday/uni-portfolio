@@ -785,3 +785,65 @@ body.modal-open main {
     var(--accent-fill)
   );
 }
+
+/* ============================================================
+   ACCESSIBILITY: REDUCED MOTION / TRANSPARENCY / CONTRAST (§14)
+   Motion's <MotionConfig reducedMotion="user"> (see layout.tsx) already
+   drops every spring/tween sitewide to an opacity-only cross-fade when
+   prefers-reduced-motion is on. What's left here is the handful of
+   effects that live outside Motion: native smooth-scroll, the
+   modal-open push-back, and the translucent surfaces (nav chrome,
+   modal scrim, reset pill) that need a frostier/solid fallback for
+   prefers-reduced-transparency and prefers-contrast.
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  body.modal-open main {
+    transform: none;
+    filter: none;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  header[data-scrolled="true"] {
+    backdrop-filter: none;
+    background-color: white;
+  }
+  .dark header[data-scrolled="true"] {
+    background-color: #09090b;
+  }
+  .modal-scrim {
+    backdrop-filter: none;
+    background-color: rgb(0 0 0 / 0.75);
+  }
+  .frosted-chip {
+    backdrop-filter: none;
+    background-color: white;
+  }
+  .dark .frosted-chip {
+    background-color: #18181b;
+  }
+}
+
+@media (prefers-contrast: more) {
+  header[data-scrolled="true"] {
+    background-color: white;
+    border-bottom: 1px solid currentColor;
+  }
+  .dark header[data-scrolled="true"] {
+    background-color: #09090b;
+  }
+  .modal-scrim {
+    background-color: rgb(0 0 0 / 0.85);
+  }
+  .frosted-chip {
+    background-color: white;
+    border-width: 2px;
+  }
+  .dark .frosted-chip {
+    background-color: #18181b;
+  }
+}

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
+import { MotionConfig } from 'motion/react'
 import './globals.css'
 import { meta } from '@/data/content'
 
@@ -68,7 +69,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="font-sans antialiased">
-        {children}
+        {/* reducedMotion="user": every Motion animation site-wide drops to
+            an opacity-only cross-fade when the OS has reduced motion on
+            (§14), with zero per-component changes needed. */}
+        <MotionConfig reducedMotion="user">
+          {children}
+        </MotionConfig>
       </body>
     </html>
   )
