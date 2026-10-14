@@ -688,6 +688,10 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Optical sizing: lets the type system adjust glyph shape/weight per
+       size instead of just scaling one master, for every heading and
+       body style on the site (§15). */
+    font-optical-sizing: auto;
   }
 
   /* Light-mode body (default) */
