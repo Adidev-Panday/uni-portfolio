@@ -4,6 +4,7 @@
 import { motion, AnimatePresence } from 'motion/react'
 import { useSchoolTheme } from '@/hooks/useSchoolTheme'
 import { whySchool } from '@/data/content'
+import { springUI } from '@/lib/motion'
 import ScrollReveal from './ScrollReveal'
 import { PrincetonTigerButton, PrincetonMottoLine } from './PrincetonEasterEggs'
 import { VeritasShield, HarvardMottoLine } from './HarvardEasterEggs'
@@ -25,7 +26,7 @@ export default function WhySchool() {
           initial={{ height: 0, opacity: 0 }}
           animate={{ height: 'auto', opacity: 1 }}
           exit={{ height: 0, opacity: 0 }}
-          transition={{ duration: 0.4, ease: 'easeInOut' }}
+          transition={springUI}
           className="overflow-hidden"
         >
           <section id="why-school" className="py-24 bg-zinc-50 dark:bg-zinc-900/30">

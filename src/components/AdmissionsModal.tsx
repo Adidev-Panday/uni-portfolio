@@ -10,6 +10,7 @@ import { X } from 'lucide-react'
 import { SCHOOLS, type SchoolId } from '@/data/schools'
 import { fireConfetti } from '@/lib/confetti'
 import { fireLightsOn } from '@/lib/lightsOn'
+import { modalCardAnim, pressTap, pressTransition } from '@/lib/motion'
 
 const SESSION_KEY = 'admissions-choice'
 
@@ -23,13 +24,8 @@ function clearSchool() {
 
 type Step = 'idle' | 'question' | 'picker'
 
-// Shared modal card animation
-const cardAnim = {
-  initial:    { opacity: 0, scale: 0.93, y: 8 },
-  animate:    { opacity: 1, scale: 1,    y: 0 },
-  exit:       { opacity: 0, scale: 0.93, y: 8 },
-  transition: { duration: 0.22, ease: [0.21, 0.47, 0.32, 0.98] as const },
-}
+// Shared modal card animation, critically damped and anchored per-trigger
+const cardAnim = modalCardAnim
 
 export default function AdmissionsModal() {
   const [step, setStep]               = useState<Step>('idle')
@@ -158,19 +154,23 @@ export default function AdmissionsModal() {
                 </div>
 
                 <div className="flex gap-3">
-                  <button
+                  <motion.button
                     ref={yesBtnRef}
                     onClick={() => setStep('picker')}
-                    className="flex-1 px-5 py-2.5 rounded-full text-sm font-semibold bg-accent-fill text-white hover:opacity-90 active:scale-95 transition-all duration-150"
+                    whileTap={pressTap}
+                    transition={pressTransition}
+                    className="flex-1 px-5 py-2.5 rounded-full text-sm font-semibold bg-accent-fill text-white hover:opacity-90 transition-colors duration-150"
                   >
                     Yes
-                  </button>
-                  <button
+                  </motion.button>
+                  <motion.button
                     onClick={dismiss}
-                    className="flex-1 px-5 py-2.5 rounded-full text-sm font-semibold border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:border-accent hover:text-accent active:scale-95 transition-all duration-150"
+                    whileTap={pressTap}
+                    transition={pressTransition}
+                    className="flex-1 px-5 py-2.5 rounded-full text-sm font-semibold border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:border-accent hover:text-accent transition-colors duration-150"
                   >
                     No
-                  </button>
+                  </motion.button>
                 </div>
               </div>
             </div>
@@ -212,12 +212,14 @@ export default function AdmissionsModal() {
               >
                 {SCHOOLS.map((school) => (
                   <li key={school.id} role="option" aria-selected={false}>
-                    <button
+                    <motion.button
                       onClick={() => selectSchool(school.id)}
-                      className="w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-accent/10 hover:text-accent active:scale-[0.98] transition-all duration-100"
+                      whileTap={pressTap}
+                      transition={pressTransition}
+                      className="w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-accent/10 hover:text-accent transition-colors duration-100"
                     >
                       {school.name}
-                    </button>
+                    </motion.button>
                   </li>
                 ))}
               </ul>

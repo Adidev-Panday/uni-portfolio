@@ -5,6 +5,7 @@
 import { useEffect, useState } from 'react'
 import { Moon, Sun } from 'lucide-react'
 import { motion } from 'motion/react'
+import { springUI } from '@/lib/motion'
 
 export default function ThemeToggle() {
   const [isDark, setIsDark] = useState(true)
@@ -40,7 +41,7 @@ export default function ThemeToggle() {
         key={isDark ? 'sun' : 'moon'}
         initial={{ rotate: -30, opacity: 0 }}
         animate={{ rotate: 0, opacity: 1 }}
-        transition={{ duration: 0.2 }}
+        transition={springUI}
       >
         {isDark ? <Sun size={17} /> : <Moon size={17} />}
       </motion.div>

@@ -5,16 +5,12 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { Github, ExternalLink, Lock, Info, X } from 'lucide-react'
 import { projects, type Project } from '@/data/content'
+import { modalCardAnim, pressTap, pressTransition, springUI } from '@/lib/motion'
 import ScrollReveal from './ScrollReveal'
 import SectionHeader from './SectionHeader'
 
 // Shared modal card animation (matches the admissions-officer popup)
-const cardAnim = {
-  initial:    { opacity: 0, scale: 0.93, y: 8 },
-  animate:    { opacity: 1, scale: 1,    y: 0 },
-  exit:       { opacity: 0, scale: 0.93, y: 8 },
-  transition: { duration: 0.22, ease: [0.21, 0.47, 0.32, 0.98] as const },
-}
+const cardAnim = modalCardAnim
 
 export default function Projects() {
   const [activeProject, setActiveProject] = useState<Project | null>(null)
@@ -68,7 +64,7 @@ export default function Projects() {
                   y: -5,
                   boxShadow: '0 24px 48px -8px rgb(var(--accent-rgb) / 0.10)',
                 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                transition={springUI}
               >
                 {/* Card top row: initial icon + secondary link icons */}
                 <div className="flex items-center justify-between mb-5">
@@ -204,31 +200,37 @@ export default function Projects() {
 
                 {activeProject.modalLink ? (
                   <div className="flex gap-3">
-                    <a
+                    <motion.a
                       ref={anchorBtnRef}
                       href={activeProject.modalLink.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={close}
-                      className="flex-1 px-5 py-2.5 rounded-full text-sm font-semibold bg-accent-fill text-white hover:opacity-90 active:scale-95 transition-all duration-150"
+                      whileTap={pressTap}
+                      transition={pressTransition}
+                      className="flex-1 px-5 py-2.5 rounded-full text-sm font-semibold bg-accent-fill text-white hover:opacity-90 transition-colors duration-150"
                     >
                       {activeProject.modalLink.label}
-                    </a>
-                    <button
+                    </motion.a>
+                    <motion.button
                       onClick={close}
-                      className="flex-1 px-5 py-2.5 rounded-full text-sm font-semibold border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:border-accent hover:text-accent active:scale-95 transition-all duration-150"
+                      whileTap={pressTap}
+                      transition={pressTransition}
+                      className="flex-1 px-5 py-2.5 rounded-full text-sm font-semibold border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:border-accent hover:text-accent transition-colors duration-150"
                     >
                       Cancel
-                    </button>
+                    </motion.button>
                   </div>
                 ) : (
-                  <button
+                  <motion.button
                     ref={gotItBtnRef}
                     onClick={close}
-                    className="w-full px-5 py-2.5 rounded-full text-sm font-semibold bg-accent-fill text-white hover:opacity-90 active:scale-95 transition-all duration-150"
+                    whileTap={pressTap}
+                    transition={pressTransition}
+                    className="w-full px-5 py-2.5 rounded-full text-sm font-semibold bg-accent-fill text-white hover:opacity-90 transition-colors duration-150"
                   >
                     Got it
-                  </button>
+                  </motion.button>
                 )}
               </div>
             </div>

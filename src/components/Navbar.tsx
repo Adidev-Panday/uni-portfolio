@@ -9,6 +9,7 @@ import { Menu, X } from 'lucide-react'
 import { navLinks, meta } from '@/data/content'
 import ThemeToggle from './ThemeToggle'
 import { useSchoolTheme } from '@/hooks/useSchoolTheme'
+import { springUI } from '@/lib/motion'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -81,7 +82,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, width: 0 }}
                 animate={{ opacity: 1, width: 'auto' }}
                 exit={{ opacity: 0, width: 0 }}
-                transition={{ duration: 0.25, ease: 'easeInOut' }}
+                transition={springUI}
                 className="overflow-hidden"
               >
                 <a
@@ -96,7 +97,7 @@ export default function Navbar() {
                     <motion.span
                       layoutId="nav-pill"
                       className="absolute inset-0 bg-accent/5 dark:bg-accent/10 rounded-md"
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      transition={springUI}
                     />
                   )}
                   <span className="relative z-10">Why {school.shortName}?</span>
@@ -123,7 +124,7 @@ export default function Navbar() {
                     <motion.span
                       layoutId="nav-pill"
                       className="absolute inset-0 bg-accent/5 dark:bg-accent/10 rounded-md"
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      transition={springUI}
                     />
                   )}
                   <span className="relative z-10">{label}</span>
@@ -156,7 +157,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2, ease: 'easeInOut' }}
+            transition={springUI}
             className="md:hidden overflow-hidden bg-white dark:bg-[#09090b] border-b border-zinc-200 dark:border-zinc-800"
           >
             <ul className="px-6 py-4 flex flex-col gap-1">

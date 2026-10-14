@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { motion } from 'motion/react'
 import { ArrowDown } from 'lucide-react'
 import { hero } from '@/data/content'
+import { pressTap, pressTransition } from '@/lib/motion'
 import { useSchoolTheme } from '@/hooks/useSchoolTheme'
 import { PrincetonClassTag } from './PrincetonEasterEggs'
 import { HarvardClassTag } from './HarvardEasterEggs'
@@ -105,17 +106,19 @@ export default function Hero() {
         {/* CTA buttons */}
         <motion.div className="flex flex-wrap gap-4" {...fadeUp(0.45)}>
           {hero.ctas.map(({ label, href, primary }) => (
-            <a
+            <motion.a
               key={label}
               href={href}
+              whileTap={pressTap}
+              transition={pressTransition}
               className={
                 primary
-                  ? 'inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium bg-accent-fill text-white shadow-lg shadow-accent/20 hover:opacity-90 transition-all duration-200 active:scale-95'
-                  : 'inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:border-accent hover:text-accent transition-all duration-200 active:scale-95'
+                  ? 'inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium bg-accent-fill text-white shadow-lg shadow-accent/20 hover:opacity-90 transition-colors duration-200'
+                  : 'inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:border-accent hover:text-accent transition-colors duration-200'
               }
             >
               {label}
-            </a>
+            </motion.a>
           ))}
         </motion.div>
       </div>

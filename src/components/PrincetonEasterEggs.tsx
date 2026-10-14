@@ -180,7 +180,7 @@ export default function PrincetonCheerOverlay() {
                     !shown
                       ? { opacity: 0, y: 8 }
                       : isFinale
-                        ? { opacity: 1, y: 0, scale: [1, 1.12, 1], x: [0, -2, 2, -2, 0] }
+                        ? { opacity: 1, y: 0, scale: 1, x: [0, -2, 2, -2, 0] }
                         : { opacity: 1, y: 0 }
                   }
                   transition={isFinale ? { duration: 0.5, ease: 'easeOut' } : { duration: 0.3 }}

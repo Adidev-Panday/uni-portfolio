@@ -233,7 +233,7 @@ export default function BerkeleyOskiOverlay() {
                     !shown
                       ? { opacity: 0, y: 14 }
                       : isFinale
-                        ? { opacity: 1, y: 0, scale: [1, 1.15, 1] }
+                        ? { opacity: 1, y: 0, scale: 1 }
                         : { opacity: 1, y: 0 }
                   }
                   transition={isFinale ? { duration: 0.5, ease: 'easeOut' } : { duration: 0.35, ease: 'easeOut' }}
