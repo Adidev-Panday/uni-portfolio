@@ -349,8 +349,6 @@
 .dark[data-school="princeton"] #about,
 .dark[data-school="princeton"] #research,
 .dark[data-school="princeton"] #projects,
-.dark[data-school="princeton"] #extracurriculars,
-.dark[data-school="princeton"] #honors,
 .dark[data-school="princeton"] #links,
 .dark[data-school="princeton"] #contact {
   background-image: repeating-linear-gradient(
@@ -609,7 +607,6 @@
 /* Alternating section surfaces — slightly lighter than body */
 .dark[data-school] #about,
 .dark[data-school] #projects,
-.dark[data-school] #honors,
 .dark[data-school] #contact {
   background-color: color-mix(in srgb, var(--body-bg-dark, #09090b) 90%, white);
 }
@@ -657,7 +654,6 @@
 /* Alternating section surfaces: a touch more tint than the body */
 [data-school]:not(.dark) #about,
 [data-school]:not(.dark) #projects,
-[data-school]:not(.dark) #honors,
 [data-school]:not(.dark) #contact {
   background-color: color-mix(in srgb, var(--accent-fill) 7%, white);
 }
