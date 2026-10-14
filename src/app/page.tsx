@@ -5,8 +5,6 @@ import Hero from '@/components/Hero'
 import About from '@/components/About'
 import Research from '@/components/Research'
 import Projects from '@/components/Projects'
-import Extracurriculars from '@/components/Extracurriculars'
-import HonorsAwards from '@/components/HonorsAwards'
 import Links from '@/components/Links'
 import CV from '@/components/CV'
 import Contact from '@/components/Contact'
@@ -34,8 +32,6 @@ export default function Home() {
         <WhyAerospace />
         <Projects />
         <Research />
-        <Extracurriculars />
-        <HonorsAwards />
         <Links />
         <CV />
         <Contact />

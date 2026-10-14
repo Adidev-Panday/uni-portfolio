@@ -20,7 +20,7 @@ export default function CV() {
       <div className="section-container">
         <ScrollReveal>
           <SectionHeader
-            number="08."
+            number="06."
             title="CV"
             subtitle="Curriculum Vitae"
           />

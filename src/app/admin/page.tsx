@@ -33,8 +33,6 @@ type ContentJson = {
     name: string; description: string; role: string; tags: string[]
     demo: string; github: string; storyLink: StoryLink; statusBadge: string; statusNote: string
   }[]
-  extracurriculars: { role: string; organization: string; grades: string; description: string }[]
-  honors: { award: string; issuer: string; level: string; description: string }[]
   profileLinks: { label: string; handle: string; href: string; gradient: string }[]
   contact: { email: string; tagline: string; social: Social[] }
   whyAerospace: {
@@ -383,68 +381,6 @@ export default function AdminPage() {
             className="text-xs text-indigo-500 hover:text-indigo-400"
           >
             + Add project
-          </button>
-        </Card>
-
-        {/* EXTRACURRICULARS */}
-        <Card title="Extracurriculars">
-          {c.extracurriculars.map((item, i) => (
-            <div key={i} className="space-y-3 border-t border-zinc-200 dark:border-zinc-800 pt-4 first:border-0 first:pt-0">
-              <div className="flex justify-between items-center">
-                <span className="text-sm font-medium">{item.role || `Item ${i + 1}`}</span>
-                <button
-                  onClick={() => update('extracurriculars', d => { d.splice(i, 1) })}
-                  className="text-xs text-red-500 hover:text-red-400"
-                >
-                  Remove
-                </button>
-              </div>
-              <div className="grid grid-cols-2 gap-3">
-                <Field lbl="Role"><Input value={item.role} onChange={v => update('extracurriculars', d => { d[i].role = v })} /></Field>
-                <Field lbl="Grades"><Input value={item.grades} onChange={v => update('extracurriculars', d => { d[i].grades = v })} /></Field>
-              </div>
-              <Field lbl="Organization"><Input value={item.organization} onChange={v => update('extracurriculars', d => { d[i].organization = v })} /></Field>
-              <Field lbl="Description"><Textarea rows={3} value={item.description} onChange={v => update('extracurriculars', d => { d[i].description = v })} /></Field>
-            </div>
-          ))}
-          <button
-            onClick={() => update('extracurriculars', d => {
-              d.push({ role: '', organization: '', grades: '', description: '' })
-            })}
-            className="text-xs text-indigo-500 hover:text-indigo-400"
-          >
-            + Add extracurricular
-          </button>
-        </Card>
-
-        {/* HONORS */}
-        <Card title="Honors & Awards">
-          {c.honors.map((honor, i) => (
-            <div key={i} className="space-y-3 border-t border-zinc-200 dark:border-zinc-800 pt-4 first:border-0 first:pt-0">
-              <div className="flex justify-between items-center">
-                <span className="text-sm font-medium">{honor.award || `Honor ${i + 1}`}</span>
-                <button
-                  onClick={() => update('honors', d => { d.splice(i, 1) })}
-                  className="text-xs text-red-500 hover:text-red-400"
-                >
-                  Remove
-                </button>
-              </div>
-              <div className="grid grid-cols-2 gap-3">
-                <Field lbl="Award"><Input value={honor.award} onChange={v => update('honors', d => { d[i].award = v })} /></Field>
-                <Field lbl="Level"><Input value={honor.level} onChange={v => update('honors', d => { d[i].level = v })} /></Field>
-              </div>
-              <Field lbl="Issuer"><Input value={honor.issuer} onChange={v => update('honors', d => { d[i].issuer = v })} /></Field>
-              <Field lbl="Description"><Textarea rows={4} value={honor.description} onChange={v => update('honors', d => { d[i].description = v })} /></Field>
-            </div>
-          ))}
-          <button
-            onClick={() => update('honors', d => {
-              d.push({ award: '', issuer: '', level: '', description: '' })
-            })}
-            className="text-xs text-indigo-500 hover:text-indigo-400"
-          >
-            + Add honor
           </button>
         </Card>
 

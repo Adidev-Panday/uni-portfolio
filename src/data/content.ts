@@ -29,20 +29,6 @@ export type Project = {
   statusNote?: string
 }
 
-export type Extracurricular = {
-  role: string
-  organization: string
-  grades: string
-  description: string
-}
-
-export type Honor = {
-  award: string
-  issuer: string
-  level: string
-  description: string
-}
-
 export type ProfileLink = {
   label: string
   handle: string
@@ -58,8 +44,6 @@ export const hero        = data.hero
 export const about       = data.about
 export const research    = data.research as ResearchPaper[]
 export const projects    = data.projects as Project[]
-export const extracurriculars = data.extracurriculars as Extracurricular[]
-export const honors      = data.honors as Honor[]
 export const profileLinks = data.profileLinks as ProfileLink[]
 export const contact     = data.contact
 export const whySchool   = data.whySchool as {
