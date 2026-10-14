@@ -213,7 +213,7 @@ export default function Projects() {
                       ? `Open ${activeProject.name}?`
                       : `${activeProject.name} isn't live right now`}
                   </h2>
-                  <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                  <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed whitespace-pre-line">
                     {activeProject.modalBlurb}
                   </p>
                 </div>

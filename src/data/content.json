@@ -72,11 +72,12 @@
       "title": "The Rise of Digital Trading: Accessibility Versus Risk of Financial Ruin",
       "journal": "International Journal of High School Research (IJHSR), Vol. 8, Issue 12",
       "year": "2026",
-      "link": "https://terra-docs.s3.us-east-2.amazonaws.com/IJHSR/Articles/volume8-issue12/IJHSR_2026_812.pdf",
-      "linkLabel": "Read Paper (p. 89)",
-      "pageNote": "Paper begins on page 89 of the issue.",
+      "link": "https://terra-docs.s3.us-east-2.amazonaws.com/IJHSR/Articles/volume8-issue12/IJHSR_2026_812.pdf#page=94",
+      "linkLabel": "Read Paper (p. 94)",
+      "pageNote": "Paper begins on page 94 of the issue.",
       "abstract": "Digital trading platforms like Robinhood, Groww, and Zerodha have made market access a few clicks away for anyone, educated or not. This paper examines that double-edged shift, covering gamification, finfluencers, and the real cost of frictionless trading. Digitization is useful, but for financially illiterate users, it is a trapdoor.",
-      "status": "Published"
+      "status": "Published",
+      "modalBlurb": "You will be redirected to the IJHSR issue PDF. My paper starts on page 94."
     }
   ],
   "projects": [
@@ -183,8 +184,12 @@
         "href": ""
       },
       "statusBadge": "",
-      "statusNote": "Note: temporarily non-functional, as the AI API keys have expired and run out of credit.",
-      "modalBlurb": "The live demo is temporarily down because the AI API keys have expired and run out of credit. The project itself still works, just not the hosted version."
+      "statusNote": "AI features are temporarily limited: the API keys have expired and run out of credit.",
+      "modalBlurb": "GrowwBot is an AI-powered personal finance advisor for budgeting, investing, and financial planning.\nNote: the live demo loads fine, but AI-powered features are currently limited because the API keys have expired and run out of credit.",
+      "modalLink": {
+        "label": "Open site",
+        "href": "https://growwbot.netlify.app/"
+      }
     },
     {
       "name": "Balancify",
@@ -201,8 +206,12 @@
         "href": ""
       },
       "statusBadge": "",
-      "statusNote": "Note: temporarily non-functional, as the AI API keys have expired and run out of credit.",
-      "modalBlurb": "Same situation as GrowwBot. The hosted demo is down because the AI API keys expired, but the project itself is intact."
+      "statusNote": "AI features are temporarily limited: the API keys have expired and run out of credit.",
+      "modalBlurb": "Balancify is an AI timetable and schedule maker that builds balanced, personalized study and activity plans.\nNote: the live demo loads fine, but AI-powered features are currently limited because the API keys have expired and run out of credit.",
+      "modalLink": {
+        "label": "Open site",
+        "href": "https://wsbalancify.netlify.app/#schedule-maker"
+      }
     },
     {
       "name": "WoodLink",

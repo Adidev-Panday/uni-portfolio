@@ -15,6 +15,7 @@ export type ResearchPaper = {
   pageNote?: string
   abstract: string
   status: 'published' | 'preprint' | 'in review'
+  modalBlurb: string
 }
 
 export type Project = {
