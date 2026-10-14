@@ -263,12 +263,12 @@
     "tagline": "Want to talk, share ideas, or discuss any projects? Feel free to reach out!",
     "social": [
       {
-        "label": "Instagram",
-        "href": "https://www.instagram.com/adidevpanday/"
-      },
-      {
         "label": "Linkedin",
         "href": "https://www.linkedin.com/in/adidevpanday/"
+      },
+      {
+        "label": "Instagram",
+        "href": "https://www.instagram.com/adidevpanday/"
       }
     ]
   },
