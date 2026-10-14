@@ -14,8 +14,17 @@ const cardAnim = modalCardAnim
 
 export default function Projects() {
   const [activeProject, setActiveProject] = useState<Project | null>(null)
+  // Where the modal should scale from/to: the card that was actually
+  // clicked, so the popup is spatially anchored to its trigger (§7)
+  // instead of always zooming from the viewport center.
+  const [origin, setOrigin] = useState({ x: 0, y: 0 })
   const anchorBtnRef = useRef<HTMLAnchorElement>(null)
   const gotItBtnRef  = useRef<HTMLButtonElement>(null)
+
+  const openFromCard = (project: Project, rect: DOMRect) => {
+    setOrigin({ x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 })
+    setActiveProject(project)
+  }
 
   const close = () => setActiveProject(null)
 
@@ -52,11 +61,11 @@ export default function Projects() {
               <motion.article
                 role="button"
                 tabIndex={0}
-                onClick={() => setActiveProject(project)}
+                onClick={(e) => openFromCard(project, e.currentTarget.getBoundingClientRect())}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault()
-                    setActiveProject(project)
+                    openFromCard(project, e.currentTarget.getBoundingClientRect())
                   }
                 }}
                 className="school-card group flex flex-col h-full p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 hover:border-accent/40 transition-colors duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
@@ -168,6 +177,7 @@ export default function Projects() {
           <motion.div
             key="project-modal"
             {...cardAnim}
+            style={{ transformOrigin: `${origin.x}px ${origin.y}px` }}
             role="dialog"
             aria-modal="true"
             aria-labelledby="project-modal-title"
