@@ -17,7 +17,7 @@ const statusStyles: Record<string, string> = {
   published: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400',
   preprint: 'bg-amber-500/10 text-amber-600 dark:text-amber-400',
   'in review': 'bg-blue-500/10 text-blue-600 dark:text-blue-400',
-  interactive: 'bg-violet-500/10 text-violet-600 dark:text-violet-400',
+  independent: 'bg-violet-500/10 text-violet-600 dark:text-violet-400',
 }
 
 // Shared modal card animation (matches the project cards)
@@ -83,7 +83,7 @@ export default function Research() {
                     openFromCard(paper, e.currentTarget.getBoundingClientRect())
                   }
                 }}
-                className="school-card group p-6 sm:p-8 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white shadow-sm dark:bg-zinc-900/50 dark:shadow-none hover:border-accent/40 transition-colors duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
+                className="school-card group flex flex-col h-full p-6 sm:p-8 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white shadow-sm dark:bg-zinc-900/50 dark:shadow-none hover:border-accent/40 transition-colors duration-300 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
                 whileHover={{
                   y: -5,
                   boxShadow: '0 24px 48px -8px rgb(var(--accent-rgb) / 0.10)',
@@ -125,7 +125,7 @@ export default function Research() {
                 )}
 
                 {/* Abstract */}
-                <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed flex-1">
                   {paper.abstract}
                 </p>
               </motion.article>

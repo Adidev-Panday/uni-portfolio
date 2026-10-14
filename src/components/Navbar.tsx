@@ -102,11 +102,11 @@ export default function Navbar() {
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         scrolled
           ? 'bg-white/80 dark:bg-[#09090b]/80 backdrop-blur-md shadow-[0_12px_24px_-18px_rgba(0,0,0,0.25)] dark:shadow-[0_12px_24px_-18px_rgba(0,0,0,0.7)]'
-          // Unscrolled, light mode still needs a faint scrim: the hero
-          // photo is fully visible underneath now, so nav links need
-          // some backing to stay legible. Dark mode stays transparent,
-          // since its hero overlay already keeps that area dark.
-          : 'bg-white/40 backdrop-blur-sm dark:bg-transparent dark:backdrop-blur-none'
+          // Unscrolled, fully transparent in both modes so the hero photo
+          // shows all the way to the top edge. Nav link text carries its
+          // own subtle text-shadow (below) for legibility over the photo
+          // instead of a backing scrim here.
+          : 'bg-transparent'
       }`}
     >
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -115,7 +115,7 @@ export default function Navbar() {
           href="#hero"
           onDoubleClick={(e) => { e.preventDefault(); resetExperience() }}
           title="Double-click to reset"
-          className="text-sm font-semibold tracking-tight hover:text-accent transition-colors"
+          className="text-sm font-semibold tracking-tight hover:text-accent transition-colors [text-shadow:0_1px_3px_rgba(255,255,255,0.8)] dark:[text-shadow:none]"
         >
           {meta.name.split(' ')[0]}
           <span className="text-accent">.</span>
@@ -136,7 +136,7 @@ export default function Navbar() {
               >
                 <a
                   href="#why-school"
-                  className={`relative px-3 py-1.5 text-sm rounded-md transition-colors duration-200 whitespace-nowrap ${
+                  className={`relative px-3 py-1.5 text-sm rounded-md transition-colors duration-200 whitespace-nowrap [text-shadow:0_1px_3px_rgba(255,255,255,0.8)] dark:[text-shadow:none] ${
                     activeSection === 'why-school'
                       ? 'text-accent'
                       : 'text-zinc-700 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
@@ -162,7 +162,7 @@ export default function Navbar() {
               <li key={href}>
                 <a
                   href={href}
-                  className={`relative px-3 py-1.5 text-sm rounded-md transition-colors duration-200 ${
+                  className={`relative px-3 py-1.5 text-sm rounded-md transition-colors duration-200 [text-shadow:0_1px_3px_rgba(255,255,255,0.8)] dark:[text-shadow:none] ${
                     isActive
                       ? 'text-accent'
                       : 'text-zinc-700 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'

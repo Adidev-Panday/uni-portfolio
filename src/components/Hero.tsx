@@ -120,7 +120,7 @@ export default function Hero() {
               className={
                 primary
                   ? 'inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium bg-accent-fill text-white shadow-lg shadow-accent/20 hover:opacity-90 transition-colors duration-200'
-                  : 'inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium bg-transparent border border-zinc-900 dark:border-zinc-700 text-zinc-900 dark:text-zinc-300 [text-shadow:0_1px_4px_rgba(0,0,0,0.4)] dark:[text-shadow:none] hover:bg-black/5 dark:hover:bg-transparent hover:border-accent hover:text-accent transition-colors duration-200'
+                  : 'inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium bg-transparent border border-white/70 text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.4)] dark:[text-shadow:none] hover:bg-black/5 dark:hover:bg-transparent hover:border-accent hover:text-accent transition-colors duration-200'
               }
             >
               {label}

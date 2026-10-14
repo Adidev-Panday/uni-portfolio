@@ -14,7 +14,7 @@ export type ResearchPaper = {
   linkLabel: string
   pageNote?: string
   abstract: string
-  status: 'published' | 'preprint' | 'in review' | 'interactive'
+  status: 'published' | 'preprint' | 'in review' | 'independent'
   modalTitle: string
   modalBlurb: string
 }
