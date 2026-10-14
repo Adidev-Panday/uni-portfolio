@@ -44,6 +44,16 @@ export default function Navbar() {
     // that's what let a short section get skipped or the next section
     // light up early.
     const updateActive = () => {
+      // Pinned to the very bottom of the page: force the last section
+      // (Contact) active. A short final section can end well before it
+      // ever crosses the activation line on its own, so without this the
+      // nav gets stuck highlighting whatever came before it.
+      const atBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 2
+      if (atBottom) {
+        setActiveSection(sections[sections.length - 1].id)
+        return
+      }
+
       let current = sections[0].id
       for (const section of sections) {
         if (section.getBoundingClientRect().top <= ACTIVATION_OFFSET) {
@@ -59,11 +69,19 @@ export default function Navbar() {
     })
     sections.forEach((s) => observer.observe(s))
 
+    // The bottom-of-page check needs to run on every scroll tick near the
+    // bottom, not just when an observed section's intersection ratio
+    // crosses a threshold, so also wire it to plain scroll events.
+    window.addEventListener('scroll', updateActive, { passive: true })
+
     // Run once immediately (e.g. a refresh landing mid-page) instead of
     // waiting for the first intersection change.
     updateActive()
 
-    return () => observer.disconnect()
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('scroll', updateActive)
+    }
   }, [schoolId])
 
   const closeMobile = () => setMobileOpen(false)

@@ -9,7 +9,7 @@ import SectionHeader from './SectionHeader'
 
 export default function Links() {
   return (
-    <section id="links" className="py-24">
+    <section id="links" className="py-24 bg-zinc-50 dark:bg-zinc-900/30">
       <div className="section-container">
         <ScrollReveal>
           <SectionHeader

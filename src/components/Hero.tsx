@@ -30,9 +30,9 @@ export default function Hero() {
     >
       {/* Layer 1 (-z-20): background photo.
           Dark mode keeps the original full-hero tint (already reads well).
-          Light mode has no full-hero wash at all: the photo stays fully
-          visible, and legibility instead comes from the frosted panel
-          behind the text column below. */}
+          Light mode has no overlay at all: the photo stays fully visible,
+          and legibility comes from a text shadow on the copy itself (see
+          below), not a panel or wash behind it. */}
       <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
         <Image
           src="/background.jpg"
@@ -67,79 +67,66 @@ export default function Hero() {
       </motion.div>
 
       {/* Content */}
-      <div className="section-container py-32 relative">
-        {/* Light-mode-only frosted panel behind the text column. Sized via
-            negative inset off this same (relative) container, so it always
-            matches the text's own box with no manual coordinate guessing,
-            then padded outward a little for breathing room. Dark mode
-            already reads correctly from the full-hero tint above, so this
-            is hidden there. */}
-        <div className="dark:hidden absolute inset-x-0 -top-8 -bottom-8 max-w-3xl bg-white/75 backdrop-blur-2xl rounded-[2rem] shadow-xl shadow-black/5" />
+      <div className="section-container py-32">
+        {/* Greeting */}
+        <motion.span
+          className="inline-block text-accent font-mono text-sm tracking-widest mb-5 [text-shadow:0_2px_8px_rgba(0,0,0,0.5)] dark:[text-shadow:none]"
+          {...fadeUp(0.05)}
+        >
+          {hero.greeting}
+        </motion.span>
 
-        {/* Text content: `relative` so it stacks above the panel (an
-            absolutely-positioned sibling would otherwise paint on top of
-            static content regardless of DOM order). */}
-        <div className="relative">
-          {/* Greeting */}
-          <motion.span
-            className="inline-block text-accent font-mono text-sm tracking-widest mb-5"
-            {...fadeUp(0.05)}
-          >
-            {hero.greeting}
-          </motion.span>
-
-          {/* Class tag, bespoke theme schools only */}
-          {schoolId && BESPOKE_SCHOOLS.includes(schoolId) && (
-            <motion.div className="mb-5" {...fadeUp(0.1)}>
-              {schoolId === 'princeton' && <PrincetonClassTag />}
-              {schoolId === 'harvard' && <HarvardClassTag />}
-              {schoolId === 'uc-berkeley' && <BerkeleyClassTag />}
-            </motion.div>
-          )}
-
-          {/* Name: large gradient heading, colours driven by CSS custom properties */}
-          <motion.h1
-            className="text-5xl sm:text-7xl lg:text-[90px] font-bold tracking-tighter leading-[1.02] mb-6"
-            {...fadeUp(0.15)}
-          >
-            <span className="gradient-text">{hero.name}</span>
-          </motion.h1>
-
-          {/* Tagline */}
-          <motion.p
-            className="text-lg sm:text-xl text-zinc-900 dark:text-zinc-300 max-w-2xl mb-4 leading-relaxed font-medium"
-            {...fadeUp(0.25)}
-          >
-            {hero.tagline}
-          </motion.p>
-
-          {/* Intro blurb */}
-          <motion.p
-            className="text-base text-zinc-800 dark:text-zinc-400 max-w-xl mb-10 leading-relaxed"
-            {...fadeUp(0.35)}
-          >
-            {hero.intro}
-          </motion.p>
-
-          {/* CTA buttons */}
-          <motion.div className="flex flex-wrap gap-4" {...fadeUp(0.45)}>
-            {hero.ctas.map(({ label, href, primary }) => (
-              <motion.a
-                key={label}
-                href={href}
-                whileTap={pressTap}
-                transition={pressTransition}
-                className={
-                  primary
-                    ? 'inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium bg-accent-fill text-white shadow-lg shadow-accent/20 hover:opacity-90 transition-colors duration-200'
-                    : 'inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium border border-zinc-300 dark:border-zinc-700 bg-white/90 dark:bg-transparent text-zinc-800 dark:text-zinc-300 hover:border-accent hover:text-accent transition-colors duration-200'
-                }
-              >
-                {label}
-              </motion.a>
-            ))}
+        {/* Class tag, bespoke theme schools only */}
+        {schoolId && BESPOKE_SCHOOLS.includes(schoolId) && (
+          <motion.div className="mb-5" {...fadeUp(0.1)}>
+            {schoolId === 'princeton' && <PrincetonClassTag />}
+            {schoolId === 'harvard' && <HarvardClassTag />}
+            {schoolId === 'uc-berkeley' && <BerkeleyClassTag />}
           </motion.div>
-        </div>
+        )}
+
+        {/* Name: large gradient heading, colours driven by CSS custom properties */}
+        <motion.h1
+          className="text-5xl sm:text-7xl lg:text-[90px] font-bold tracking-tighter leading-[1.02] mb-6 [text-shadow:0_2px_8px_rgba(0,0,0,0.5)] dark:[text-shadow:none]"
+          {...fadeUp(0.15)}
+        >
+          <span className="gradient-text">{hero.name}</span>
+        </motion.h1>
+
+        {/* Tagline */}
+        <motion.p
+          className="text-lg sm:text-xl text-white dark:text-zinc-300 max-w-2xl mb-4 leading-relaxed font-medium [text-shadow:0_2px_8px_rgba(0,0,0,0.5)] dark:[text-shadow:none]"
+          {...fadeUp(0.25)}
+        >
+          {hero.tagline}
+        </motion.p>
+
+        {/* Intro blurb */}
+        <motion.p
+          className="text-base text-zinc-100 dark:text-zinc-400 max-w-xl mb-10 leading-relaxed [text-shadow:0_2px_8px_rgba(0,0,0,0.5)] dark:[text-shadow:none]"
+          {...fadeUp(0.35)}
+        >
+          {hero.intro}
+        </motion.p>
+
+        {/* CTA buttons */}
+        <motion.div className="flex flex-wrap gap-4" {...fadeUp(0.45)}>
+          {hero.ctas.map(({ label, href, primary }) => (
+            <motion.a
+              key={label}
+              href={href}
+              whileTap={pressTap}
+              transition={pressTransition}
+              className={
+                primary
+                  ? 'inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium bg-accent-fill text-white shadow-lg shadow-accent/20 hover:opacity-90 transition-colors duration-200'
+                  : 'inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium border border-zinc-300 dark:border-zinc-700 bg-white/90 dark:bg-transparent text-zinc-800 dark:text-zinc-300 hover:border-accent hover:text-accent transition-colors duration-200'
+              }
+            >
+              {label}
+            </motion.a>
+          ))}
+        </motion.div>
       </div>
 
       {/* Animated scroll indicator */}
