@@ -34,6 +34,7 @@ type ContentJson = {
     demo: string; github: string; storyLink: StoryLink; statusBadge: string; statusNote: string
   }[]
   profileLinks: { label: string; handle: string; href: string; gradient: string }[]
+  cv: { body: string; buttonLabel: string }
   contact: { email: string; tagline: string; social: Social[] }
   whyAerospace: {
     heading: string; subtitle: string; paragraphs: string[]
@@ -413,6 +414,12 @@ export default function AdminPage() {
           >
             + Add link
           </button>
+        </Card>
+
+        {/* CV */}
+        <Card title="CV">
+          <Field lbl="Body text"><Textarea value={c.cv.body} onChange={v => update('cv', d => { d.body = v })} /></Field>
+          <Field lbl="Button label"><Input value={c.cv.buttonLabel} onChange={v => update('cv', d => { d.buttonLabel = v })} /></Field>
         </Card>
 
         {/* WHY AEROSPACE */}

@@ -50,6 +50,7 @@ export const about       = data.about
 export const research    = data.research as ResearchPaper[]
 export const projects    = data.projects as Project[]
 export const profileLinks = data.profileLinks as ProfileLink[]
+export const cv           = data.cv
 export const contact     = data.contact
 export const whySchool   = data.whySchool as {
   defaultTemplate: string

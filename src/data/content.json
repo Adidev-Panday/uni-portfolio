@@ -272,6 +272,10 @@
       "gradient": "from-violet-700 to-violet-900"
     }
   ],
+  "cv": {
+    "body": "The full version of everything on this site, condensed to a single page.",
+    "buttonLabel": "Download CV"
+  },
   "contact": {
     "email": "panday.adidev@gmail.com",
     "tagline": "Want to talk, share ideas, or discuss any projects? Feel free to reach out!",
