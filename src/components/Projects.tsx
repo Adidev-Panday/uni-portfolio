@@ -217,9 +217,7 @@ export default function Projects() {
                     id="project-modal-title"
                     className="text-xl font-bold tracking-tight leading-snug"
                   >
-                    {activeProject.modalLink
-                      ? `Open ${activeProject.name}?`
-                      : `${activeProject.name} isn't live right now`}
+                    {activeProject.modalTitle}
                   </h2>
                   <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed whitespace-pre-line">
                     {activeProject.modalBlurb}

@@ -61,6 +61,8 @@
     ]
   },
   "about": {
+    "heading": "About Me",
+    "subtitle": "",
     "paragraphs": [
       "I grew up in Ludhiana, Punjab, and study at Woodstock School, taking HL Physics, Math AA, and Computer Science in the IB Diploma. My focus is aerospace engineering where I hope to learn about aerodynamics & propulsion. ",
       "Outside class, I love building things. I've shipped many AI-powered web apps, developed a React Native app to tackle teen drunk-driving in my hometown, and published research on the risks of digital trading. I co-founded my school's AI Club, lead the yearbook as Editor in Chief, and used to play first chair violin in the Advanced Orchestra. I've competed in varsity football and basketball, interned in product development and CAD, and served on the Academic Honesty Council (AHC) & NHS. ",
@@ -79,6 +81,7 @@
       "status": "published",
       "modalBlurb": "You will be redirected to the IJHSR issue PDF. My paper starts on page 89.",
       "modalTitle": "Open the research paper?",
+      "modalButtonLabel": "Open paper",
       "statusLabel": "Published / Independent"
     },
     {
@@ -91,6 +94,7 @@
       "status": "unpublished",
       "modalBlurb": "You will be redirected to f1onceiling.netlify.app, an interactive version of the paper.",
       "modalTitle": "Open the F1 on a Ceiling paper?",
+      "modalButtonLabel": "Open paper",
       "statusLabel": "Unpublished / Independent"
     }
   ],
@@ -111,6 +115,7 @@
       },
       "statusBadge": "",
       "statusNote": "",
+      "modalTitle": "Open DriveSafe?",
       "modalBlurb": "DriveSafe doesn't have a live demo (the app is being scaled for publishing), but here is the Medium article I wrote about it.",
       "modalLink": {
         "label": "Read the story",
@@ -134,6 +139,7 @@
       },
       "statusBadge": "",
       "statusNote": "",
+      "modalTitle": "Open AirflowNS?",
       "modalBlurb": "You will be redirected to airflowns.netlify.app, where you can draw flows and watch the Navier-Stokes solver run in real time.",
       "modalLink": {
         "label": "Open site",
@@ -156,6 +162,7 @@
       },
       "statusBadge": "",
       "statusNote": "",
+      "modalTitle": "Open StarsInMaine?",
       "modalBlurb": "You will be redirected to starsinmaine.vercel.app, the night-sky recreation I built for Alan Lightman.",
       "modalLink": {
         "label": "Open site",
@@ -177,6 +184,7 @@
       },
       "statusBadge": "",
       "statusNote": "",
+      "modalTitle": "Open NYT Puzzle Solver?",
       "modalBlurb": "You will be redirected to nytpuzzleanswers.netlify.app, which solves and provides answers for New York Times puzzles.",
       "modalLink": {
         "label": "Open site",
@@ -199,6 +207,7 @@
       },
       "statusBadge": "",
       "statusNote": "AI features are temporarily limited: the API keys have expired and run out of credit.",
+      "modalTitle": "Open GrowwBot?",
       "modalBlurb": "GrowwBot is an AI-powered personal finance advisor for budgeting, investing, and financial planning.\nNote: the live demo loads fine, but AI-powered features are currently limited because the API keys have expired and run out of credit.",
       "modalLink": {
         "label": "Open site",
@@ -221,6 +230,7 @@
       },
       "statusBadge": "",
       "statusNote": "AI features are temporarily limited: the API keys have expired and run out of credit.",
+      "modalTitle": "Open Balancify?",
       "modalBlurb": "Balancify is an AI timetable and schedule maker that builds balanced, personalized study and activity plans.\nNote: the live demo loads fine, but AI-powered features are currently limited because the API keys have expired and run out of credit.",
       "modalLink": {
         "label": "Open site",
@@ -243,6 +253,7 @@
       },
       "statusBadge": "Private / in progress",
       "statusNote": "",
+      "modalTitle": "WoodLink isn't live right now",
       "modalBlurb": "WoodLink currently runs locally only. It is still in development as my CS HL IA and does not have a public hosted version yet."
     }
   ],
@@ -274,7 +285,8 @@
   ],
   "cv": {
     "body": "Everything about my last few years condensed into two pages.",
-    "buttonLabel": "View CV"
+    "buttonLabel": "View CV",
+    "pdfHref": "/cv.pdf"
   },
   "contact": {
     "email": "panday.adidev@gmail.com",

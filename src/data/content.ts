@@ -18,6 +18,7 @@ export type ResearchPaper = {
   statusLabel: string
   modalTitle: string
   modalBlurb: string
+  modalButtonLabel: string
 }
 
 export type Project = {
@@ -30,6 +31,7 @@ export type Project = {
   storyLink?: { label: string; href: string }
   statusBadge?: string
   statusNote?: string
+  modalTitle: string
   modalBlurb: string
   modalLink?: { label: string; href: string }
 }

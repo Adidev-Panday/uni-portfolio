@@ -204,7 +204,7 @@ export default function Research() {
                     transition={pressTransition}
                     className="flex-1 px-5 py-2.5 rounded-full text-sm font-semibold bg-accent-fill text-white hover:opacity-90 transition-colors duration-150"
                   >
-                    Open paper
+                    {activePaper.modalButtonLabel}
                   </motion.a>
                   <motion.button
                     onClick={close}

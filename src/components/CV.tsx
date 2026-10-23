@@ -28,7 +28,7 @@ export default function CV() {
 
           <ScrollReveal delay={0.2}>
             <motion.a
-              href="/cv.pdf"
+              href={cv.pdfHref}
               target="_blank"
               rel="noopener"
               whileTap={pressTap}

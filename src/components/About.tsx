@@ -10,7 +10,7 @@ export default function About() {
     <section id="about" className="py-24 bg-zinc-50 dark:bg-zinc-900/30">
       <div className="section-container">
         <ScrollReveal>
-          <SectionHeader number="01." title="About Me" />
+          <SectionHeader number="01." title={about.heading} subtitle={about.subtitle} />
         </ScrollReveal>
 
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-start">
