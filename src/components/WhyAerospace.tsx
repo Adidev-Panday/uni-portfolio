@@ -1,10 +1,14 @@
 'use client'
-// Why Aerospace section -- always visible; personal origin story with photo gallery.
+// Why Aerospace section -- always visible; personal origin story told as a
+// bento grid where photos and paragraphs share rows instead of stacking.
 // Content is data-driven via content.json (heading, paragraphs, photo alt text).
 import Image from 'next/image'
 import { whyAerospace } from '@/data/content'
 import ScrollReveal from './ScrollReveal'
 import SectionHeader from './SectionHeader'
+
+const cardClass =
+  'relative rounded-xl overflow-hidden group shadow-md border border-zinc-200 dark:border-zinc-800'
 
 export default function WhyAerospace() {
   const { heading, subtitle, paragraphs, photos } = whyAerospace
@@ -16,70 +20,74 @@ export default function WhyAerospace() {
           <SectionHeader number="02." title={heading} subtitle={subtitle} />
         </ScrollReveal>
 
-        {/* Photo gallery: featured first image + 4 square thumbnails */}
-        <ScrollReveal delay={0.08}>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-14">
-            {/* Photo 1: Ferrari -- featured, spans 2 cols */}
-            <div className="col-span-2 relative aspect-video rounded-xl overflow-hidden group shadow-md border border-zinc-200 dark:border-zinc-800">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-5">
+          {/* Row 1: hero shot (Ferrari) + toy car, same row height */}
+          <ScrollReveal delay={0.08} className="md:col-span-3">
+            <div className={`${cardClass} aspect-video`}>
               <Image
                 src={photos[0].src}
                 alt={photos[0].alt}
                 fill
                 priority
+                sizes="(min-width: 768px) 60vw, 100vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
-                sizes="(min-width: 768px) 66vw, 100vw"
               />
             </div>
+          </ScrollReveal>
 
-            {/* Photo 2: Toy car -- fills col 3 on desktop, starts new row on mobile */}
-            <div className="relative aspect-video md:aspect-auto rounded-xl overflow-hidden group shadow-md border border-zinc-200 dark:border-zinc-800">
+          <ScrollReveal delay={0.14} className="md:col-span-2">
+            <div className={`${cardClass} aspect-video md:aspect-auto md:h-full`}>
               <Image
                 src={photos[1].src}
                 alt={photos[1].alt}
                 fill
+                sizes="(min-width: 768px) 40vw, 100vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
-                sizes="(min-width: 768px) 33vw, 50vw"
               />
             </div>
+          </ScrollReveal>
 
-            {/* Photos 3-5: square thumbnails across the second row */}
-            {photos.slice(2).map((photo, i) => (
-              <div
-                key={i}
-                className="relative aspect-square rounded-xl overflow-hidden group shadow-md border border-zinc-200 dark:border-zinc-800"
-              >
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(min-width: 768px) 33vw, 50vw"
-                />
-              </div>
-            ))}
-          </div>
-        </ScrollReveal>
+          {/* Row 2: first paragraph + lego photo */}
+          <ScrollReveal delay={0.06} className="md:col-span-3 flex items-center">
+            <p className="leading-relaxed text-zinc-600 dark:text-zinc-300">
+              {paragraphs[0]}
+            </p>
+          </ScrollReveal>
 
-        {/* Copy paragraphs */}
-        <div className="max-w-2xl space-y-5">
-          {paragraphs.map((paragraph, i) => {
-            // A paragraph wrapped in parentheses is a small aside/closing
-            // note, not a paragraph purely by virtue of coming last.
-            const isNote = paragraph.trim().startsWith('(') && paragraph.trim().endsWith(')')
-            return (
-              <ScrollReveal key={i} delay={0.06 * i}>
-                <p
-                  className={`leading-relaxed ${
-                    isNote
-                      ? 'text-sm text-zinc-400 dark:text-zinc-500 italic'
-                      : 'text-zinc-600 dark:text-zinc-300'
-                  }`}
-                >
-                  {paragraph}
-                </p>
-              </ScrollReveal>
-            )
-          })}
+          <ScrollReveal delay={0.1} className="md:col-span-2">
+            <div className={`${cardClass} aspect-video md:aspect-auto md:h-full md:min-h-[220px]`}>
+              <Image
+                src={photos[2].src}
+                alt={photos[2].alt}
+                fill
+                sizes="(min-width: 768px) 40vw, 100vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </ScrollReveal>
+
+          {/* Row 3: second paragraph + toy bike & robotics side by side */}
+          <ScrollReveal delay={0.06} className="md:col-span-3 flex items-center">
+            <p className="leading-relaxed text-zinc-600 dark:text-zinc-300">
+              {paragraphs[1]}
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.1} className="md:col-span-2">
+            <div className="grid grid-cols-2 gap-5 md:h-full md:min-h-[220px]">
+              {photos.slice(3).map((photo, i) => (
+                <div key={i} className={`${cardClass} aspect-square md:aspect-auto md:h-full`}>
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    sizes="(min-width: 768px) 20vw, 50vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>
