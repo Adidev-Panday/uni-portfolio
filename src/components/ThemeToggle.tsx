@@ -39,10 +39,10 @@ export default function ThemeToggle({ overHero = false }: ThemeToggleProps) {
   return (
     <motion.button
       onClick={toggle}
-      className={`p-2 rounded-lg transition-[color,text-shadow] duration-200 ${
+      className={`p-2 rounded transition-colors duration-200 ${
         overHero
-          ? 'text-white hover:text-white/80 hover:bg-white/10 dark:text-zinc-500 dark:hover:text-zinc-100 dark:hover:bg-zinc-800 [filter:drop-shadow(0_1px_3px_rgba(0,0,0,0.4))] dark:[filter:none]'
-          : 'text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800'
+          ? 'text-white hover:text-white/70 [filter:drop-shadow(0_1px_3px_rgba(0,0,0,0.4))]'
+          : 'text-muted hover:text-ink hover:bg-ink/5'
       }`}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       whileTap={{ scale: 0.9 }}

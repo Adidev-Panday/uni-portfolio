@@ -1,5 +1,6 @@
-// Shared section header: number label, title, optional subtitle, accent bar.
-// Used at the top of every section for visual consistency.
+// Shared section header: mono eyebrow (number + hairline rule), then a
+// large serif title, then an optional mono metadata line. Used at the
+// top of every section so the editorial pattern stays consistent.
 interface SectionHeaderProps {
   number?: string  // e.g. "01." (omit to hide the number label)
   title: string
@@ -10,20 +11,21 @@ export default function SectionHeader({ number, title, subtitle }: SectionHeader
   return (
     <div className="mb-12 section-header">
       {number && (
-        <span className="text-accent font-mono text-xs tracking-widest uppercase">
-          {number}
-        </span>
+        <div className="flex items-baseline gap-4 mb-5">
+          <span className="font-mono text-xs text-muted tracking-widest shrink-0">
+            {number}
+          </span>
+          <div className="h-px flex-1 bg-rule" />
+        </div>
       )}
-      <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mt-2">
+      <h2 className="font-serif text-ink text-[clamp(2.5rem,5vw,5rem)] leading-[1.02] tracking-[-0.02em]">
         {title}
       </h2>
       {subtitle && (
-        <p className="text-zinc-600 dark:text-zinc-400 text-sm mt-2">
+        <p className="font-mono text-xs text-muted mt-3 tracking-wide">
           {subtitle}
         </p>
       )}
-      {/* Gradient accent underline: colours driven by CSS custom properties */}
-      <div className="h-px w-16 mt-4 accent-gradient-bar" />
     </div>
   )
 }

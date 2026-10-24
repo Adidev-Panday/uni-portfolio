@@ -27,15 +27,15 @@ export default function Navbar() {
   // Shared class builder for the desktop nav links, so the "why school"
   // link and the mapped navLinks stay in sync instead of duplicating
   // the same four-way (active/inactive x overHero/not) logic twice.
+  // overHero always reads white: the nav sits on the bare hero photo
+  // there in both modes, not on --paper.
   const navLinkClass = (isActive: boolean) => {
     if (isActive) {
-      return overHero
-        ? 'text-white dark:text-accent [text-shadow:0_2px_6px_rgba(0,0,0,0.4)] dark:[text-shadow:none]'
-        : 'text-accent [text-shadow:none]'
+      return overHero ? 'text-white [text-shadow:0_2px_6px_rgba(0,0,0,0.4)]' : 'text-accent'
     }
     return overHero
-      ? 'text-white hover:text-white/80 dark:text-zinc-400 dark:hover:text-zinc-100 [text-shadow:0_2px_6px_rgba(0,0,0,0.4)] dark:[text-shadow:none]'
-      : 'text-zinc-700 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 [text-shadow:none]'
+      ? 'text-white/70 hover:text-white [text-shadow:0_2px_6px_rgba(0,0,0,0.4)]'
+      : 'text-muted hover:text-ink'
   }
 
   // Show background/blur once page is scrolled past 24px
@@ -122,12 +122,13 @@ export default function Navbar() {
       data-scrolled={scrolled}
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         scrolled
-          ? 'bg-white/80 dark:bg-[#09090b]/80 backdrop-blur-md shadow-[0_12px_24px_-18px_rgba(0,0,0,0.25)] dark:shadow-[0_12px_24px_-18px_rgba(0,0,0,0.7)]'
+          // Glassmorphism kept here only because it is functional: a nav
+          // sitting over scrolled content needs some legibility backing.
+          // One hairline rule, no glow shadow.
+          ? 'bg-paper/85 backdrop-blur-md border-b border-rule'
           // Unscrolled, fully transparent in both modes so the hero photo
-          // shows all the way to the top edge. Nav link text carries its
-          // own subtle text-shadow (below) for legibility over the photo
-          // instead of a backing scrim here.
-          : 'bg-transparent'
+          // shows all the way to the top edge.
+          : 'bg-transparent border-b border-transparent'
       }`}
     >
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -136,10 +137,8 @@ export default function Navbar() {
           href="#hero"
           onDoubleClick={(e) => { e.preventDefault(); resetExperience() }}
           title="Double-click to reset"
-          className={`text-sm font-semibold tracking-tight transition-[color,text-shadow] duration-200 hover:text-accent dark:text-zinc-50 ${
-            overHero
-              ? 'text-white [text-shadow:0_2px_6px_rgba(0,0,0,0.4)] dark:[text-shadow:none]'
-              : 'text-zinc-900 [text-shadow:none]'
+          className={`font-serif text-base tracking-tight transition-colors duration-200 hover:text-accent ${
+            overHero ? 'text-white [text-shadow:0_2px_6px_rgba(0,0,0,0.4)]' : 'text-ink'
           }`}
         >
           {meta.name.split(' ')[0]}
@@ -161,16 +160,9 @@ export default function Navbar() {
               >
                 <a
                   href="#why-school"
-                  className={`relative px-3 py-1.5 text-sm rounded-md transition-[color,text-shadow] duration-200 whitespace-nowrap ${navLinkClass(activeSection === 'why-school')}`}
+                  className={`px-3 py-1.5 text-sm font-mono transition-colors duration-200 whitespace-nowrap ${navLinkClass(activeSection === 'why-school')}`}
                 >
-                  {activeSection === 'why-school' && (
-                    <motion.span
-                      layoutId="nav-pill"
-                      className="absolute inset-0 bg-accent/5 dark:bg-accent/10 rounded-md"
-                      transition={springUI}
-                    />
-                  )}
-                  <span className="relative z-10">Why {school.shortName}?</span>
+                  Why {school.shortName}?
                 </a>
               </motion.li>
             )}
@@ -183,17 +175,9 @@ export default function Navbar() {
               <li key={href}>
                 <a
                   href={href}
-                  className={`relative px-3 py-1.5 text-sm rounded-md transition-[color,text-shadow] duration-200 ${navLinkClass(isActive)}`}
+                  className={`px-3 py-1.5 text-sm font-mono transition-colors duration-200 ${navLinkClass(isActive)}`}
                 >
-                  {/* Animated highlight pill */}
-                  {isActive && (
-                    <motion.span
-                      layoutId="nav-pill"
-                      className="absolute inset-0 bg-accent/5 dark:bg-accent/10 rounded-md"
-                      transition={springUI}
-                    />
-                  )}
-                  <span className="relative z-10">{label}</span>
+                  {label}
                 </a>
               </li>
             )
@@ -206,10 +190,10 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className={`md:hidden p-2 rounded-lg transition-[color,text-shadow] duration-200 ${
+            className={`md:hidden p-2 rounded transition-colors duration-200 ${
               overHero
-                ? 'text-white hover:text-white/80 hover:bg-white/10 dark:text-zinc-500 dark:hover:text-zinc-100 dark:hover:bg-zinc-800 [filter:drop-shadow(0_1px_3px_rgba(0,0,0,0.4))] dark:[filter:none]'
-                : 'text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800'
+                ? 'text-white hover:text-white/70 [filter:drop-shadow(0_1px_3px_rgba(0,0,0,0.4))]'
+                : 'text-muted hover:text-ink'
             }`}
             onClick={() => setMobileOpen((o) => !o)}
             aria-label="Toggle menu"
@@ -228,15 +212,15 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={springUI}
-            className="md:hidden overflow-hidden bg-white dark:bg-[#09090b] border-b border-zinc-200 dark:border-zinc-800"
+            className="md:hidden overflow-hidden bg-paper border-b border-rule"
           >
-            <ul className="px-6 py-4 flex flex-col gap-1">
+            <ul className="px-6 py-4 flex flex-col gap-1 font-mono text-sm">
               {school && (
                 <li>
                   <a
                     href="#why-school"
                     onClick={closeMobile}
-                    className="block py-2.5 text-sm font-medium text-accent hover:text-accent/80 transition-colors"
+                    className="block py-2.5 text-accent transition-colors"
                   >
                     Why {school.shortName}?
                   </a>
@@ -247,7 +231,7 @@ export default function Navbar() {
                   <a
                     href={href}
                     onClick={closeMobile}
-                    className="block py-2.5 text-sm text-zinc-600 dark:text-zinc-400 hover:text-accent transition-colors"
+                    className="block py-2.5 text-muted hover:text-ink transition-colors"
                   >
                     {label}
                   </a>

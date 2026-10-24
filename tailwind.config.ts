@@ -42,12 +42,12 @@ const config: Config = {
         'accent-secondary': 'rgb(var(--accent-secondary-rgb) / <alpha-value>)',
         // accent-fill has no opacity modifier support: used only for solid fills
         'accent-fill': 'var(--accent-fill)',
-        // Editorial base tokens (src/styles/tokens.css). No opacity modifier
-        // support, same reasoning as accent-fill.
-        ink: 'var(--ink)',
-        paper: 'var(--paper)',
-        rule: 'var(--rule)',
-        muted: 'var(--muted)',
+        // Editorial base tokens (src/styles/tokens.css), opacity-modifier
+        // capable via the *-rgb triplets, same pattern as accent above.
+        ink: 'rgb(var(--ink-rgb) / <alpha-value>)',
+        paper: 'rgb(var(--paper-rgb) / <alpha-value>)',
+        rule: 'rgb(var(--rule-rgb) / <alpha-value>)',
+        muted: 'rgb(var(--muted-rgb) / <alpha-value>)',
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease forwards',

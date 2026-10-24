@@ -18,6 +18,17 @@
   --rule: #CFC7B8;
   --muted: #6B6355;
 
+  /* Same four colors as space-separated RGB triplets, so the
+     ink/paper/rule/muted Tailwind utilities (rgb(var(..) /
+     <alpha-value>), tailwind.config.ts) support opacity modifiers
+     (bg-paper/85 etc) the same way accent already does. Needed for
+     the one functional glassmorphism use: the sticky nav over the
+     hero photo. */
+  --ink-rgb: 10 10 10;
+  --paper-rgb: 245 242 236;
+  --rule-rgb: 207 199 184;
+  --muted-rgb: 107 99 85;
+
   /* #D1341B expressed as a space-separated RGB triplet so the
      accent / accent-secondary Tailwind utilities (rgb(var(..) /
      <alpha-value>), defined in tailwind.config.ts) resolve to it.
@@ -34,4 +45,9 @@
   --paper: #0E0E0E;
   --rule: #2A2824;
   --muted: #8F8775;
+
+  --ink-rgb: 236 231 221;
+  --paper-rgb: 14 14 14;
+  --rule-rgb: 42 40 36;
+  --muted-rgb: 143 135 117;
 }
