@@ -1,11 +1,12 @@
 'use client'
 // Hero section: full-viewport first impression.
-// Background: /public/background.jpg at low opacity behind a dark overlay.
+// Background: /public/background.jpg, with a single vertical wash from
+// transparent (top) to --paper (bottom) so the text block sits on a
+// seamless transition straight into the first section -- no scrim box,
+// no ambient color blobs.
 import Image from 'next/image'
 import { motion } from 'motion/react'
-import { ArrowDown } from 'lucide-react'
 import { hero } from '@/data/content'
-import { pressTap, pressTransition } from '@/lib/motion'
 import { useSchoolTheme } from '@/hooks/useSchoolTheme'
 import { PrincetonClassTag } from './PrincetonEasterEggs'
 import { HarvardClassTag } from './HarvardEasterEggs'
@@ -13,27 +14,26 @@ import { BerkeleyClassTag } from './BerkeleyEasterEggs'
 
 const BESPOKE_SCHOOLS = ['princeton', 'harvard', 'uc-berkeley']
 
-// Reusable entrance animation config
 const fadeUp = (delay: number) => ({
-  initial: { opacity: 0, y: 24 },
+  initial: { opacity: 0, y: 16 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.65, delay, ease: [0.21, 0.47, 0.32, 0.98] as const },
+  transition: { duration: 0.5, delay, ease: [0.21, 0.47, 0.32, 0.98] as const },
 })
 
 export default function Hero() {
   const { schoolId } = useSchoolTheme()
 
+  const projectsHref = hero.ctas.find((c) => c.primary)?.href ?? '#projects'
+  const researchHref = hero.ctas.find((c) => c.label.toLowerCase().includes('research'))?.href ?? '#research'
+  const aerospaceHref = hero.ctas.find((c) => c.label.toLowerCase().includes('aerospace'))?.href ?? '#why-aerospace'
+
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-end overflow-hidden"
     >
-      {/* Layer 1 (-z-20): background photo.
-          Dark mode keeps the original full-hero tint (already reads well).
-          Light mode has no overlay at all: the photo stays fully visible,
-          and legibility comes from a text shadow on the copy itself (see
-          below), not a panel or wash behind it. */}
-      <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden">
+      {/* Background photo */}
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <Image
           src="/background.jpg"
           alt=""
@@ -41,109 +41,75 @@ export default function Hero() {
           priority
           className="object-cover object-center"
         />
-
-        {/* Dark mode: unchanged flat tint + top-fade gradient */}
-        <div className="hidden dark:block absolute inset-0 bg-[#09090b]/[0.81]" />
-        <div className="hidden dark:block absolute inset-0 bg-gradient-to-t from-[#09090b]/50 via-transparent to-transparent" />
+        {/* Single wash, both modes: transparent for the top ~40%, resolving
+            to solid --paper by the bottom, so the text sits on paper and
+            blends straight into the next section. */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(to bottom, transparent 0%, transparent 38%, var(--paper) 92%)',
+          }}
+        />
       </div>
 
-      {/* Layer 2 (-z-10): soft ambient blobs, colour driven by CSS custom properties */}
-      <motion.div
-        className="pointer-events-none absolute inset-0 -z-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5 }}
-      >
-        <motion.div
-          className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-accent/[0.06] rounded-full blur-3xl"
-          animate={{ scale: [1, 1.08, 1], opacity: [0.5, 0.8, 0.5] }}
-          transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-accent-secondary/[0.06] rounded-full blur-3xl"
-          animate={{ scale: [1, 1.1, 1], opacity: [0.4, 0.7, 0.4] }}
-          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 3 }}
-        />
-      </motion.div>
-
-      {/* Content */}
-      <div className="section-container py-32">
-        {/* Greeting */}
-        <motion.span
-          className="inline-block text-accent font-mono text-sm tracking-widest mb-5 [text-shadow:0_2px_8px_rgba(0,0,0,0.5)] dark:[text-shadow:none]"
+      {/* Content block: anchored bottom-left, not centered */}
+      <div className="relative section-container w-full pb-20 pt-40 md:max-w-[60vw]">
+        <motion.p
+          className="font-mono text-xs tracking-[0.15em] text-muted uppercase mb-4"
           {...fadeUp(0.05)}
         >
-          {hero.greeting}
-        </motion.span>
+          Adidev Panday &middot; Ludhiana / Mussoorie &middot; 2026
+        </motion.p>
 
-        {/* Class tag, bespoke theme schools only */}
         {schoolId && BESPOKE_SCHOOLS.includes(schoolId) && (
-          <motion.div className="mb-5" {...fadeUp(0.1)}>
+          <motion.div className="mb-4" {...fadeUp(0.1)}>
             {schoolId === 'princeton' && <PrincetonClassTag />}
             {schoolId === 'harvard' && <HarvardClassTag />}
             {schoolId === 'uc-berkeley' && <BerkeleyClassTag />}
           </motion.div>
         )}
 
-        {/* Name: large gradient heading, colours driven by CSS custom properties */}
         <motion.h1
-          className="text-5xl sm:text-7xl lg:text-[90px] font-bold tracking-tighter leading-[1.02] mb-6 [text-shadow:0_2px_6px_rgba(0,0,0,0.3)] dark:[text-shadow:none]"
+          className="font-serif text-ink text-[clamp(4rem,10vw,10rem)] leading-[0.95] tracking-[-0.03em] mb-6"
           {...fadeUp(0.15)}
         >
-          <span className="gradient-text">{hero.name}</span>
+          {hero.name}
         </motion.h1>
 
-        {/* Tagline */}
         <motion.p
-          className="text-lg sm:text-xl text-white dark:text-zinc-300 max-w-2xl mb-4 leading-relaxed font-medium [text-shadow:0_2px_8px_rgba(0,0,0,0.5)] dark:[text-shadow:none]"
+          className="text-ink text-lg sm:text-xl max-w-xl mb-6 leading-relaxed"
           {...fadeUp(0.25)}
         >
-          {hero.tagline}
+          An aspiring aerospace engineer: F1 aerodynamics, propulsion, and the physics of making a thing move.
         </motion.p>
 
-        {/* Intro blurb */}
-        <motion.p
-          className="text-base text-zinc-100 dark:text-zinc-400 max-w-xl mb-10 leading-relaxed [text-shadow:0_2px_8px_rgba(0,0,0,0.5)] dark:[text-shadow:none]"
-          {...fadeUp(0.35)}
-        >
-          {hero.intro}
+        <motion.p className="text-base" {...fadeUp(0.35)}>
+          <a
+            href={projectsHref}
+            className="text-accent font-medium underline underline-offset-4 hover:no-underline"
+          >
+            View projects <span className="font-mono">&#8599;</span>
+          </a>
+          <span className="text-muted mx-3">or</span>
+          <a href={researchHref} className="text-ink underline underline-offset-4 hover:text-accent">
+            read research
+          </a>
+          <span className="text-muted mx-2">/</span>
+          <a href={aerospaceHref} className="text-ink underline underline-offset-4 hover:text-accent">
+            why aerospace
+          </a>
         </motion.p>
-
-        {/* CTA buttons */}
-        <motion.div className="flex flex-wrap gap-4" {...fadeUp(0.45)}>
-          {hero.ctas.map(({ label, href, primary }) => (
-            <motion.a
-              key={label}
-              href={href}
-              whileTap={pressTap}
-              transition={pressTransition}
-              className={
-                primary
-                  ? 'inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium bg-accent-fill text-white shadow-lg shadow-accent/20 hover:opacity-90 transition-colors duration-200'
-                  : 'inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium bg-transparent border border-white/70 text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.4)] dark:[text-shadow:none] hover:bg-black/5 dark:hover:bg-transparent hover:border-accent hover:text-accent transition-colors duration-200'
-              }
-            >
-              {label}
-            </motion.a>
-          ))}
-        </motion.div>
       </div>
 
-      {/* Animated scroll indicator */}
+      {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-zinc-600 dark:text-zinc-400"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 font-mono text-[10px] tracking-[0.2em] text-muted"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.6 }}
+        transition={{ delay: 1, duration: 0.6 }}
         aria-hidden
       >
-        <span className="text-[10px] tracking-widest uppercase font-mono">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 7, 0] }}
-          transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
-        >
-          <ArrowDown size={14} />
-        </motion.div>
+        SCROLL &#8595;
       </motion.div>
     </section>
   )
