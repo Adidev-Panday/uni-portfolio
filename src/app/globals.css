@@ -1,27 +1,33 @@
+@import '../styles/tokens.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ============================================================
-   CSS CUSTOM PROPERTIES
-   Default values reproduce the original indigo/violet palette
-   exactly. School themes override these on the html element via
-   the data-school attribute set by AdmissionsModal.
+   ANTI-SLOP RULEBOOK (full version: docs/anti-slop.md)
 
-   Variables:
-     --accent-rgb          space-separated RGB for Tailwind /alpha modifiers.
-                           Light mode: darker primary (readable on white).
-                           Dark mode:  brighter accent (readable on dark).
-     --accent-secondary-rgb  gradient secondary; always the bright accent.
-     --accent-fill         hex for solid button fills; always white-text safe.
-     --body-bg-dark        hex for dark-mode body background (school base).
-     --accent              full rgb() value for inline style usage.
+   NEVER: indigo/violet/purple as the base accent; decorative
+   gradients on text/buttons/backgrounds; Inter/Poppins/Roboto;
+   rounded-2xl/rounded-3xl on cards; glow shadows; glassmorphism
+   as decoration (functional only, e.g. sticky nav over a photo);
+   three equal cards with icons in colored circles; a centered
+   hero with two pill buttons; uniform section padding; decorative
+   Lucide icons; emoji as decoration.
+
+   Base palette is "editorial technical" (src/styles/tokens.css):
+   --ink / --paper / --accent / --rule / --muted. No raw hex
+   outside that file. --accent appears on at most 2 elements per
+   screen -- everything else is --ink on --paper.
+
+   --accent-rgb / --accent-secondary-rgb / --accent-fill /
+   --body-bg-dark keep their original names (set in tokens.css for
+   the base theme) because the 22 school themes and the Princeton /
+   Harvard / Berkeley bespoke blocks below override them -- that
+   machinery is intentionally left in place by this pass.
    ============================================================ */
 
 :root {
-  --accent-rgb: 99 102 241;            /* indigo-500  */
-  --accent-secondary-rgb: 139 92 246;  /* violet-500  */
-  --accent-fill: #6366f1;
   --accent: rgb(var(--accent-rgb));
 }
 
@@ -694,6 +700,18 @@
     font-optical-sizing: auto;
   }
 
+  /* Display serif (Fraunces) leans slightly soft at headline sizes
+     instead of reading like a scaled-up body face. */
+  h1, h2, .font-serif {
+    font-variation-settings: 'SOFT' 60;
+  }
+
+  /* Open tracking on body copy, tight on display type (applied directly
+     on the hero name / section titles where size warrants it). */
+  body {
+    letter-spacing: 0.005em;
+  }
+
   /* Kill the gray/blue tap-highlight flash on mobile Safari/Chrome; real
      press feedback is handled per-element by Motion's whileTap (§6). */
   * {
@@ -712,18 +730,15 @@
     transition-duration: 300ms;
   }
 
-  /* Light-mode body (default) */
+  /* Body background/text: --paper and --ink already flip per mode via
+     tokens.css, so one rule covers both. School themes override the
+     dark-mode case separately below with --body-bg-dark. */
   body {
-    background-color: #ffffff;
-    @apply text-zinc-900 transition-colors duration-300;
+    background-color: var(--paper);
+    color: var(--ink);
+    transition: background-color 400ms ease, color 400ms ease;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-
-  /* Dark-mode body: uses CSS variable so school themes can override */
-  .dark body {
-    background-color: var(--body-bg-dark, #09090b);
-    @apply text-zinc-50;
   }
 
   ::selection {
@@ -733,7 +748,7 @@
   ::-webkit-scrollbar { width: 5px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb {
-    @apply bg-zinc-300 dark:bg-zinc-700 rounded-full;
+    background-color: var(--rule);
   }
 }
 
@@ -763,29 +778,6 @@ body.modal-open main {
    ============================================================ */
 
 @layer utilities {
-  /* Hero name gradient: accent-rgb plus secondary create a two-tone sweep */
-  .gradient-text {
-    background-image: linear-gradient(
-      to right,
-      rgb(var(--accent-rgb) / 0.85),
-      rgb(var(--accent-secondary-rgb)),
-      rgb(var(--accent-rgb))
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-  }
-
-  /* Section header accent underline */
-  .accent-gradient-bar {
-    background-image: linear-gradient(
-      to right,
-      rgb(var(--accent-rgb)),
-      rgb(var(--accent-secondary-rgb))
-    );
-  }
-
   .section-container {
     @apply max-w-6xl mx-auto px-6;
   }
@@ -829,10 +821,7 @@ body.modal-open main {
 @media (prefers-reduced-transparency: reduce) {
   header[data-scrolled="true"] {
     backdrop-filter: none;
-    background-color: white;
-  }
-  .dark header[data-scrolled="true"] {
-    background-color: #09090b;
+    background-color: var(--paper);
   }
   .modal-scrim {
     backdrop-filter: none;
@@ -840,29 +829,20 @@ body.modal-open main {
   }
   .frosted-chip {
     backdrop-filter: none;
-    background-color: white;
-  }
-  .dark .frosted-chip {
-    background-color: #18181b;
+    background-color: var(--paper);
   }
 }
 
 @media (prefers-contrast: more) {
   header[data-scrolled="true"] {
-    background-color: white;
+    background-color: var(--paper);
     border-bottom: 1px solid currentColor;
-  }
-  .dark header[data-scrolled="true"] {
-    background-color: #09090b;
   }
   .modal-scrim {
     background-color: rgb(0 0 0 / 0.85);
   }
   .frosted-chip {
-    background-color: white;
+    background-color: var(--paper);
     border-width: 2px;
-  }
-  .dark .frosted-chip {
-    background-color: #18181b;
   }
 }

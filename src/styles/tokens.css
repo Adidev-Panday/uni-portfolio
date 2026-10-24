@@ -1,0 +1,37 @@
+/* ============================================================
+   DESIGN TOKENS — "Editorial Technical" (Palette A)
+
+   Single source of truth for every color in the BASE theme.
+   Nothing outside this file should contain a raw hex value for
+   ink / paper / accent / rule / muted -- reference the variables.
+
+   School themes (defined further down in globals.css, untouched
+   by this pass) override --accent-rgb / --accent-secondary-rgb /
+   --accent-fill / --body-bg-dark on top of these when an
+   admissions-officer school is active. This file only sets the
+   values used when no school theme is active.
+   ============================================================ */
+
+:root {
+  --ink: #0A0A0A;
+  --paper: #F5F2EC;
+  --rule: #CFC7B8;
+  --muted: #6B6355;
+
+  /* #D1341B expressed as a space-separated RGB triplet so the
+     accent / accent-secondary Tailwind utilities (rgb(var(..) /
+     <alpha-value>), defined in tailwind.config.ts) resolve to it.
+     accent-secondary is intentionally identical to accent: the
+     base theme has no second hue, no gradients. */
+  --accent-rgb: 209 52 27;
+  --accent-secondary-rgb: 209 52 27;
+  --accent-fill: #D1341B;
+  --body-bg-dark: #0E0E0E;
+}
+
+.dark {
+  --ink: #ECE7DD;
+  --paper: #0E0E0E;
+  --rule: #2A2824;
+  --muted: #8F8775;
+}

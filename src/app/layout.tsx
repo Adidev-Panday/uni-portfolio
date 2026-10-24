@@ -1,19 +1,38 @@
 import type { Metadata } from 'next'
-import { Inter, Playfair_Display } from 'next/font/google'
+import { Fraunces, IBM_Plex_Sans, JetBrains_Mono, Playfair_Display } from 'next/font/google'
 import { MotionConfig } from 'motion/react'
 import './globals.css'
 import { meta } from '@/data/content'
 
-// Load Inter via next/font (zero layout shift, self-hosted by Vercel)
-const inter = Inter({
+// Display serif for the hero name and section titles: a variable face
+// with real character, not a generic SaaS sans.
+const fraunces = Fraunces({
   subsets: ['latin'],
-  variable: '--font-inter',
+  axes: ['opsz', 'SOFT'],
+  variable: '--font-fraunces',
   display: 'swap',
 })
 
-// Serif display face reserved for the Princeton bespoke theme's headings.
-// The font file is only fetched by the browser when data-school="princeton"
-// actually applies it, so other themes pay no cost.
+// Body copy: a humanist sans, not Inter/Poppins/Roboto.
+const plexSans = IBM_Plex_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-plex-sans',
+  display: 'swap',
+})
+
+// Technical labels, section numbers, metadata, dates.
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-jetbrains-mono',
+  display: 'swap',
+})
+
+// Serif display face reserved for the Princeton / Harvard / Berkeley
+// bespoke theme headings. The font file is only fetched by the browser
+// when one of those data-school values actually applies it, so other
+// themes pay no cost.
 const playfair = Playfair_Display({
   subsets: ['latin'],
   weight: ['600', '700', '800'],
@@ -63,7 +82,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     // suppressHydrationWarning: the 'dark' class is applied client-side before
     // hydration, so React will see a mismatch; suppress that one warning.
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${fraunces.variable} ${plexSans.variable} ${jetbrainsMono.variable} ${playfair.variable}`}>
       <head>
         {/* Inline theme script runs synchronously before any CSS/JS */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />

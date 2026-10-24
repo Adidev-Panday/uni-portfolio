@@ -29,8 +29,11 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        // --font-inter is set by next/font in layout.tsx
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        // --font-plex-sans / --font-fraunces / --font-jetbrains-mono are
+        // set by next/font in layout.tsx.
+        sans: ['var(--font-plex-sans)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-fraunces)', 'Georgia', 'serif'],
+        mono: ['var(--font-jetbrains-mono)', 'ui-monospace', 'monospace'],
       },
       colors: {
         // All accent colors are driven by CSS custom properties in globals.css.
@@ -39,6 +42,12 @@ const config: Config = {
         'accent-secondary': 'rgb(var(--accent-secondary-rgb) / <alpha-value>)',
         // accent-fill has no opacity modifier support: used only for solid fills
         'accent-fill': 'var(--accent-fill)',
+        // Editorial base tokens (src/styles/tokens.css). No opacity modifier
+        // support, same reasoning as accent-fill.
+        ink: 'var(--ink)',
+        paper: 'var(--paper)',
+        rule: 'var(--rule)',
+        muted: 'var(--muted)',
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease forwards',
