@@ -1,15 +1,21 @@
 'use client'
-// Links / Profiles section: prominent gradient link cards.
-import { motion } from 'motion/react'
-import { ArrowUpRight } from 'lucide-react'
+// Links / Profiles section: a mono terminal readout, not colored
+// gradient cards. Each row reads LABEL / arrow / handle / domain.
 import { profileLinks } from '@/data/content'
-import { springUI } from '@/lib/motion'
 import ScrollReveal from './ScrollReveal'
 import SectionHeader from './SectionHeader'
 
+function hostname(url: string) {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '')
+  } catch {
+    return ''
+  }
+}
+
 export default function Links() {
   return (
-    <section id="links" className="py-24 bg-zinc-50 dark:bg-zinc-900/30">
+    <section id="links" className="py-16">
       <div className="section-container">
         <ScrollReveal>
           <SectionHeader
@@ -19,41 +25,28 @@ export default function Links() {
           />
         </ScrollReveal>
 
-        {/* Responsive grid: 1 → 2 → 4 columns */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {profileLinks.map((link, i) => (
-            <ScrollReveal key={link.label} delay={0.1 * i}>
-              <motion.a
+        <div className="border-t border-rule font-mono text-sm">
+          {profileLinks.map((link) => (
+            <ScrollReveal key={link.label} className="border-b border-rule">
+              <a
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`links-card group relative flex flex-col justify-between p-6 rounded-2xl bg-gradient-to-br ${link.gradient} min-h-[148px] overflow-hidden`}
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.97 }}
-                transition={springUI}
+                className="group grid grid-cols-[88px_20px_1fr] sm:grid-cols-[140px_24px_1fr_auto] items-baseline gap-x-4 py-4 px-1 transition-colors duration-150 hover:bg-ink"
               >
-                {/* Top: platform label + arrow */}
-                <div className="flex items-center justify-between mb-auto">
-                  <span className="text-white/50 text-xs font-mono tracking-widest uppercase">
-                    {link.label}
-                  </span>
-                  <ArrowUpRight
-                    size={16}
-                    className="text-white/30 group-hover:text-white/80 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200"
-                  />
-                </div>
-
-                {/* Bottom: handle */}
-                <p className="text-white font-semibold text-lg leading-snug mt-4">
+                <span className="uppercase tracking-wide text-muted group-hover:text-paper/60 transition-colors duration-150">
+                  {link.label}
+                </span>
+                <span className="text-muted group-hover:text-accent transition-colors duration-150">
+                  &#8599;
+                </span>
+                <span className="text-ink group-hover:text-paper truncate transition-colors duration-150">
                   {link.handle}
-                </p>
-
-                {/* Decorative background circle */}
-                <span
-                  className="pointer-events-none absolute -bottom-8 -right-8 w-28 h-28 rounded-full bg-white/5"
-                  aria-hidden
-                />
-              </motion.a>
+                </span>
+                <span className="hidden sm:inline text-xs text-muted group-hover:text-paper/50 justify-self-end transition-colors duration-150">
+                  {hostname(link.href)}
+                </span>
+              </a>
             </ScrollReveal>
           ))}
         </div>
