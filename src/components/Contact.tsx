@@ -14,13 +14,13 @@ export default function Contact() {
         </ScrollReveal>
 
         <div className="max-w-xl">
-          <ScrollReveal delay={0.1}>
+          <ScrollReveal delay={0.06}>
             <p className="text-ink/80 leading-relaxed mb-6">
               {contact.tagline}
             </p>
           </ScrollReveal>
 
-          <ScrollReveal delay={0.2}>
+          <ScrollReveal delay={0.12}>
             <p className="font-mono text-base">
               <a
                 href={`mailto:${contact.email}`}

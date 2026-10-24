@@ -1,17 +1,10 @@
 'use client'
-// Links / Profiles section: a mono terminal readout, not colored
-// gradient cards. Each row reads LABEL / arrow / handle / domain.
+// Links / Profiles section: a row of editorial card buttons, not a
+// terminal readout, not colored gradients. Four across on desktop,
+// stacked on mobile.
 import { profileLinks } from '@/data/content'
 import ScrollReveal from './ScrollReveal'
 import SectionHeader from './SectionHeader'
-
-function hostname(url: string) {
-  try {
-    return new URL(url).hostname.replace(/^www\./, '')
-  } catch {
-    return ''
-  }
-}
 
 export default function Links() {
   return (
@@ -25,27 +18,26 @@ export default function Links() {
           />
         </ScrollReveal>
 
-        <div className="border-t border-rule font-mono text-sm">
-          {profileLinks.map((link) => (
-            <ScrollReveal key={link.label} className="border-b border-rule">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {profileLinks.map((link, i) => (
+            <ScrollReveal key={link.label} delay={Math.min(i * 0.06, 0.18)}>
               <a
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group grid grid-cols-[88px_20px_1fr] sm:grid-cols-[140px_24px_1fr_auto] items-baseline gap-x-4 py-4 px-1 transition-colors duration-150 hover:bg-ink"
+                className="group relative flex flex-col justify-between min-h-[160px] p-6 rounded border border-rule bg-paper hover:bg-accent hover:border-accent transition-colors duration-150"
               >
-                <span className="uppercase tracking-wide text-muted group-hover:text-paper/60 transition-colors duration-150">
-                  {link.label}
-                </span>
-                <span className="text-muted group-hover:text-accent transition-colors duration-150">
-                  &#8599;
-                </span>
-                <span className="text-ink group-hover:text-paper truncate transition-colors duration-150">
+                <div className="flex items-start justify-between">
+                  <span className="font-mono text-xs uppercase tracking-widest text-muted group-hover:text-paper transition-colors duration-150">
+                    {link.label}
+                  </span>
+                  <span className="font-mono text-sm text-muted group-hover:text-paper transition-colors duration-150">
+                    &#8599;
+                  </span>
+                </div>
+                <p className="font-serif text-xl text-ink group-hover:text-paper transition-colors duration-150 mt-6">
                   {link.handle}
-                </span>
-                <span className="hidden sm:inline text-xs text-muted group-hover:text-paper/50 justify-self-end transition-colors duration-150">
-                  {hostname(link.href)}
-                </span>
+                </p>
               </a>
             </ScrollReveal>
           ))}

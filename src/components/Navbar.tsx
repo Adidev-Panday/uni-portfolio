@@ -28,14 +28,18 @@ export default function Navbar() {
   // link and the mapped navLinks stay in sync instead of duplicating
   // the same four-way (active/inactive x overHero/not) logic twice.
   // overHero always reads white: the nav sits on the bare hero photo
-  // there in both modes, not on --paper.
+  // there in both modes, not on --paper. The text-shadow is declared
+  // at all times (just at zero alpha when not over the hero) so color
+  // and text-shadow both interpolate smoothly across the swap instead
+  // of snapping, since transition-property includes text-shadow below.
+  const heroShadow = '[text-shadow:0_1px_4px_rgba(0,0,0,0.5)]'
+  const flatShadow = '[text-shadow:0_1px_4px_rgba(0,0,0,0)]'
   const navLinkClass = (isActive: boolean) => {
+    const shadow = overHero ? heroShadow : flatShadow
     if (isActive) {
-      return overHero ? 'text-white [text-shadow:0_2px_6px_rgba(0,0,0,0.4)]' : 'text-accent'
+      return `${overHero ? 'text-white' : 'text-accent'} ${shadow}`
     }
-    return overHero
-      ? 'text-white/70 hover:text-white [text-shadow:0_2px_6px_rgba(0,0,0,0.4)]'
-      : 'text-muted hover:text-ink'
+    return `${overHero ? 'text-white/80 hover:text-white' : 'text-muted hover:text-ink'} ${shadow}`
   }
 
   // Show background/blur once page is scrolled past 24px
@@ -137,8 +141,8 @@ export default function Navbar() {
           href="#hero"
           onDoubleClick={(e) => { e.preventDefault(); resetExperience() }}
           title="Double-click to reset"
-          className={`font-serif text-base tracking-tight transition-colors duration-200 hover:text-accent ${
-            overHero ? 'text-white [text-shadow:0_2px_6px_rgba(0,0,0,0.4)]' : 'text-ink'
+          className={`font-serif text-base tracking-tight transition-[color,text-shadow] duration-300 hover:text-accent ${
+            overHero ? `text-white ${heroShadow}` : `text-ink ${flatShadow}`
           }`}
         >
           {meta.name.split(' ')[0]}
@@ -160,7 +164,7 @@ export default function Navbar() {
               >
                 <a
                   href="#why-school"
-                  className={`px-3 py-1.5 text-sm font-mono transition-colors duration-200 whitespace-nowrap ${navLinkClass(activeSection === 'why-school')}`}
+                  className={`px-3 py-1.5 text-sm font-mono transition-[color,text-shadow] duration-300 whitespace-nowrap ${navLinkClass(activeSection === 'why-school')}`}
                 >
                   Why {school.shortName}?
                 </a>
@@ -175,7 +179,7 @@ export default function Navbar() {
               <li key={href}>
                 <a
                   href={href}
-                  className={`px-3 py-1.5 text-sm font-mono transition-colors duration-200 ${navLinkClass(isActive)}`}
+                  className={`px-3 py-1.5 text-sm font-mono transition-[color,text-shadow] duration-300 ${navLinkClass(isActive)}`}
                 >
                   {label}
                 </a>
@@ -190,10 +194,10 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className={`md:hidden p-2 rounded transition-colors duration-200 ${
+            className={`md:hidden p-2 rounded transition-[color,filter] duration-300 ${
               overHero
-                ? 'text-white hover:text-white/70 [filter:drop-shadow(0_1px_3px_rgba(0,0,0,0.4))]'
-                : 'text-muted hover:text-ink'
+                ? 'text-white hover:text-white/70 [filter:drop-shadow(0_1px_4px_rgba(0,0,0,0.5))]'
+                : 'text-muted hover:text-ink [filter:drop-shadow(0_1px_4px_rgba(0,0,0,0))]'
             }`}
             onClick={() => setMobileOpen((o) => !o)}
             aria-label="Toggle menu"

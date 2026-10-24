@@ -13,7 +13,7 @@ export default function CV() {
           <SectionHeader number="06." title="CV" subtitle="Curriculum Vitae" />
         </ScrollReveal>
 
-        <ScrollReveal delay={0.1}>
+        <ScrollReveal delay={0.06}>
           <p className="text-ink/80 leading-relaxed max-w-xl">
             {cv.body}{' '}
             <a

@@ -1,8 +1,7 @@
 'use client'
-// Research section: two publications in editorial citation format --
-// serif title, italic serif venue/year, body-sans abstract -- not two
-// matching cards. Clicking a citation opens a confirmation panel,
-// matching the Projects list.
+// Research section: two publications as clickable editorial cards, not
+// a stacked magazine spread. Hairline border, 6px radius, no shadow,
+// no gradient. Clicking a card opens a confirmation modal.
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence } from 'motion/react'
 import { research, type ResearchPaper } from '@/data/content'
@@ -48,9 +47,9 @@ export default function Research() {
           />
         </ScrollReveal>
 
-        <div className="border-t border-rule">
+        <div className="grid md:grid-cols-2 gap-6 items-stretch">
           {research.map((paper, i) => (
-            <ScrollReveal key={i} delay={0.1 * (i + 1)} className="border-b border-rule">
+            <ScrollReveal key={i} delay={Math.min(i * 0.06, 0.12)} className="h-full">
               <article
                 role="button"
                 tabIndex={0}
@@ -61,23 +60,27 @@ export default function Research() {
                     setActivePaper(paper)
                   }
                 }}
-                className="group py-10 px-1 cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-accent"
+                className="group h-full flex flex-col p-6 sm:p-8 border border-rule rounded bg-paper hover:bg-ink/[0.03] transition-colors duration-150 cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-accent"
               >
-                <p className="font-mono text-[11px] uppercase tracking-wide text-muted mb-2">
-                  {paper.statusLabel}
-                </p>
+                <div className="flex items-start justify-between gap-4 mb-4">
+                  <span className="font-mono text-[11px] uppercase tracking-wide text-muted">
+                    {paper.statusLabel}
+                  </span>
+                  <span className="font-mono text-sm text-muted group-hover:text-accent transition-colors" aria-hidden="true">
+                    &#8599;
+                  </span>
+                </div>
 
-                <h3 className="font-serif text-2xl sm:text-3xl text-ink group-hover:text-accent transition-colors duration-200">
-                  {paper.title}{' '}
-                  <span className="font-mono text-base text-muted group-hover:text-accent">&#8599;</span>
+                <h3 className="font-serif text-xl sm:text-2xl text-ink group-hover:text-accent transition-colors duration-200 mb-2">
+                  {paper.title}
                 </h3>
 
-                <p className="italic font-serif text-base text-muted mt-2">
+                <p className="italic font-serif text-sm text-muted mb-4">
                   {paper.journal}, {paper.year}
                   {paper.pageNote && <span className="not-italic font-mono text-xs ml-2">({paper.pageNote})</span>}
                 </p>
 
-                <p className="text-ink/80 leading-relaxed mt-4 max-w-[70ch]">
+                <p className="text-sm text-ink/80 leading-relaxed flex-1">
                   {paper.abstract}
                 </p>
               </article>

@@ -21,7 +21,7 @@ export default function WhyAerospace() {
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-5">
           {/* Row 1: hero shot (Ferrari) + toy car, same row height */}
-          <ScrollReveal delay={0.08} className="md:col-span-3">
+          <ScrollReveal delay={0.06} className="md:col-span-3">
             <div className={`${cardClass} aspect-video`}>
               <Image
                 src={photos[0].src}
@@ -34,7 +34,7 @@ export default function WhyAerospace() {
             </div>
           </ScrollReveal>
 
-          <ScrollReveal delay={0.14} className="md:col-span-2">
+          <ScrollReveal delay={0.12} className="md:col-span-2">
             <div className={`${cardClass} aspect-video md:aspect-auto md:h-full`}>
               <Image
                 src={photos[1].src}
@@ -53,7 +53,7 @@ export default function WhyAerospace() {
             </p>
           </ScrollReveal>
 
-          <ScrollReveal delay={0.1} className="md:col-span-2">
+          <ScrollReveal delay={0.06} className="md:col-span-2">
             <div className={`${cardClass} aspect-video md:aspect-auto md:h-full md:min-h-[220px]`}>
               <Image
                 src={photos[2].src}
@@ -72,7 +72,7 @@ export default function WhyAerospace() {
             </p>
           </ScrollReveal>
 
-          <ScrollReveal delay={0.1} className="md:col-span-2">
+          <ScrollReveal delay={0.06} className="md:col-span-2">
             <div className="grid grid-cols-2 gap-5 md:h-full md:min-h-[220px]">
               {photos.slice(3).map((photo, i) => (
                 <div key={i} className={`${cardClass} aspect-square md:aspect-auto md:h-full`}>

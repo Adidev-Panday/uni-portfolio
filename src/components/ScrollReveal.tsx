@@ -1,8 +1,10 @@
 'use client'
-// Reusable scroll-triggered reveal wrapper. A mask reveal (clip-path
-// from bottom to top) instead of a fade-up: text looks like it's being
-// uncovered, not animating in from nowhere. Plays once per element.
-import { useRef } from 'react'
+// Reusable scroll-triggered reveal wrapper. Opacity + a 12px translateY
+// instead of a clip-path mask: both are compositor-only properties, so
+// this stays smooth on weaker hardware where clip-path judders.
+// will-change is toggled on only while the animation is actually
+// running, so it doesn't sit on every revealed element forever.
+import { useRef, useState } from 'react'
 import { motion, useInView } from 'motion/react'
 
 interface ScrollRevealProps {
@@ -17,15 +19,22 @@ export default function ScrollReveal({
   className,
 }: ScrollRevealProps) {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-80px' })
+  // Positive bottom margin: the element is treated as "in view" while
+  // still below the fold, so the reveal finishes by the time the user
+  // actually scrolls to it instead of starting late.
+  const isInView = useInView(ref, { once: true, margin: '0px 0px 120px 0px' })
+  const [animating, setAnimating] = useState(false)
 
   return (
     <motion.div
       ref={ref}
       className={className}
-      initial={{ clipPath: 'inset(100% 0 0 0)', opacity: 0 }}
-      animate={isInView ? { clipPath: 'inset(0% 0 0 0)', opacity: 1 } : {}}
+      style={{ willChange: animating ? 'transform, opacity' : 'auto' }}
+      initial={{ opacity: 0, y: 12 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.4, delay, ease: 'easeOut' }}
+      onAnimationStart={() => setAnimating(true)}
+      onAnimationComplete={() => setAnimating(false)}
     >
       {children}
     </motion.div>

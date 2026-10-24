@@ -8,8 +8,9 @@ import { motion } from 'motion/react'
 import { springUI } from '@/lib/motion'
 
 interface ThemeToggleProps {
-  // Light mode only: true while the nav sits over the still-visible
-  // hero photo, so the icon goes white to stay legible there.
+  // True while the nav sits over the still-visible hero photo (both
+  // modes), so the icon goes white with a drop shadow to stay legible
+  // against the photo instead of blending into it.
   overHero?: boolean
 }
 
@@ -39,10 +40,10 @@ export default function ThemeToggle({ overHero = false }: ThemeToggleProps) {
   return (
     <motion.button
       onClick={toggle}
-      className={`p-2 rounded transition-colors duration-200 ${
+      className={`p-2 rounded transition-[color,filter] duration-300 ${
         overHero
-          ? 'text-white hover:text-white/70 [filter:drop-shadow(0_1px_3px_rgba(0,0,0,0.4))]'
-          : 'text-muted hover:text-ink hover:bg-ink/5'
+          ? 'text-white hover:text-white/70 [filter:drop-shadow(0_1px_4px_rgba(0,0,0,0.5))]'
+          : 'text-muted hover:text-ink hover:bg-ink/5 [filter:drop-shadow(0_1px_4px_rgba(0,0,0,0))]'
       }`}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       whileTap={{ scale: 0.9 }}

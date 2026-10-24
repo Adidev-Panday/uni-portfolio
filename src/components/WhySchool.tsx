@@ -51,7 +51,7 @@ export default function WhySchool() {
                 </div>
               </ScrollReveal>
 
-              <ScrollReveal delay={0.1}>
+              <ScrollReveal delay={0.06}>
                 <div className="max-w-[65ch] space-y-4">
                   {text.split('\n\n').map((paragraph, i) => (
                     <p

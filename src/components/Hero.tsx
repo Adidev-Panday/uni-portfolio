@@ -54,15 +54,8 @@ export default function Hero() {
 
       {/* Content block: anchored bottom-left, not centered */}
       <div className="relative section-container w-full pb-20 pt-40 md:max-w-[60vw]">
-        <motion.p
-          className="font-mono text-xs tracking-[0.15em] text-muted uppercase mb-4"
-          {...fadeUp(0.05)}
-        >
-          Adidev Panday &middot; Ludhiana / Mussoorie &middot; 2026
-        </motion.p>
-
         {schoolId && BESPOKE_SCHOOLS.includes(schoolId) && (
-          <motion.div className="mb-4" {...fadeUp(0.1)}>
+          <motion.div className="mb-4" {...fadeUp(0.05)}>
             {schoolId === 'princeton' && <PrincetonClassTag />}
             {schoolId === 'harvard' && <HarvardClassTag />}
             {schoolId === 'uc-berkeley' && <BerkeleyClassTag />}
@@ -71,19 +64,19 @@ export default function Hero() {
 
         <motion.h1
           className="font-serif text-ink text-[clamp(4rem,10vw,10rem)] leading-[0.95] tracking-[-0.03em] mb-6"
-          {...fadeUp(0.15)}
+          {...fadeUp(0.1)}
         >
           {hero.name}
         </motion.h1>
 
         <motion.p
           className="text-ink text-lg sm:text-xl max-w-xl mb-6 leading-relaxed"
-          {...fadeUp(0.25)}
+          {...fadeUp(0.2)}
         >
           An aspiring aerospace engineer: F1 aerodynamics, propulsion, and the physics of making a thing move.
         </motion.p>
 
-        <motion.p className="text-base" {...fadeUp(0.35)}>
+        <motion.p className="text-base" {...fadeUp(0.3)}>
           <a
             href={projectsHref}
             className="text-accent font-medium underline underline-offset-4 hover:no-underline"
