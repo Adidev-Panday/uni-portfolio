@@ -4,7 +4,7 @@
 // Step 2: School picker (alphabetical list)
 // On selection: applies CSS custom-property theme to <html data-school="...">
 // Persists choice in sessionStorage so modal does not repeat within a session.
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { SCHOOLS, type SchoolId } from '@/data/schools'
 import { fireConfetti } from '@/lib/confetti'
@@ -29,8 +29,9 @@ export default function AdmissionsModal() {
   const [activeSchool, setActiveSchool] = useState<SchoolId | null>(null)
   const [mounted, setMounted]         = useState(false)
 
-  const yesBtnRef  = useRef<HTMLButtonElement>(null)
-  const backBtnRef = useRef<HTMLButtonElement>(null)
+  const yesBtnRef   = useRef<HTMLButtonElement>(null)
+  const backBtnRef  = useRef<HTMLButtonElement>(null)
+  const pickerBodyRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     setMounted(true)
@@ -48,9 +49,24 @@ export default function AdmissionsModal() {
     }
   }, [])
 
+  // Force the picker's school list back to the top on every open, before
+  // paint, since a later focus() call (below) can otherwise scroll a
+  // tall list into view and leave the panel opening mid-list instead
+  // of at Bocconi. Runs before the autofocus effect (layout effects
+  // fire before passive effects), and the list state never persists
+  // across opens since this always zeroes it out first.
+  useLayoutEffect(() => {
+    if (step === 'picker' && pickerBodyRef.current) {
+      pickerBodyRef.current.scrollTop = 0
+    }
+  }, [step])
+
   useEffect(() => {
-    if (step === 'question') yesBtnRef.current?.focus()
-    if (step === 'picker')   backBtnRef.current?.focus()
+    // preventScroll: true -- the school picker's "back" link sits at
+    // the bottom of a long scrollable list; without it, focusing the
+    // link scrolls that list down to bring it into view.
+    if (step === 'question') yesBtnRef.current?.focus({ preventScroll: true })
+    if (step === 'picker')   backBtnRef.current?.focus({ preventScroll: true })
   }, [step])
 
   useEffect(() => {
@@ -142,8 +158,13 @@ export default function AdmissionsModal() {
             title="Which institution are you visiting from?"
             onClose={dismiss}
             maxWidthClass="max-w-md"
+            bodyRef={pickerBodyRef}
           >
-            <p className="font-mono text-xs text-muted mb-5">Listed alphabetically.</p>
+            {/* Sticky under the panel's fixed heading, so it stays in
+                view no matter how far down the list the user scrolls. */}
+            <p className="sticky top-0 z-10 bg-paper pb-3 font-mono text-xs text-muted">
+              Listed alphabetically.
+            </p>
 
             <ul className="font-mono text-sm border-t border-rule" role="listbox" aria-label="Select your institution">
               {SCHOOLS.map((school) => (

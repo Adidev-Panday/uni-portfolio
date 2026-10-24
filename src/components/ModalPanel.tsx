@@ -31,6 +31,11 @@ interface ModalPanelProps {
   onClose: () => void
   children: React.ReactNode
   maxWidthClass?: string
+  // Exposes the scrollable body div so a caller with a long list (the
+  // school picker) can force scrollTop back to 0 on open -- otherwise
+  // a later focus() call inside the list can scroll it into view and
+  // leave the panel opening mid-list instead of at the top.
+  bodyRef?: React.RefObject<HTMLDivElement | null>
 }
 
 export function ModalPanel({
@@ -39,6 +44,7 @@ export function ModalPanel({
   onClose,
   children,
   maxWidthClass = 'max-w-lg',
+  bodyRef,
 }: ModalPanelProps) {
   return (
     <motion.div
@@ -68,7 +74,7 @@ export function ModalPanel({
           </h2>
           <div className="h-px bg-rule mt-4 mb-6" />
         </div>
-        <div className="flex-1 min-h-0 overflow-y-auto px-6 sm:px-10 pb-8 sm:pb-10">
+        <div ref={bodyRef} className="flex-1 min-h-0 overflow-y-auto px-6 sm:px-10 pb-8 sm:pb-10">
           {children}
         </div>
       </div>
