@@ -172,4 +172,20 @@ export const SCHOOL_MOTIFS: Record<string, SchoolMotif> = {
     confettiColors: ['#003D7C', '#EF7C00', '#F5F2EC'],
     consoleLine: 'Singapore, always building.',
   },
+
+  // Batch 6 (final): TU Delft, TUM. Neither has a Latin motto or a
+  // mascot, so both triggers are each school's real student rocketry
+  // team instead.
+  'tu-delft': {
+    triggerWord: 'stratos',
+    revealLines: ['Stratos I, II, III.', 'Stratos V climbing.', 'Challenge the future.'],
+    confettiColors: ['#00A6D6', '#4DBFE3', '#F5F2EC'],
+    consoleLine: 'Challenge the future.',
+  },
+  tum: {
+    triggerWord: 'warr',
+    revealLines: ["WARR's first hybrid rocket, 1974.", 'Still on display at the Deutsches Museum.', 'Still building the next one.'],
+    confettiColors: ['#0065BD', '#64A0C8', '#F5F2EC'],
+    consoleLine: 'Die unternehmerische Universitat.',
+  },
 }
