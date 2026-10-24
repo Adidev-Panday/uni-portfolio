@@ -6,12 +6,11 @@
 // Persists choice in sessionStorage so modal does not repeat within a session.
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
-import { X } from 'lucide-react'
 import { SCHOOLS, type SchoolId } from '@/data/schools'
 import { fireConfetti } from '@/lib/confetti'
 import { fireLightsOn } from '@/lib/lightsOn'
-import { modalCardAnim, pressTap, pressTransition } from '@/lib/motion'
 import { pushModalOpen, popModalOpen } from '@/lib/modalDepth'
+import { ModalBackdrop, ModalPanel } from './ModalPanel'
 
 const SESSION_KEY = 'admissions-choice'
 
@@ -25,15 +24,11 @@ function clearSchool() {
 
 type Step = 'idle' | 'question' | 'picker'
 
-// Shared modal card animation, critically damped and anchored per-trigger
-const cardAnim = modalCardAnim
-
 export default function AdmissionsModal() {
   const [step, setStep]               = useState<Step>('idle')
   const [activeSchool, setActiveSchool] = useState<SchoolId | null>(null)
   const [mounted, setMounted]         = useState(false)
 
-  // Button refs for autofocus inside modals
   const yesBtnRef  = useRef<HTMLButtonElement>(null)
   const backBtnRef = useRef<HTMLButtonElement>(null)
 
@@ -42,11 +37,9 @@ export default function AdmissionsModal() {
     try {
       const stored = sessionStorage.getItem(SESSION_KEY)
       if (!stored) {
-        // First visit this session: show prompt after page renders
         const t = setTimeout(() => setStep('question'), 650)
         return () => clearTimeout(t)
       } else if (stored !== 'no') {
-        // Returning session with a school choice: reapply theme silently
         applySchool(stored as SchoolId)
         setActiveSchool(stored as SchoolId)
       }
@@ -55,13 +48,11 @@ export default function AdmissionsModal() {
     }
   }, [])
 
-  // Autofocus first interactive element when step changes
   useEffect(() => {
     if (step === 'question') yesBtnRef.current?.focus()
     if (step === 'picker')   backBtnRef.current?.focus()
   }, [step])
 
-  // ESC key dismisses any open modal
   useEffect(() => {
     if (step === 'idle') return
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') dismiss() }
@@ -69,7 +60,6 @@ export default function AdmissionsModal() {
     return () => document.removeEventListener('keydown', onKey)
   }, [step])
 
-  // Push the page content back slightly while a modal is open (§12)
   useEffect(() => {
     if (step === 'idle') return
     pushModalOpen()
@@ -86,9 +76,7 @@ export default function AdmissionsModal() {
     setActiveSchool(id)
     try { sessionStorage.setItem(SESSION_KEY, id) } catch { /* ignore */ }
     setStep('idle')
-    // A brief orange-and-black flourish as the Princeton theme applies
     if (id === 'princeton') fireConfetti()
-    // A literal "lights coming on" nod to Berkeley's "Fiat Lux" motto
     if (id === 'uc-berkeley') fireLightsOn()
   }
 
@@ -108,148 +96,80 @@ export default function AdmissionsModal() {
 
   return (
     <>
-      {/* Backdrop overlay */}
       <AnimatePresence>
-        {overlayOpen && (
-          <motion.div
-            key="overlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="modal-scrim fixed inset-0 z-[200] bg-black/55 backdrop-blur-[2px]"
-            onClick={dismiss}
-            aria-hidden="true"
-          />
-        )}
+        {overlayOpen && <ModalBackdrop key="overlay" onClick={dismiss} />}
       </AnimatePresence>
 
       {/* Step 1: Are you an admissions officer? */}
       <AnimatePresence>
         {step === 'question' && (
-          <motion.div
+          <ModalPanel
             key="question"
-            {...cardAnim}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="adm-title"
-            className="fixed inset-0 z-[201] flex items-center justify-center p-4 pointer-events-none"
+            titleId="adm-title"
+            title="Are you an admissions officer?"
+            onClose={dismiss}
+            maxWidthClass="max-w-md"
           >
-            <div className="relative w-full max-w-sm rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-2xl p-8 pointer-events-auto">
-              {/* Close */}
-              <motion.button
-                onClick={dismiss}
-                whileTap={pressTap}
-                transition={pressTransition}
-                className="absolute top-4 right-4 p-1.5 rounded-lg text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
-                aria-label="Dismiss"
+            <p className="font-mono text-[10px] tracking-widest uppercase text-muted mb-4">
+              Welcome
+            </p>
+            <p className="text-sm text-ink/70 mb-8">
+              Trust me, click yes if you are an AO.
+            </p>
+            <p className="font-mono text-sm">
+              <button
+                ref={yesBtnRef}
+                onClick={() => setStep('picker')}
+                className="text-accent underline underline-offset-4 hover:no-underline"
               >
-                <X size={15} />
-              </motion.button>
-
-              <div className="text-center space-y-6 pt-1">
-                <div className="space-y-2">
-                  <p className="text-[10px] font-mono tracking-widest uppercase text-zinc-400">
-                    Welcome
-                  </p>
-                  <h2
-                    id="adm-title"
-                    className="text-xl font-bold tracking-tight leading-snug"
-                  >
-                    Are you an admissions officer?
-                  </h2>
-                  <p className="text-xs text-zinc-400 dark:text-zinc-500">
-                    Trust me, click Yes if you are an AO.
-                  </p>
-                </div>
-
-                <div className="flex gap-3">
-                  <motion.button
-                    ref={yesBtnRef}
-                    onClick={() => setStep('picker')}
-                    whileTap={pressTap}
-                    transition={pressTransition}
-                    className="flex-1 px-5 py-2.5 rounded-full text-sm font-semibold bg-accent-fill text-white hover:opacity-90 transition-colors duration-150"
-                  >
-                    Yes
-                  </motion.button>
-                  <motion.button
-                    onClick={dismiss}
-                    whileTap={pressTap}
-                    transition={pressTransition}
-                    className="flex-1 px-5 py-2.5 rounded-full text-sm font-semibold border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:border-accent hover:text-accent transition-colors duration-150"
-                  >
-                    No
-                  </motion.button>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+                yes
+              </button>
+              <span className="text-muted mx-3">/</span>
+              <button onClick={dismiss} className="text-ink underline underline-offset-4 hover:text-accent">
+                no
+              </button>
+            </p>
+          </ModalPanel>
         )}
       </AnimatePresence>
 
       {/* Step 2: School picker */}
       <AnimatePresence>
         {step === 'picker' && (
-          <motion.div
+          <ModalPanel
             key="picker"
-            {...cardAnim}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="picker-title"
-            className="fixed inset-0 z-[201] flex items-center justify-center p-4 pointer-events-none"
+            titleId="picker-title"
+            title="Which institution are you visiting from?"
+            onClose={dismiss}
+            maxWidthClass="max-w-md"
           >
-            <div
-              className="relative w-full max-w-sm rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-2xl pointer-events-auto flex flex-col"
-              style={{ maxHeight: 'min(580px, 90dvh)' }}
+            <p className="font-mono text-xs text-muted mb-5">Listed alphabetically.</p>
+
+            <ul className="font-mono text-sm border-t border-rule" role="listbox" aria-label="Select your institution">
+              {SCHOOLS.map((school) => (
+                <li key={school.id} role="option" aria-selected={false} className="border-b border-rule">
+                  <button
+                    onClick={() => selectSchool(school.id)}
+                    className="w-full text-left py-3 px-1 text-ink hover:bg-ink hover:text-paper transition-colors duration-150"
+                  >
+                    {school.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+
+            <button
+              ref={backBtnRef}
+              onClick={() => setStep('question')}
+              className="mt-6 font-mono text-sm text-muted underline underline-offset-4 hover:text-ink"
             >
-              {/* Header */}
-              <div className="flex-shrink-0 px-6 pt-6 pb-4 border-b border-zinc-100 dark:border-zinc-800">
-                <h2
-                  id="picker-title"
-                  className="text-[17px] font-bold tracking-tight leading-snug"
-                >
-                  Which institution are you visiting from?
-                </h2>
-                <p className="text-xs text-zinc-400 mt-1">Listed alphabetically.</p>
-              </div>
-
-              {/* Scrollable school list */}
-              <ul
-                className="flex-1 overflow-y-auto px-3 py-3 space-y-0.5"
-                role="listbox"
-                aria-label="Select your institution"
-              >
-                {SCHOOLS.map((school) => (
-                  <li key={school.id} role="option" aria-selected={false}>
-                    <motion.button
-                      onClick={() => selectSchool(school.id)}
-                      whileTap={pressTap}
-                      transition={pressTransition}
-                      className="w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-accent/10 hover:text-accent transition-colors duration-100"
-                    >
-                      {school.name}
-                    </motion.button>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Back footer */}
-              <div className="flex-shrink-0 px-6 py-4 border-t border-zinc-100 dark:border-zinc-800">
-                <button
-                  ref={backBtnRef}
-                  onClick={() => setStep('question')}
-                  className="text-sm text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
-                >
-                  Back
-                </button>
-              </div>
-            </div>
-          </motion.div>
+              back
+            </button>
+          </ModalPanel>
         )}
       </AnimatePresence>
 
-      {/* Reset pill -- shown when a school theme is active */}
+      {/* Reset indicator -- shown when a school theme is active */}
       <AnimatePresence>
         {activeSchool && (
           <motion.div
@@ -258,19 +178,17 @@ export default function AdmissionsModal() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="frosted-chip fixed top-[72px] right-4 z-[100] flex items-center gap-2 px-3 py-1.5 rounded-full text-xs bg-white/90 dark:bg-zinc-900/90 backdrop-blur-sm border border-zinc-200 dark:border-zinc-700 shadow-sm"
+            className="fixed top-[72px] right-4 z-[100] flex items-center gap-3 px-3 py-1.5 font-mono text-xs bg-paper border border-rule"
           >
-            <span className="text-zinc-500 dark:text-zinc-400">
-              Viewing in{' '}
-              <span className="text-accent font-semibold">{schoolShortName}</span>{' '}
-              colours.
+            <span className="text-muted">
+              Viewing in <span className="text-accent">{schoolShortName}</span> colors
             </span>
             <button
               onClick={reset}
-              className="text-zinc-400 hover:text-accent transition-colors font-medium"
+              className="text-muted underline underline-offset-4 hover:text-accent"
               aria-label="Reset school theme"
             >
-              Reset
+              reset
             </button>
           </motion.div>
         )}

@@ -29,14 +29,15 @@ export default function WhySchool() {
           transition={springUI}
           className="overflow-hidden"
         >
-          <section id="why-school" className="py-24 bg-zinc-50 dark:bg-zinc-900/30">
+          <section id="why-school" className="py-24">
             <div className="section-container">
               <ScrollReveal>
                 <div className="mb-10">
-                  <span className="text-accent font-mono text-sm tracking-widest">
-                    00.
-                  </span>
-                  <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter mt-2 mb-3 gradient-text inline-block">
+                  <div className="flex items-baseline gap-4 mb-5">
+                    <span className="font-mono text-xs text-muted tracking-widest shrink-0">00.</span>
+                    <div className="h-px flex-1 bg-rule" />
+                  </div>
+                  <h2 className="font-serif text-ink text-[clamp(2.5rem,5vw,5rem)] leading-[1.02] tracking-[-0.02em] inline-block">
                     Why {school.name}?
                   </h2>
                   {school.id === 'princeton' && <PrincetonTigerButton />}
@@ -47,16 +48,15 @@ export default function WhySchool() {
                       <FortyBall />
                     </>
                   )}
-                  <div className="h-px w-16 mt-1 accent-gradient-bar" />
                 </div>
               </ScrollReveal>
 
               <ScrollReveal delay={0.1}>
-                <div className="max-w-2xl space-y-4">
+                <div className="max-w-[65ch] space-y-4">
                   {text.split('\n\n').map((paragraph, i) => (
                     <p
                       key={i}
-                      className="text-base sm:text-lg text-zinc-600 dark:text-zinc-300 leading-relaxed"
+                      className="text-base sm:text-lg text-ink/80 leading-relaxed"
                     >
                       {paragraph}
                     </p>
