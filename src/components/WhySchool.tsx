@@ -8,7 +8,7 @@ import { springUI } from '@/lib/motion'
 import ScrollReveal from './ScrollReveal'
 import { PrincetonTigerButton, PrincetonMottoLine } from './PrincetonEasterEggs'
 import { VeritasShield, HarvardMottoLine } from './HarvardEasterEggs'
-import { BerkeleyTimeTip, FortyBall, FiatLuxBlock } from './BerkeleyEasterEggs'
+import { BerkeleyTimeTip, FortyBall, FiatLuxBlock, OskiTrigger } from './BerkeleyEasterEggs'
 
 export default function WhySchool() {
   const { school } = useSchoolTheme()
@@ -46,6 +46,7 @@ export default function WhySchool() {
                     <>
                       <BerkeleyTimeTip />
                       <FortyBall />
+                      <OskiTrigger />
                     </>
                   )}
                 </div>

@@ -37,6 +37,12 @@
   --accent-rgb: 209 52 27;
   --accent-secondary-rgb: 209 52 27;
   --accent-fill: #D1341B;
+  /* Text color for anything filled with --accent-fill. --paper by
+     default (the base accent is dark enough for light text); a
+     handful of school themes with a pale/gold primary override this
+     to a dark color instead, since white text on pale gold fails
+     contrast. */
+  --accent-fill-text: var(--paper);
   --body-bg-dark: #0E0E0E;
 }
 

@@ -3,6 +3,9 @@
 // --paper background with a hairline border and a hairline rule under
 // the heading. Used by the admissions-officer flow and the Projects/
 // Research confirmation modals so all three share one restyled shell.
+// The heading stays fixed; only the body scrolls, so a long list (the
+// school picker) stays usable without the whole panel growing past
+// the viewport.
 import { motion } from 'motion/react'
 
 export const panelTransition = { type: 'spring', bounce: 0, duration: 0.35 } as const
@@ -50,20 +53,24 @@ export function ModalPanel({
       className="fixed inset-0 z-[201] flex items-center justify-center p-4 pointer-events-none"
     >
       <div
-        className={`relative w-full ${maxWidthClass} bg-paper border border-rule rounded px-6 sm:px-10 py-8 sm:py-10 max-h-[85dvh] overflow-y-auto pointer-events-auto`}
+        className={`modal-panel relative w-full ${maxWidthClass} max-h-[85dvh] bg-paper border border-rule rounded pointer-events-auto flex flex-col`}
       >
-        <button
-          onClick={onClose}
-          className="absolute top-5 right-6 font-mono text-xs text-muted hover:text-ink transition-colors"
-          aria-label="Dismiss"
-        >
-          close
-        </button>
-        <h2 id={titleId} className="font-serif text-2xl text-ink pr-16">
-          {title}
-        </h2>
-        <div className="h-px bg-rule mt-4 mb-6" />
-        {children}
+        <div className="shrink-0 px-6 sm:px-10 pt-8 sm:pt-10">
+          <button
+            onClick={onClose}
+            className="absolute top-5 right-6 font-mono text-xs text-muted hover:text-ink transition-colors"
+            aria-label="Dismiss"
+          >
+            close
+          </button>
+          <h2 id={titleId} className="font-serif text-2xl text-ink pr-16">
+            {title}
+          </h2>
+          <div className="h-px bg-rule mt-4 mb-6" />
+        </div>
+        <div className="flex-1 min-h-0 overflow-y-auto px-6 sm:px-10 pb-8 sm:pb-10">
+          {children}
+        </div>
       </div>
     </motion.div>
   )

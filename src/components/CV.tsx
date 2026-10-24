@@ -1,7 +1,10 @@
 'use client'
-// CV section: one sentence of body copy with the download as an inline
-// underlined link, not a pill button taking up half the section.
+// CV section: one line of body copy, then a real (small) button for
+// the download, not a huge pill. PRIMARY fill, inverts on hover.
+import { Download } from 'lucide-react'
+import { motion } from 'motion/react'
 import { cv } from '@/data/content'
+import { pressTap, pressTransition } from '@/lib/motion'
 import ScrollReveal from './ScrollReveal'
 import SectionHeader from './SectionHeader'
 
@@ -14,17 +17,21 @@ export default function CV() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.06}>
-          <p className="text-ink/80 leading-relaxed max-w-xl">
-            {cv.body}{' '}
-            <a
-              href={cv.pdfHref}
-              target="_blank"
-              rel="noopener"
-              className="text-accent underline underline-offset-4 hover:no-underline"
-            >
-              {cv.buttonLabel} &#8599;
-            </a>
+          <p className="text-ink/80 leading-relaxed max-w-xl mb-5">
+            {cv.body}
           </p>
+
+          <motion.a
+            href={cv.pdfHref}
+            target="_blank"
+            rel="noopener"
+            whileTap={pressTap}
+            transition={pressTransition}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded text-sm font-medium border border-accent-fill bg-accent-fill text-accent-fill-text hover:bg-paper hover:text-accent-fill transition-colors duration-150"
+          >
+            <Download size={14} />
+            {cv.buttonLabel}
+          </motion.a>
         </ScrollReveal>
       </div>
     </section>

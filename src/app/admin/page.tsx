@@ -438,7 +438,7 @@ export default function AdminPage() {
           <button
             onClick={login}
             disabled={authLoading || !password}
-            className="w-full py-3 rounded bg-accent-fill hover:opacity-90 disabled:opacity-50 text-white font-semibold text-sm transition-colors"
+            className="w-full py-3 rounded bg-accent-fill hover:opacity-90 disabled:opacity-50 text-accent-fill-text font-semibold text-sm transition-colors"
           >
             {authLoading ? 'Checking...' : 'Login'}
           </button>
@@ -753,7 +753,7 @@ export default function AdminPage() {
           <button
             onClick={save}
             disabled={status === 'saving'}
-            className="px-6 py-3 rounded bg-accent-fill hover:opacity-90 disabled:opacity-50 text-white font-semibold text-sm transition-opacity"
+            className="px-6 py-3 rounded bg-accent-fill hover:opacity-90 disabled:opacity-50 text-accent-fill-text font-semibold text-sm transition-opacity"
           >
             {status === 'saving' ? 'Saving...' : 'Save'}
           </button>

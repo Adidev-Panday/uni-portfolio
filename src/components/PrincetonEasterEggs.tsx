@@ -31,28 +31,19 @@ export function triggerPrincetonCheer() {
   }
 }
 
-const GATE_LEGEND =
-  'Legend says you should not walk out FitzRandolph Gate before graduation. I intend to wait.'
-
-// Small tiger trigger + tooltip, placed next to the "Why Princeton" heading.
+// Small tiger trigger, placed next to the "Why Princeton" heading.
+// Click is the entire interaction: it plays the Locomotive cheer.
+// No tooltip, no hover text.
 export function PrincetonTigerButton() {
   return (
-    <span className="relative inline-block group align-middle ml-2">
-      <button
-        type="button"
-        onClick={triggerPrincetonCheer}
-        title={GATE_LEGEND}
-        aria-label="Play the Princeton Locomotive cheer"
-        className="inline-block h-3.5 w-3.5 rounded-full align-middle hover:scale-110 active:scale-95 transition-transform duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF8F1C]"
-        style={{ background: 'radial-gradient(circle at 35% 30%, #FFC978, #E77500 60%, #B35A00 100%)' }}
-      />
-      <span
-        role="tooltip"
-        className="pointer-events-none absolute left-1/2 bottom-full z-20 mb-2 w-64 -translate-x-1/2 origin-bottom scale-95 rounded-lg border border-[#E77500]/30 bg-[#0A0A0A] px-3 py-2 text-[11px] leading-snug text-zinc-200 opacity-0 shadow-xl transition-all duration-150 group-hover:scale-100 group-hover:opacity-100 group-focus-within:scale-100 group-focus-within:opacity-100"
-      >
-        {GATE_LEGEND}
-      </span>
-    </span>
+    <button
+      type="button"
+      onClick={triggerPrincetonCheer}
+      aria-label="Play the Princeton Locomotive cheer"
+      className="inline-flex align-middle ml-2 text-lg leading-none hover:scale-110 active:scale-95 transition-transform duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
+    >
+      &#128047;
+    </button>
   )
 }
 

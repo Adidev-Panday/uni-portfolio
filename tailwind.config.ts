@@ -42,6 +42,8 @@ const config: Config = {
         'accent-secondary': 'rgb(var(--accent-secondary-rgb) / <alpha-value>)',
         // accent-fill has no opacity modifier support: used only for solid fills
         'accent-fill': 'var(--accent-fill)',
+        // Text color to pair with bg-accent-fill; see tokens.css.
+        'accent-fill-text': 'var(--accent-fill-text)',
         // Editorial base tokens (src/styles/tokens.css), opacity-modifier
         // capable via the *-rgb triplets, same pattern as accent above.
         ink: 'rgb(var(--ink-rgb) / <alpha-value>)',

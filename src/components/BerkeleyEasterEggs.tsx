@@ -104,6 +104,22 @@ export function FiatLuxBlock() {
   )
 }
 
+// Small text trigger, placed next to the "Why Berkeley" heading, same
+// pattern as Princeton's tiger and Harvard's Veritas shield. Plain
+// text, not an emoji or glyph. Click plays the Oski yell.
+export function OskiTrigger() {
+  return (
+    <button
+      type="button"
+      onClick={triggerOskiYell}
+      aria-label="Play the Oski yell"
+      className="inline-block align-middle ml-2 font-mono text-xs text-accent hover:opacity-80 transition-opacity duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
+    >
+      Oski
+    </button>
+  )
+}
+
 // Subtle class-year tag for the hero section.
 export function BerkeleyClassTag() {
   return (

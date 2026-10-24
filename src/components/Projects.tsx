@@ -1,8 +1,10 @@
 'use client'
-// Projects section: full-width editorial list, not a card grid. Each
-// row shows the name in serif on the left and mono metadata on the
-// right; hovering inverts the row (ink becomes paper, and back).
-// Clicking a row opens a confirmation panel before navigating.
+// Projects section: a mixed bento grid, not a uniform card grid and
+// not a flat list. DriveSafe, AirflowNS, and StarsInMaine get bigger
+// featured cells; the rest are smaller. Each cell inverts (PRIMARY
+// background, --paper text) on hover with a subtle scale, giving each
+// project its own tangible, clickable moment. Clicking anywhere opens
+// a confirmation modal before navigating.
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence } from 'motion/react'
 import { projects, type Project } from '@/data/content'
@@ -11,6 +13,13 @@ import { ModalBackdrop, ModalPanel } from './ModalPanel'
 import ModalPortal from './ModalPortal'
 import ScrollReveal from './ScrollReveal'
 import SectionHeader from './SectionHeader'
+
+// Column span, minimum height, and title scale per cell: DriveSafe,
+// AirflowNS, and StarsInMaine are the featured three (bigger, bolder);
+// the rest sit smaller. Index-matched to the `projects` data array.
+const BENTO_SPAN = ['md:col-span-4', 'md:col-span-2', 'md:col-span-2', 'md:col-span-2', 'md:col-span-2', 'md:col-span-3', 'md:col-span-3']
+const BENTO_MIN_H = ['min-h-[260px]', 'min-h-[260px]', 'min-h-[200px]', 'min-h-[200px]', 'min-h-[200px]', 'min-h-[180px]', 'min-h-[180px]']
+const FEATURED = [true, true, true, false, false, false, false]
 
 export default function Projects() {
   const [activeProject, setActiveProject] = useState<Project | null>(null)
@@ -50,60 +59,71 @@ export default function Projects() {
           />
         </ScrollReveal>
 
-        <div className="border-t border-rule">
-          {projects.map((project, i) => (
-            <ScrollReveal key={project.name} delay={0.04 * i} className="border-b border-rule">
-              <article
-                role="button"
-                tabIndex={0}
-                onClick={() => setActiveProject(project)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault()
-                    setActiveProject(project)
-                  }
-                }}
-                className="group relative grid sm:grid-cols-[1fr_auto] gap-x-8 gap-y-2 items-start py-7 px-1 cursor-pointer transition-colors duration-[180ms] hover:bg-ink focus:outline-none focus-visible:ring-1 focus-visible:ring-accent"
-              >
-                <div>
-                  <h3 className="font-serif text-2xl sm:text-3xl text-ink group-hover:text-paper transition-colors duration-[180ms]">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-5">
+          {projects.map((project, i) => {
+            const span = BENTO_SPAN[i] ?? 'md:col-span-3'
+            const minH = BENTO_MIN_H[i] ?? 'min-h-[180px]'
+            const featured = FEATURED[i] ?? false
+            return (
+              <ScrollReveal key={project.name} delay={Math.min(i * 0.04, 0.2)} className={span}>
+                <article
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => setActiveProject(project)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      setActiveProject(project)
+                    }
+                  }}
+                  className={`group relative flex flex-col h-full ${minH} p-6 sm:p-8 border border-rule rounded cursor-pointer transition-[background-color,color,transform] duration-150 hover:bg-accent hover:text-paper hover:scale-[1.01] focus:outline-none focus-visible:ring-1 focus-visible:ring-accent`}
+                >
+                  {/* Top row: status badge + external indicator */}
+                  <div className="flex items-start justify-between gap-3 mb-4">
+                    {project.demo && (
+                      <span className="font-mono text-[10px] uppercase tracking-widest text-accent group-hover:text-paper transition-colors duration-150">
+                        Live
+                      </span>
+                    )}
+                    {project.statusBadge && (
+                      <span className="font-mono text-[10px] uppercase tracking-widest text-muted group-hover:text-paper/70 transition-colors duration-150">
+                        {project.statusBadge}
+                      </span>
+                    )}
+                    <span className="ml-auto font-mono text-sm text-muted group-hover:text-paper transition-colors duration-150" aria-hidden="true">
+                      &#8599;
+                    </span>
+                  </div>
+
+                  <h3 className={`font-serif text-ink group-hover:text-paper transition-colors duration-150 ${featured ? 'text-2xl sm:text-3xl' : 'text-xl sm:text-2xl'}`}>
                     {project.name}
                   </h3>
-                  <p className="text-sm mt-2 max-w-[60ch] text-ink/70 group-hover:text-paper/70 transition-colors duration-[180ms]">
+
+                  <p className="text-sm mt-2 text-ink/70 group-hover:text-paper/80 transition-colors duration-150 flex-1">
                     {project.description}
                   </p>
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-3 font-mono text-[11px] uppercase tracking-wide text-muted group-hover:text-paper/60 transition-colors duration-[180ms]">
-                    {project.tags.map((tag) => (
+
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-4 font-mono text-[11px] uppercase tracking-wide text-muted group-hover:text-paper/60 transition-colors duration-150">
+                    {project.tags.slice(0, 3).map((tag) => (
                       <span key={tag}>{tag}</span>
                     ))}
-                    {project.statusBadge && <span>{project.statusBadge}</span>}
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="hover:underline underline-offset-4 transition-colors"
+                        aria-label={`${project.name} GitHub repository`}
+                      >
+                        git &#8599;
+                      </a>
+                    )}
                   </div>
-                  {project.statusNote && (
-                    <p className="font-mono text-[11px] mt-1.5 text-muted group-hover:text-paper/50 transition-colors duration-[180ms]">
-                      {project.statusNote}
-                    </p>
-                  )}
-                </div>
-
-                <div className="font-mono text-xs text-muted group-hover:text-paper/60 transition-colors duration-[180ms] sm:text-right whitespace-nowrap flex items-center gap-4 sm:justify-end">
-                  <span>{project.role}</span>
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="hover:text-accent transition-colors"
-                      aria-label={`${project.name} GitHub repository`}
-                    >
-                      git &#8599;
-                    </a>
-                  )}
-                  {project.modalLink && <span aria-hidden="true">&#8599;</span>}
-                </div>
-              </article>
-            </ScrollReveal>
-          ))}
+                </article>
+              </ScrollReveal>
+            )
+          })}
         </div>
       </div>
     </section>
