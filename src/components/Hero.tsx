@@ -1,11 +1,22 @@
 'use client'
-// Hero section: full-viewport first impression.
-// Background: /public/background.jpg, with a single vertical wash from
-// transparent (top) to --paper (bottom) so the text block sits on a
-// seamless transition straight into the first section -- no scrim box,
-// no ambient color blobs.
+// Hero section: a 60/40 split. Left column is typography on --paper/
+// --ink (the real hero visual, not an overlay); right column is the
+// photo as a tall vertical panel with a hairline border, not a
+// full-bleed background. On mobile the columns stack: text on top,
+// a 60vh photo band below.
+//
+// Three kinetic moments, all gated behind prefers-reduced-motion:
+//   1. Scroll-reactive weight: the name's Fraunces wght/SOFT axes
+//      track scroll position via a CSS scroll-driven animation
+//      (animation-timeline: scroll()), with a rAF fallback for
+//      browsers that don't support it yet (Safari).
+//   2. Cursor-reactive tracking: letter-spacing on the name shifts
+//      with horizontal cursor position, desktop pointer devices only.
+//   3. Entrance reveal: the name mask-reveals letter by letter on
+//      first paint, then the rest of the content cascades in.
+import { useEffect, useRef } from 'react'
 import Image from 'next/image'
-import { motion } from 'motion/react'
+import { motion, useReducedMotion } from 'motion/react'
 import { hero } from '@/data/content'
 import { useSchoolTheme } from '@/hooks/useSchoolTheme'
 import { PrincetonClassTag } from './PrincetonEasterEggs'
@@ -15,95 +26,170 @@ import { BerkeleyClassTag } from './BerkeleyEasterEggs'
 const BESPOKE_SCHOOLS = ['princeton', 'harvard', 'uc-berkeley']
 
 const fadeUp = (delay: number) => ({
-  initial: { opacity: 0, y: 16 },
+  initial: { opacity: 0, y: 14 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.5, delay, ease: [0.21, 0.47, 0.32, 0.98] as const },
 })
 
 export default function Hero() {
   const { schoolId } = useSchoolTheme()
+  const prefersReducedMotion = useReducedMotion()
+  const sectionRef = useRef<HTMLElement>(null)
+  const nameRef = useRef<HTMLHeadingElement>(null)
 
   const projectsHref = hero.ctas.find((c) => c.primary)?.href ?? '#projects'
   const researchHref = hero.ctas.find((c) => c.label.toLowerCase().includes('research'))?.href ?? '#research'
   const aerospaceHref = hero.ctas.find((c) => c.label.toLowerCase().includes('aerospace'))?.href ?? '#why-aerospace'
 
+  // Kinetic moment 2: cursor-reactive tracking, desktop pointer only.
+  useEffect(() => {
+    if (prefersReducedMotion) return
+    if (typeof window === 'undefined') return
+    if (!window.matchMedia('(pointer: fine)').matches || window.innerWidth < 768) return
+
+    let raf = 0
+    const onMove = (e: MouseEvent) => {
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(() => {
+        const t = Math.min(Math.max(e.clientX / window.innerWidth, 0), 1)
+        const tracking = -0.04 + t * 0.03 // -0.04em far left -> -0.01em far right
+        if (nameRef.current) nameRef.current.style.letterSpacing = `${tracking}em`
+      })
+    }
+    window.addEventListener('mousemove', onMove)
+    return () => {
+      window.removeEventListener('mousemove', onMove)
+      cancelAnimationFrame(raf)
+    }
+  }, [prefersReducedMotion])
+
+  // Kinetic moment 1: scroll-reactive weight. CSS scroll-timeline
+  // handles this natively where supported (see .hero-name in
+  // globals.css); this effect only runs the rAF fallback where it
+  // isn't (Safari), driving the same --hero-wght/--hero-soft custom
+  // properties the CSS rule already reads.
+  useEffect(() => {
+    if (prefersReducedMotion) return
+    if (typeof CSS !== 'undefined' && CSS.supports('animation-timeline: scroll()')) return
+
+    let raf = 0
+    const onScroll = () => {
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(() => {
+        const heroHeight = sectionRef.current?.offsetHeight ?? window.innerHeight
+        const p = Math.min(Math.max(window.scrollY / heroHeight, 0), 1)
+        const wght = 300 + p * 400
+        const soft = 30 + p * 70
+        nameRef.current?.style.setProperty('--hero-wght', String(wght))
+        nameRef.current?.style.setProperty('--hero-soft', String(soft))
+      })
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      cancelAnimationFrame(raf)
+    }
+  }, [prefersReducedMotion])
+
+  const nameChars = Array.from(hero.name)
+
   return (
-    <section
-      id="hero"
-      className="relative min-h-screen flex flex-col justify-end overflow-hidden"
-    >
-      {/* Background photo */}
-      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <Image
-          src="/background.jpg"
-          alt=""
-          fill
-          priority
-          className="object-cover object-center"
-        />
-        {/* Single wash, both modes: transparent for the top ~40%, resolving
-            to solid --paper by the bottom, so the text sits on paper and
-            blends straight into the next section. */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: 'linear-gradient(to bottom, transparent 0%, transparent 38%, var(--paper) 92%)',
-          }}
-        />
-      </div>
-
-      {/* Content block: anchored bottom-left, not centered */}
-      <div className="relative section-container w-full pb-20 pt-40 md:max-w-[60vw]">
-        {schoolId && BESPOKE_SCHOOLS.includes(schoolId) && (
-          <motion.div className="mb-4" {...fadeUp(0.05)}>
-            {schoolId === 'princeton' && <PrincetonClassTag />}
-            {schoolId === 'harvard' && <HarvardClassTag />}
-            {schoolId === 'uc-berkeley' && <BerkeleyClassTag />}
-          </motion.div>
-        )}
-
-        <motion.h1
-          className="font-serif text-ink text-[clamp(4rem,10vw,10rem)] leading-[0.95] tracking-[-0.03em] mb-6"
-          {...fadeUp(0.1)}
-        >
-          {hero.name}
-        </motion.h1>
-
-        <motion.p
-          className="text-ink text-lg sm:text-xl max-w-xl mb-6 leading-relaxed"
-          {...fadeUp(0.2)}
-        >
-          An aspiring aerospace engineer: F1 aerodynamics, propulsion, and the physics of making a thing move.
-        </motion.p>
-
-        <motion.p className="text-base" {...fadeUp(0.3)}>
-          <a
-            href={projectsHref}
-            className="text-accent font-medium underline underline-offset-4 hover:no-underline"
+    <section id="hero" ref={sectionRef} className="relative overflow-hidden">
+      <div className="flex flex-col md:flex-row md:h-screen">
+        {/* LEFT: typography column, 60% on desktop */}
+        <div className="relative flex flex-col justify-center bg-paper md:w-[60%] px-6 sm:px-10 md:pl-[6vw] md:pr-12 py-24 md:py-0">
+          <motion.p
+            className="font-mono text-xs tracking-[0.15em] text-muted uppercase mb-6 flex items-center gap-2.5"
+            {...fadeUp(0)}
           >
-            View projects <span className="font-mono">&#8599;</span>
-          </a>
-          <span className="text-muted mx-3">or</span>
-          <a href={researchHref} className="text-ink underline underline-offset-4 hover:text-accent">
-            read research
-          </a>
-          <span className="text-muted mx-2">/</span>
-          <a href={aerospaceHref} className="text-ink underline underline-offset-4 hover:text-accent">
-            why aerospace
-          </a>
-        </motion.p>
-      </div>
+            <span className="hero-pulse-dot inline-block w-1.5 h-1.5 rounded-full bg-accent shrink-0" aria-hidden="true" />
+            Available / 2026-27 admissions cycle
+          </motion.p>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 font-mono text-[10px] tracking-[0.2em] text-muted"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 0.6 }}
-        aria-hidden
-      >
-        SCROLL &#8595;
-      </motion.div>
+          {schoolId && BESPOKE_SCHOOLS.includes(schoolId) && (
+            <motion.div className="mb-4" {...fadeUp(0.1)}>
+              {schoolId === 'princeton' && <PrincetonClassTag />}
+              {schoolId === 'harvard' && <HarvardClassTag />}
+              {schoolId === 'uc-berkeley' && <BerkeleyClassTag />}
+            </motion.div>
+          )}
+
+          <h1
+            ref={nameRef}
+            className="hero-name font-serif text-ink text-[clamp(5rem,11vw,14rem)] leading-[0.9] tracking-[-0.03em] mb-6"
+          >
+            {nameChars.map((ch, i) => (
+              <span key={i} className="inline-block overflow-hidden align-bottom">
+                <motion.span
+                  className="inline-block"
+                  initial={prefersReducedMotion ? undefined : { y: '110%' }}
+                  animate={{ y: '0%' }}
+                  transition={{ duration: 0.5, delay: 0.35 + i * 0.04, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  {ch === ' ' ? ' ' : ch}
+                </motion.span>
+              </span>
+            ))}
+          </h1>
+
+          <motion.p
+            className="text-ink text-[1.25rem] max-w-xl mb-5 leading-relaxed"
+            {...fadeUp(1.05)}
+          >
+            An aspiring aerospace engineer: F1 aerodynamics, propulsion, and the physics of making a thing move.
+          </motion.p>
+
+          <motion.p
+            className="font-mono text-[11px] uppercase tracking-widest text-muted mb-7"
+            {...fadeUp(1.15)}
+          >
+            Ludhiana + Mussoorie <span className="mx-2">&middot;</span>
+            Propulsion + Aerodynamics <span className="mx-2">&middot;</span>
+            Woodstock School
+          </motion.p>
+
+          <motion.p className="text-base" {...fadeUp(1.25)}>
+            <a
+              href={projectsHref}
+              className="group text-accent font-medium underline underline-offset-4 hover:no-underline"
+            >
+              View projects
+              <span className="inline-block ml-1 font-mono transition-transform duration-200 group-hover:translate-x-1">
+                &#8599;
+              </span>
+            </a>
+            <span className="text-muted mx-3">or</span>
+            <a href={researchHref} className="text-ink underline underline-offset-4 hover:text-accent">
+              read research
+            </a>
+            <span className="text-muted mx-2">/</span>
+            <a href={aerospaceHref} className="text-ink underline underline-offset-4 hover:text-accent">
+              why aerospace
+            </a>
+          </motion.p>
+
+          {/* Scroll hint: a single breathing hairline, no text */}
+          <div
+            className="hero-scroll-pulse hidden md:block absolute bottom-10 left-6 sm:left-8 lg:left-[6vw]"
+            aria-hidden="true"
+          />
+        </div>
+
+        {/* RIGHT: photo panel, 40% on desktop, full-width band on mobile */}
+        <div className="relative w-full h-[60vh] md:h-auto md:w-[40%] border-t md:border-t-0 md:border-l border-rule">
+          <Image
+            src="/background.jpg"
+            alt=""
+            fill
+            priority
+            className="object-cover object-[center_30%]"
+          />
+          <p className="absolute bottom-4 right-4 font-mono text-[10px] tracking-widest uppercase text-white/90 [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
+            Quiraing, Skye / 2024
+          </p>
+        </div>
+      </div>
     </section>
   )
 }

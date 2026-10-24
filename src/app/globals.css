@@ -822,6 +822,89 @@
 }
 
 /* ============================================================
+   HERO KINETICS
+   Three gated-behind-reduced-motion effects on the hero name:
+   scroll-reactive variable-font weight, cursor-reactive tracking
+   (set inline by Hero.tsx), and the entrance letter reveal (Motion,
+   Hero.tsx). --hero-wght/--hero-soft are registered with @property
+   so the browser can interpolate them as numbers instead of treating
+   them as opaque strings, which is what lets the scroll-timeline
+   keyframes (and the rAF fallback in Hero.tsx) animate smoothly.
+   ============================================================ */
+
+@property --hero-wght {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 300;
+}
+@property --hero-soft {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 30;
+}
+
+h1.hero-name {
+  --hero-wght: 300;
+  --hero-soft: 30;
+  font-variation-settings: 'wght' var(--hero-wght), 'SOFT' var(--hero-soft);
+}
+
+@keyframes hero-weight-scroll {
+  from { --hero-wght: 300; --hero-soft: 30; }
+  to   { --hero-wght: 700; --hero-soft: 100; }
+}
+
+/* Primary technique: a CSS scroll-driven animation tied to absolute
+   document scroll position, GPU-friendly and off the main thread.
+   Hero.tsx only runs its rAF fallback when this isn't supported
+   (Safari, at the time of writing). */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    h1.hero-name {
+      animation: hero-weight-scroll linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 100vh;
+    }
+  }
+}
+
+/* Reduced motion: no animation, no JS-driven axis changes either
+   (Hero.tsx checks useReducedMotion before running either effect) --
+   just the settled, final values described in the brief. */
+@media (prefers-reduced-motion: reduce) {
+  h1.hero-name {
+    --hero-wght: 700;
+    --hero-soft: 100;
+    letter-spacing: -0.01em;
+  }
+}
+
+@keyframes hero-dot-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.4; transform: scale(0.75); }
+}
+.hero-pulse-dot {
+  animation: hero-dot-pulse 2s ease-in-out infinite;
+}
+
+@keyframes hero-scroll-pulse {
+  0%, 100% { transform: scaleY(0.4); opacity: 0.3; }
+  50%      { transform: scaleY(1); opacity: 1; }
+}
+.hero-scroll-pulse {
+  width: 1px;
+  height: 60px;
+  background: var(--rule);
+  transform-origin: bottom;
+  animation: hero-scroll-pulse 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-pulse-dot { animation: none; }
+  .hero-scroll-pulse { animation: none; transform: scaleY(1); opacity: 0.6; }
+}
+
+/* ============================================================
    MODAL DEPTH: dim + push back (§12)
    A modal task pairs its scrim with the background receding slightly,
    instead of just dimming flat. Toggled by body.modal-open, set by

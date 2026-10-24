@@ -17,30 +17,13 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const { school, schoolId } = useSchoolTheme()
 
-  // Hero has no nav link of its own, but it IS one of the sections the
-  // scrollspy below tracks, so this is just "is the hero still the
-  // current section". Light mode only: while true, nav text goes white
-  // to read against the photo; once the user scrolls past the hero it
-  // drops back to the normal dark nav text. Dark mode never uses this.
-  const overHero = activeSection === 'hero'
-
-  // Shared class builder for the desktop nav links, so the "why school"
-  // link and the mapped navLinks stay in sync instead of duplicating
-  // the same four-way (active/inactive x overHero/not) logic twice.
-  // overHero always reads white: the nav sits on the bare hero photo
-  // there in both modes, not on --paper. The text-shadow is declared
-  // at all times (just at zero alpha when not over the hero) so color
-  // and text-shadow both interpolate smoothly across the swap instead
-  // of snapping, since transition-property includes text-shadow below.
-  const heroShadow = '[text-shadow:0_1px_4px_rgba(0,0,0,0.5)]'
-  const flatShadow = '[text-shadow:0_1px_4px_rgba(0,0,0,0)]'
-  const navLinkClass = (isActive: boolean) => {
-    const shadow = overHero ? heroShadow : flatShadow
-    if (isActive) {
-      return `${overHero ? 'text-white' : 'text-accent'} ${shadow}`
-    }
-    return `${overHero ? 'text-white/80 hover:text-white' : 'text-muted hover:text-ink'} ${shadow}`
-  }
+  // Shared class builder for the desktop nav links. The hero's left
+  // 60% is --paper (a real surface, not a photo -- see Hero.tsx), so
+  // the nav reads the same ink/muted/accent system everywhere on the
+  // page, including over the hero; a permanent light backing (below)
+  // keeps it legible over the hero's photo panel on the right too.
+  const navLinkClass = (isActive: boolean) =>
+    isActive ? 'text-accent' : 'text-muted hover:text-ink'
 
   // Show background/blur once page is scrolled past 24px
   useEffect(() => {
@@ -125,14 +108,14 @@ export default function Navbar() {
     <header
       data-scrolled={scrolled}
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+        // Glassmorphism kept here only because it is functional: a nav
+        // sitting over the hero's photo panel (its right 40%, see
+        // Hero.tsx) or over scrolled content needs some legibility
+        // backing. A light permanent tint over the hero, strengthening
+        // once scrolled -- one hairline rule, no glow shadow.
         scrolled
-          // Glassmorphism kept here only because it is functional: a nav
-          // sitting over scrolled content needs some legibility backing.
-          // One hairline rule, no glow shadow.
           ? 'bg-paper/85 backdrop-blur-md border-b border-rule'
-          // Unscrolled, fully transparent in both modes so the hero photo
-          // shows all the way to the top edge.
-          : 'bg-transparent border-b border-transparent'
+          : 'bg-paper/40 backdrop-blur-sm border-b border-transparent'
       }`}
     >
       <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -141,9 +124,7 @@ export default function Navbar() {
           href="#hero"
           onDoubleClick={(e) => { e.preventDefault(); resetExperience() }}
           title="Double-click to reset"
-          className={`font-serif text-base tracking-tight transition-[color,text-shadow] duration-300 hover:text-accent ${
-            overHero ? `text-white ${heroShadow}` : `text-ink ${flatShadow}`
-          }`}
+          className="font-serif text-base tracking-tight text-ink transition-colors duration-300 hover:text-accent"
         >
           {meta.name.split(' ')[0]}
           <span className="text-accent">.</span>
@@ -190,15 +171,11 @@ export default function Navbar() {
 
         {/* Right controls */}
         <div className="flex items-center gap-1">
-          <ThemeToggle overHero={overHero} />
+          <ThemeToggle />
 
           {/* Mobile hamburger */}
           <button
-            className={`md:hidden p-2 rounded transition-[color,filter] duration-300 ${
-              overHero
-                ? 'text-white hover:text-white/70 [filter:drop-shadow(0_1px_4px_rgba(0,0,0,0.5))]'
-                : 'text-muted hover:text-ink [filter:drop-shadow(0_1px_4px_rgba(0,0,0,0))]'
-            }`}
+            className="md:hidden p-2 rounded text-muted hover:text-ink transition-colors duration-300"
             onClick={() => setMobileOpen((o) => !o)}
             aria-label="Toggle menu"
             aria-expanded={mobileOpen}
