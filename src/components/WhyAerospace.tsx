@@ -7,14 +7,13 @@ import { whyAerospace } from '@/data/content'
 import ScrollReveal from './ScrollReveal'
 import SectionHeader from './SectionHeader'
 
-const cardClass =
-  'relative rounded-xl overflow-hidden group shadow-md border border-zinc-200 dark:border-zinc-800'
+const cardClass = 'relative overflow-hidden group border border-rule'
 
 export default function WhyAerospace() {
   const { heading, subtitle, paragraphs, photos } = whyAerospace
 
   return (
-    <section id="why-aerospace" className="py-24">
+    <section id="why-aerospace" className="py-20">
       <div className="section-container">
         <ScrollReveal>
           <SectionHeader number="02." title={heading} subtitle={subtitle} />
@@ -49,7 +48,7 @@ export default function WhyAerospace() {
 
           {/* Row 2: first paragraph + lego photo */}
           <ScrollReveal delay={0.06} className="md:col-span-3 flex items-center">
-            <p className="leading-relaxed text-zinc-600 dark:text-zinc-300">
+            <p className="leading-relaxed text-ink/80 max-w-[60ch]">
               {paragraphs[0]}
             </p>
           </ScrollReveal>
@@ -68,7 +67,7 @@ export default function WhyAerospace() {
 
           {/* Row 3: second paragraph + toy bike & robotics side by side */}
           <ScrollReveal delay={0.06} className="md:col-span-3 flex items-center">
-            <p className="leading-relaxed text-zinc-600 dark:text-zinc-300">
+            <p className="leading-relaxed text-ink/80 max-w-[60ch]">
               {paragraphs[1]}
             </p>
           </ScrollReveal>
