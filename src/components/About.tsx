@@ -42,9 +42,6 @@ export default function About() {
                   />
                 </div>
               </div>
-              <span className="absolute -bottom-5 right-0 font-mono text-[10px] tracking-wide text-muted pointer-events-none">
-                ADI / 2026
-              </span>
             </div>
           </ScrollReveal>
 
