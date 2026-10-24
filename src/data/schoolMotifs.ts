@@ -115,4 +115,38 @@ export const SCHOOL_MOTIFS: Record<string, SchoolMotif> = {
     confettiColors: ['#660099', '#FFCC33', '#F5F2EC'],
     consoleLine: 'Cognitio, sapientia, humanitas.',
   },
+
+  // Batch 4: Melbourne, Michigan, Sheffield, Southampton.
+  melbourne: {
+    motto: 'Postera Crescam Laude',
+    mottoTranslation: 'I shall grow in the esteem of future generations',
+    triggerWord: 'ares',
+    revealLines: ['ARES, a hundred members strong.', 'Sounding rockets, student built.', 'Postera crescam laude.'],
+    confettiColors: ['#000F46', '#3A6DC4', '#F5F2EC'],
+    consoleLine: 'Postera crescam laude.',
+  },
+  michigan: {
+    motto: 'Artes, Scientia, Veritas',
+    mottoTranslation: 'Arts, Knowledge, Truth',
+    triggerWord: 'wolverines',
+    revealLines: ['Go Blue banner, since 1962.', 'Every player touches it.', 'Go Blue.'],
+    confettiColors: ['#00274C', '#FFCB05', '#F5F2EC'],
+    consoleLine: 'Artes, Scientia, Veritas. Go Blue.',
+  },
+  sheffield: {
+    motto: 'Rerum cognoscere causas',
+    mottoTranslation: 'To discover the causes of things',
+    triggerWord: 'sunride',
+    revealLines: ['Sunfire II, 3.4 kilonewtons.', 'UK altitude record: 36,274 feet.', 'Project Sunride flies again.'],
+    confettiColors: ['#1E2B5E', '#FFD200', '#F5F2EC'],
+    consoleLine: 'Rerum cognoscere causas.',
+  },
+  southampton: {
+    motto: 'Strenuis ardua cedunt',
+    mottoTranslation: 'The heights yield to endeavour',
+    triggerWord: 'solent',
+    revealLines: ['The Solent runs past the test tanks.', 'F1 teams test here too.', 'Southampton builds fast.'],
+    confettiColors: ['#005C84', '#4FB0C6', '#F5F2EC'],
+    consoleLine: 'Strenuis ardua cedunt.',
+  },
 }
