@@ -66,7 +66,7 @@ type ContentJson = {
 
 function Label({ text }: { text: string }) {
   return (
-    <label className="block text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wide mb-1">
+    <label className="block text-xs font-semibold text-muted uppercase tracking-wide mb-1">
       {text}
     </label>
   )
@@ -76,7 +76,7 @@ function Field({ lbl, hint, children }: { lbl: string; hint?: string; children: 
   return (
     <div>
       <Label text={lbl} />
-      {hint && <p className="text-[11px] text-zinc-400 dark:text-zinc-500 mb-1.5 leading-snug">{hint}</p>}
+      {hint && <p className="text-[11px] text-muted mb-1.5 leading-snug">{hint}</p>}
       {children}
     </div>
   )
@@ -90,7 +90,7 @@ function Input({ value, onChange, placeholder }: {
       value={value}
       onChange={e => onChange(e.target.value)}
       placeholder={placeholder}
-      className="w-full px-3 py-2 text-sm rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900/80 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent transition-colors"
+      className="w-full px-3 py-2 text-sm rounded-lg border border-rule bg-paper focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent transition-colors"
     />
   )
 }
@@ -104,7 +104,7 @@ function Textarea({ value, onChange, rows = 3, placeholder }: {
       rows={rows}
       onChange={e => onChange(e.target.value)}
       placeholder={placeholder}
-      className="w-full px-3 py-2 text-sm rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900/80 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent transition-colors resize-y"
+      className="w-full px-3 py-2 text-sm rounded-lg border border-rule bg-paper focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent transition-colors resize-y"
     />
   )
 }
@@ -116,7 +116,7 @@ function Select({ value, onChange, options }: {
     <select
       value={value}
       onChange={e => onChange(e.target.value)}
-      className="w-full px-3 py-2 text-sm rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900/80 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent transition-colors"
+      className="w-full px-3 py-2 text-sm rounded-lg border border-rule bg-paper focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent transition-colors"
     >
       {options.map(o => <option key={o} value={o}>{o}</option>)}
     </select>
@@ -145,10 +145,10 @@ function SectionCard({ numberLabel, title, subtitle, open, onToggle, children }:
   open: boolean; onToggle: () => void; children: React.ReactNode
 }) {
   return (
-    <div className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/70 dark:bg-zinc-900/40 overflow-hidden">
+    <div className="rounded border border-rule bg-paper overflow-hidden">
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between gap-4 px-5 sm:px-6 py-5 text-left hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors"
+        className="w-full flex items-center justify-between gap-4 px-5 sm:px-6 py-5 text-left hover:bg-ink/5 transition-colors"
         aria-expanded={open}
       >
         <div>
@@ -156,15 +156,15 @@ function SectionCard({ numberLabel, title, subtitle, open, onToggle, children }:
             <span className="text-accent font-mono text-xs tracking-widest uppercase">{numberLabel}</span>
           )}
           <h2 className="text-base font-bold mt-0.5">{title}</h2>
-          {subtitle && <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">{subtitle}</p>}
+          {subtitle && <p className="text-xs text-muted mt-0.5">{subtitle}</p>}
         </div>
         <ChevronDown
           size={18}
-          className={`shrink-0 text-zinc-400 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+          className={`shrink-0 text-muted transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
         />
       </button>
       {open && (
-        <div className="px-5 sm:px-6 pb-6 pt-1 space-y-4 border-t border-zinc-100 dark:border-zinc-800/60">
+        <div className="px-5 sm:px-6 pb-6 pt-1 space-y-4 border-t border-rule/60">
           {children}
         </div>
       )}
@@ -177,7 +177,7 @@ function SubCard({ title, open, onToggle, onRemove, children }: {
   title: string; open: boolean; onToggle: () => void; onRemove: () => void; children: React.ReactNode
 }) {
   return (
-    <div className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-950/40 overflow-hidden">
+    <div className="rounded border border-rule bg-ink/[0.03] overflow-hidden">
       <div className="w-full flex items-center justify-between gap-3 px-4 py-3">
         <button
           onClick={onToggle}
@@ -186,14 +186,14 @@ function SubCard({ title, open, onToggle, onRemove, children }: {
         >
           <ChevronDown
             size={14}
-            className={`shrink-0 text-zinc-400 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+            className={`shrink-0 text-muted transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
           />
           <span className="text-sm font-semibold truncate">{title}</span>
         </button>
         <RemoveButton onClick={onRemove} />
       </div>
       {open && (
-        <div className="px-4 pb-4 pt-1 space-y-3 border-t border-zinc-200/70 dark:border-zinc-800/70">
+        <div className="px-4 pb-4 pt-1 space-y-3 border-t border-rule">
           {children}
         </div>
       )}
@@ -204,7 +204,7 @@ function SubCard({ title, open, onToggle, onRemove, children }: {
 function StatusPill({ status, errMsg }: { status: 'idle' | 'saving' | 'saved' | 'error'; errMsg: string }) {
   if (status === 'saving') {
     return (
-      <p className="flex items-center gap-1.5 text-sm text-zinc-400">
+      <p className="flex items-center gap-1.5 text-sm text-muted">
         <Loader2 size={14} className="animate-spin" /> Saving...
       </p>
     )
@@ -265,7 +265,7 @@ function WhySchoolEditor({ c, update }: {
 
       <div className="grid md:grid-cols-[200px_1fr] gap-4">
         {/* School list */}
-        <div className="max-h-[420px] overflow-y-auto rounded-xl border border-zinc-200 dark:border-zinc-800 divide-y divide-zinc-100 dark:divide-zinc-800">
+        <div className="max-h-[420px] overflow-y-auto rounded border border-rule divide-y divide-rule">
           {SCHOOLS.map(s => {
             const isCustom = !!c.whySchool.schools[s.id]?.trim()
             const isSelected = s.id === selected
@@ -276,7 +276,7 @@ function WhySchoolEditor({ c, update }: {
                 className={`w-full flex items-center justify-between gap-2 px-3 py-2.5 text-left text-sm transition-colors ${
                   isSelected
                     ? 'bg-accent/10 text-accent font-semibold'
-                    : 'hover:bg-zinc-50 dark:hover:bg-zinc-800/60'
+                    : 'hover:bg-ink/5'
                 }`}
               >
                 <span className="truncate">{s.shortName}</span>
@@ -314,7 +314,7 @@ function WhySchoolEditor({ c, update }: {
             onChange={setText}
             placeholder={renderedDefault}
           />
-          <p className="text-[11px] text-zinc-400 dark:text-zinc-500 leading-snug">
+          <p className="text-[11px] text-muted leading-snug">
             Shown on the site when an admissions officer picks {school.name}. Clear this box to fall back to the default template above.
           </p>
         </div>
@@ -422,23 +422,23 @@ export default function AdminPage() {
   // -- Password gate --------------------------------------------------------
   if (!authed) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-zinc-50 dark:bg-zinc-950 p-6">
+      <div className="min-h-screen flex items-center justify-center bg-paper p-6">
         <div className="w-full max-w-sm space-y-4">
-          <h1 className="text-2xl font-bold text-center">Admin</h1>
-          <p className="text-sm text-zinc-500 text-center">Enter your admin password to continue.</p>
+          <h1 className="text-2xl font-serif text-center">Admin</h1>
+          <p className="text-sm text-muted text-center">Enter your admin password to continue.</p>
           <input
             type="password"
             value={password}
             onChange={e => setPassword(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && login()}
             placeholder="Password"
-            className="w-full px-4 py-3 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
+            className="w-full px-4 py-3 rounded border border-rule bg-paper focus:outline-none focus:ring-2 focus:ring-accent text-sm"
           />
           {authError && <p className="text-sm text-red-500">{authError}</p>}
           <button
             onClick={login}
             disabled={authLoading || !password}
-            className="w-full py-3 rounded-xl bg-indigo-500 hover:bg-indigo-600 disabled:opacity-50 text-white font-semibold text-sm transition-colors"
+            className="w-full py-3 rounded bg-accent-fill hover:opacity-90 disabled:opacity-50 text-white font-semibold text-sm transition-colors"
           >
             {authLoading ? 'Checking...' : 'Login'}
           </button>
@@ -452,34 +452,34 @@ export default function AdminPage() {
   const c = content
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 flex flex-col">
+    <div className="min-h-screen bg-paper flex flex-col">
       <div className="flex-1 px-4 py-10">
         <div className="max-w-3xl mx-auto space-y-5 pb-6">
 
           {/* Header */}
           <div className="flex items-center justify-between flex-wrap gap-4 mb-2">
             <div>
-              <h1 className="text-2xl font-bold">Portfolio Admin</h1>
-              <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+              <h1 className="text-2xl font-serif">Portfolio Admin</h1>
+              <p className="text-xs text-muted mt-1">
                 Edits here go live on the site after a save.
               </p>
             </div>
             <div className="flex items-center gap-3">
               <button
                 onClick={expandAll}
-                className="flex items-center gap-1 text-xs text-zinc-500 hover:text-accent font-medium"
+                className="flex items-center gap-1 text-xs text-muted hover:text-accent font-medium"
               >
                 <ChevronDown size={13} /> Expand all
               </button>
               <button
                 onClick={collapseAll}
-                className="flex items-center gap-1 text-xs text-zinc-500 hover:text-accent font-medium"
+                className="flex items-center gap-1 text-xs text-muted hover:text-accent font-medium"
               >
                 <ChevronUp size={13} /> Collapse all
               </button>
               <button
                 onClick={exit}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-xl border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 hover:border-red-400 hover:text-red-500 dark:hover:text-red-400 font-semibold text-sm transition-colors"
+                className="flex items-center gap-1.5 px-4 py-2 rounded border border-rule text-ink/70 hover:border-red-400 hover:text-red-500 font-semibold text-sm transition-colors"
                 aria-label="Exit admin session"
               >
                 <LogOut size={15} />
@@ -545,12 +545,12 @@ export default function AdminPage() {
 
             <div className="space-y-2">
               <Label text="Photo alt text" />
-              <p className="text-[11px] text-zinc-400 dark:text-zinc-500 leading-snug mb-1">
+              <p className="text-[11px] text-muted leading-snug mb-1">
                 Captions are hidden on the site; alt text is only read by screen readers and search engines. Photos themselves are fixed to these 5 files and positions.
               </p>
               {c.whyAerospace.photos.map((photo, i) => (
                 <div key={i} className="grid grid-cols-[1fr_2fr] gap-3 items-center">
-                  <code className="text-[11px] text-zinc-500 dark:text-zinc-400 truncate">{photo.src}</code>
+                  <code className="text-[11px] text-muted truncate">{photo.src}</code>
                   <Input value={photo.alt} onChange={v => update('whyAerospace', d => { d.photos[i].alt = v })} placeholder="Alt text" />
                 </div>
               ))}
@@ -680,7 +680,7 @@ export default function AdminPage() {
           {/* LINKS */}
           <SectionCard numberLabel="05." title="Links" subtitle="Find Me Online cards" open={isOpen('links')} onToggle={() => toggle('links')}>
             {c.profileLinks.map((link, i) => (
-              <div key={i} className="space-y-3 border-t border-zinc-200 dark:border-zinc-800 pt-4 first:border-0 first:pt-0">
+              <div key={i} className="space-y-3 border-t border-rule pt-4 first:border-0 first:pt-0">
                 <div className="flex justify-between items-center">
                   <span className="text-sm font-medium">{link.label || `Link ${i + 1}`}</span>
                   <RemoveButton onClick={() => update('profileLinks', d => { d.splice(i, 1) })} />
@@ -747,13 +747,13 @@ export default function AdminPage() {
       </div>
 
       {/* Sticky save bar */}
-      <div className="sticky bottom-0 inset-x-0 border-t border-zinc-200 dark:border-zinc-800 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md z-40">
+      <div className="sticky bottom-0 inset-x-0 border-t border-rule bg-paper border-t border-rule z-40">
         <div className="max-w-3xl mx-auto px-4 py-4 flex items-center justify-end gap-4">
           <StatusPill status={status} errMsg={errMsg} />
           <button
             onClick={save}
             disabled={status === 'saving'}
-            className="px-6 py-3 rounded-xl bg-accent-fill hover:opacity-90 disabled:opacity-50 text-white font-semibold text-sm transition-opacity"
+            className="px-6 py-3 rounded bg-accent-fill hover:opacity-90 disabled:opacity-50 text-white font-semibold text-sm transition-opacity"
           >
             {status === 'saving' ? 'Saving...' : 'Save'}
           </button>
