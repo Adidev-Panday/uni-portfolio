@@ -149,4 +149,27 @@ export const SCHOOL_MOTIFS: Record<string, SchoolMotif> = {
     confettiColors: ['#005C84', '#4FB0C6', '#F5F2EC'],
     consoleLine: 'Strenuis ardua cedunt.',
   },
+
+  // Batch 5: Bocconi (my non-aerospace finance pivot), HKU-Berkeley,
+  // NUS. None have a US-style mascot or a verified historic motto, so
+  // each trigger leans on a real, specific cultural touchstone instead.
+  bocconi: {
+    motto: 'Knowledge That Matters',
+    triggerWord: 'bocconiani',
+    revealLines: ['Spreadsheets open.', 'Models running.', 'Bocconiani.'],
+    confettiColors: ['#002E5D', '#4B9CD3', '#F5F2EC'],
+    consoleLine: 'Knowledge that matters.',
+  },
+  'hku-berkeley': {
+    triggerWord: 'bauhinia',
+    revealLines: ['Hong Kong to the Himalayas to Berkeley.', "The Bauhinia blooms wherever it's planted.", 'Two worlds, one degree.'],
+    confettiColors: ['#007A6C', '#E3B23C', '#F5F2EC'],
+    consoleLine: 'Two worlds, one degree.',
+  },
+  nus: {
+    triggerWord: 'merlion',
+    revealLines: ['Merlion watching from the bay.', 'Singapore, always building.', 'NUS.'],
+    confettiColors: ['#003D7C', '#EF7C00', '#F5F2EC'],
+    consoleLine: 'Singapore, always building.',
+  },
 }
