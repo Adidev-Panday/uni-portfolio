@@ -120,15 +120,6 @@ export function OskiTrigger() {
   )
 }
 
-// Subtle class-year tag for the hero section.
-export function BerkeleyClassTag() {
-  return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-[11px] font-medium tracking-wide text-accent">
-      Hopeful Golden Bear, Class of 2030
-    </span>
-  )
-}
-
 // Global overlay: renders the Oski yell animation, listens for both
 // trigger methods, and prints the console nod once per theme activation.
 export default function BerkeleyOskiOverlay() {

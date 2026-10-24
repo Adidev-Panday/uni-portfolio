@@ -189,3 +189,20 @@ export const SCHOOL_MOTIFS: Record<string, SchoolMotif> = {
     consoleLine: 'Die unternehmerische Universitat.',
   },
 }
+
+// Confetti colors for Princeton, Harvard, and UC Berkeley, kept here so
+// the selection-moment burst (AdmissionsModal) and the bespoke keyboard
+// easter eggs always agree on the same palette per school.
+const BESPOKE_CONFETTI: Record<string, string[]> = {
+  princeton: ['#FF8F1C', '#E77500', '#1A1A1A', '#F5F1E8'],
+  harvard: ['#A51C30', '#E04257', '#FFFFFF', '#F5F1E8'],
+  'uc-berkeley': ['#003262', '#FDB515', '#FFFFFF'],
+}
+
+const FALLBACK_CONFETTI = ['#D1341B', '#1A1A1A', '#F5F2EC']
+
+// Looks up the right confetti palette for any school, bespoke or
+// generic, for use at the moment a theme is first selected.
+export function getConfettiColors(schoolId: string): string[] {
+  return BESPOKE_CONFETTI[schoolId] ?? SCHOOL_MOTIFS[schoolId]?.confettiColors ?? FALLBACK_CONFETTI
+}

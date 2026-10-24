@@ -16,16 +16,35 @@ export default function About() {
         </ScrollReveal>
 
         <div className="grid md:grid-cols-12 gap-10 lg:gap-16 items-start">
-          {/* Profile photo: own column, no card chrome */}
+          {/* Profile photo: stacked polaroid / engineering-drawing frame.
+              Three layers, each a plain div at the same size: a hairline
+              rectangle at the back, a solid --primary block in the middle,
+              and the photo itself (with its own matte border) on top. */}
           <ScrollReveal delay={0.05} className="md:col-span-4">
-            <div className="aspect-square max-w-xs border border-rule overflow-hidden">
-              <Image
-                src="/profile.jpg"
-                alt="Adidev Panday"
-                width={400}
-                height={400}
-                className="object-cover w-full h-full"
+            <div className="relative aspect-square max-w-xs w-full">
+              <div
+                className="absolute inset-0 translate-x-[12px] translate-y-[12px] md:translate-x-4 md:translate-y-4 border"
+                style={{ borderColor: 'var(--photo-hairline)' }}
+                aria-hidden="true"
               />
+              <div
+                className="absolute inset-0 translate-x-[6px] translate-y-[6px] md:translate-x-2 md:translate-y-2"
+                style={{ backgroundColor: 'var(--primary)' }}
+                aria-hidden="true"
+              />
+              <div className="absolute inset-0 border border-rule bg-paper p-3 transition-transform duration-[180ms] ease-out hover:-translate-x-1 hover:-translate-y-1 active:-translate-x-1 active:-translate-y-1">
+                <div className="relative w-full h-full overflow-hidden">
+                  <Image
+                    src="/profile.jpg"
+                    alt="Adidev Panday"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+              <span className="absolute -bottom-5 right-0 font-mono text-[10px] tracking-wide text-muted pointer-events-none">
+                ADI / 2026
+              </span>
             </div>
           </ScrollReveal>
 

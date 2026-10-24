@@ -19,11 +19,7 @@ import Image from 'next/image'
 import { motion, useReducedMotion } from 'motion/react'
 import { hero } from '@/data/content'
 import { useSchoolTheme } from '@/hooks/useSchoolTheme'
-import { PrincetonClassTag } from './PrincetonEasterEggs'
-import { HarvardClassTag } from './HarvardEasterEggs'
-import { BerkeleyClassTag } from './BerkeleyEasterEggs'
-
-const BESPOKE_SCHOOLS = ['princeton', 'harvard', 'uc-berkeley']
+import { SCHOOL_CLASS_TAGS } from '@/data/schoolClassTags'
 
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 14 },
@@ -36,6 +32,8 @@ export default function Hero() {
   const prefersReducedMotion = useReducedMotion()
   const sectionRef = useRef<HTMLElement>(null)
   const nameRef = useRef<HTMLHeadingElement>(null)
+
+  const classTag = schoolId ? SCHOOL_CLASS_TAGS[schoolId] : undefined
 
   const projectsHref = hero.ctas.find((c) => c.primary)?.href ?? '#projects'
   const researchHref = hero.ctas.find((c) => c.label.toLowerCase().includes('research'))?.href ?? '#research'
@@ -105,11 +103,11 @@ export default function Hero() {
       <div className="flex flex-col md:flex-row md:h-screen">
         {/* LEFT: typography column, 60% on desktop */}
         <div className="relative flex flex-col justify-center bg-paper md:w-[60%] px-6 sm:px-10 md:pl-[6vw] md:pr-12 py-24 md:py-0">
-          {schoolId && BESPOKE_SCHOOLS.includes(schoolId) && (
+          {classTag && (
             <motion.div className="mb-5" {...fadeUp(0)}>
-              {schoolId === 'princeton' && <PrincetonClassTag />}
-              {schoolId === 'harvard' && <HarvardClassTag />}
-              {schoolId === 'uc-berkeley' && <BerkeleyClassTag />}
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/10 backdrop-blur-sm px-3 py-1 text-[11px] font-medium tracking-wide text-accent">
+                {classTag}
+              </span>
             </motion.div>
           )}
 

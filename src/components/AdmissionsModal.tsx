@@ -9,6 +9,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { SCHOOLS, type SchoolId } from '@/data/schools'
 import { fireConfetti } from '@/lib/confetti'
 import { fireLightsOn } from '@/lib/lightsOn'
+import { getConfettiColors } from '@/data/schoolMotifs'
 import { pushModalOpen, popModalOpen } from '@/lib/modalDepth'
 import { ModalBackdrop, ModalPanel } from './ModalPanel'
 
@@ -92,7 +93,7 @@ export default function AdmissionsModal() {
     setActiveSchool(id)
     try { sessionStorage.setItem(SESSION_KEY, id) } catch { /* ignore */ }
     setStep('idle')
-    if (id === 'princeton') fireConfetti()
+    fireConfetti(getConfettiColors(id))
     if (id === 'uc-berkeley') fireLightsOn()
   }
 
