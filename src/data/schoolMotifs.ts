@@ -86,4 +86,33 @@ export const SCHOOL_MOTIFS: Record<string, SchoolMotif> = {
     confettiColors: ['#2774AE', '#FFD100', '#F5F2EC'],
     consoleLine: 'Go Bruins.',
   },
+
+  // Batch 3: Bath, Bristol, Manchester. None have a US-style mascot,
+  // so the trigger word leans on each school's real, researched
+  // cultural touchstone instead (Bath's Roman name, Bristol's Brunel,
+  // Manchester's worker bee) rather than inventing a nickname.
+  bath: {
+    motto: 'Generatim discite cultus',
+    mottoTranslation: 'Learn the culture proper to each after its kind',
+    triggerWord: 'aquae',
+    revealLines: ['Aquae Sulis.', 'The Romans built it to last.', "So are we."],
+    confettiColors: ['#00539F', '#59B0E4', '#F5F2EC'],
+    consoleLine: 'Generatim discite cultus.',
+  },
+  bristol: {
+    motto: 'Vim promovet insitam',
+    mottoTranslation: "Learning promotes one's innate power",
+    triggerWord: 'brunel',
+    revealLines: ["Isambard Kingdom Brunel built this city's bones.", 'Bridges, ships, engines.', 'Bristol keeps building.'],
+    confettiColors: ['#A6192E', '#D24258', '#F5F2EC'],
+    consoleLine: 'Vim promovet insitam.',
+  },
+  manchester: {
+    motto: 'Cognitio, sapientia, humanitas',
+    mottoTranslation: 'Knowledge, wisdom, humanity',
+    triggerWord: 'bees',
+    revealLines: ['The worker bee never stops.', 'Three bees on the coat of arms.', 'Still buzzing.'],
+    confettiColors: ['#660099', '#FFCC33', '#F5F2EC'],
+    consoleLine: 'Cognitio, sapientia, humanitas.',
+  },
 }
