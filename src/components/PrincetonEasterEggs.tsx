@@ -167,7 +167,7 @@ export default function PrincetonCheerOverlay() {
           role="status"
           aria-live="polite"
         >
-          <div className="max-w-xs space-y-1.5 rounded-2xl border border-[#E77500]/30 bg-[#0A0A0A]/90 px-8 py-7 text-center shadow-2xl backdrop-blur-md">
+          <div className="max-w-xs space-y-1.5 rounded border border-[#E77500]/30 bg-[#0A0A0A]/90 px-8 py-7 text-center">
             {CHEER_LINES.map((line, i) => {
               const isFinale = i === CHEER_LINES.length - 1
               const shown = i < lineCount

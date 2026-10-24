@@ -201,7 +201,7 @@ export default function BerkeleyOskiOverlay() {
           role="status"
           aria-live="polite"
         >
-          <div className="max-w-xs space-y-2 rounded-2xl border border-[#FDB515]/30 bg-[#00223F]/90 px-8 py-7 text-center shadow-2xl backdrop-blur-md">
+          <div className="max-w-xs space-y-2 rounded border border-[#FDB515]/30 bg-[#00223F]/90 px-8 py-7 text-center">
             {YELL_LINES.map((line, i) => {
               const isFinale = i === YELL_LINES.length - 1
               const shown = i < lineCount

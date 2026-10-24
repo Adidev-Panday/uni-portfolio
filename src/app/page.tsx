@@ -37,7 +37,7 @@ export default function Home() {
         <Contact />
       </main>
 
-      <footer className="border-t border-zinc-200 dark:border-zinc-800 py-8 text-center text-xs text-zinc-400 space-y-1">
+      <footer className="border-t border-rule py-8 text-center text-xs font-mono text-muted space-y-1">
         <p>
           {meta.name} · {new Date().getFullYear()}
         </p>

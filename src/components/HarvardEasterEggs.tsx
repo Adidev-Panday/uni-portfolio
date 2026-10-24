@@ -182,7 +182,7 @@ export default function HarvardRevealOverlay() {
           role="status"
           aria-live="polite"
         >
-          <div className="max-w-sm space-y-2 rounded-2xl border border-[#A51C30]/30 bg-[#120C0D]/90 px-8 py-7 text-center shadow-2xl backdrop-blur-md">
+          <div className="max-w-sm space-y-2 rounded border border-[#A51C30]/30 bg-[#120C0D]/90 px-8 py-7 text-center">
             {REVEAL_LINES.map((line, i) => {
               const isFinale = i === REVEAL_LINES.length - 1
               const shown = i < lineCount
