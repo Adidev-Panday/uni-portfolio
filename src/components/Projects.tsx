@@ -76,7 +76,7 @@ export default function Projects() {
                       setActiveProject(project)
                     }
                   }}
-                  className={`group relative flex flex-col h-full ${minH} p-6 sm:p-8 border border-rule rounded cursor-pointer transition-[background-color,color,transform] duration-150 hover:bg-accent hover:text-paper hover:scale-[1.01] focus:outline-none focus-visible:ring-1 focus-visible:ring-accent`}
+                  className={`group relative flex flex-col h-full ${minH} p-6 sm:p-8 border border-[color:var(--card-border)] rounded cursor-pointer transition-[background-color,color,border-color,border-width,transform] duration-150 hover:bg-accent hover:text-paper hover:border-2 hover:border-[color:var(--card-border-hover)] hover:scale-[1.01] focus:outline-none focus-visible:ring-1 focus-visible:ring-accent`}
                 >
                   {/* Top row: status badge + external indicator */}
                   <div className="flex items-start justify-between gap-3 mb-4">

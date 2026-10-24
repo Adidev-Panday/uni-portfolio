@@ -29,10 +29,15 @@
 
 :root {
   --accent: rgb(var(--accent-rgb));
+  /* The identity-leading color for the active theme/school -- see
+     the HEADLINES section below. Base theme and most schools: this
+     is just --accent-rgb's current (mode-aware) value. Georgia Tech
+     and Purdue pin --headline-rgb to a steady value instead. */
+  --primary: rgb(var(--headline-rgb));
 }
 
 /* ============================================================
-   22 SCHOOL THEME OVERRIDES (alphabetical order)
+   24 SCHOOL THEME OVERRIDES (alphabetical order)
 
    Three tiers per school, verified against each school's official
    palette: BASE (dark surface) / PRIMARY (identity-leading color) /
@@ -43,20 +48,19 @@
    swap, not a hue swap, for almost every school, since PRIMARY is
    normally the darker of the two and reads fine on white while
    ACCENT is normally the brighter one and reads fine on near-black.
-   --headline-rgb (consumed further below) drives headlines/section
-   titles/the hero name: PRIMARY by default in both modes (most
-   schools' PRIMARY already has enough contrast on both ends), except
-   Georgia Tech and Purdue, which pin it below -- their PRIMARY is
-   itself the bright color (gold), so it is kept for headlines in
-   both modes but --accent-rgb still swaps to a darker tone for small
-   text, where gold-on-white genuinely fails contrast.
+   --headline-rgb (consumed further below, defaults to --accent-rgb
+   at :root in tokens.css) drives headlines/section titles/the hero
+   name: PRIMARY by default in both modes (most schools' PRIMARY
+   already has enough contrast on both ends), except Georgia Tech and
+   Purdue, which pin it below -- their PRIMARY is itself the bright
+   color (gold), so it is kept for headlines in both modes but
+   --accent-rgb still swaps to a darker tone for small text, where
+   gold-on-white genuinely fails contrast.
    --accent-fill (button fills) is PRIMARY; --accent-fill-text pairs
    with it and is only overridden where PRIMARY is too pale for white
    text (again, the gold-primary schools).
    .dark[data-school] overrides --accent-rgb for the dark-mode swap.
    ============================================================ */
-
-[data-school] { --headline-rgb: var(--accent-rgb); }
 
 /* 1. Bocconi  base:#001A33  primary:#002E5D navy  accent:#4B9CD3 */
 [data-school="bocconi"] {
@@ -96,7 +100,16 @@
 }
 .dark[data-school="hku-berkeley"] { --accent-rgb: 227 178 60; }
 
-/* 5. NUS  base:#001E3C  primary:#003D7C NUS blue  accent:#EF7C00 NUS orange */
+/* 5. MIT  base:#0A0A0A  primary:#750014 MIT Red (Cardinal Red)  accent:#8A8B8C MIT silver/grey */
+[data-school="mit"] {
+  --accent-rgb: 117 0 20;
+  --accent-secondary-rgb: 138 139 140;
+  --accent-fill: #750014;
+  --body-bg-dark: #0A0A0A;
+}
+.dark[data-school="mit"] { --accent-rgb: 138 139 140; }
+
+/* 6. NUS  base:#001E3C  primary:#003D7C NUS blue  accent:#EF7C00 NUS orange */
 [data-school="nus"] {
   --accent-rgb: 0 61 124;
   --accent-secondary-rgb: 239 124 0;
@@ -105,7 +118,7 @@
 }
 .dark[data-school="nus"] { --accent-rgb: 239 124 0; }
 
-/* 6. Princeton  base:#0A0A0A  primary:#E77500 Princeton Orange (leads everywhere)  accent:#FF8F1C */
+/* 7. Princeton  base:#0A0A0A  primary:#E77500 Princeton Orange (leads everywhere)  accent:#FF8F1C */
 [data-school="princeton"] {
   --accent-rgb: 231 117 0;         /* orange, passes large-text AA on white */
   --accent-secondary-rgb: 255 143 28;
@@ -114,7 +127,7 @@
 }
 .dark[data-school="princeton"] { --accent-rgb: 255 143 28; }
 
-/* 7. Purdue  base:#0B0B0B  primary:#CEB888 Boilermaker Gold (leads)  accent:#C28E0E campus gold (support) */
+/* 8. Purdue  base:#0B0B0B  primary:#CEB888 Boilermaker Gold (leads)  accent:#C28E0E campus gold (support) */
 [data-school="purdue"] {
   --accent-rgb: 11 11 11;          /* near-black: kept for small text/links, where gold fails contrast on white */
   --accent-secondary-rgb: 194 142 14;
@@ -125,7 +138,7 @@
 }
 .dark[data-school="purdue"] { --accent-rgb: 206 184 136; }
 
-/* 8. TU Delft  base:#0A1F3A  primary:#00A6D6 cyan (their signature)  accent:#4DBFE3 */
+/* 9. TU Delft  base:#0A1F3A  primary:#00A6D6 cyan (their signature)  accent:#4DBFE3 */
 [data-school="tu-delft"] {
   --accent-rgb: 0 166 214;         /* cyan, passes large-text AA on white */
   --accent-secondary-rgb: 77 191 227;
@@ -134,7 +147,7 @@
 }
 .dark[data-school="tu-delft"] { --accent-rgb: 77 191 227; }
 
-/* 9. TUM  base:#002E5F  primary:#0065BD TUM blue  accent:#64A0C8 */
+/* 10. TUM  base:#002E5F  primary:#0065BD TUM blue  accent:#64A0C8 */
 [data-school="tum"] {
   --accent-rgb: 0 101 189;
   --accent-secondary-rgb: 100 160 200;
@@ -143,7 +156,7 @@
 }
 .dark[data-school="tum"] { --accent-rgb: 100 160 200; }
 
-/* 10. UC Berkeley  base:#00223F  primary:#003262 Berkeley Blue  accent:#FDB515 California Gold
+/* 11. UC Berkeley  base:#00223F  primary:#003262 Berkeley Blue  accent:#FDB515 California Gold
    Near-equal weight identity: gold is scattered onto section numbers
    and hairline rules further below, in addition to leading dark mode. */
 [data-school="uc-berkeley"] {
@@ -154,7 +167,7 @@
 }
 .dark[data-school="uc-berkeley"] { --accent-rgb: 253 181 21; }
 
-/* 11. UC Davis  base:#01152B  primary:#022851 Aggie Blue  accent:#FFBF00 Aggie Gold */
+/* 12. UC Davis  base:#01152B  primary:#022851 Aggie Blue  accent:#FFBF00 Aggie Gold */
 [data-school="uc-davis"] {
   --accent-rgb: 2 40 81;
   --accent-secondary-rgb: 255 191 0;
@@ -163,7 +176,7 @@
 }
 .dark[data-school="uc-davis"] { --accent-rgb: 255 191 0; }
 
-/* 12. UC Irvine  base:#00263F  primary:#0064A4 UCI Blue  accent:#FFD200 UCI Gold */
+/* 13. UC Irvine  base:#00263F  primary:#0064A4 UCI Blue  accent:#FFD200 UCI Gold */
 [data-school="uc-irvine"] {
   --accent-rgb: 0 100 164;
   --accent-secondary-rgb: 255 210 0;
@@ -172,7 +185,7 @@
 }
 .dark[data-school="uc-irvine"] { --accent-rgb: 255 210 0; }
 
-/* 13. UC San Diego  base:#0B1A30  primary:#182B49 navy  accent:#FFCD00 gold */
+/* 14. UC San Diego  base:#0B1A30  primary:#182B49 navy  accent:#FFCD00 gold */
 [data-school="uc-san-diego"] {
   --accent-rgb: 24 43 73;
   --accent-secondary-rgb: 255 205 0;
@@ -181,7 +194,7 @@
 }
 .dark[data-school="uc-san-diego"] { --accent-rgb: 255 205 0; }
 
-/* 14. UCLA  base:#0A2744  primary:#2774AE UCLA Blue  accent:#FFD100 UCLA Gold
+/* 15. UCLA  base:#0A2744  primary:#2774AE UCLA Blue  accent:#FFD100 UCLA Gold
    Near-equal weight identity: gold is scattered onto section numbers
    and hairline rules further below, in addition to leading dark mode. */
 [data-school="ucla"] {
@@ -192,7 +205,7 @@
 }
 .dark[data-school="ucla"] { --accent-rgb: 255 209 0; }
 
-/* 15. University of Bath  base:#00243F  primary:#00539F Bath Blue  accent:#59B0E4 */
+/* 16. University of Bath  base:#00243F  primary:#00539F Bath Blue  accent:#59B0E4 */
 [data-school="bath"] {
   --accent-rgb: 0 83 159;
   --accent-secondary-rgb: 89 176 228;
@@ -201,7 +214,7 @@
 }
 .dark[data-school="bath"] { --accent-rgb: 89 176 228; }
 
-/* 16. University of Bristol  base:#1A0308  primary:#A6192E Bristol Red  accent:#D24258 */
+/* 17. University of Bristol  base:#1A0308  primary:#A6192E Bristol Red  accent:#D24258 */
 [data-school="bristol"] {
   --accent-rgb: 166 25 46;
   --accent-secondary-rgb: 210 66 88;
@@ -210,7 +223,7 @@
 }
 .dark[data-school="bristol"] { --accent-rgb: 210 66 88; }
 
-/* 17. University of Illinois (UIUC)  base:#0C1B33  primary:#13294B Illini Blue  accent:#FF5F05 Illini Orange
+/* 18. University of Illinois (UIUC)  base:#0C1B33  primary:#13294B Illini Blue  accent:#FF5F05 Illini Orange
    Near-equal weight identity: orange is scattered onto section numbers
    and hairline rules further below, in addition to leading dark mode. */
 [data-school="uiuc"] {
@@ -221,7 +234,7 @@
 }
 .dark[data-school="uiuc"] { --accent-rgb: 255 95 5; }
 
-/* 18. University of Manchester  base:#1A0033  primary:#660099 Manchester Purple  accent:#FFCC33 */
+/* 19. University of Manchester  base:#1A0033  primary:#660099 Manchester Purple  accent:#FFCC33 */
 [data-school="manchester"] {
   --accent-rgb: 102 0 153;         /* Manchester purple, 9.8:1 on white */
   --accent-secondary-rgb: 255 204 51;
@@ -230,7 +243,7 @@
 }
 .dark[data-school="manchester"] { --accent-rgb: 255 204 51; }
 
-/* 19. University of Melbourne  base:#000A2E  primary:#000F46 navy  accent:#3A6DC4 */
+/* 20. University of Melbourne  base:#000A2E  primary:#000F46 navy  accent:#3A6DC4 */
 [data-school="melbourne"] {
   --accent-rgb: 0 15 70;
   --accent-secondary-rgb: 58 109 196;
@@ -239,7 +252,7 @@
 }
 .dark[data-school="melbourne"] { --accent-rgb: 58 109 196; }
 
-/* 20. University of Michigan  base:#00142A  primary:#00274C Michigan Blue  accent:#FFCB05 Maize
+/* 21. University of Michigan  base:#00142A  primary:#00274C Michigan Blue  accent:#FFCB05 Maize
    Near-equal weight identity: maize is scattered onto section numbers
    and hairline rules further below, in addition to leading dark mode. */
 [data-school="michigan"] {
@@ -250,7 +263,7 @@
 }
 .dark[data-school="michigan"] { --accent-rgb: 255 203 5; }
 
-/* 21. University of Sheffield  base:#0A1428  primary:#1E2B5E Sheffield Blue  accent:#FFD200 gold */
+/* 22. University of Sheffield  base:#0A1428  primary:#1E2B5E Sheffield Blue  accent:#FFD200 gold */
 [data-school="sheffield"] {
   --accent-rgb: 30 43 94;
   --accent-secondary-rgb: 255 210 0;
@@ -259,7 +272,7 @@
 }
 .dark[data-school="sheffield"] { --accent-rgb: 255 210 0; }
 
-/* 22. University of Southampton  base:#001E2B  primary:#005C84 Marine Blue  accent:#4FB0C6 horizon blue */
+/* 23. University of Southampton  base:#001E2B  primary:#005C84 Marine Blue  accent:#4FB0C6 horizon blue */
 [data-school="southampton"] {
   --accent-rgb: 0 92 132;
   --accent-secondary-rgb: 79 176 198;
@@ -267,6 +280,19 @@
   --body-bg-dark: #001E2B;
 }
 .dark[data-school="southampton"] { --accent-rgb: 79 176 198; }
+
+/* 24. Virginia Tech  base:#1A0F0F  primary:#861F41 Hokie Maroon  accent:#E5751F Burnt Orange
+   Near-equal weight identity, maroon-and-orange, like Michigan's
+   blue-and-maize: orange is scattered onto section numbers and
+   hairline rules further below (see NEAR-EQUAL-WEIGHT IDENTITIES),
+   in addition to leading dark mode. */
+[data-school="virginia-tech"] {
+  --accent-rgb: 134 31 65;
+  --accent-secondary-rgb: 229 117 31;
+  --accent-fill: #861F41;
+  --body-bg-dark: #1A0F0F;
+}
+.dark[data-school="virginia-tech"] { --accent-rgb: 229 117 31; }
 
 /* ============================================================
    HEADLINES: PRIMARY leads, not the mode-swapped small-text accent.
@@ -286,23 +312,46 @@
 
 /* ============================================================
    NEAR-EQUAL-WEIGHT IDENTITIES: Michigan maize, UCLA gold, Berkeley
-   gold, Illini orange carry roughly as much brand weight as their
-   primary blue. Scatter the accent (accent-secondary-rgb) onto the
-   section-number eyebrow and the hairline rule so the second color
-   stays visible in every mode, not just as the dark-mode swap.
+   gold, Illini orange, and VT's burnt orange carry roughly as much
+   brand weight as their primary color. Scatter the accent
+   (accent-secondary-rgb) onto the section-number eyebrow and the
+   hairline rule so the second color stays visible in every mode,
+   not just as the dark-mode swap.
    ============================================================ */
 
 [data-school="michigan"] .section-header .font-mono,
 [data-school="ucla"] .section-header .font-mono,
 [data-school="uc-berkeley"] .section-header .font-mono,
-[data-school="uiuc"] .section-header .font-mono {
+[data-school="uiuc"] .section-header .font-mono,
+[data-school="virginia-tech"] .section-header .font-mono {
   color: rgb(var(--accent-secondary-rgb));
 }
 [data-school="michigan"] .section-header .bg-rule,
 [data-school="ucla"] .section-header .bg-rule,
 [data-school="uc-berkeley"] .section-header .bg-rule,
-[data-school="uiuc"] .section-header .bg-rule {
+[data-school="uiuc"] .section-header .bg-rule,
+[data-school="virginia-tech"] .section-header .bg-rule {
   background-color: rgb(var(--accent-secondary-rgb));
+}
+
+/* ============================================================
+   CARD + PHOTO FRAME TOKENS
+   Shared by the Projects bento grid and the Why Aerospace gallery.
+   color-mix keeps each one theme-aware without hardcoding a second
+   hex anywhere -- --ink and --primary already carry the active
+   theme's (or school's) color, light/dark included, so a hairline
+   or shadow built from them reads correctly against any base.
+   ============================================================ */
+
+:root {
+  --card-border: color-mix(in oklch, var(--ink) 20%, transparent);
+  --card-border-hover: color-mix(in oklch, var(--primary) 60%, transparent);
+  --photo-hairline: color-mix(in oklch, var(--ink) 20%, transparent);
+  --photo-shadow: color-mix(in oklch, var(--accent) 20%, transparent);
+}
+.dark {
+  --card-border: color-mix(in oklch, var(--ink) 15%, transparent);
+  --photo-shadow: color-mix(in oklch, var(--accent) 30%, transparent);
 }
 
 /* ============================================================

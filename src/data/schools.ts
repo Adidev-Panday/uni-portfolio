@@ -5,6 +5,7 @@ export const SCHOOLS = [
   { id: 'georgia-tech', name: 'Georgia Tech',                               shortName: 'Georgia Tech' },
   { id: 'harvard',      name: 'Harvard',                                   shortName: 'Harvard'      },
   { id: 'hku-berkeley', name: 'HKU-Berkeley (Dual Degree)',                 shortName: 'HKU-Berkeley' },
+  { id: 'mit',          name: 'Massachusetts Institute of Technology (MIT)', shortName: 'MIT'         },
   { id: 'nus',          name: 'National University of Singapore (NUS)',     shortName: 'NUS'          },
   { id: 'princeton',    name: 'Princeton',                                  shortName: 'Princeton'    },
   { id: 'purdue',       name: 'Purdue',                                     shortName: 'Purdue'       },
@@ -23,6 +24,7 @@ export const SCHOOLS = [
   { id: 'michigan',     name: 'University of Michigan (Ann Arbor)',        shortName: 'Michigan'     },
   { id: 'sheffield',    name: 'University of Sheffield',                   shortName: 'Sheffield'    },
   { id: 'southampton',  name: 'University of Southampton',                 shortName: 'Southampton'  },
+  { id: 'virginia-tech', name: 'Virginia Tech',                            shortName: 'Virginia Tech' },
 ] as const
 
 export type SchoolId = (typeof SCHOOLS)[number]['id']

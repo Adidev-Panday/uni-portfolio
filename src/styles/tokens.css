@@ -37,6 +37,11 @@
   --accent-rgb: 209 52 27;
   --accent-secondary-rgb: 209 52 27;
   --accent-fill: #D1341B;
+  /* Root-level default so --primary (globals.css) always resolves,
+     even with no school theme active. School themes pin this to a
+     steady value of their own where needed (Georgia Tech, Purdue);
+     everyone else just inherits --accent-rgb's current value. */
+  --headline-rgb: var(--accent-rgb);
   /* Text color for anything filled with --accent-fill. --paper by
      default (the base accent is dark enough for light text); a
      handful of school themes with a pale/gold primary override this

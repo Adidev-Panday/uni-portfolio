@@ -4,12 +4,22 @@
 // Content is data-driven via content.json (heading, paragraphs, photo alt text).
 import Image from 'next/image'
 import { whyAerospace } from '@/data/content'
+import { useSchoolTheme } from '@/hooks/useSchoolTheme'
 import ScrollReveal from './ScrollReveal'
 import SectionHeader from './SectionHeader'
 
-const cardClass = 'relative overflow-hidden group border border-rule'
+// School theme active: each photo is matte-framed in the school's own
+// --primary color, a 4px --paper gap between border and image.
+// No school theme: a plain hairline + an offset shadow built from
+// --accent, lifting on hover instead of being school-branded.
+const SCHOOL_CARD_CLASS =
+  'relative overflow-hidden group border-[3px] border-[color:var(--primary)] p-1 bg-paper transition-[filter] duration-150 hover:brightness-110'
+const DEFAULT_CARD_CLASS =
+  'relative overflow-hidden group border border-[color:var(--photo-hairline)] shadow-[8px_8px_0_var(--photo-shadow)] transition-transform duration-150 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[10px_10px_0_var(--photo-shadow)]'
 
 export default function WhyAerospace() {
+  const { schoolId } = useSchoolTheme()
+  const cardClass = schoolId ? SCHOOL_CARD_CLASS : DEFAULT_CARD_CLASS
   const { heading, subtitle, paragraphs, photos } = whyAerospace
 
   return (
