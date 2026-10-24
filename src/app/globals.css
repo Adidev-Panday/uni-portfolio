@@ -879,14 +879,6 @@ h1.hero-name {
   }
 }
 
-@keyframes hero-dot-pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%      { opacity: 0.4; transform: scale(0.75); }
-}
-.hero-pulse-dot {
-  animation: hero-dot-pulse 2s ease-in-out infinite;
-}
-
 @keyframes hero-scroll-pulse {
   0%, 100% { transform: scaleY(0.4); opacity: 0.3; }
   50%      { transform: scaleY(1); opacity: 1; }
@@ -900,7 +892,6 @@ h1.hero-name {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-pulse-dot { animation: none; }
   .hero-scroll-pulse { animation: none; transform: scaleY(1); opacity: 0.6; }
 }
 

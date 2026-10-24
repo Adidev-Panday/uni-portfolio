@@ -92,23 +92,21 @@ export default function Hero() {
     }
   }, [prefersReducedMotion])
 
-  const nameChars = Array.from(hero.name)
+  // Split into words, not a flat character list: each word gets its
+  // own non-wrapping box so the only valid line break is the real
+  // space between "Adidev" and "Panday" (used below 768px), never a
+  // break mid-word. The per-letter mask reveal still runs within
+  // each word. The space itself is rendered OUTSIDE any nowrap box,
+  // as a plain sibling, so it stays the one real break opportunity.
+  const words = hero.name.split(' ')
 
   return (
     <section id="hero" ref={sectionRef} className="relative overflow-hidden">
       <div className="flex flex-col md:flex-row md:h-screen">
         {/* LEFT: typography column, 60% on desktop */}
         <div className="relative flex flex-col justify-center bg-paper md:w-[60%] px-6 sm:px-10 md:pl-[6vw] md:pr-12 py-24 md:py-0">
-          <motion.p
-            className="font-mono text-xs tracking-[0.15em] text-muted uppercase mb-6 flex items-center gap-2.5"
-            {...fadeUp(0)}
-          >
-            <span className="hero-pulse-dot inline-block w-1.5 h-1.5 rounded-full bg-accent shrink-0" aria-hidden="true" />
-            Available / 2026-27 admissions cycle
-          </motion.p>
-
           {schoolId && BESPOKE_SCHOOLS.includes(schoolId) && (
-            <motion.div className="mb-4" {...fadeUp(0.1)}>
+            <motion.div className="mb-5" {...fadeUp(0)}>
               {schoolId === 'princeton' && <PrincetonClassTag />}
               {schoolId === 'harvard' && <HarvardClassTag />}
               {schoolId === 'uc-berkeley' && <BerkeleyClassTag />}
@@ -117,39 +115,38 @@ export default function Hero() {
 
           <h1
             ref={nameRef}
-            className="hero-name font-serif text-ink text-[clamp(5rem,11vw,14rem)] leading-[0.9] tracking-[-0.03em] mb-6"
+            className="hero-name font-serif text-ink text-[clamp(3.5rem,8vw,9rem)] leading-[1.0] tracking-[-0.03em] mb-6"
+            style={{ wordBreak: 'keep-all', overflowWrap: 'normal' }}
           >
-            {nameChars.map((ch, i) => (
-              <span key={i} className="inline-block overflow-hidden align-bottom">
-                <motion.span
-                  className="inline-block"
-                  initial={prefersReducedMotion ? undefined : { y: '110%' }}
-                  animate={{ y: '0%' }}
-                  transition={{ duration: 0.5, delay: 0.35 + i * 0.04, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  {ch === ' ' ? ' ' : ch}
-                </motion.span>
-              </span>
-            ))}
+            {words.flatMap((word, wi) => {
+              const wordSpan = (
+                <span key={`w${wi}`} className="whitespace-nowrap">
+                  {Array.from(word).map((ch, i) => (
+                    <span key={i} className="inline-block overflow-hidden align-bottom">
+                      <motion.span
+                        className="inline-block"
+                        initial={prefersReducedMotion ? undefined : { y: '110%' }}
+                        animate={{ y: '0%' }}
+                        transition={{ duration: 0.5, delay: 0.1 + (wi * word.length + i) * 0.04, ease: [0.16, 1, 0.3, 1] }}
+                      >
+                        {ch}
+                      </motion.span>
+                    </span>
+                  ))}
+                </span>
+              )
+              return wi < words.length - 1 ? [wordSpan, ' '] : [wordSpan]
+            })}
           </h1>
 
           <motion.p
-            className="text-ink text-[1.25rem] max-w-xl mb-5 leading-relaxed"
-            {...fadeUp(1.05)}
+            className="text-ink text-[1.25rem] max-w-xl mb-7 leading-relaxed"
+            {...fadeUp(0.8)}
           >
             An aspiring aerospace engineer: F1 aerodynamics, propulsion, and the physics of making a thing move.
           </motion.p>
 
-          <motion.p
-            className="font-mono text-[11px] uppercase tracking-widest text-muted mb-7"
-            {...fadeUp(1.15)}
-          >
-            Ludhiana + Mussoorie <span className="mx-2">&middot;</span>
-            Propulsion + Aerodynamics <span className="mx-2">&middot;</span>
-            Woodstock School
-          </motion.p>
-
-          <motion.p className="text-base" {...fadeUp(1.25)}>
+          <motion.p className="text-base" {...fadeUp(0.95)}>
             <a
               href={projectsHref}
               className="group text-accent font-medium underline underline-offset-4 hover:no-underline"
@@ -186,7 +183,7 @@ export default function Hero() {
             className="object-cover object-[center_30%]"
           />
           <p className="absolute bottom-4 right-4 font-mono text-[10px] tracking-widest uppercase text-white/90 [text-shadow:0_1px_3px_rgba(0,0,0,0.6)]">
-            Quiraing, Skye / 2024
+            Isle of Skye, Scotland / 2026
           </p>
         </div>
       </div>

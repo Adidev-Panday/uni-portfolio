@@ -17,13 +17,27 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const { school, schoolId } = useSchoolTheme()
 
-  // Shared class builder for the desktop nav links. The hero's left
-  // 60% is --paper (a real surface, not a photo -- see Hero.tsx), so
-  // the nav reads the same ink/muted/accent system everywhere on the
-  // page, including over the hero; a permanent light backing (below)
-  // keeps it legible over the hero's photo panel on the right too.
-  const navLinkClass = (isActive: boolean) =>
-    isActive ? 'text-accent' : 'text-muted hover:text-ink'
+  // Hero has no nav link of its own, but it IS one of the sections the
+  // scrollspy below tracks, so this is "is the hero still the current
+  // section". Light mode over the hero: the ink/muted/accent system
+  // (below) already reads fine against --paper's left half, unchanged.
+  // Dark mode over the hero is split two ways -- --paper (near-black)
+  // on the left, the photo (with lighter sky patches) on the right --
+  // so muted text blends into the left and light text can blend into
+  // the right. Forcing --ink text there (light/cream in dark mode)
+  // with a text-shadow covers both: bright against the dark half,
+  // shadow-lifted off the bright half.
+  const overHero = activeSection === 'hero'
+  const heroShadowDark = 'dark:[text-shadow:0_1px_4px_rgba(0,0,0,0.6)]'
+  const flatShadowDark = 'dark:[text-shadow:0_1px_4px_rgba(0,0,0,0)]'
+
+  // Shared class builder for the desktop nav links.
+  const navLinkClass = (isActive: boolean) => {
+    const shadow = overHero ? heroShadowDark : flatShadowDark
+    if (isActive) return `text-accent ${shadow}`
+    const darkOverHero = overHero ? 'dark:text-ink dark:hover:text-ink/80' : ''
+    return `text-muted hover:text-ink ${darkOverHero} ${shadow}`
+  }
 
   // Show background/blur once page is scrolled past 24px
   useEffect(() => {
@@ -124,7 +138,7 @@ export default function Navbar() {
           href="#hero"
           onDoubleClick={(e) => { e.preventDefault(); resetExperience() }}
           title="Double-click to reset"
-          className="font-serif text-base tracking-tight text-ink transition-colors duration-300 hover:text-accent"
+          className={`font-serif text-base tracking-tight text-ink transition-[color,text-shadow] duration-300 hover:text-accent ${overHero ? heroShadowDark : flatShadowDark}`}
         >
           {meta.name.split(' ')[0]}
           <span className="text-accent">.</span>
@@ -171,11 +185,11 @@ export default function Navbar() {
 
         {/* Right controls */}
         <div className="flex items-center gap-1">
-          <ThemeToggle />
+          <ThemeToggle overHero={overHero} />
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2 rounded text-muted hover:text-ink transition-colors duration-300"
+            className={`md:hidden p-2 rounded text-muted hover:text-ink transition-[color,filter] duration-300 ${overHero ? 'dark:text-ink dark:[filter:drop-shadow(0_1px_4px_rgba(0,0,0,0.6))]' : 'dark:[filter:drop-shadow(0_1px_4px_rgba(0,0,0,0))]'}`}
             onClick={() => setMobileOpen((o) => !o)}
             aria-label="Toggle menu"
             aria-expanded={mobileOpen}

@@ -7,7 +7,15 @@ import { Moon, Sun } from 'lucide-react'
 import { motion } from 'motion/react'
 import { springUI } from '@/lib/motion'
 
-export default function ThemeToggle() {
+interface ThemeToggleProps {
+  // True while the nav sits over the hero and dark mode is active, so
+  // the icon goes --ink (light/cream in dark mode) with a drop shadow
+  // instead of blending into the hero's dark left half or the photo's
+  // lighter sky on the right. Light mode is unaffected -- see Navbar.tsx.
+  overHero?: boolean
+}
+
+export default function ThemeToggle({ overHero = false }: ThemeToggleProps) {
   const [isDark, setIsDark] = useState(true)
   const [mounted, setMounted] = useState(false)
 
@@ -33,7 +41,11 @@ export default function ThemeToggle() {
   return (
     <motion.button
       onClick={toggle}
-      className="p-2 rounded text-muted hover:text-ink hover:bg-ink/5 transition-colors duration-300"
+      className={`p-2 rounded text-muted hover:text-ink hover:bg-ink/5 transition-[color,filter] duration-300 ${
+        overHero
+          ? 'dark:text-ink dark:[filter:drop-shadow(0_1px_4px_rgba(0,0,0,0.6))]'
+          : 'dark:[filter:drop-shadow(0_1px_4px_rgba(0,0,0,0))]'
+      }`}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       whileTap={{ scale: 0.9 }}
     >
