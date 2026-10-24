@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Fraunces, IBM_Plex_Sans, JetBrains_Mono, Playfair_Display } from 'next/font/google'
 import { MotionConfig } from 'motion/react'
+import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { meta } from '@/data/content'
 
@@ -94,6 +95,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <MotionConfig reducedMotion="user">
           {children}
         </MotionConfig>
+        <Analytics />
       </body>
     </html>
   )
