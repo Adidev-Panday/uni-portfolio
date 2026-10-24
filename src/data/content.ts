@@ -54,9 +54,14 @@ export const projects    = data.projects as Project[]
 export const profileLinks = data.profileLinks as ProfileLink[]
 export const cv           = data.cv
 export const contact     = data.contact
-export const whySchool   = data.whySchool as {
-  defaultTemplate: string
-  schools: Record<string, string>
+export type WhySchoolEntry = {
+  opener: string
+  bullets: [string, string, string]
+}
+
+export const whySchool   = data.whySchool as unknown as {
+  defaultTemplate: WhySchoolEntry
+  schools: Record<string, WhySchoolEntry>
 }
 
 export type WhyAerospacePhoto = { src: string; alt: string }

@@ -57,8 +57,10 @@ type ContentJson = {
   whyAerospace: {
     heading: string; subtitle: string; paragraphs: string[]; photos: Photo[]
   }
-  whySchool: { defaultTemplate: string; schools: Record<string, string> }
+  whySchool: { defaultTemplate: WhySchoolEntry; schools: Record<string, WhySchoolEntry> }
 }
+
+type WhySchoolEntry = { opener: string; bullets: [string, string, string] }
 
 // --------------------------------------------------------------------------
 // Small UI primitives
@@ -230,6 +232,11 @@ function StatusPill({ status, errMsg }: { status: 'idle' | 'saving' | 'saved' | 
 // Why [University] essay editor
 // --------------------------------------------------------------------------
 
+function fillTemplate(entry: WhySchoolEntry, name: string): WhySchoolEntry {
+  const fill = (s: string) => s.replace(/\{school\}/g, name)
+  return { opener: fill(entry.opener), bullets: entry.bullets.map(fill) as [string, string, string] }
+}
+
 function WhySchoolEditor({ c, update }: {
   c: ContentJson
   update: <K extends keyof ContentJson>(section: K, fn: (draft: ContentJson[K]) => void) => void
@@ -237,37 +244,50 @@ function WhySchoolEditor({ c, update }: {
   const [selected, setSelected] = useState<string>(SCHOOLS[0].id)
   const school = SCHOOLS.find(s => s.id === selected) ?? SCHOOLS[0]
   const custom = c.whySchool.schools[selected]
-  const hasCustom = !!custom && custom.trim().length > 0
-  const renderedDefault = c.whySchool.defaultTemplate.replace(/\{school\}/g, school.name)
+  const hasCustom = !!custom
+  const renderedDefault = fillTemplate(c.whySchool.defaultTemplate, school.name)
+  const entry = custom ?? renderedDefault
 
-  const setText = (v: string) => {
-    update('whySchool', d => {
-      if (v.trim() === '') {
-        delete d.schools[selected]
-      } else {
-        d.schools[selected] = v
-      }
-    })
+  const setEntry = (next: WhySchoolEntry) => {
+    update('whySchool', d => { d.schools[selected] = next })
+  }
+  const clearEntry = () => {
+    update('whySchool', d => { delete d.schools[selected] })
   }
 
   return (
     <div className="space-y-5">
+      <p className="text-[11px] text-muted leading-snug">
+        Format: one opening sentence, then exactly three bullets (course/lab,
+        team/facility, personal fit). Used for every school below; the
+        default template is only a starting point for a school with no
+        custom copy yet.
+      </p>
       <Field
-        lbl="Default template"
-        hint={'Used for any school without its own custom essay below. Use {school} as a placeholder for the school\'s full name.'}
+        lbl="Default template: opener"
+        hint={'Used for any school without its own custom copy below. Use {school} as a placeholder for the full name.'}
       >
         <Textarea
-          rows={3}
-          value={c.whySchool.defaultTemplate}
-          onChange={v => update('whySchool', d => { d.defaultTemplate = v })}
+          rows={2}
+          value={c.whySchool.defaultTemplate.opener}
+          onChange={v => update('whySchool', d => { d.defaultTemplate.opener = v })}
         />
       </Field>
+      {c.whySchool.defaultTemplate.bullets.map((b, i) => (
+        <Field key={i} lbl={`Default template: bullet ${i + 1}`}>
+          <Textarea
+            rows={2}
+            value={b}
+            onChange={v => update('whySchool', d => { d.defaultTemplate.bullets[i] = v })}
+          />
+        </Field>
+      ))}
 
       <div className="grid md:grid-cols-[200px_1fr] gap-4">
         {/* School list */}
         <div className="max-h-[420px] overflow-y-auto rounded border border-rule divide-y divide-rule">
           {SCHOOLS.map(s => {
-            const isCustom = !!c.whySchool.schools[s.id]?.trim()
+            const isCustom = !!c.whySchool.schools[s.id]
             const isSelected = s.id === selected
             return (
               <button
@@ -290,7 +310,7 @@ function WhySchoolEditor({ c, update }: {
         </div>
 
         {/* Editor */}
-        <div className="space-y-2 min-w-0">
+        <div className="space-y-3 min-w-0">
           <div className="flex items-center justify-between flex-wrap gap-2">
             <h3 className="font-semibold text-sm">{school.name}</h3>
             <span
@@ -304,18 +324,33 @@ function WhySchoolEditor({ c, update }: {
             </span>
           </div>
           {!hasCustom && (
-            <AddButton onClick={() => setText(renderedDefault)}>
+            <AddButton onClick={() => setEntry(renderedDefault)}>
               Start from the default template
             </AddButton>
           )}
-          <Textarea
-            rows={12}
-            value={custom ?? ''}
-            onChange={setText}
-            placeholder={renderedDefault}
-          />
+
+          <Field lbl="Opener" hint="One sentence, specific, not throat-clearing.">
+            <Textarea
+              rows={2}
+              value={entry.opener}
+              onChange={v => setEntry({ ...entry, opener: v })}
+            />
+          </Field>
+          <Field lbl="Bullet 1" hint="The most specific course, lab, or professor there that matches propulsion/aero.">
+            <Textarea rows={2} value={entry.bullets[0]} onChange={v => setEntry({ ...entry, bullets: [v, entry.bullets[1], entry.bullets[2]] })} />
+          </Field>
+          <Field lbl="Bullet 2" hint="The most specific team, facility, or project there.">
+            <Textarea rows={2} value={entry.bullets[1]} onChange={v => setEntry({ ...entry, bullets: [entry.bullets[0], v, entry.bullets[2]] })} />
+          </Field>
+          <Field lbl="Bullet 3" hint="The personal fit reason, grounded in something already built or done.">
+            <Textarea rows={2} value={entry.bullets[2]} onChange={v => setEntry({ ...entry, bullets: [entry.bullets[0], entry.bullets[1], v] })} />
+          </Field>
+
+          {hasCustom && (
+            <RemoveButton onClick={clearEntry} />
+          )}
           <p className="text-[11px] text-muted leading-snug">
-            Shown on the site when an admissions officer picks {school.name}. Clear this box to fall back to the default template above.
+            Shown on the site when an admissions officer picks {school.name}.
           </p>
         </div>
       </div>

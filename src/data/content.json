@@ -333,30 +333,207 @@
     ]
   },
   "whySchool": {
-    "defaultTemplate": "I have long been drawn to {school} for the way it sits at the intersection of rigorous engineering and genuine intellectual ambition. Your programs in aerospace and technology match exactly where I want to push my work in AI, physics, and research. I am confident I can both learn from and contribute meaningfully to the {school} community.",
+    "defaultTemplate": {
+      "opener": "I am applying to {school} because its program lines up with where I want to take my aerospace work.",
+      "bullets": [
+        "Add the most specific course, lab, or professor at {school} that matches propulsion, aerodynamics, or aerospace.",
+        "Add the most specific student team, facility, or project at {school} worth naming.",
+        "Add the personal fit reason, grounded in something already built or done."
+      ]
+    },
     "schools": {
-      "bocconi": "Bocconi is the one school on my list where I get to chase the other half of me. Not the wings, the code. I have built five apps, from an AI finance advisor to an alumni network, co-founded my school's AI Club, and published data-driven research on digital trading, and Bocconi's BSc in Mathematical and Computing Sciences for Artificial Intelligence is the rare program that treats mathematics, computer science, and AI as one rigorous subject rather than three electives. Sitting in Milan, at a university built on economics and decisions, it would let me study the machinery of intelligence surrounded by people asking what it is actually for. I do not want to just use these tools. I want to understand what makes them work.",
-      "georgia-tech": "Georgia Tech runs the largest aerospace program in the country, and I care about one specific corner of it. The Ben T. Zinn Combustion Laboratory works across every kind of chemical propulsion, gas turbines, high-speed air-breathing engines, and chemical rockets, and next door the High-Power Electric Propulsion Lab holds the largest university vacuum facility in the nation for testing plasma thrusters. Chemical fire on one side, ionized gas on the other, thrust on both. That is the entire spectrum of the question I want to spend my life on, under one school's roof. Georgia Tech would not make me pick a lane in propulsion before I have even walked the whole road. It would just hand me the road.",
-      "harvard": "Harvard is the one school on my list with no aerospace major, and I applied anyway, which forced me to be honest about what I actually want. What I want is the S.B. in Mechanical Engineering at SEAS, and the fluid mechanics underneath it: the Navier-Stokes equations, vorticity, lift and drag, the exact math I first met taping wings onto paper planes. The missing aero label does not scare me. It just means I get to build the path instead of following a sign.\n\nAnd the building here is real. The Harvard Undergraduate Aerospace Collective launched the first student-built satellite in Harvard's history, a CubeSat that went from a grant proposal to Cape Canaveral, and its rocketry team is firing Mojave Sphinx, the Ivy League's first student-led liquid bi-propellant rocket. That is the maker culture I want to be inside.\n\nThere is a quieter reason too. I have spent five years translating between Ludhiana and Woodstock, and I think best where engineering sits beside everything else. Harvard would let me take Government and Economics next to my fluid dynamics, and treat that not as a distraction but as the whole point.",
-      "hku-berkeley": "I have spent five years living in two places at once, boarding at Woodstock in the Himalayas and going home to Ludhiana in Punjab, translating myself at every border. So a degree built out of two worlds does not intimidate me; it feels like home. The HKU and Berkeley dual degree puts my first two years in Hong Kong, at the heart of Asia, and my last two at Berkeley, the top public university in the world and now home to a new aerospace program. I would study engineering across two continents, two teaching cultures, and two ideas of what a problem even is. I already know how to be a person in more than one place. This is the version of that skill I would choose.",
-      "nus": "I have already sat in an NUS lecture hall. At the NUS Science Summer Camp I listened to Professor Sow Chorng Haur explain nanotechnology, and it was the first time I watched research feel less like a textbook and more like a live question. NUS Mechanical Engineering, with its aerospace track, sits at the center of Asia's fastest-moving research scene, close to the industry and the funding that turn ideas into hardware. Studying there would mean building in the region I am from, not away from it. I got a two-week taste of what NUS does to the way you think. I want the four-year version.",
-      "princeton": "Most schools made me translate my aerospace dream into a nearby major. Princeton is the one that let me say the word out loud. In its combined Mechanical and Aerospace Engineering department I can point directly at the thing I care about most: propulsion. I emailed Professor Edgar Choueiri, whose Electric Propulsion and Plasma Dynamics Lab has been pushing plasma thrusters since before I was born, because his lab is where the question that keeps me up at night actually gets worked on: how do you turn energy into controlled, enormous force. A course like MAE 426, on rocket and air-breathing propulsion, is not a wishlist item for me; it is the syllabus I would build for myself if nobody were grading it.\n\nBut Princeton is not only a lab to me. It is a place that would let me keep both halves of who I am. I sit first chair in an orchestra and I want to design engines, and I have slowly realized those are not two lives but one. The physics that carries a rocket off a pad is the same physics that carries a note off a string. Princeton is where I would finally get to work in that overlap on purpose.",
-      "purdue": "If propulsion has a home, it is Purdue. This is where Maurice Zucrow taught America's first university course in rocket and jet propulsion and built its first academic Rocket Lab, and the Zucrow Laboratories are still the largest academic propulsion facility in the world, with real test cells firing real rocket and jet hardware. It is called the Cradle of Astronauts for a reason: Neil Armstrong learned aerospace here, and most of Purdue's astronauts came through this same school. For someone whose favorite part of aerospace is thrust, applying anywhere and skipping Purdue would feel dishonest. This is the place that decided propulsion was worth teaching first. I would like to learn it where it started.",
-      "tu-delft": "TU Delft holds the only aerospace faculty in the Netherlands and one of the largest in the world, and it is built for people who learn by testing. It runs subsonic, supersonic, and hypersonic wind tunnels reaching past Mach 11, flies its own Cessna as a flying classroom, and builds its own satellites in its own clean room. For someone who first fell for aerospace watching air bend around a Formula 1 car and then measured wing surface area against flight time in a Physics IA, a faculty this obsessed with the physical experiment is the obvious place to go deeper. I do not just want to derive the lift equation. I want to walk into the tunnel and watch it hold.",
-      "tum": "TUM keeps its aerospace department in Ottobrunn, minutes from Munich's aerospace cluster, where Airbus Defence and Space and the engine builder MTU sit within reach of the lecture hall. Its Chair of Turbomachinery and Flight Propulsion works on exactly the machinery I care about most, the turbines and engines that turn fuel into thrust. Germany's top-ranked aerospace program, planted next to the companies that actually build the hardware, means the gap between a lecture and a real engine is unusually small there. I like that. I do not want to study propulsion at a comfortable distance from industry. I want to study it close enough to hear the test stand.",
-      "uc-berkeley": "Berkeley just did something that suits me: it launched a full Aerospace Engineering major, built on top of one of the deepest fluid mechanics and combustion traditions in the country, at the top public university in the world. A new program at an old powerhouse is a rare combination, the ambition of something being built now with the rigor of a place that has taught these fundamentals for a century. My work keeps circling fluids and thrust, the lift equation, wing surface area, the physics of an engine, and Berkeley is where I could push those fundamentals as hard as they can be pushed. I like the idea of joining a program while it is still deciding what it will become.",
-      "uc-davis": "UC Davis offers a degree it actually calls Aerospace Science and Engineering, and it backs the name with real facilities, including an aeronautical wind tunnel and a department strong in aerodynamics, unsteady flows, and aeroacoustics. That experimental, air-first character is exactly where I started, taping wings onto paper planes and timing how long they stayed up. Davis pairs that hands-on aerodynamics with the reach of the UC research system, so the fundamentals I love come with the resources to chase them further. I am drawn to programs that still put you in front of moving air and ask you to explain it. Davis is one of them.",
-      "uc-irvine": "UC Irvine is quietly one of the best places in the country to study combustion, and combustion is just propulsion's beating heart. Its Combustion Laboratory is a serious research operation, and its aerospace track teaches propulsion directly, from gas turbines to ramjets, scramjets, and rockets, with current work reaching into detonation engines, one of the more exciting frontiers in how we make thrust. For someone whose favorite question in all of aerospace is how you turn stored energy into force, UCI puts that question at the center rather than the edge. I do not want propulsion as a single elective near the end. I want it as the reason I am there.",
-      "uc-san-diego": "UC San Diego runs its aerospace degree inside a Mechanical and Aerospace department that ranks among the very best in the country, first among public engineering schools for how often its research is cited. Its strengths sit right on my line: computational fluid dynamics, flow control, and hypersonics, the fast, hard end of the aerodynamics I first met watching Formula 1. Studying there would mean learning fluids and thrust from people whose work other researchers keep building on. I want to be somewhere the aerodynamics is not just taught but actively pushed forward. San Diego is one of the few places doing both at once.",
-      "ucla": "UCLA is where I would get to study the strangest, most exciting kind of thrust. Its Plasma and Space Propulsion Laboratory works on electric propulsion, moving spacecraft by accelerating ionized gas in electromagnetic fields, and the department teaches rocket propulsion directly. That is the frontier edge of the thing I love most: not fire and fuel, but plasma and fields quietly pushing a craft across space. Set inside one of the top Mechanical and Aerospace departments in the country, UCLA would let me chase propulsion past its familiar chemical form into what comes next. I am fascinated by thrust in every form it takes. UCLA studies the form most people have never seen.",
-      "bath": "Bath builds its aerospace degree the way I like to learn, foundations first, then specialization, with a full year working inside a real engineering company. You spend the early years on core mechanical engineering, the actual bedrock of flight, before narrowing into aerodynamics and propulsion, and Bath's tight industry links mean that narrowing happens next to people who build for a living. I trust programs that make you earn the specialism rather than handing it to you on day one. A year on an actual engineering floor, turning equations into tolerances, is exactly the kind of gap I want closed before I graduate. Bath closes it on purpose.",
-      "bristol": "Bristol sits at the historic center of British aerospace. Just up the road in Filton, the Bristol Aeroplane Company built its first aircraft in 1910 and the last Concorde ever flown now rests, and the same site still houses Airbus, Rolls-Royce, and GKN. The university grew up inside that ecosystem, home to the National Composites Centre and a course organized around the three things I keep returning to: aerodynamics, dynamics and control, and structures and materials. Studying aerospace minutes from where the wings of real aircraft are designed is a different kind of education. Bristol does not teach flight as history. It teaches it in the town that has been building it for over a century.",
-      "uiuc": "Illinois is where two halves of me overlap. Its Aerodynamics Research Laboratory runs wind tunnels on exactly the things I love, including motorsports aerodynamics, and the well-known UIUC airfoil and propeller databases came out of that same lab, the kind of data I have actually leaned on. Down the hall, the Electric Propulsion Laboratory fires arcjets and pulsed plasma thrusters and is developing new small-satellite propulsion concepts. Race-car airflow on one side, spacecraft thrusters on the other: my Formula 1 origin and my propulsion obsession sitting in one department. Illinois is a top aerospace program that happens to study both of the things that pulled me into this. That overlap is not a coincidence I want to waste.",
-      "manchester": "Manchester is where fluid mechanics grew a spine. Osborne Reynolds did his work here, and every time I write a Reynolds number in an aerodynamics problem I am using a piece of thinking that started in this university. For someone whose entire path runs through how fluids behave, from a paper-plane wing IA to the lift equation, studying at the place that helped define the field is more than symbolic. Manchester pairs that heritage with modern wind tunnels, deep industry links, and membership in the UK's aerospace research network. I like learning a subject where it was partly invented. It reminds you that the equations were once somebody's open question too.",
-      "melbourne": "Melbourne is built for someone with more than one obsession. Its model has you take a broad undergraduate degree first and then specialize through a Master of Engineering, so aerospace comes after a wider foundation rather than instead of one. For me, that is a feature, not a delay. I am a violinist who wants to design engines, a builder of AI apps who publishes research; I do my best thinking where subjects touch. A structure that lets me go wide before I go deep suits how my curiosity actually works. Melbourne would let me become an aerospace engineer without pretending I was only ever one thing.",
-      "michigan": "Michigan runs one of the oldest aerospace departments in the country and, more importantly to me, the Plasmadynamics and Electric Propulsion Laboratory, a world leader in the electric thrusters that will push the next generation of spacecraft. Its X3 thruster is being developed with NASA with an eye toward carrying humans to Mars. Add ten wind tunnels covering everything from micro air vehicles to above Mach 4, and Michigan gives me both ends of what I love, the air a machine flies through and the thrust that moves it. I am chasing propulsion specifically because of moments like a thruster built for Mars. Michigan is one of the few places actually building that moment.",
-      "sheffield": "Sheffield understands that an aircraft is not just designed, it is made. Its Advanced Manufacturing Research Centre, built in partnership with Boeing, is one reason the university ranks in the UK's top five for aeronautical and manufacturing engineering, and it means students learn aerospace with the manufacturing floor in view, not just the equation on the page. I have already felt that gap in my CAD and product-development internships, where a design is not real until someone can build it. Sheffield closes that gap by treating making as part of engineering, not an afterthought. I want to design things that can actually be built. Sheffield teaches you both halves.",
-      "southampton": "Southampton runs the largest specialist aeronautics degree in the UK and the R.J. Mitchell Wind Tunnel, named after the man who designed the Spitfire, the same tunnel Formula 1 teams have used to test their cars. That single fact ties together everything that pulled me into aerospace: the F1 aerodynamics I grew up on and the aircraft engineering I want to build a life in, tested in the same room. It is also the only Russell Group course that combines aeronautics and astronautics, air and space in one degree, with a vacuum chamber for spacecraft propulsion testing on site. For someone who came to aerospace through downforce and stayed for thrust, Southampton feels almost tailor-made."
+      "princeton": {
+        "opener": "Plan A is MAE at Princeton.",
+        "bullets": [
+          "MAE 426 is rocket and air-breathing propulsion, the syllabus I'd write myself if nobody were grading it, and Professor Edgar Choueiri's EPPDyL has been pushing Hall thrusters since before I was born.",
+          "Princeton Rocketry Club's Team Orbital is building toward the 2027 TigerCub launch. That's a deadline I want on my calendar.",
+          "I built AirflowNS to watch flows move on a screen, then emailed Professor Hultmark about his high-pressure wind tunnel because I wanted to watch one move for real."
+        ]
+      },
+      "purdue": {
+        "opener": "If propulsion has a home, it's Purdue.",
+        "bullets": [
+          "AAE 439 is combustion instability, taught at the school where Maurice Zucrow wrote the first American university course in rocket and jet propulsion.",
+          "Zucrow Labs still runs real test cells, and Propulsion Morpheus fires LOX and methane hot enough to throw Mach diamonds in the plume.",
+          "AirflowNS visualizes external flow. Zucrow burns the internal kind. I'd rather learn both ends of the nozzle in the same place."
+        ]
+      },
+      "uiuc": {
+        "opener": "Illinois Space Society builds engines undergrads normally only read about.",
+        "bullets": [
+          "AE 433 is Aerospace Propulsion, AE 434 is Rocket Propulsion, back to back electives that actually say rocket in the title.",
+          "The Illinois Space Society's Hybrid Propulsion team runs a 4 kN paraffin and Nytrox hybrid engine out of the old jet-engine test facility at Willard Airport. I want hands on that stand.",
+          "I keep circling chamber geometry, injector plates, and regenerative cooling, the stuff that actually drops cost per launch instead of just specific impulse on a spec sheet. That's the problem I want to work on at Illinois."
+        ]
+      },
+      "virginia-tech": {
+        "opener": "Virginia Tech owns a Mach 7 tunnel. I want to stand next to it.",
+        "bullets": [
+          "AOE 4234 is Aerospace Propulsion Systems, and AOE 4604 has me designing, building, and firing an actual booster before I graduate, not just simulating one.",
+          "PropEL runs a Mach 7 hypersonic wind tunnel, one of the few university-owned hypersonic tunnels in the country. Most schools show you a diagram. Virginia Tech has the hardware.",
+          "My Navier-Stokes solver tops out well below hypersonic. Scramjet combustion at Mach 7 is flow my own code can't touch yet, which is exactly why I want to be in the room when Virginia Tech runs it."
+        ]
+      },
+      "georgia-tech": {
+        "opener": "Georgia Tech runs both ends of propulsion under one roof, and I don't want to pick a side yet.",
+        "bullets": [
+          "AE 4451 is Jet and Rocket Propulsion, taught inside a department that runs the largest aerospace program in the country.",
+          "The Ben T. Zinn Combustion Lab fires gas turbines, air-breathing engines, and chemical rockets. The High-Power Electric Propulsion Lab next door holds the largest university vacuum chamber in the nation for plasma thrusters. Chemical fire on one side, ionized gas on the other.",
+          "I don't know yet if I belong on the combustion side or the electric side of propulsion, and Georgia Tech is the one school that doesn't make me decide before I've touched both."
+        ]
+      },
+      "mit": {
+        "opener": "MIT is the reach on this list, and I'm applying anyway.",
+        "bullets": [
+          "16.50 is Aerospace Propulsion, 16.512 is Rocket Propulsion, and both sit a semester apart from an IAP course literally called Aerospace Nuclear Power and Propulsion.",
+          "The MIT Rocket Team runs out of the Space Propulsion Lab. I want to be on that team, not just read about it.",
+          "16.512 and Princeton's MAE 426 cover almost the same propulsion ground, which tells me this isn't about the name on the sweatshirt. I built AirflowNS and I've been obsessed with F1 since I was three. I'd show up for the problem set either way."
+        ]
+      },
+      "harvard": {
+        "opener": "Harvard doesn't have an aerospace major, so I'm applying for the parts that function like one.",
+        "bullets": [
+          "The S.B. in Mechanical Engineering at SEAS gets me the fluid mechanics underneath aero anyway: Navier-Stokes, vorticity, lift and drag, the same math I first met taping wings onto paper planes.",
+          "The Harvard Undergraduate Aerospace Collective built the first student satellite in Harvard's history and is firing Mojave Sphinx, the Ivy League's first student-led liquid bi-propellant rocket. That's the maker culture I want inside.",
+          "Five years translating between Ludhiana and Woodstock taught me to think with engineering sitting beside everything else. Harvard lets me take Government and Economics next to fluid dynamics and treat that as the whole point, not a distraction."
+        ]
+      },
+      "uc-berkeley": {
+        "opener": "Berkeley just built the major I'm trying to get into everywhere else.",
+        "bullets": [
+          "AEROENG 143 is Aerospace Propulsion, sitting on top of a fluid mechanics and combustion tradition the university has run for a century, now finally organized into its own aerospace major.",
+          "Space Enterprise at Berkeley is a student-run liquid-fuel rocket team built in 2016 with an actual spaceflight goal, not a competition altitude. I want to be on a team aiming that high.",
+          "My work keeps circling the same fundamentals: the lift equation, wing surface area, the physics of an engine. I'd rather push those fundamentals somewhere still deciding what it wants to become than somewhere that already decided decades ago."
+        ]
+      },
+      "uc-davis": {
+        "opener": "UC Davis built an aerospace degree that doesn't hide inside mechanical engineering.",
+        "bullets": [
+          "EAE 140 is Rocket Propulsion and EAE 138 is Aircraft Propulsion, both under a prefix, EAE, Aerospace Science and Engineering, that exists as its own department instead of a track bolted onto ME.",
+          "EAE 127, Applied Aircraft Aerodynamics, is the course that would actually teach me the parts of AirflowNS I built by trial and error instead of from a textbook.",
+          "I taught myself fluid flow by writing a simulator first and reading the theory after. Davis is the rare place where the degree is named for exactly what I've already been doing backward."
+        ]
+      },
+      "uc-irvine": {
+        "opener": "UC Irvine's propulsion course doesn't stop at rockets.",
+        "bullets": [
+          "MAE 112 covers gas turbines, ramjets, scramjets, and rockets in one semester, a wider slice of propulsion than most schools split across three separate electives.",
+          "ENGRMAE 136 is Aerodynamics, and the UCI Combustion Lab is where that course's fire and flow actually meet. That's the overlap I want to work in, not just take notes on.",
+          "AirflowNS only models external flow. Watching combustion and aerodynamics taught in the same breath at Irvine is the half of the problem my own simulator still can't touch."
+        ]
+      },
+      "uc-san-diego": {
+        "opener": "Triton Rocket Club is trying to be the first university team to reach space, and I want in on that attempt.",
+        "bullets": [
+          "MAE 170, Experimental Techniques, is the course that turns a simulation into a test campaign, which is exactly the gap between what AirflowNS shows me and what I'd actually need to fly something.",
+          "SEDS at UCSD already 3D printed a metal rocket engine, the TRI-D, and the Triton Rocket Club is building a 20 foot two-stage rocket with an actual spaceflight target, not a competition ceiling.",
+          "I've spent my time so far on code and CAD, not hardware I can hold. A team building toward an actual first, not a leaderboard position, is where I want to make that jump."
+        ]
+      },
+      "ucla": {
+        "opener": "UCLA's rocket team already flew LOx-ethanol to five figures, and I want the next flight.",
+        "bullets": [
+          "MAE 150R is Rocket Propulsion Systems under Professor Karagozian, paired with MAE 150C, Combustion and Energy Systems, back to back propulsion electives with a combustion researcher's name actually on one of them.",
+          "Rocket Project at UCLA flew a LOx-ethanol liquid bipropellant rocket past 12,000 feet under Dr. Spearrin, and RISE is the on-ramp for someone like me who hasn't touched liquid propellant hardware yet.",
+          "I've built the software side of propulsion: AirflowNS, a Navier-Stokes solver, CAD. UCLA's rocket team is where I'd finally have to make the hardware agree with the simulation."
+        ]
+      },
+      "bath": {
+        "opener": "Bath's propulsion module sits right after its aerodynamics one, back to back.",
+        "bullets": [
+          "ME32014 is Aerodynamics, ME32015 is Aircraft Propulsion, third year modules that run in sequence instead of making me choose a lane.",
+          "Team Bath Drones runs real wind tunnel aero testing, and Team Bath Racing Electric puts almost 90 students from mechanical, aerospace, and automotive engineering onto one Formula Student car.",
+          "I built AirflowNS alone, at a desk. Testing a drone wing in an actual tunnel with 90 other people who care about the same airflow is the version of that work I haven't gotten to do yet."
+        ]
+      },
+      "bristol": {
+        "opener": "Bristol is the city Brunel built, and its wind tunnels are still proving things he couldn't.",
+        "bullets": [
+          "AENG31102 is Aircraft Propulsion, taught inside a research group that runs its own Aeroacoustic Wind Tunnel, a closed-circuit facility with an anechoic chamber built for exactly this kind of testing.",
+          "The Large Low-Speed Wind Tunnel runs an octagonal test section up to 60 metres a second. That's a bigger tunnel than most undergrads ever get near.",
+          "Isambard Kingdom Brunel built this city's bridges and ships by testing ideas until they held. I want to learn aerodynamics somewhere that still runs on that instinct."
+        ]
+      },
+      "manchester": {
+        "opener": "Manchester has a hypersonic tunnel and I want to know what that actually sounds like.",
+        "bullets": [
+          "AERO31212 is Aerospace Propulsion, AERO31321 is Aircraft Aerodynamics, both third year MEng Aerospace modules.",
+          "The university runs two tunnels in the National Wind Tunnel Facility network, the Hypersonic Tunnel and the Trisonic Tunnel, part of eight tunnels nationwide spanning subsonic to hypersonic. Most of that range I've only read about.",
+          "My Navier-Stokes solver works at subsonic speeds I can sanity check by eye. Trisonic and hypersonic flow is the part of the problem I can't simulate my way into yet, which is exactly why I want to stand next to the tunnel that can."
+        ]
+      },
+      "melbourne": {
+        "opener": "ARES has a hundred members and I want to be one of them.",
+        "bullets": [
+          "MCEN90047 is Aerospace Propulsion, with MCEN90008, Fluid Dynamics, as the prerequisite that actually builds the math underneath it.",
+          "The Aerospace and Rocket Engineering Society, ARES, builds student high-power sounding rockets with a membership over a hundred students deep. That's a bigger team than most schools' entire aero program.",
+          "I've done propulsion mostly solo: a simulator, a research paper, a CAD file. ARES is the first team on this list big enough that I'd actually have to learn to build with other people, not just for them."
+        ]
+      },
+      "michigan": {
+        "opener": "Every Michigan player touches the Go Blue banner before they play. I want a reason to touch it too.",
+        "bullets": [
+          "AEROSP 530 is Gas-Turbine Propulsion, and the Propulsion and Combustion Engineering Laboratory, PACE, run by Professor James Driscoll, houses a model gas turbine combustor with a real GE TAPS injector pressurizable to 10 atmospheres.",
+          "That's not a classroom demo. That's hardware running the same injector technology that flies on actual engines.",
+          "I taped wings onto paper planes before I knew what lift was. PACE is the kind of lab where I'd finally get to pressurize the question instead of just sketching it."
+        ]
+      },
+      "sheffield": {
+        "opener": "Project Sunride holds the UK's student altitude record, and I want the next one.",
+        "bullets": [
+          "MEC345 is Aero Propulsion, 10 credits covering gas turbines, pulse jets, ramjets, and solid and liquid rocket engines in one module.",
+          "Project Sunride built Sunfire II, a 3D printed bipropellant engine that hotfired at 3.4 kilonewtons in 2023, after their rocket Helen set the UK open altitude record at 36,274 feet in 2019.",
+          "I want to work somewhere that's already proven it can print an engine and fly it, not just simulate one. Sunride has already done the hard part once. I want to help them do it again."
+        ]
+      },
+      "southampton": {
+        "opener": "Southampton has the biggest wind tunnel at any UK university, and F1 teams use it too.",
+        "bullets": [
+          "SESA2023 is Propulsion, a compulsory second year module, with SESA6075, Aircraft Propulsion, available later for the part of the subject that doesn't fit in year two.",
+          "The jet lab runs supersonic ramjet, turbojet, and rocket engine tests, and the wind tunnel is big enough that Formula 1 teams and Olympic athletes test there, not just aerospace undergrads.",
+          "F1 aero is where my obsession with propulsion started. A wind tunnel that actual F1 teams use is the closest I've found to testing in the exact room I grew up watching on television."
+        ]
+      },
+      "bocconi": {
+        "opener": "Bocconi is the one school on this list where I'm not applying for propulsion.",
+        "bullets": [
+          "FINANCE 20188 is Quantitative Finance and Derivatives, paired with Probability and Stochastic Calculus, the math underneath every model I'd actually want to build.",
+          "BSIC, the Bocconi Students Investment Club, runs a dedicated Quant division doing algorithmic trading, machine learning, and backtesting. That's a student team, not a lecture hall.",
+          "GrowwBot already does conversational financial guidance, and Balancify already builds optimization under constraints. Bocconi is where I'd learn to make that math rigorous instead of just functional."
+        ]
+      },
+      "hku-berkeley": {
+        "opener": "I have spent five years living in two places at once, so a degree built out of two does not scare me.",
+        "bullets": [
+          "HKU's Mechanical Engineering programme runs a genuine aerospace specialization track alongside robotics, energy, and materials, inside a four year BEng.",
+          "The first half of the degree sits in Hong Kong, the second half at Berkeley, two teaching cultures and two ideas of what counts as a solved problem before I've even graduated.",
+          "Translating between Ludhiana and Woodstock for five years already taught me how to be a person in more than one place. This is the engineering version of that same skill."
+        ]
+      },
+      "nus": {
+        "opener": "NUS runs propulsion as its own course, not a unit buried inside thermodynamics.",
+        "bullets": [
+          "ME4231 is Aerodynamics, and ME5309 covers Aircraft Engines and Rocket Propulsion directly, built on ME2135, Intermediate Fluid Mechanics.",
+          "AeroNUS designs and builds competition aircraft for Design Build Fly style competitions. NUS SEDS runs alongside it for anyone who wants the space side too.",
+          "I built AirflowNS to simulate the fluid mechanics AeroNUS tests for real on a flying airframe. I want to find out where my simulator is wrong."
+        ]
+      },
+      "tu-delft": {
+        "opener": "DARE has flown rockets named Stratos I through III, and I want to help build the fifth.",
+        "bullets": [
+          "AE2230-II is Propulsion and Power, sitting inside a Faculty of Aerospace Engineering that exists as its own faculty, not a department inside something bigger.",
+          "DARE, Delft Aerospace Rocket Engineering, built Stratos I through III and is now developing Stratos V, their first attempt at a cryogenic rocket. That's a harder problem than anything in my own build log.",
+          "AirflowNS models external flow on a screen. DARE flies the hardware version of that same question. I want to close that gap."
+        ]
+      },
+      "tum": {
+        "opener": "WARR's first rocket is in a museum. I want to help build whatever's next.",
+        "bullets": [
+          "TUM's Chair of Aerodynamics and Fluid Mechanics runs an Aerospace M.Sc. pathway covering propulsion, aeroelastics, and aeroacoustics, the full stack I keep circling on my own.",
+          "WARR has run since 1962, over 650 members deep, building hybrid and bi-liquid rockets, satellites, and lunar rovers. Their first hybrid rocket, built in 1974, the first in Germany, is still on permanent display at the Deutsches Museum.",
+          "I like teams that keep their old hardware around as a reminder of how far they've come. That's the kind of propulsion culture I want to join, not just admire from the display case."
+        ]
+      }
     }
   }
 }

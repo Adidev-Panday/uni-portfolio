@@ -3,24 +3,31 @@
 // their institution. Animates in/out as the school theme changes.
 import { motion, AnimatePresence } from 'motion/react'
 import { useSchoolTheme } from '@/hooks/useSchoolTheme'
-import { whySchool } from '@/data/content'
+import { whySchool, type WhySchoolEntry } from '@/data/content'
 import { springUI } from '@/lib/motion'
 import ScrollReveal from './ScrollReveal'
 import { PrincetonTigerButton, PrincetonMottoLine } from './PrincetonEasterEggs'
 import { VeritasShield, HarvardMottoLine } from './HarvardEasterEggs'
 import { BerkeleyTimeTip, FortyBall, FiatLuxBlock, OskiTrigger } from './BerkeleyEasterEggs'
+import { MottoLine } from './SchoolMotif'
+
+const BESPOKE_SCHOOLS = new Set(['princeton', 'harvard', 'uc-berkeley'])
+
+function fillTemplate(entry: WhySchoolEntry, name: string): WhySchoolEntry {
+  const fill = (s: string) => s.replace(/\{school\}/g, name)
+  return { opener: fill(entry.opener), bullets: entry.bullets.map(fill) as WhySchoolEntry['bullets'] }
+}
 
 export default function WhySchool() {
   const { school } = useSchoolTheme()
 
-  const text = school
-    ? (whySchool.schools[school.id] ||
-       whySchool.defaultTemplate.replace(/{school}/g, school.name))
-    : ''
+  const entry: WhySchoolEntry | null = school
+    ? fillTemplate(whySchool.schools[school.id] ?? whySchool.defaultTemplate, school.name)
+    : null
 
   return (
     <AnimatePresence>
-      {school && (
+      {school && entry && (
         <motion.div
           key="why-school-wrapper"
           initial={{ height: 0, opacity: 0 }}
@@ -53,18 +60,22 @@ export default function WhySchool() {
               </ScrollReveal>
 
               <ScrollReveal delay={0.06}>
-                <div className="max-w-[65ch] space-y-4">
-                  {text.split('\n\n').map((paragraph, i) => (
-                    <p
-                      key={i}
-                      className="text-base sm:text-lg text-ink/80 leading-relaxed"
-                    >
-                      {paragraph}
-                    </p>
-                  ))}
+                <div className="max-w-[65ch]">
+                  <p className="text-base sm:text-lg text-ink leading-relaxed mb-6">
+                    {entry.opener}
+                  </p>
+                  <ul className="space-y-4">
+                    {entry.bullets.map((bullet, i) => (
+                      <li key={i} className="flex gap-3">
+                        <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0" aria-hidden="true" />
+                        <span className="text-base text-ink/80 leading-relaxed">{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
                   {school.id === 'princeton' && <PrincetonMottoLine />}
                   {school.id === 'harvard' && <HarvardMottoLine />}
                   {school.id === 'uc-berkeley' && <FiatLuxBlock />}
+                  {!BESPOKE_SCHOOLS.has(school.id) && <MottoLine schoolId={school.id} />}
                 </div>
               </ScrollReveal>
             </div>

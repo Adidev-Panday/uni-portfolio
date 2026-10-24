@@ -14,6 +14,7 @@ import WhyAerospace from '@/components/WhyAerospace'
 import PrincetonCheerOverlay from '@/components/PrincetonEasterEggs'
 import HarvardRevealOverlay from '@/components/HarvardEasterEggs'
 import BerkeleyOskiOverlay from '@/components/BerkeleyEasterEggs'
+import SchoolMotifOverlay from '@/components/SchoolMotif'
 import { meta } from '@/data/content'
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
       <PrincetonCheerOverlay />
       <HarvardRevealOverlay />
       <BerkeleyOskiOverlay />
+      <SchoolMotifOverlay />
       <Navbar />
 
       <main>
