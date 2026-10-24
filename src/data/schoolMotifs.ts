@@ -57,4 +57,33 @@ export const SCHOOL_MOTIFS: Record<string, SchoolMotif> = {
     confettiColors: ['#750014', '#8A8B8C', '#F5F2EC'],
     consoleLine: 'Mens et Manus.',
   },
+
+  // Batch 2: the four UC schools (UC Berkeley keeps its own bespoke
+  // file, so it's not here). None have a campus-specific motto beyond
+  // the UC system-wide "Fiat Lux," already used for Berkeley, so these
+  // lean on each campus's real mascot and student chant instead.
+  'uc-davis': {
+    triggerWord: 'aggies',
+    revealLines: ['Gunrock gallops in.', 'Victory bell ringing.', 'Go Ags.'],
+    confettiColors: ['#022851', '#FFBF00', '#F5F2EC'],
+    consoleLine: 'Go Ags.',
+  },
+  'uc-irvine': {
+    triggerWord: 'zot',
+    revealLines: ['Zot zot zot.', 'Zot zot zot!', 'Go Anteaters.'],
+    confettiColors: ['#0064A4', '#FFD200', '#F5F2EC'],
+    consoleLine: 'Zot zot zot.',
+  },
+  'uc-san-diego': {
+    triggerWord: 'tritons',
+    revealLines: ['First university to space.', "That's the Triton Rocket Club's actual goal.", 'Go Tritons.'],
+    confettiColors: ['#182B49', '#FFCD00', '#F5F2EC'],
+    consoleLine: 'Go Tritons.',
+  },
+  ucla: {
+    triggerWord: 'bruins',
+    revealLines: ['U! C! L! A!', 'Eight claps.', 'Go Bruins.'],
+    confettiColors: ['#2774AE', '#FFD100', '#F5F2EC'],
+    consoleLine: 'Go Bruins.',
+  },
 }
