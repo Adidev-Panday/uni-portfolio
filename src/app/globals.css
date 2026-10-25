@@ -484,6 +484,20 @@
   );
 }
 
+/* 9c. Why Princeton section: its own tiger-stripe texture, distinct
+   angle/spacing from the 9b thread motif so the sum-over-paths diagram
+   sits on a slightly different weave -- 3px orange stripes, 24px apart,
+   at 60deg, 2% opacity. Subtle on purpose: noticeable only up close. */
+.dark[data-school="princeton"] #why-school {
+  background-image: repeating-linear-gradient(
+    60deg,
+    transparent 0px,
+    transparent 21px,
+    rgb(231 117 0 / 0.02) 21px,
+    rgb(231 117 0 / 0.02) 24px
+  );
+}
+
 /* 10. Research card header row divider: orange tinted border */
 .dark[data-school="princeton"] #research .border-zinc-200,
 .dark[data-school="princeton"] #research .dark\:border-zinc-800 {
