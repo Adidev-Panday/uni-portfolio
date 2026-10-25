@@ -8,8 +8,9 @@
 // for md+ and a vertical stack for mobile, since forcing one coordinate
 // system to serve both orientations (via transforms) made the labels
 // impossible to hand-position without collisions.
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type MouseEvent } from 'react'
 import { motion, useInView } from 'motion/react'
+import { fireConfetti } from '@/lib/confetti'
 
 type CancelPath = { key: string; label: string; peakX: number; peakY: number; side: 'above' | 'below' | 'left' | 'right'; d: string }
 type Node = { x: number; y: number; year: string; text: string }
@@ -99,8 +100,8 @@ export default function PrincetonSumOverPaths() {
   const [nodesShown, setNodesShown] = useState(0)
   const [sumFlash, setSumFlash] = useState(false)
   const [sumLine, setSumLine] = useState(false)
+  const [buttonDisabled, setButtonDisabled] = useState(false)
   const sumPlayingRef = useRef(false)
-  const sumTypedRef = useRef('')
   const sumTimersRef = useRef<ReturnType<typeof setTimeout>[]>([])
 
   useEffect(() => {
@@ -125,11 +126,11 @@ export default function PrincetonSumOverPaths() {
     return () => timers.forEach(clearTimeout)
   }, [inView, reducedMotion])
 
-  // Easter egg: typing "sum" while the diagram exists (i.e. while the
-  // Princeton theme is active, since the parent only mounts this
-  // component then) lights the five canceled paths up in bright orange
-  // for a moment, then lets them fade back to their muted state.
-  const playSumReveal = () => {
+  // "Press me" button: lights the five canceled paths up in bright
+  // orange for a moment, then lets them fade back to their muted state.
+  // A 2.5s disable window (independent of the animation's own timing)
+  // keeps a double-click from stacking two reveals.
+  const playSumReveal = (origin: { x: number; y: number }) => {
     if (sumPlayingRef.current) return
     sumPlayingRef.current = true
     sumTimersRef.current.forEach(clearTimeout)
@@ -137,8 +138,11 @@ export default function PrincetonSumOverPaths() {
 
     setSumFlash(true)
     setSumLine(true)
+    setButtonDisabled(true)
+    sumTimersRef.current.push(setTimeout(() => setButtonDisabled(false), 2500))
 
     if (reducedMotion) {
+      // Crossfade only, no flicker, no confetti.
       sumTimersRef.current.push(
         setTimeout(() => {
           setSumFlash(false)
@@ -149,30 +153,22 @@ export default function PrincetonSumOverPaths() {
       return
     }
 
-    sumTimersRef.current.push(setTimeout(() => setSumFlash(false), 500))
+    fireConfetti(['#E77500', '#FF8F1C', '#0A0A0A'], { count: 30, durationMs: 1200, origin })
+    sumTimersRef.current.push(setTimeout(() => setSumFlash(false), 600))
+    // Line fades in over 500ms, holds 1.5s, then this flips it back off
+    // (its own 500ms fade-out transition carries the rest).
     sumTimersRef.current.push(
       setTimeout(() => {
         setSumLine(false)
         sumPlayingRef.current = false
-      }, 2500),
+      }, 2000),
     )
   }
 
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      const target = e.target as HTMLElement | null
-      if (target && ['INPUT', 'TEXTAREA'].includes(target.tagName)) return
-      if (e.key.length !== 1) return
-      sumTypedRef.current = (sumTypedRef.current + e.key.toLowerCase()).slice(-3)
-      if (sumTypedRef.current === 'sum') {
-        sumTypedRef.current = ''
-        playSumReveal()
-      }
-    }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [reducedMotion])
+  const handlePressMe = (e: MouseEvent<HTMLButtonElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    playSumReveal({ x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 })
+  }
 
   useEffect(() => () => sumTimersRef.current.forEach(clearTimeout), [])
 
@@ -257,7 +253,7 @@ export default function PrincetonSumOverPaths() {
                 strokeDasharray="4 4"
                 style={{
                   opacity: sumFlash ? 1 : 0,
-                  transition: reducedMotion ? 'opacity 400ms ease' : 'opacity 250ms ease',
+                  transition: 'opacity 400ms ease',
                 }}
               />
             ))}
@@ -415,8 +411,21 @@ export default function PrincetonSumOverPaths() {
         Feynman: a particle moving between two points takes every possible path. Most cancel. One survives.
       </p>
 
+      <div className="mt-6 flex justify-center">
+        <motion.button
+          type="button"
+          onClick={handlePressMe}
+          disabled={buttonDisabled}
+          animate={{ scale: [1, 1.03, 1] }}
+          transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
+          className="font-mono text-[13px] bg-[#E77500] text-[#FFF8F0] border border-transparent rounded-[6px] py-[10px] px-5 transition-colors duration-150 ease-out hover:bg-paper hover:text-[#E77500] hover:border-[#E77500] disabled:opacity-60 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E77500]/50"
+        >
+          Press me
+        </motion.button>
+      </div>
+
       <p
-        className="mt-3 font-mono text-[11px] text-muted text-center transition-opacity duration-500"
+        className="mt-4 font-mono text-[11px] text-muted text-center transition-opacity duration-500"
         style={{ opacity: sumLine ? 1 : 0 }}
         aria-live="polite"
       >

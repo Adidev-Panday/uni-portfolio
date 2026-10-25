@@ -16,7 +16,13 @@ type ConfettiPiece = {
 
 const DEFAULT_COLORS = ['#FF8F1C', '#E77500', '#1A1A1A', '#F5F1E8']
 
-export function fireConfetti(colors: string[] = DEFAULT_COLORS) {
+type ConfettiOptions = {
+  count?: number
+  durationMs?: number
+  origin?: { x: number; y: number }
+}
+
+export function fireConfetti(colors: string[] = DEFAULT_COLORS, opts: ConfettiOptions = {}) {
   if (typeof window === 'undefined') return
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
@@ -39,9 +45,10 @@ export function fireConfetti(colors: string[] = DEFAULT_COLORS) {
   }
   ctx.scale(dpr, dpr)
 
-  const originX = window.innerWidth / 2
-  const originY = window.innerHeight * 0.35
-  const pieces: ConfettiPiece[] = Array.from({ length: 70 }, () => {
+  const originX = opts.origin?.x ?? window.innerWidth / 2
+  const originY = opts.origin?.y ?? window.innerHeight * 0.35
+  const count = opts.count ?? 70
+  const pieces: ConfettiPiece[] = Array.from({ length: count }, () => {
     const angle = Math.random() * Math.PI * 2
     const speed = 3 + Math.random() * 6
     return {
@@ -59,7 +66,7 @@ export function fireConfetti(colors: string[] = DEFAULT_COLORS) {
 
   const gravity = 0.15
   const drag = 0.995
-  const maxFrames = 130
+  const maxFrames = opts.durationMs ? Math.round((opts.durationMs / 1000) * 60) : 130
   let frame = 0
 
   function tick() {
