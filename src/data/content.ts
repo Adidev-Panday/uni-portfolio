@@ -57,6 +57,7 @@ export const contact     = data.contact
 export type WhySchoolEntry = {
   opener: string
   bullets: [string, string, string]
+  pullQuote?: string
 }
 
 export const whySchool   = data.whySchool as unknown as {

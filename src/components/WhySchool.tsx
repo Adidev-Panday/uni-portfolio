@@ -15,7 +15,11 @@ const BESPOKE_SCHOOLS = new Set(['princeton', 'harvard', 'uc-berkeley'])
 
 function fillTemplate(entry: WhySchoolEntry, name: string): WhySchoolEntry {
   const fill = (s: string) => s.replace(/\{school\}/g, name)
-  return { opener: fill(entry.opener), bullets: entry.bullets.map(fill) as WhySchoolEntry['bullets'] }
+  return {
+    opener: fill(entry.opener),
+    bullets: entry.bullets.map(fill) as WhySchoolEntry['bullets'],
+    pullQuote: entry.pullQuote ? fill(entry.pullQuote) : undefined,
+  }
 }
 
 export default function WhySchool() {
@@ -61,14 +65,27 @@ export default function WhySchool() {
 
               <ScrollReveal delay={0.06}>
                 <div className="max-w-[65ch]">
-                  <p className="text-base sm:text-lg text-ink leading-relaxed mb-6">
+                  <p className="font-serif italic text-muted text-base sm:text-lg leading-relaxed mb-10">
                     {entry.opener}
                   </p>
-                  <ul className="space-y-4">
+                  {entry.pullQuote && (
+                    <p
+                      className="font-serif italic text-muted/60 border-l-2 border-accent pl-6 mb-10"
+                      style={{ fontSize: 'clamp(1.75rem, 3.5vw, 3rem)', lineHeight: 1.2 }}
+                    >
+                      {entry.pullQuote}
+                    </p>
+                  )}
+                  <ul>
                     {entry.bullets.map((bullet, i) => (
-                      <li key={i} className="flex gap-3">
-                        <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0" aria-hidden="true" />
-                        <span className="text-base text-ink/80 leading-relaxed">{bullet}</span>
+                      <li
+                        key={i}
+                        className={`flex gap-5 py-6 ${i > 0 ? 'border-t border-rule' : ''}`}
+                      >
+                        <span className="font-mono text-sm text-accent shrink-0" aria-hidden="true">
+                          0{i + 1}.
+                        </span>
+                        <span className="text-[1.25rem] text-ink/80 leading-relaxed">{bullet}</span>
                       </li>
                     ))}
                   </ul>
