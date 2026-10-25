@@ -128,6 +128,8 @@ export default function PrincetonCheerOverlay() {
       loggedRef.current = true
       // eslint-disable-next-line no-console
       console.log('Rah, rah, rah. Tiger, tiger, tiger. Three cheers for Old Nassau.')
+      // eslint-disable-next-line no-console
+      console.log("Try typing 'sum'.")
     }
     if (schoolId !== 'princeton') {
       loggedRef.current = false

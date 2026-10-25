@@ -87,6 +87,11 @@ export default function PrincetonSumOverPaths() {
   const [drawn, setDrawn] = useState(false)
   const [canceledFaded, setCanceledFaded] = useState(false)
   const [nodesShown, setNodesShown] = useState(0)
+  const [sumFlash, setSumFlash] = useState(false)
+  const [sumLine, setSumLine] = useState(false)
+  const sumPlayingRef = useRef(false)
+  const sumTypedRef = useRef('')
+  const sumTimersRef = useRef<ReturnType<typeof setTimeout>[]>([])
 
   useEffect(() => {
     setReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches)
@@ -110,6 +115,58 @@ export default function PrincetonSumOverPaths() {
     })
     return () => timers.forEach(clearTimeout)
   }, [inView, reducedMotion])
+
+  // Easter egg: typing "sum" while the diagram exists (i.e. while the
+  // Princeton theme is active, since the parent only mounts this
+  // component then) lights the five canceled paths up in bright orange
+  // for a moment, then lets them fade back to their muted state.
+  const playSumReveal = () => {
+    if (sumPlayingRef.current) return
+    sumPlayingRef.current = true
+    sumTimersRef.current.forEach(clearTimeout)
+    sumTimersRef.current = []
+
+    setSumFlash(true)
+    setSumLine(true)
+
+    if (reducedMotion) {
+      // Crossfade only, no flicker: one quiet up-and-down, no stagger.
+      sumTimersRef.current.push(
+        setTimeout(() => {
+          setSumFlash(false)
+          setSumLine(false)
+          sumPlayingRef.current = false
+        }, 1200),
+      )
+      return
+    }
+
+    sumTimersRef.current.push(setTimeout(() => setSumFlash(false), 500))
+    sumTimersRef.current.push(
+      setTimeout(() => {
+        setSumLine(false)
+        sumPlayingRef.current = false
+      }, 2500),
+    )
+  }
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      const target = e.target as HTMLElement | null
+      if (target && ['INPUT', 'TEXTAREA'].includes(target.tagName)) return
+      if (e.key.length !== 1) return
+      sumTypedRef.current = (sumTypedRef.current + e.key.toLowerCase()).slice(-3)
+      if (sumTypedRef.current === 'sum') {
+        sumTypedRef.current = ''
+        playSumReveal()
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reducedMotion])
+
+  useEffect(() => () => sumTimersRef.current.forEach(clearTimeout), [])
 
   const triggered = reducedMotion ? true : inView
 
@@ -157,6 +214,24 @@ export default function PrincetonSumOverPaths() {
                 />
               )
             })}
+          </g>
+
+          {/* "sum" easter egg: bright-orange ghosts of the five canceled
+              paths, overlaid on top and only visible while flashing. */}
+          <g aria-hidden="true">
+            {CANCELED_PATHS.map((p) => (
+              <path
+                key={`ghost-${p.key}`}
+                d={p.d}
+                fill="none"
+                stroke="#FF8F1C"
+                strokeWidth={1.4}
+                style={{
+                  opacity: sumFlash ? 1 : 0,
+                  transition: reducedMotion ? 'opacity 400ms ease' : 'opacity 250ms ease',
+                }}
+              />
+            ))}
           </g>
 
           {/* The surviving path */}
@@ -261,6 +336,14 @@ export default function PrincetonSumOverPaths() {
 
       <p className="mt-8 font-serif italic text-muted text-sm sm:text-base text-center max-w-[48ch] mx-auto">
         Feynman: a particle moving between two points takes every possible path. Most cancel. One survives.
+      </p>
+
+      <p
+        className="mt-3 font-mono text-[11px] text-muted text-center transition-opacity duration-500"
+        style={{ opacity: sumLine ? 1 : 0 }}
+        aria-live="polite"
+      >
+        Every path, for a moment.
       </p>
     </div>
   )
