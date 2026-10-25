@@ -84,10 +84,11 @@ function approxCurveLength(d: string): number {
   return Math.hypot(ex - sx, ey - sy) * 1.18
 }
 
-const DRAW_MS = 800
-const STAGGER_MS = 150
+const DRAW_MS = 1000
+const STAGGER_MS = 100
 const FADE_MS = 400
-const CANCELED_REST_OPACITY = 0.25
+const CANCELED_REST_OPACITY = 0.4
+const NODE_STAGGER_MS = 300
 
 export default function PrincetonSumOverPaths() {
   const ref = useRef<HTMLDivElement>(null)
@@ -119,7 +120,7 @@ export default function PrincetonSumOverPaths() {
     const drawEnd = DRAW_MS + STAGGER_MS * D_CANCELED.length
     timers.push(setTimeout(() => setCanceledFaded(true), drawEnd))
     D_NODES.forEach((_, i) => {
-      timers.push(setTimeout(() => setNodesShown(i + 1), drawEnd + 450 + i * 220))
+      timers.push(setTimeout(() => setNodesShown(i + 1), drawEnd + 300 + i * NODE_STAGGER_MS))
     })
     return () => timers.forEach(clearTimeout)
   }, [inView, reducedMotion])
@@ -293,7 +294,7 @@ export default function PrincetonSumOverPaths() {
                 strokeWidth={2}
                 initial={{ scale: 0 }}
                 animate={{ scale: nodesShown > i ? 1 : 0 }}
-                transition={{ type: 'spring', bounce: 0.5, duration: 0.2 }}
+                transition={{ type: 'spring', bounce: 0, duration: 0.3 }}
                 style={{ transformOrigin: `${n.x}px ${n.y}px` }}
               />
               <motion.circle
@@ -303,7 +304,7 @@ export default function PrincetonSumOverPaths() {
                 fill="#E77500"
                 initial={{ scale: 0 }}
                 animate={{ scale: nodesShown > i ? 1 : 0 }}
-                transition={{ type: 'spring', bounce: 0.5, duration: 0.2 }}
+                transition={{ type: 'spring', bounce: 0, duration: 0.3 }}
                 style={{ transformOrigin: `${n.x}px ${n.y}px` }}
               />
             </g>
@@ -317,8 +318,8 @@ export default function PrincetonSumOverPaths() {
               cy={target.y}
               r={9}
               fill="#E77500"
-              animate={triggered && !reducedMotion ? { opacity: [0.7, 1, 0.7] } : { opacity: 1 }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+              animate={triggered && !reducedMotion ? { opacity: [0.75, 1, 0.75] } : { opacity: 1 }}
+              transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
             />
           </g>
         </svg>
