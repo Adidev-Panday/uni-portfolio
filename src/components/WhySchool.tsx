@@ -116,6 +116,9 @@ export default function WhySchool() {
               {school.id === 'princeton' && (
                 <div className="mt-14">
                   <PrincetonClock />
+                  <p className="mt-6 text-right font-serif italic text-muted text-sm max-w-[65ch] mx-auto">
+                    Nine and a half time zones ahead. Still awake.
+                  </p>
                 </div>
               )}
             </div>
