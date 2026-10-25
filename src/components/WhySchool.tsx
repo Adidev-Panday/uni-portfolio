@@ -7,6 +7,7 @@ import { whySchool, type WhySchoolEntry } from '@/data/content'
 import { springUI } from '@/lib/motion'
 import ScrollReveal from './ScrollReveal'
 import { PrincetonTigerButton, PrincetonMottoLine } from './PrincetonEasterEggs'
+import PrincetonCinematicOpener from './PrincetonCinematicOpener'
 import { VeritasShield, HarvardMottoLine } from './HarvardEasterEggs'
 import { BerkeleyTimeTip, FortyBall, FiatLuxBlock, OskiTrigger } from './BerkeleyEasterEggs'
 import { MottoLine } from './SchoolMotif'
@@ -62,7 +63,15 @@ export default function WhySchool() {
                   )}
                 </div>
               </ScrollReveal>
+            </div>
 
+            {school.id === 'princeton' && (
+              <div className="mb-14">
+                <PrincetonCinematicOpener />
+              </div>
+            )}
+
+            <div className="section-container">
               <ScrollReveal delay={0.06}>
                 <div className="max-w-[65ch]">
                   <p className="font-serif italic text-muted text-base sm:text-lg leading-relaxed mb-10">
