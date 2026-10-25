@@ -11,13 +11,13 @@ const PLAN_A = 'Plan-A'
 const LETTER_MS = 60
 const STRIPE_COUNT = 11
 
-// Evenly spaced 60deg diagonal strokes across a 0-0-160-100 box, each the
+// Evenly spaced 72deg diagonal strokes across a 0-0-160-100 box, each the
 // same length, so a single shared stroke-dasharray draws them all in sync.
 const STRIPES = Array.from({ length: STRIPE_COUNT }, (_, i) => {
-  const x = -20 + i * 16
-  return { x1: x, y1: -10, x2: x - 46, y2: 110 }
+  const x = -24 + i * 24
+  return { x1: x, y1: -10, x2: x - 39, y2: 110 }
 })
-const STRIPE_LENGTH = Math.hypot(46, 120)
+const STRIPE_LENGTH = Math.hypot(39, 120)
 
 export default function PrincetonCinematicOpener() {
   const ref = useRef<HTMLDivElement>(null)
@@ -67,7 +67,7 @@ export default function PrincetonCinematicOpener() {
             x2={s.x2}
             y2={s.y2}
             stroke="#E77500"
-            strokeOpacity={0.03}
+            strokeOpacity={0.02}
             strokeWidth={1.4}
             strokeDasharray={STRIPE_LENGTH}
             strokeDashoffset={reducedMotion ? 0 : triggered ? 0 : STRIPE_LENGTH}
@@ -78,7 +78,7 @@ export default function PrincetonCinematicOpener() {
         ))}
       </svg>
 
-      <div className="relative py-20 md:py-28 px-6 text-center">
+      <div className="relative pt-20 md:pt-28 pb-12 md:pb-16 px-6 text-center">
         <h3
           className="font-serif text-[#E77500] leading-none tracking-[-0.02em]"
           style={{ fontSize: 'clamp(4rem, 10vw, 10rem)' }}

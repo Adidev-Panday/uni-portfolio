@@ -40,7 +40,7 @@ export function PrincetonTigerButton() {
       type="button"
       onClick={triggerPrincetonCheer}
       aria-label="Play the Princeton Locomotive cheer"
-      className="inline-flex align-middle ml-2 text-lg leading-none hover:scale-110 active:scale-95 transition-transform duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
+      className="inline-flex align-baseline ml-2 text-lg leading-none hover:scale-110 active:scale-95 transition-transform duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
     >
       &#128047;
     </button>
