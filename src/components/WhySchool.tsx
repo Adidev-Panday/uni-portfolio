@@ -9,6 +9,7 @@ import ScrollReveal from './ScrollReveal'
 import { PrincetonTigerButton, PrincetonMottoLine } from './PrincetonEasterEggs'
 import PrincetonCinematicOpener from './PrincetonCinematicOpener'
 import PrincetonSumOverPaths from './PrincetonSumOverPaths'
+import PrincetonClock from './PrincetonClock'
 import { VeritasShield, HarvardMottoLine } from './HarvardEasterEggs'
 import { BerkeleyTimeTip, FortyBall, FiatLuxBlock, OskiTrigger } from './BerkeleyEasterEggs'
 import { MottoLine } from './SchoolMotif'
@@ -111,6 +112,12 @@ export default function WhySchool() {
                   {!BESPOKE_SCHOOLS.has(school.id) && <MottoLine schoolId={school.id} />}
                 </div>
               </ScrollReveal>
+
+              {school.id === 'princeton' && (
+                <div className="mt-14">
+                  <PrincetonClock />
+                </div>
+              )}
             </div>
           </section>
         </motion.div>
