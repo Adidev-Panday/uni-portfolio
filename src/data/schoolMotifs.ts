@@ -21,6 +21,28 @@ export type SchoolMotif = {
 }
 
 export const SCHOOL_MOTIFS: Record<string, SchoolMotif> = {
+  brown: {
+    motto: 'In Deo Speramus',
+    mottoTranslation: 'In God We Hope',
+    triggerWord: 'bruno',
+    revealLines: ['Bruno the Bear.', 'Open Curriculum, open road.', 'Go Bears.'],
+    confettiColors: ['#4E3629', '#ED1C24', '#F5F2EC'],
+    consoleLine: 'In Deo Speramus. Go Bears.',
+  },
+  'texas-am': {
+    triggerWord: 'aggies',
+    revealLines: ['Howdy.', 'Reveille stands up.', "Gig 'em, Aggies."],
+    confettiColors: ['#500000', '#FFFFFF', '#F5F2EC'],
+    consoleLine: "Gig 'em, Aggies.",
+  },
+  'notre-dame': {
+    motto: 'Vita, Dulcedo, Spes',
+    mottoTranslation: 'Life, Sweetness, Hope',
+    triggerWord: 'irish',
+    revealLines: ['Cheer, cheer for old Notre Dame.', 'Golden Dome in sight.', 'Go Irish.'],
+    confettiColors: ['#0C2340', '#D39F10', '#F5F2EC'],
+    consoleLine: 'Vita, Dulcedo, Spes. Go Irish.',
+  },
   'virginia-tech': {
     motto: 'Ut Prosim',
     mottoTranslation: 'That I May Serve',

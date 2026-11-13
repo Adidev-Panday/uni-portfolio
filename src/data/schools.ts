@@ -2,13 +2,16 @@
 // Keep in alphabetical order by name.
 export const SCHOOLS = [
   { id: 'bocconi',      name: 'Bocconi',                                   shortName: 'Bocconi'      },
+  { id: 'brown',        name: 'Brown University',                          shortName: 'Brown'        },
   { id: 'georgia-tech', name: 'Georgia Tech',                               shortName: 'Georgia Tech' },
   { id: 'harvard',      name: 'Harvard',                                   shortName: 'Harvard'      },
   { id: 'hku-berkeley', name: 'HKU-Berkeley (Dual Degree)',                 shortName: 'HKU-Berkeley' },
   { id: 'mit',          name: 'Massachusetts Institute of Technology (MIT)', shortName: 'MIT'         },
   { id: 'nus',          name: 'National University of Singapore (NUS)',     shortName: 'NUS'          },
+  { id: 'notre-dame',   name: 'Notre Dame',                                shortName: 'Notre Dame'   },
   { id: 'princeton',    name: 'Princeton',                                  shortName: 'Princeton'    },
   { id: 'purdue',       name: 'Purdue',                                     shortName: 'Purdue'       },
+  { id: 'texas-am',     name: 'Texas A&M',                                 shortName: 'Texas A&M'    },
   { id: 'tu-delft',     name: 'TU Delft',                                  shortName: 'TU Delft'     },
   { id: 'tum',          name: 'TUM',                                       shortName: 'TUM'          },
   { id: 'uc-berkeley',  name: 'UC Berkeley',                               shortName: 'UC Berkeley'  },

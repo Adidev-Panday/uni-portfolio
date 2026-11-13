@@ -543,6 +543,30 @@
           "Airbus Defence and Space, and MTU, a few minutes down the road from the lecture hall.",
           "Germany's top aerospace program, planted inside Germany's aerospace cluster. The gap between a lecture and a real test stand is unusually short."
         ]
+      },
+      "brown": {
+        "opener": "No aerospace major. Fluid mechanics, properly.",
+        "bullets": [
+          "ScB Mechanical Engineering & Applied Mechanics. ENGN 0810 Fluid Mechanics is the course I'd mark on the catalog first.",
+          "Brown's Open Curriculum. I take fluid dynamics, then philosophy of science, then more fluid dynamics, no prerequisites arguing with me about what I'm \"supposed\" to do.",
+          "No aerospace major, no problem. Brown's Mechanical & Applied Mechanics faculty publish in continuum mechanics and biomechanics, the same equations with different boundary conditions. Harvard and Brown are the two places where I'd build the path myself."
+        ]
+      },
+      "texas-am": {
+        "opener": "The hypersonics capital of American academia.",
+        "bullets": [
+          "AERO 351 Aerothermodynamics and Propulsion, AERO 417 Aerospace Propulsion. The full air-breathing stack, inlets through nozzles.",
+          "The National Aerothermochemistry and Hypersonics Laboratory (NAHL). A&M leads the DoD's University Consortium for Applied Hypersonics, 100+ universities under one roof, run from College Station.",
+          "AggieSat Lab for small satellites under Dr. Helen Reed. If I want to actually fly something before graduation, this is one of the few places where that's a normal expectation."
+        ]
+      },
+      "notre-dame": {
+        "opener": "Oldest wind tunnel in America, newest Mach 6 in America.",
+        "bullets": [
+          "AME Aerospace Engineering (BS), Hessert Lab for Aerospace Research, Institute for Flow Physics and Control (FlowPAC).",
+          "The AFOSR-Notre Dame Large Mach 6 Quiet Wind Tunnel. Largest quiet Mach 6 tunnel in the US, nozzle 2.5x the Purdue one. A Mach 10 is being built next.",
+          "Albert Zahm built one of the first wind tunnels in the country at Notre Dame in 1882. 144 years later, I'd be in the room where that tradition is still extending."
+        ]
       }
     }
   }

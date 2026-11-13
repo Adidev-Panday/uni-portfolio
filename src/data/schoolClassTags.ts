@@ -1,4 +1,4 @@
-// "Hopeful [mascot], Class of [year]" hero tag text for all 24 schools.
+// "Hopeful [mascot], Class of [year]" hero tag text for all 27 schools.
 // Class year follows each school's real programme length: 2031 for
 // four-year degrees (US schools and the UK MEng route), 2030 for the
 // three-year BSc route (Bocconi, TU Delft, TUM, and Melbourne, which
@@ -27,5 +27,8 @@ export const SCHOOL_CLASS_TAGS: Record<string, string> = {
   bocconi: 'Hopeful Bocconiano, Class of 2030',
   'tu-delft': 'Hopeful Delft Student, Class of 2030',
   tum: 'Hopeful TUM Student, Class of 2030',
+  brown: 'Hopeful Bear, Class of 2031',
+  'texas-am': 'Hopeful Aggie, Class of 2031',
+  'notre-dame': 'Hopeful Fighting Irish, Class of 2031',
   melbourne: 'Hopeful Melburnian, Class of 2030',
 }

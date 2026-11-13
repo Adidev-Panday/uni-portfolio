@@ -294,6 +294,39 @@
 }
 .dark[data-school="virginia-tech"] { --accent-rgb: 229 117 31; }
 
+/* 25. Brown University  base:#0B0B0B  primary:#4E3629 Brown (Pantone 476)  accent:#ED1C24 Cardinal Red (Pantone 185)
+   Brown is too dark to read as text on the dark base, so Cardinal Red
+   carries dark mode (and the gradients); brown leads light mode and fills. */
+[data-school="brown"] {
+  --accent-rgb: 78 54 41;
+  --accent-secondary-rgb: 237 28 36;
+  --accent-fill: #4E3629;
+  --body-bg-dark: #0B0B0B;
+}
+.dark[data-school="brown"] { --accent-rgb: 237 28 36; }
+
+/* 26. Texas A&M  base:#0A0A0A  primary:#500000 Aggie Maroon (PMS 202)  accent:#FFFFFF white
+   Maroon vanishes on the dark base, so white leads dark mode; light mode
+   keeps maroon with near-black as the secondary instead of invisible white. */
+[data-school="texas-am"] {
+  --accent-rgb: 80 0 0;
+  --accent-secondary-rgb: 10 10 10;
+  --accent-fill: #500000;
+  --body-bg-dark: #0A0A0A;
+}
+.dark[data-school="texas-am"] { --accent-rgb: 255 255 255; --accent-secondary-rgb: 255 255 255; }
+
+/* 27. Notre Dame  base:#001A3A  primary:#0C2340 Navy (PMS 289)  accent:#D39F10 Dome Gold (PMS 7502)
+   Navy disappears on the navy base, so gold leads dark mode and is also
+   scattered onto section numbers (NEAR-EQUAL-WEIGHT IDENTITIES below). */
+[data-school="notre-dame"] {
+  --accent-rgb: 12 35 64;
+  --accent-secondary-rgb: 211 159 16;
+  --accent-fill: #0C2340;
+  --body-bg-dark: #001A3A;
+}
+.dark[data-school="notre-dame"] { --accent-rgb: 211 159 16; }
+
 /* ============================================================
    HEADLINES: PRIMARY leads, not the mode-swapped small-text accent.
    Hero name, every section title, the "Why [School]" heading, and
@@ -323,6 +356,7 @@
 [data-school="ucla"] .section-header .font-mono,
 [data-school="uc-berkeley"] .section-header .font-mono,
 [data-school="uiuc"] .section-header .font-mono,
+[data-school="notre-dame"] .section-header .font-mono,
 [data-school="virginia-tech"] .section-header .font-mono {
   color: rgb(var(--accent-secondary-rgb));
 }
@@ -330,6 +364,7 @@
 [data-school="ucla"] .section-header .bg-rule,
 [data-school="uc-berkeley"] .section-header .bg-rule,
 [data-school="uiuc"] .section-header .bg-rule,
+[data-school="notre-dame"] .section-header .bg-rule,
 [data-school="virginia-tech"] .section-header .bg-rule {
   background-color: rgb(var(--accent-secondary-rgb));
 }
