@@ -22,6 +22,7 @@ function fillTemplate(entry: WhySchoolEntry, name: string): WhySchoolEntry {
     opener: fill(entry.opener),
     bullets: entry.bullets.map(fill) as WhySchoolEntry['bullets'],
     pullQuote: entry.pullQuote ? fill(entry.pullQuote) : undefined,
+    closing: entry.closing ? fill(entry.closing) : undefined,
   }
 }
 
@@ -106,6 +107,11 @@ export default function WhySchool() {
                       </li>
                     ))}
                   </ul>
+                  {entry.closing && (
+                    <p className="mt-8 text-right font-serif italic text-muted text-sm">
+                      {entry.closing}
+                    </p>
+                  )}
                   {school.id === 'princeton' && <PrincetonMottoLine />}
                   {school.id === 'harvard' && <HarvardMottoLine />}
                   {school.id === 'uc-berkeley' && <FiatLuxBlock />}
@@ -116,9 +122,6 @@ export default function WhySchool() {
               {school.id === 'princeton' && (
                 <div className="mt-14">
                   <PrincetonClock />
-                  <p className="mt-6 text-right font-serif italic text-muted text-sm max-w-[65ch] mx-auto">
-                    Nine and a half time zones ahead. Still awake.
-                  </p>
                 </div>
               )}
             </div>

@@ -60,7 +60,7 @@ type ContentJson = {
   whySchool: { defaultTemplate: WhySchoolEntry; schools: Record<string, WhySchoolEntry> }
 }
 
-type WhySchoolEntry = { opener: string; bullets: [string, string, string] }
+type WhySchoolEntry = { opener: string; bullets: [string, string, string]; pullQuote?: string; closing?: string }
 
 // --------------------------------------------------------------------------
 // Small UI primitives

@@ -345,198 +345,203 @@
       "princeton": {
         "opener": "Plan-A: MAE at Princeton.",
         "bullets": [
-          "MAE 426 for air-breathing propulsion from first principles, with Prof. Choueiri's EPPDyL next door for Hall thrusters and plasma instabilities. The syllabus I'd build for myself if nobody were grading it.",
-          "Princeton Rocketry's Team Orbital, 2027 TigerCub launch. I want my face on princetonrocketry.com/members, standing beside Talon Flores (MAE '28) when the thing goes up.",
-          "I built airflowns.netlify.app to solve 2D Navier-Stokes in a browser. That's the outside of the car. Prof. Hultmark's high-pressure tunnel is the inside. Both halves of my obsession, same campus."
+          "MAE 426. Jet theory, combustion control, scramjets. Things I would study in my free time out of my own free will.",
+          "Dr. Choueiri's EPPDyL by sophomore year. Hall thrusters, plasma instabilities, the quiet end of propulsion.",
+          "Team Orbital, 2027 TigerCub launch. I want my face on princetonrocketry.com/members, standing next to Talon Flores (MAE '28) when the thing goes up."
         ],
-        "pullQuote": "I want my face on princetonrocketry.com/members."
+        "pullQuote": "Rocket-physics and violin-physics are somehow the same physics.",
+        "closing": "Nine and a half time zones ahead. Still awake."
       },
       "purdue": {
         "opener": "Zucrow is why.",
         "bullets": [
-          "AAE 439 for combustion instability: why pressure oscillations couple with the acoustic modes of hardware, why a chamber tears itself apart or doesn't.",
-          "Zucrow Labs, largest academic propulsion facility in the country, on campus, no clearance required. 124 seconds of LOX/methane in the Morpheus hotfire, Mach diamonds in the plume. I've watched that video 14 times.",
-          "My Navier-Stokes sim does external airflow. Zucrow does internal, with fire. Same equations, different boundary conditions."
+          "AAE 439. Combustion instability, why pressure oscillations couple with the acoustic modes of the hardware, why an engine tears itself apart or doesn't.",
+          "Zucrow test cell, LOX/methane, 124 seconds of Morpheus hotfire, Mach diamonds in the plume. I've watched the video 14 times.",
+          "I want to be in that cell by sophomore year. The kid nobody trusts with the good welds yet, learning by holding things and breaking a few."
         ],
-        "pullQuote": "I've watched that video 14 times."
+        "pullQuote": "Shock waves repeating in a pattern I can almost, but not quite, derive.",
+        "closing": "14 replays in. I want to make the next video, not just watch it."
       },
       "uiuc": {
-        "opener": "The hybrid team is why.",
+        "opener": "The ISS Hybrid team is why.",
         "bullets": [
-          "AE 433 and AE 434 for chamber geometry, nozzle expansion ratios, specific impulse, combustion stability margins. The math that decides whether a chamber survives.",
-          "Illinois Space Society's Hybrid Propulsion team, 4 kN of paraffin and Nytrox at Willard airport's retired jet-engine testing facility. 20 students, 8 years of development, one engine.",
-          "I want to graduate knowing how to build the engine, not just rewatch the hotfire video eleven times on a laptop in Mussoorie."
+          "AE 433 and AE 434. Tsiolkovsky's rocket equation, nozzle expansion ratios, specific impulse, and the combustion coupling that decides whether a chamber survives.",
+          "Illinois Space Society Hybrid, hot-firing at Willard airport's retired jet-engine testing facility. 20 students, 8 years, one engine.",
+          "I've watched that hotfire 11 times already. I want to graduate knowing how to build the next one, not rewatch it a twelfth."
         ],
-        "pullQuote": "Graduate knowing how to build the engine, not just rewatch the hotfire."
+        "pullQuote": "4 kilonewtons of thrust. Nytrox and paraffin. A chamber students built across eight years.",
+        "closing": "Four years from now, knowing how to design what I'd been rewatching."
       },
       "virginia-tech": {
         "opener": "The Mach 7 tunnel is why.",
         "bullets": [
-          "AOE 4234 for aerospace propulsion systems and AOE 4604 for booster design, fabrication, and operation. Both offered as technical electives in the propulsion track.",
-          "PropEL's Mach 7 hypersonic tunnel, obtained from the Russian Academy of Sciences in the mid-90s. 15 seconds of steady flow at high Mach my laptop sim will never reach.",
-          "The Hokies are serious about scramjets through the Hy-V project. I'd pay to spend a semester inside that tunnel."
+          "AOE 4234 and AOE 4604. Propulsion systems one semester, booster design, fabrication, and operation the next.",
+          "PropEL's hypersonic wind tunnel. Mach 2 through 7, steady flow for 15 seconds, run after run.",
+          "I built airflowns.netlify.app to solve 2D Navier-Stokes in a browser. That's incompressible subsonic. PropEL runs compressible hypersonic. Same equations, different regime, no laptop can touch it."
         ],
-        "pullQuote": "15 seconds of flow my laptop sim will never reach."
+        "pullQuote": "15 seconds of steady flow my laptop will never simulate.",
+        "closing": "I'd take the regime up."
       },
       "georgia-tech": {
-        "opener": "Both ends of propulsion, same roof.",
+        "opener": "Both ends of propulsion. Same campus.",
         "bullets": [
-          "AE 4451 for jet and rocket propulsion in a single course. Clean teaching of both.",
-          "The Ben T. Zinn Combustion Lab for gas turbines, air-breathing engines, and chemical rockets. The High-Power Electric Propulsion Lab next door with the largest university vacuum chamber in the nation for plasma thrusters.",
-          "I don't want to pick chemical or electric at 18. GT doesn't make me. Both ends of propulsion, same roof, same semester if I want."
+          "AE 4451. Jet and rocket propulsion in one course.",
+          "Ben T. Zinn Combustion Lab for the chemical side. HPEPL's vacuum chamber for Hall thrusters on the electric side. Both at walking distance.",
+          "I haven't decided between chemical and electric propulsion yet, and I'd rather not have to at 18. GT lets me take both before I commit."
         ],
-        "pullQuote": "I don't want to pick chemical or electric at 18."
-      },
-      "mit": {
-        "opener": "A reach, written honestly.",
-        "bullets": [
-          "16.50 for aerospace propulsion then 16.512 for chemical, liquid-bipropellant, and hybrid rocket propulsion. Taught properly, with the Draper Lab fellowship pipeline two blocks away.",
-          "The MIT Rocket Team and the Space Propulsion Lab, with the IAP course on Aerospace Nuclear Power and Propulsion as the thing I'd actually pay for.",
-          "Honest reach. But AirflowNS, a published IJHSR paper, and 14 replays of a Purdue hotfire mean I'd show up for the work, not the brand on the sweatshirt."
-        ]
+        "pullQuote": "I don't want to pick chemical or electric at 18.",
+        "closing": "Pick later. Build first."
       },
       "harvard": {
         "opener": "No aerospace major. On purpose.",
         "bullets": [
-          "The S.B. in Mechanical Engineering at SEAS. Navier-Stokes, vorticity, lift, drag. The physics I first met taping wings onto paper planes in Grade 7.",
-          "The Harvard Undergraduate Aerospace Collective launched the first Crimson CubeSat and is firing Mojave Sphinx, the Ivy League's first student-led liquid bi-propellant rocket.",
-          "No aerospace major. That's the point. I get to build the path, with Government and Economics next to fluid dynamics on the same transcript."
+          "S.B. Mechanical Engineering at SEAS. Fluid mechanics, continuum, vorticity. The equations I first met taping wings onto paper planes.",
+          "Harvard Undergraduate Aerospace Collective. First Crimson CubeSat. Mojave Sphinx, the Ivy League's first student liquid bi-propellant rocket.",
+          "Harvard doesn't name an aerospace degree, which means I get to build the path. Government and Economics on the same transcript as fluids is how I already think."
+        ]
+      },
+      "mit": {
+        "opener": "A reach, written honestly.",
+        "bullets": [
+          "16.50, then 16.512. Aerospace propulsion, then chemical and liquid-bipropellant rocket propulsion.",
+          "MIT Rocket Team, Space Propulsion Lab, Draper Lab two blocks away for a UROP.",
+          "Reach. I know. But AirflowNS, a published IJHSR paper, and 14 replays of a Purdue hotfire mean I'd show up for the work, not the brand on the sweatshirt."
         ]
       },
       "uc-berkeley": {
         "opener": "A new major at an old powerhouse.",
         "bullets": [
-          "The new Aerospace Engineering major Berkeley just launched, built on top of a 150-year-old mechanical and fluid mechanics tradition.",
-          "Space Technologies at Cal (STAC), the student group doing CubeSats and attitude-control work. Ambitious new program, room for me to help shape what it becomes.",
-          "A new major at an old powerhouse. That's the kind of white space I'd want to build in. The ambition of something being decided now, the rigor of a place that's taught these fundamentals for a century."
+          "Aerospace Engineering, the major Berkeley launched in 2025, built on top of 150 years of mechanical engineering.",
+          "Space Technologies at Cal (STAC) for CubeSats and attitude control. New program, room to help decide what it becomes.",
+          "I'd rather help shape a two-year-old major at a real engineering school than slot into a program that's already decided what it is."
         ]
       },
       "uc-davis": {
         "opener": "A UC that calls it aerospace.",
         "bullets": [
-          "EAE 130A and 130B for aerospace vehicle design. Two full quarters of actually drawing the airplane, not reading about one.",
-          "Davis's degree is explicitly called Aerospace Science and Engineering, backed by the department's own aeronautical wind tunnel. Strong in aerodynamics, unsteady flows, and aeroacoustics.",
-          "A UC that calls it aerospace, not mechanical-with-a-track. That naming matters more than it sounds. It tells me where the department puts its attention."
+          "EAE 130A and 130B. Two quarters of aerospace vehicle design.",
+          "The department's own aeronautical wind tunnel, plus UC Davis's reputation in aeroacoustics and unsteady flows.",
+          "\"Aerospace Science and Engineering\" as the actual degree name, not \"mechanical with a track.\" The name tells me where the department puts its attention."
         ]
       },
       "uc-irvine": {
         "opener": "Combustion, quietly top-tier.",
         "bullets": [
-          "MAE 150 for aerospace propulsion, taught across gas turbines, ramjets, scramjets, rockets, and currently detonation engines. One of the broadest propulsion courses in the UC system.",
-          "The UCI Combustion Laboratory. Quieter than Zucrow or Zinn Lab, but one of the most-cited combustion research groups in the country.",
-          "Detonation engines are the next thing in propulsion. UCI is already running them. That's the kind of early-signal lab I'd want to work in."
+          "MAE 150. Gas turbines, ramjets, scramjets, rotating detonation engines in one course.",
+          "UCI Combustion Laboratory. Smaller than Zucrow or Zinn Lab. Also one of the most-cited combustion groups in the country.",
+          "Rotating detonation engines are the next generation of propulsion. UCI is already running them."
         ]
       },
       "uc-san-diego": {
-        "opener": "#1 public MAE by citations.",
+        "opener": "Number one public MAE by citations.",
         "bullets": [
-          "MAE 101A, 101B, 101C for fluid mechanics, viscous flows, and compressible flows. The full ladder, no shortcuts.",
-          "#1 public MAE department in the US by research citations. Deep benches in CFD, flow control, and hypersonics.",
-          "My F1-on-a-ceiling paper lives in the ground-effect regime. UCSD works at hypersonic. Same equations, next regime up. I want the regime up."
+          "MAE 101A, 101B, 101C. Fluid mechanics, viscous flows, compressible flows. The full ladder.",
+          "UCSD's hypersonics group and their CFD lab. Deep on flow control and transition.",
+          "My F1-on-a-ceiling paper lives in ground effect. UCSD works at Mach 10 plus. Same equations, next regime up."
         ]
       },
       "ucla": {
         "opener": "Plasma is the quiet thrust.",
         "bullets": [
-          "MAE 157A for rocket propulsion, MAE 157B for electric propulsion. Both offered. Both taken by students who care.",
-          "Prof. Richard Wirz's Plasma and Space Propulsion Laboratory. Hall thrusters, hollow cathodes, the mathematically harder end of thrust.",
-          "Chemical propulsion is loud. Plasma is quiet. UCLA studies the quiet one properly, which is where the next decade of propulsion actually lives."
+          "MAE 157A rocket propulsion. MAE 157B electric propulsion. Both offered. Both get taken.",
+          "Dr. Richard Wirz's Plasma and Space Propulsion Laboratory. Hall thrusters, hollow cathodes.",
+          "Chemical propulsion is loud. Plasma is where the next decade of deep-space thrust actually lives. UCLA takes plasma seriously."
         ]
       },
       "bath": {
         "opener": "The specialisation gets earned.",
         "bullets": [
-          "MEng Aerospace Engineering with a full year in industry built into the degree. Not an internship bolted on. A proper year.",
-          "Core mechanical engineering first, aerodynamics and propulsion specialisations later. The specialisation gets earned, not handed to you on day one.",
-          "A full year on an engineering floor turning CAD into tolerances before I graduate. That's the gap I want closed, and Bath closes it on purpose."
+          "MEng Aerospace Engineering with a full year in industry. Not an internship. A proper year.",
+          "Core mechanical engineering in the first two years. Aerodynamics and propulsion later, after I've earned it.",
+          "I've done two months of CAD at BAUM. A full year on an engineering floor before graduation is the next step I actually want."
         ]
       },
       "bristol": {
         "opener": "Aero in the town that built the Concorde.",
         "bullets": [
-          "MEng Aerospace Engineering with the National Composites Centre on campus. The three course pillars (aerodynamics, dynamics and control, structures and materials) are exactly the three I keep returning to.",
-          "Filton, 15 minutes away, is where the Bristol Aeroplane Company built aircraft from 1910. Airbus, Rolls-Royce, GKN, and the last Concorde ever flown are all still there.",
-          "Studying aero in the town where the Concorde was built. Hard to argue with the postcode."
+          "MEng Aerospace Engineering with the National Composites Centre on campus.",
+          "Filton is 15 minutes away. Airbus, Rolls-Royce, GKN, the last Concorde ever flown, all in that one postcode.",
+          "Studying aerospace in the town where the Concorde was designed is not a small thing."
         ]
       },
       "manchester": {
         "opener": "Reynolds did his pipe experiment here.",
         "bullets": [
-          "MEng Aerospace Engineering with the School of Engineering's deep fluid mechanics heritage. Osborne Reynolds ran his pipe experiment in this university.",
-          "Every Reynolds number I've written in a Physics IA started in this building. The equation is literally named after someone whose desk was here.",
-          "When you study fluids where the number was named, the math stops feeling abstract. It feels like continuing someone else's unfinished sentence."
+          "MEng Aerospace Engineering. Osborne Reynolds ran his pipe experiment in this university in 1883.",
+          "Every Reynolds number I've calculated for a Physics IA started in this building.",
+          "When the number is named after someone whose desk was here, the equation stops feeling abstract."
         ]
       },
       "melbourne": {
         "opener": "Wide, then deep.",
         "bullets": [
-          "The Melbourne Model: a Bachelor of Science first, then a Master of Engineering (Aerospace). Wide before deep, by design.",
-          "Prof. Ivan Marusic's Fluid Mechanics Group, world-class on turbulent boundary layers. The exact fluids regime I want to understand.",
-          "I'm a violinist who wants to design engines, a builder of AI apps who publishes research. Melbourne lets me stay more than one thing without pretending I was ever only one."
+          "The Melbourne Model. A Bachelor of Science first, then a Master of Engineering (Aerospace).",
+          "Dr. Ivan Marusic's Fluid Mechanics Group. World-class on turbulent boundary layers, the exact regime I want to understand.",
+          "I'm a violinist who builds AI apps and publishes research. Melbourne is one of the few universities that doesn't ask me to pick just one of those first."
         ]
       },
       "michigan": {
         "opener": "The X3 is why.",
         "bullets": [
-          "AEROSP 320 for propulsion and 325 for gas dynamics. Both courses heavy, both taught in one of the oldest aerospace departments in the country.",
-          "Prof. Alec Gallimore's Plasmadynamics and Electric Propulsion Laboratory (PEPL), builder of the X3 Hall thruster: 100+ kW, developed with NASA, built with human Mars missions in mind.",
-          "Michigan builds the thruster NASA will actually use. Not a scaled model. The thruster. That's a different kind of lab to be inside."
+          "AEROSP 320 for propulsion, AEROSP 325 for gas dynamics.",
+          "Dr. Alec Gallimore's PEPL. The X3 Hall thruster: 100+ kilowatts, built with NASA, aimed at a crewed Mars mission.",
+          "Michigan builds the thruster NASA will actually use. Not a scale model. The thruster."
         ]
       },
       "sheffield": {
         "opener": "Sheffield teaches both halves.",
         "bullets": [
-          "MEng Aerospace Engineering with the Advanced Manufacturing Research Centre (AMRC) on campus, built in partnership with Boeing. One of the UK's top five aero and manufacturing programs.",
-          "Sheffield teaches the design AND the build. I've done CAD at BAUM and product development at KGOC. The next step is machining and composites.",
-          "Design is only half the job of an engineer. Sheffield teaches the half most courses skip over on the way to a theory exam."
+          "MEng Aerospace Engineering, with the AMRC (Advanced Manufacturing Research Centre) on campus, built in partnership with Boeing.",
+          "CAD at BAUM taught me design. Sheffield's next step is machining, composites, and layup.",
+          "Design is half of being an engineer. Sheffield teaches the half most courses skip on the way to a theory exam."
         ]
       },
       "southampton": {
         "opener": "Mitchell's tunnel. F1 teams rent it.",
         "bullets": [
-          "Southampton's R.J. Mitchell Wind Tunnel. Mitchell designed the Spitfire. F1 teams have rented this tunnel to develop their cars.",
-          "The only Russell Group MEng that combines Aeronautics AND Astronautics, with a vacuum chamber on site for spacecraft propulsion testing. Air and space in one degree.",
-          "Downforce pulled me into aerospace. Thrust kept me there. Southampton tests both, in the same building. Hard to find anywhere else that does that."
+          "R.J. Mitchell Wind Tunnel. Mitchell designed the Spitfire. Current F1 teams pay to use that tunnel.",
+          "The only Russell Group MEng that puts Aeronautics AND Astronautics in the same degree. Air and space, with a vacuum chamber on site.",
+          "Downforce pulled me in. Thrust kept me. Southampton tests both in the same building."
         ]
       },
       "bocconi": {
         "opener": "The other half of me.",
         "bullets": [
-          "BSc in Mathematical and Computing Sciences for Artificial Intelligence. One rigorous subject taught as a single discipline, not three loosely-related electives.",
-          "Milan, a city built on finance, design, and quiet money. The AI I'd study has somewhere to actually land after graduation.",
-          "I've already built five AI apps and published research on digital trading in IJHSR. Bocconi is where those two interests stop being separate hobbies and start being a career."
+          "BSc in Mathematical and Computing Sciences for Artificial Intelligence. One rigorous subject, taught as a single discipline.",
+          "Milan. A city that runs on finance and design, with a working job market for the AI I'd study.",
+          "I've built five AI apps and published research on digital trading in IJHSR. Bocconi is where those two stop being hobbies."
         ]
       },
       "hku-berkeley": {
         "opener": "A degree built out of two places.",
         "bullets": [
-          "Two years at HKU for mechanical engineering foundations, two years at UC Berkeley for the new aerospace major. One degree, two institutions, two continents.",
-          "Berkeley just launched aerospace on top of its 150-year mechanical tradition. HKU is one of Asia's top MechE departments. The combination is deliberately unusual.",
-          "I've spent five years translating between Ludhiana and Woodstock, two schools, two languages, two kitchens. A degree built out of two places is just the version I'd pick on paper too."
+          "Two years at HKU for mechanical engineering, two years at Berkeley for the new aerospace major.",
+          "HKU is one of Asia's top MechE departments. Berkeley just launched aerospace. The pairing isn't coincidence, it's by design.",
+          "I grew up in Ludhiana and study at Woodstock. A degree built across two institutions is the version I'd pick on paper too."
         ]
       },
       "nus": {
-        "opener": "Already sat in that lecture hall.",
+        "opener": "I've already been on that campus.",
         "bullets": [
-          "The Aerospace Engineering specialisation inside NUS Mechanical Engineering. #8 in the world for engineering by QS, with real propulsion and aerodynamics research groups attached.",
-          "I've already sat in Prof. Sow Chorng Haur's nanotech lecture at the NUS Science Summer Camp. The campus is familiar, the research culture is familiar.",
-          "Asia's fastest-moving research funding, 5 hours from India by flight. I want to study aerospace in the region I'm from, not away from it."
+          "The Aerospace Engineering specialisation inside NUS Mechanical Engineering. QS #8 globally for engineering.",
+          "I spent a week at NUS Science Summer Camp in 2025. Prof. Sow Chorng Haur's nanotech lecture is still the clearest explanation of quantum confinement I've heard.",
+          "Asia's fastest-moving research funding, 5 hours from Ludhiana. Studying aerospace in the region I'm actually from."
         ]
       },
       "tu-delft": {
         "opener": "Walk into the tunnel. Watch it hold.",
         "bullets": [
-          "AE1222 for aerospace design and the full BSc in the only Faculty of Aerospace Engineering in the Netherlands. #4 in the world for aerospace by QS 2024.",
-          "Subsonic, supersonic, and hypersonic wind tunnels reaching past Mach 11, a Cessna they fly as a classroom, and a clean room where students build their own satellites.",
-          "I derived the lift equation in a Math HL IA. Delft is where I'd walk into the tunnel and watch it hold."
+          "The full BSc in the only Faculty of Aerospace Engineering in the Netherlands. QS #4 globally for aerospace.",
+          "Subsonic, supersonic, and hypersonic tunnels past Mach 11. A Cessna they use as a classroom. A clean room where students build satellites.",
+          "I derived the lift equation in a Math HL IA. Delft is where I'd walk into the tunnel and watch the math hold."
         ]
       },
       "tum": {
-        "opener": "Classroom to test stand, very short walk.",
+        "opener": "Classroom to test stand. Very short walk.",
         "bullets": [
-          "The Chair of Turbomachinery and Flight Propulsion (LRG) at the TUM aerospace department in Ottobrunn. Specifically the turbine and engine side, where fuel becomes thrust.",
-          "Airbus Defence and Space and the engine builder MTU are a few minutes down the road from the lecture hall. The gap between a class and a real engine is unusually small here.",
-          "Germany's top-ranked aerospace program, planted inside Germany's aerospace cluster. Close enough to the test stand to hear it fire."
+          "The Chair of Turbomachinery and Flight Propulsion (LRG) in Ottobrunn. Turbines, engines, fuel-to-thrust.",
+          "Airbus Defence and Space, and MTU, a few minutes down the road from the lecture hall.",
+          "Germany's top aerospace program, planted inside Germany's aerospace cluster. The gap between a lecture and a real test stand is unusually short."
         ]
       }
     }
