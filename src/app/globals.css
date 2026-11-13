@@ -294,38 +294,36 @@
 }
 .dark[data-school="virginia-tech"] { --accent-rgb: 229 117 31; }
 
-/* 25. Brown University  base:#0B0B0B  primary:#4E3629 Brown (Pantone 476)  accent:#ED1C24 Cardinal Red (Pantone 185)
-   Brown is too dark to read as text on the dark base, so Cardinal Red
-   carries dark mode (and the gradients); brown leads light mode and fills. */
+/* 25. Brown University  base:#1A0E08  primary:#ED1C24 Cardinal Red (Pantone 2347)  accent:#4E3629 Seal Brown (Pantone 476)
+   Red leads for UI contrast; seal brown is the secondary texture. */
 [data-school="brown"] {
-  --accent-rgb: 78 54 41;
-  --accent-secondary-rgb: 237 28 36;
-  --accent-fill: #4E3629;
-  --body-bg-dark: #0B0B0B;
+  --accent-rgb: 237 28 36;
+  --accent-secondary-rgb: 78 54 41;
+  --accent-fill: #ED1C24;
+  --body-bg-dark: #1A0E08;
 }
-.dark[data-school="brown"] { --accent-rgb: 237 28 36; }
 
-/* 26. Texas A&M  base:#0A0A0A  primary:#500000 Aggie Maroon (PMS 202)  accent:#FFFFFF white
-   Maroon vanishes on the dark base, so white leads dark mode; light mode
-   keeps maroon with near-black as the secondary instead of invisible white. */
+/* 26. Texas A&M  base:#1A0000  primary:#500000 Aggie Maroon (Pantone 7421)  accent:#E8E3DB warm off-white
+   Maroon vanishes on the dark base, so off-white leads small text and
+   gradients in dark mode; light mode keeps maroon throughout. */
 [data-school="texas-am"] {
   --accent-rgb: 80 0 0;
-  --accent-secondary-rgb: 10 10 10;
+  --accent-secondary-rgb: 80 0 0;
   --accent-fill: #500000;
-  --body-bg-dark: #0A0A0A;
+  --body-bg-dark: #1A0000;
 }
-.dark[data-school="texas-am"] { --accent-rgb: 255 255 255; --accent-secondary-rgb: 255 255 255; }
+.dark[data-school="texas-am"] { --accent-rgb: 232 227 219; --accent-secondary-rgb: 232 227 219; }
 
-/* 27. Notre Dame  base:#001A3A  primary:#0C2340 Navy (PMS 289)  accent:#D39F10 Dome Gold (PMS 7502)
+/* 27. Notre Dame  base:#06142B  primary:#0C2340 ND Blue (Pantone 289)  accent:#C99700 Standard Dome Gold (Pantone 117)
    Navy disappears on the navy base, so gold leads dark mode and is also
    scattered onto section numbers (NEAR-EQUAL-WEIGHT IDENTITIES below). */
 [data-school="notre-dame"] {
   --accent-rgb: 12 35 64;
-  --accent-secondary-rgb: 211 159 16;
+  --accent-secondary-rgb: 201 151 0;
   --accent-fill: #0C2340;
-  --body-bg-dark: #001A3A;
+  --body-bg-dark: #06142B;
 }
-.dark[data-school="notre-dame"] { --accent-rgb: 211 159 16; }
+.dark[data-school="notre-dame"] { --accent-rgb: 201 151 0; }
 
 /* ============================================================
    HEADLINES: PRIMARY leads, not the mode-swapped small-text accent.
